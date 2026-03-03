@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4dproyqgtoos"
-path="res://.godot/imported/Phoenix_10_25D_isometric_pixel_art_Shopee_Food_delivery_man_in_3.jpg-a2ed9d7b8b415f57970111bea0a2c027.ctex"
+uid="uid://cewg8sbe1mk0m"
+path="res://.godot/imported/hd_restoration_result_image.png-02e23cbcb7a75d0046c4fd622fea049f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Phoenix_10_25D_isometric_pixel_art_Shopee_Food_delivery_man_in_3.jpg"
-dest_files=["res://.godot/imported/Phoenix_10_25D_isometric_pixel_art_Shopee_Food_delivery_man_in_3.jpg-a2ed9d7b8b415f57970111bea0a2c027.ctex"]
+source_file="res://assets/sprites/player/hd_restoration_result_image.png"
+dest_files=["res://.godot/imported/hd_restoration_result_image.png-02e23cbcb7a75d0046c4fd622fea049f.ctex"]
 
 [params]
 
