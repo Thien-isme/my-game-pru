@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/sprites/background/background.png" id="1_47dtm"]
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
-[ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="3_d87io"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d73my"]
 
@@ -25,5 +24,4 @@ expand_mode = 2
 shape = SubResource("WorldBoundaryShape2D_d73my")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]
-position = Vector2(190, 491)
-script = ExtResource("3_d87io")
+position = Vector2(202, 494)
