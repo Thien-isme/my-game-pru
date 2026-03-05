@@ -1,27 +1,27 @@
-[gd_scene format=3 uid="uid://cc0f24pna4h6u"]
+[gd_scene format=3 uid="uid://bsj5j7lro8iwb"]
 
-[ext_resource type="Texture2D" uid="uid://do67f1gul2a5p" path="res://assets/sprites/enemies/lemon/lemon_bullet.png" id="1_xvtd4"]
+[ext_resource type="Texture2D" uid="uid://s5o38x7m7q0x" path="res://assets/sprites/enemies/corn/corn_bullet.png" id="1_8aggf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
 height = 70.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_081in"]
-atlas = ExtResource("1_xvtd4")
-region = Rect2(150, 195, 1150, 326)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5dd0"]
+atlas = ExtResource("1_8aggf")
+region = Rect2(1484, 340, 742, 564)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_081in")
+"texture": SubResource("AtlasTexture_j5dd0")
 }],
 "loop": true,
-"name": &"lemon_bullet",
+"name": &"corn_bullet",
 "speed": 5.0
 }]
 
-[node name="lemon_bullet" type="CharacterBody2D" unique_id=638291107]
+[node name="corn_bullet" type="CharacterBody2D" unique_id=638291107]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -30,5 +30,4 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-1, -2)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"lemon_bullet"
-frame_progress = 0.44720006
+animation = &"corn_bullet"
