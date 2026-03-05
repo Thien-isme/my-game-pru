@@ -28,6 +28,33 @@ Mỗi loại trái cây có một kiểu tấn công riêng biệt, tạo ra lư
 7. Dưa Leo Bắn Tỉa (Cucumber) Cao kều và thường đứng ở tít góc màn hình hoặc trên bệ cao. Cảnh báo bằng một tia laser đỏ trước khi bắn một viên đạn cực nhanh. Buộc người chơi phải cúi né.
 8. Măng Cụt Bọc Thép (Mangosteen) Kẻ thù Tanker. Lớp vỏ tím cực kỳ cứng. Nó chỉ nhận sát thương khi mở lớp vỏ ra để bắn những quả cầu ánh sáng có khả năng bám theo (homing) người chơi một đoạn ngắn.
 9. Ruồi Nhãn (Longan) Xuất hiện theo bầy đàn. Nhỏ, bay lộn xộn gây rối mắt và thỉnh thoảng lao sầm vào người chơi (tấn công cận chiến kiểu Kamikaze).
+10. Thanh Long Ninja (Dragon Fruit Ninja)
+Ngoại hình: Thân hình thon dài màu đỏ tươi, các vảy hồng nhọn mọc tua tủa như gai kiếm. Đeo mặt nạ ninja đen che nửa mặt, mắt phát sáng xanh lạnh. Hai tay cầm hai lưỡi phi tiêu làm từ vảy của chính nó.
+Cơ chế tấn công: Dịch chuyển tức thời (blink) từ điểm này sang điểm khác, để lại vết đạn vảy nhọn theo đường di chuyển. Người chơi không thể dự đoán hướng xuất hiện tiếp theo, buộc phải quan sát toàn màn hình.
+Chôm Chôm Cuồng Chiến (Rambutan Berserker)
+11. Ngoại hình: Một khối cầu tròn đỏ rực phủ đầy râu lông cứng như dây thép gai, mắt đỏ hừng hực điên loạn. Cơ thể rung lắc liên tục như đang nổi cơn thịnh nộ. Kích thước vừa, đi bằng hai chân ngắn cụt.
+Cơ chế tấn công: Lao thẳng vào người chơi theo đường thẳng với tốc độ cao. Khi bị bắn trúng mà chưa chết, nó nổi điên — tốc độ tăng gấp đôi và phóng ra một vòng tròn râu nhọn 360° trước khi lao tiếp.
+12. Vải Thiều Phù Thủy (Lychee Witch)
+Ngoại hình: Vỏ ngoài màu hồng đỏ sần sùi, thân trên mặc áo choàng đen có họa tiết hạt vải. Cầm cây gậy phép làm từ cành nhãn khô, đỉnh gậy gắn một hạt vải đen phát ánh sáng tím huyền bí. Mắt nhắm hờ, toát vẻ yêu ma.
+Cơ chế tấn công: Triệu hồi các hạt vải bay lơ lửng xung quanh người chơi như vòng vây. Sau 3 giây, các hạt đồng loạt lao vào — người chơi phải tìm và bắn phá trước khi chúng khép vòng. Nếu bị bao vây hoàn toàn, sát thương rất lớn.
+13. Chanh Điện Giật (Electric Lemon)
+Ngoại hình: Thân hình oval vàng chói, có các tia sét nhỏ liên tục phóng ra từ hai đầu nhọn. Mặc áo gi-lê kỹ thuật viên màu vàng chanh với các ký hiệu điện. Mắt hình tia sét, miệng nhe răng nhọn cười thách thức.
+Cơ chế tấn công: Phóng luồng điện theo đường thẳng ngang — đây là đạn xuyên tường, đi qua cả chướng ngại vật. Sau mỗi lần bắn, nó nạp điện trong 2 giây (không tấn công được) — đây là cửa sổ thời gian duy nhất để phản công hiệu quả.
+14. Bắp Pháo Binh (Corn Artillery)
+Ngoại hình: To lớn, bệ vệ, thân hình trụ vàng ươm bọc trong lớp giáp lá xanh như áo giáp lính. Đầu đội mũ bảo hiểm hình cùi bắp. Hai tay là hai khẩu pháo làm từ lõi bắp rỗng, từ đó bắn ra hạt bắp nóng bỏng.
+Cơ chế tấn công: Đứng yên một chỗ và bắn đạn cong theo đường parabol — đạn bay lên cao rồi rơi xuống vị trí người chơi đứng. Người chơi phải liên tục di chuyển, không được đứng yên. Nếu bị tiêu diệt, nó phát nổ bắn hạt bắp văng ra 12 hướng.
+15. Cà Chua Gián Điệp (Tomato Spy)
+Ngoại hình: Tròn trịa màu đỏ với núm cuống đội như chiếc mũ bê-rê đen của điệp viên. Mặc vest đen thanh lịch, đeo kính râm, tay cầm máy ảnh miniature. Trông vô hại và thậm chí... đáng yêu — đó chính là bẫy.
+Cơ chế tấn công: Kẻ thù duy nhất không tự tấn công — nó chạy trốn và chụp ảnh người chơi. Mỗi tấm ảnh chụp được sẽ triệu hồi thêm 2 kẻ thù khác vào màn hình. Nếu không bị tiêu diệt đủ nhanh, nó liên tục nhân đôi số lượng quân địch, biến màn hình thành địa ngục đạn.
+
+
+
+
+
+
+
+
+
 
 ## 🏭 Màn chơi (Level Design)
 Level 1 Nhà Máy Sinh Tố Hủy Diệt (The Blender Factory)

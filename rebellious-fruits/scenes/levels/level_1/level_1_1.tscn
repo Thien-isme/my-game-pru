@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/sprites/background/background.png" id="1_47dtm"]
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
 [ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="3_d87io"]
-[ext_resource type="PackedScene" uid="uid://0l65f8av408g" path="res://scenes/Enemies/Apple/Apple.tscn" id="4_5n40v"]
+[ext_resource type="PackedScene" uid="uid://0l65f8av408g" path="res://scenes/enemies/apple/apple.tscn" id="4_5n40v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d73my"]
 size = Vector2(1165, 13)

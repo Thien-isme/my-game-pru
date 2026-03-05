@@ -1,0 +1,11 @@
+hãy tạo ảnh gồm các frame animation nhân vật sẽ bắn ra viên đạn . 
+Ảnh tạo chỉ cần có ảnh và background không cần ghi mô tả hay đánh số thứ tự các frame
+
+
+Idle: hãy làm hình ảnh nhân vật này "mô tả"có nhiều frame để tôi làm animation cho game. Hãy tạo 6 frame để tôi làm animation Idle. Ảnh chỉ gồm nhân vật và background là nền trắng không cần đánh thứ tự và ghi mô tả các frame
+Run: hãy dựa vào đó và tạo ảnh để làm animation run
+Shoot:hãy dựa vào đó và tạo ảnh để làm animation shoot
+Die: hãy dựa vào đó và tạo ảnh để làm animation die
+
+
+

@@ -2,37 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cxv38vethjwiw" path="res://assets/sprites/enemies/apple/apple_run.png" id="1_5fxd3"]
 
-[sub_resource type="GDScript" id="GDScript_p47bc"]
-script/source = "extends CharacterBody2D
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Lấy giá trị trọng lực từ cấu hình hệ thống (Project Settings)
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-
-func _physics_process(delta):
-	# Thêm trọng lực nếu Player đang không ở trên sàn
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Xử lý hành động Nhảy (mặc định là phím Space/UI Accept)
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Lấy hướng di chuyển từ phím mũi tên hoặc WASD (trái/phải)
-	var direction = Input.get_axis(\"move_left\", \"move_right\")
-	
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		# Dừng lại từ từ (ma sát)
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	# Hàm quan trọng nhất để thực hiện di chuyển và va chạm
-	move_and_slide()
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
 height = 70.0
@@ -102,8 +71,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=638291107]
-script = SubResource("GDScript_p47bc")
+[node name="Apple" type="CharacterBody2D" unique_id=638291107]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -121,6 +89,3 @@ scale = Vector2(0.28033355, 0.3096219)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"Run"
 speed_scale = 0.2
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=636450516]
-position_smoothing_enabled = true

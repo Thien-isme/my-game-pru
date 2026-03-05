@@ -321,8 +321,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-4, -5)
 scale = Vector2(0.2, 0.204)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"jump"
-frame_progress = 0.43565962
+animation = &"shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=636450516]
 enabled = false
