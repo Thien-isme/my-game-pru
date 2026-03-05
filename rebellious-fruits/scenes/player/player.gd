@@ -7,6 +7,7 @@ const GRAVITY = 900
 @onready var anim = $AnimatedSprite2D
 
 var is_shooting = false
+var is_jump = false
 
 func _physics_process(delta):
 
@@ -26,9 +27,15 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot") and not is_shooting:
 		is_shooting = true
 		anim.play("shoot")
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.4).timeout
 		is_shooting = false
 
+	if Input.is_action_just_pressed("jump") and not is_shooting:
+		is_jump = true
+		anim.play("jump")
+		await get_tree().create_timer(0.3).timeout
+		is_shooting = false
+		
 	# animation
 	if not is_shooting:
 		if not is_on_floor():

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dha2eingmokfc" path="res://assets/sprites/player/player_durian_die.png" id="1_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cqdb12sktbn1h" path="res://assets/sprites/player/player_durian_run.png" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://dowaxlpe18amv" path="res://assets/sprites/player/player_durian_shoot.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://cklibp6kfugea" path="res://assets/sprites/player/player_durian_jump.png" id="3_p47bc"]
 
 [sub_resource type="GDScript" id="GDScript_p47bc"]
 script/source = "extends CharacterBody2D
@@ -134,6 +135,30 @@ region = Rect2(341, 557, 341, 364)
 atlas = ExtResource("1_dovo2")
 region = Rect2(682, 557, 341, 364)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cv16"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(0, 0, 682, 933)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4nxn"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(682, 0, 682, 933)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28m0y"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(1364, 0, 682, 933)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uniwh"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(0, 966, 682, 933)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqsei"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(682, 966, 682, 933)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tffgl"]
+atlas = ExtResource("3_p47bc")
+region = Rect2(1364, 966, 682, 933)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
 atlas = ExtResource("2_gmlin")
 region = Rect2(6, 300, 659, 742)
@@ -222,7 +247,25 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4nxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28m0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uniwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqsei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tffgl")
+}],
 "loop": true,
 "name": &"jump",
 "speed": 5.0
@@ -278,8 +321,8 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-4, -5)
 scale = Vector2(0.2, 0.204)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot"
-frame_progress = 0.80292046
+animation = &"jump"
+frame_progress = 0.43565962
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=636450516]
 enabled = false
