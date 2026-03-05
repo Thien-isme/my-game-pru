@@ -7,57 +7,84 @@
 
 [sub_resource type="GDScript" id="GDScript_p47bc"]
 script/source = "extends CharacterBody2D
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Lấy giá trị trọng lực từ cấu hình hệ thống (Project Settings)
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-# Scale gốc lưu lại từ editor (dùng cho Idle – frame 341x364)
-var idle_scale: Vector2
-# Tỉ lệ pixel: Run frame (659px) lớn hơn Idle frame (341px) ≈ 1.932 lần
-const IDLE_FRAME_W = 341.0
-const RUN_FRAME_W  = 659.0
-
-func _ready():
-	# Lưu scale gốc của AnimatedSprite2D (scale Idle chuẩn)
-	idle_scale = animated_sprite.scale
-
-func _physics_process(delta):
-	# Thêm trọng lực nếu Player đang không ở trên sàn
+# ==========================================
+# CÀI ĐẶT NHÂN VẬT
+# ==========================================
+@export var speed: float = 200.0          # Tốc độ chạy (pixel/s)
+@export var jump_force: float = -450.0    # Lực nhảy (âm = lên trên)
+@export var gravity: float = 1200.0       # Trọng lực
+# ==========================================
+# THAM CHIẾU ĐẾN CÁC NODE CON
+# ==========================================
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+# ==========================================
+# BIẾN NỘI BỘ
+# ==========================================
+var is_dead: bool = false
+# ==========================================
+# HÀM CHÍNH
+# ==========================================
+func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+	
+	_apply_gravity(delta)
+	_handle_movement()
+	_handle_jump()
+	_update_animation()
+	
+	move_and_slide()
+# ==========================================
+# XỬ LÝ TRỌNG LỰC
+# ==========================================
+func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
-	# Xử lý hành động Nhảy (mặc định là phím Space/UI Accept)
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Lấy hướng di chuyển từ phím mũi tên hoặc WASD (trái/phải)
-	var direction = Input.get_axis(\"move_left\", \"move_right\")
-
-	if direction:
-		velocity.x = direction * SPEED
-		# Quay đầu nhân vật theo hướng di chuyển
-		animated_sprite.flip_h = direction < 0
-		# Scale Run xuống cho bằng kích thước Idle
-		animated_sprite.scale = idle_scale * (IDLE_FRAME_W / RUN_FRAME_W)
-		animated_sprite.play(\"Run\")
+# ==========================================
+# XỬ LÝ DI CHUYỂN NGANG
+# ==========================================
+func _handle_movement() -> void:
+	var direction: float = Input.get_axis(\"ui_left\", \"ui_right\")
+	
+	if direction != 0:
+		velocity.x = direction * speed
+		# Lật sprite theo hướng di chuyển
+		sprite.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		# Khôi phục scale gốc cho Idle
-		animated_sprite.scale = idle_scale
-		animated_sprite.play(\"Idle\")
-
-	# Hàm quan trọng nhất để thực hiện di chuyển và va chạm
-	move_and_slide()
+		# Giảm tốc mượt khi thả phím
+		velocity.x = move_toward(velocity.x, 0, speed)
+# ==========================================
+# XỬ LÝ NHẢY
+# ==========================================
+func _handle_jump() -> void:
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = jump_force
+# ==========================================
+# CẬP NHẬT ANIMATION
+# ==========================================
+func _update_animation() -> void:
+	if not is_on_floor():
+		# Đang trên không — có thể thêm animation jump sau
+		pass
+	elif abs(velocity.x) > 10:
+		sprite.play(\"Run\")
+	else:
+		sprite.play(\"Idle\")
+# ==========================================
+# HÀM CHẾT
+# ==========================================
+func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
+	sprite.play(\"Die\")
+	# Tắt va chạm để không bị kẹt
+	$CollisionShape2D.set_deferred(\"disabled\", true)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 40.0
-height = 100.0
+radius = 32.0
+height = 86.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
 atlas = ExtResource("1_lvxji")
@@ -133,19 +160,19 @@ region = Rect2(1324, 1112, 659, 742)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
 atlas = ExtResource("3_gmlin")
-region = Rect2(0, 141, 375, 348)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_007i1"]
-atlas = ExtResource("3_gmlin")
-region = Rect2(390, 167, 564, 303)
+region = Rect2(77, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
 atlas = ExtResource("3_gmlin")
-region = Rect2(0, 541, 375, 348)
+region = Rect2(1077, 0, 1000, 1000)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
 atlas = ExtResource("3_gmlin")
-region = Rect2(375, 541, 375, 348)
+region = Rect2(77, 1000, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_007i1"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(1077, 1000, 1000, 1000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
@@ -169,7 +196,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_cnsyf")
 }],
 "loop": true,
-"name": &"Die",
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -192,7 +219,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_h17s1")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -215,7 +247,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_myrg7")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"run",
 "speed": 5.0
 }, {
 "frames": [{
@@ -223,16 +255,16 @@ animations = [{
 "texture": SubResource("AtlasTexture_lvxji")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_007i1")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_kvlxm")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uf5tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_007i1")
 }],
-"loop": true,
-"name": &"Shoot",
+"loop": false,
+"name": &"shoot",
 "speed": 5.0
 }]
 
@@ -243,10 +275,12 @@ script = SubResource("GDScript_p47bc")
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-9, 1)
-scale = Vector2(0.19465521, 0.17533715)
+position = Vector2(-4, -5)
+scale = Vector2(0.2, 0.204)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"Run"
+animation = &"shoot"
+frame_progress = 0.80292046
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=636450516]
+enabled = false
 position_smoothing_enabled = true

@@ -2,26 +2,25 @@
 
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/sprites/background/background.png" id="1_47dtm"]
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
+[ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="3_d87io"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d73my"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d73my"]
+size = Vector2(1165, 13)
 
 [node name="Level_1" type="Node2D" unique_id=1798284494]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1166283442]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=742440802]
-offset_left = -48.0
-offset_top = -4.0
-offset_right = 1222.0
-offset_bottom = 653.0
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=460639438]
+z_index = -2
+position = Vector2(611.5, 353.49997)
+scale = Vector2(0.38289145, 0.52306545)
 texture = ExtResource("1_47dtm")
-expand_mode = 2
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=532824528]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=14177261]
-shape = SubResource("WorldBoundaryShape2D_d73my")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]
-position = Vector2(202, 494)
+position = Vector2(253, 494)
+script = ExtResource("3_d87io")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=284248062]
+
+[node name="ground" type="CollisionShape2D" parent="StaticBody2D" unique_id=1942482652]
+position = Vector2(576.5, 579.5)
+shape = SubResource("RectangleShape2D_d73my")
