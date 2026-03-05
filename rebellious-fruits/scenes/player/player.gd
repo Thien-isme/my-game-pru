@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot") and not is_shooting:
 		is_shooting = true
 		anim.play("shoot")
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.8).timeout
 		is_shooting = false
 
 	if Input.is_action_just_pressed("jump") and not is_shooting:

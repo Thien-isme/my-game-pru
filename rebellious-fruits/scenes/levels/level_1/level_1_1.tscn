@@ -16,7 +16,7 @@ scale = Vector2(0.38289145, 0.52306545)
 texture = ExtResource("1_47dtm")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]
-position = Vector2(253, 494)
+position = Vector2(264, 526)
 script = ExtResource("3_d87io")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=284248062]

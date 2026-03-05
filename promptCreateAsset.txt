@@ -6,6 +6,12 @@ Idle: hãy làm hình ảnh nhân vật này "mô tả"có nhiều frame để t
 Run: hãy dựa vào đó và tạo ảnh để làm animation run
 Shoot: hãy dựa vào đó và tạo ảnh để làm animation shoot
 Die: hãy dựa vào đó và tạo ảnh để làm animation die
+Jump: hãy dựa vào đó và tạo ảnh để làm animation jump
+
+hãy dựa vào ảnh tôi gửi và tạo ảnh để làm animation jump cho nhân vật, xem ảnh tôi gửi cho kỹ vàohãy dựa vào ảnh tôi gửi và tạo ảnh để làm animation jump cho nhân vật, xem ảnh tôi gửi cho kỹ vào
+
+cho nhân vật
+
 
 2816 x 1536
 
