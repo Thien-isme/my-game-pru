@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cc0f24pna4h6u"]
 
+[ext_resource type="Script" path="res://scenes/enemies/enemy_bullet.gd" id="script_bullet"]
+
 [ext_resource type="Texture2D" uid="uid://do67f1gul2a5p" path="res://assets/sprites/enemies/lemon/lemon_bullet.png" id="1_xvtd4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
@@ -17,11 +19,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_081in")
 }],
 "loop": true,
-"name": &"lemon_bullet",
+"name": &"fly",
 "speed": 5.0
 }]
 
 [node name="lemon_bullet" type="CharacterBody2D" unique_id=638291107]
+script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -30,5 +33,4 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-1, -2)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"lemon_bullet"
-frame_progress = 0.44720006
+animation = &"fly"

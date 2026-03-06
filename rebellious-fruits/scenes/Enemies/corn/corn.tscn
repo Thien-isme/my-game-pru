@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bjjvikjcs2ynu" path="res://assets/sprites/enemies/corn/corn_idle.png" id="1_o0ebj"]
 [ext_resource type="Texture2D" uid="uid://cwt7tol40p2g4" path="res://assets/sprites/enemies/corn/corn_die.png" id="1_s8d2f"]
-[ext_resource type="Script" uid="uid://cqyu4a8c2uvll" path="res://scenes/enemies/corn/corn.gd" id="1_w2oqy"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="1_w2oqy"]
+[ext_resource type="PackedScene" uid="uid://bsj5j7lro8iwb" path="res://scenes/enemies/corn/corn_bullet.tscn" id="2_xu6rq"]
 [ext_resource type="Texture2D" uid="uid://cab51p2pd0xps" path="res://assets/sprites/enemies/corn/corn_run.png" id="3_5em1j"]
 [ext_resource type="Texture2D" uid="uid://c6urw077c3sxj" path="res://assets/sprites/enemies/corn/corn_shoot.png" id="4_06e50"]
 
@@ -209,6 +210,7 @@ radius = 422.14334
 
 [node name="corn" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
 script = ExtResource("1_w2oqy")
+bullet_scene = ExtResource("2_xu6rq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 z_index = 1
@@ -230,6 +232,9 @@ shape = SubResource("CircleShape2D_w2oqy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=501428736]
 shape = SubResource("CircleShape2D_xu6rq")
 debug_color = Color(0.83396417, 0.37977424, 0.24474075, 0.41960785)
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1684154569]
+position = Vector2(-79, -53)
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3lk7vdh5611g"]
 
 [ext_resource type="Texture2D" uid="uid://c8lav18jgf47f" path="res://assets/sprites/enemies/lychee/lychee_bullet.png" id="1_5j5lm"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/enemy_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
@@ -16,12 +17,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2ee0")
 }],
-"loop": true,
-"name": &"lychee_bullet",
+"loop": false,
+"name": &"fly",
 "speed": 5.0
 }]
 
 [node name="lychee_bullet" type="CharacterBody2D" unique_id=638291107]
+script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -30,5 +32,4 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-1, -2)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"lychee_bullet"
-frame_progress = 0.7306852
+animation = &"fly"

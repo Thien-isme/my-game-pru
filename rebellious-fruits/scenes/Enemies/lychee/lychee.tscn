@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://de7jkdcagbj4b"]
 
 [ext_resource type="Texture2D" uid="uid://muf5pgo78c" path="res://assets/sprites/enemies/lychee/lychee_die.png" id="1_wbf40"]
+[ext_resource type="PackedScene" uid="uid://bsj5j7lro8iwb" path="res://scenes/enemies/corn/corn_bullet.tscn" id="2_awwma"]
 [ext_resource type="Texture2D" uid="uid://b8418c0q71pyk" path="res://assets/sprites/enemies/lychee/lychee_idle.png" id="2_x1i40"]
 [ext_resource type="Texture2D" uid="uid://dp5ex78esjukx" path="res://assets/sprites/enemies/lychee/lychee_run.png" id="3_awwma"]
 [ext_resource type="Texture2D" uid="uid://c8hmqq5iru86w" path="res://assets/sprites/enemies/lychee/lychee_shoot.png" id="4_7g5bh"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 26.98
-height = 70.0
+radius = 37.0
+height = 110.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m23rx"]
 atlas = ExtResource("1_wbf40")
@@ -251,19 +253,46 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y7ypy")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 5.0
 }]
 
-[node name="lychee" type="CharacterBody2D" unique_id=638291107]
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 200.0
+
+[node name="lychee" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
+script = ExtResource("script_enemy")
+bullet_scene = ExtResource("2_awwma")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+position = Vector2(-12, 17)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-1, -2)
-scale = Vector2(0.28033355, 0.24553569)
+scale = Vector2(0.2478111, 0.21394433)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"shoot"
-frame_progress = 0.6724498
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
+position = Vector2(-33, -110)
+
+[node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+shape = SubResource("CircleShape2D_attack")
+
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
+[connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]

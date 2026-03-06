@@ -7,3 +7,9 @@ res://scenes/player/player.gd
 res://scenes/enemies/mangosteen/mangosteen_bullet.tscn
 res://scenes/player/player_bullet.tscn
 res://scenes/player/player_bullet.gd
+res://scenes/enemies/lemon/lemon.tscn
+res://scenes/enemies/mangosteen/mangosteen.tscn
+res://scenes/enemies/starfruit/starfruit.tscn
+res://scenes/enemies/lychee/lychee.tscn
+res://scenes/enemies/lemon/lemon_bullet.tscn
+res://scenes/enemies/lychee/lychee_bullet.tscn

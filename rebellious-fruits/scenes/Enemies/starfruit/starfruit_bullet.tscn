@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c0pn6p0h54mui"]
 
+[ext_resource type="Script" path="res://scenes/enemies/enemy_bullet.gd" id="script_bullet"]
+
 [ext_resource type="Texture2D" uid="uid://bsmcyis7m3dn8" path="res://assets/sprites/enemies/starfruit/shuriken.png" id="1_sl63t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
@@ -71,6 +73,7 @@ animations = [{
 }]
 
 [node name="starfruit_bullet" type="CharacterBody2D" unique_id=638291107]
+script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")

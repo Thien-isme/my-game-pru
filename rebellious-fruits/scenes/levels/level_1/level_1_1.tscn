@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
 [ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="4_5n40v"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="4_6dirs"]
+[ext_resource type="PackedScene" uid="uid://cxa0ivd08hnb4" path="res://scenes/enemies/starfruit/starfruit.tscn" id="5_bpvs2"]
 [ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/enemies/corn/corn.tscn" id="6_00e6o"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/enemies/lychee/lychee.tscn" id="7_kc3cb"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_d87io"]
 a = Vector2(5, 4)
@@ -1063,7 +1065,7 @@ shape = SubResource("SegmentShape2D_00e6o")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 2
-position = Vector2(556, 296)
+position = Vector2(582, 320)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1035366024]
 tile_set = SubResource("TileSet_5n40v")
@@ -1074,4 +1076,10 @@ layer_0/tile_data = PackedInt32Array(118, 786432, 1610612748, 65654, 720896, 161
 position = Vector2(3688, 362)
 
 [node name="corn" parent="." unique_id=1039651269 instance=ExtResource("6_00e6o")]
-position = Vector2(1071, 241)
+position = Vector2(1280, 342)
+
+[node name="starfruit" parent="." unique_id=107243557 instance=ExtResource("5_bpvs2")]
+position = Vector2(229, 247)
+
+[node name="lychee" parent="." unique_id=1783516447 instance=ExtResource("7_kc3cb")]
+position = Vector2(745, 37)

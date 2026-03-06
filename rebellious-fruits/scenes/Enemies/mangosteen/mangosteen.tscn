@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c4b02mj3f7sy0"]
 
 [ext_resource type="Texture2D" uid="uid://826s1ghp7j7t" path="res://assets/sprites/enemies/mangosteen/mangosteen_die.png" id="1_0iteg"]
-[ext_resource type="Script" uid="uid://cy2jbhjlarjrm" path="res://scenes/enemies/mangosteen/cor.gd" id="1_rb371"]
 [ext_resource type="Texture2D" uid="uid://brh8577335e4" path="res://assets/sprites/enemies/mangosteen/mangosteen_idle.png" id="2_xs7gl"]
 [ext_resource type="Texture2D" uid="uid://blgbgptqufh4t" path="res://assets/sprites/enemies/mangosteen/mangosteen_run.png" id="3_rb371"]
 [ext_resource type="Texture2D" uid="uid://bn4m1juiimphx" path="res://assets/sprites/enemies/mangosteen/mangosteen_shoot.png" id="4_uwx3w"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1gnq"]
 atlas = ExtResource("1_0iteg")
@@ -201,8 +201,14 @@ animations = [{
 radius = 33.0
 height = 80.0
 
-[node name="mangosteen" type="CharacterBody2D" unique_id=493491145]
-script = ExtResource("1_rb371")
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 200.0
+
+[node name="mangosteen" type="CharacterBody2D" unique_id=493491145 groups=["enemy"]]
+script = ExtResource("script_enemy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1052839285]
 position = Vector2(-3.9999995, -10.000001)
@@ -214,3 +220,21 @@ frame_progress = 0.49199015
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941569135]
 position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_xs7gl")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
+
+[node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+shape = SubResource("CircleShape2D_attack")
+debug_color = Color(0.9682879, 0.10152895, 0.37886953, 0.41960785)
+
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
+[connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]

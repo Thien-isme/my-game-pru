@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cqmy1g8obt4m1"]
 
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
+
 [ext_resource type="Texture2D" uid="uid://c0yaytry7sq0a" path="res://assets/sprites/enemies/dragonfruit/dragondruit_die.png" id="1_8rqn2"]
 [ext_resource type="Texture2D" uid="uid://u6r6cu5k2io7" path="res://assets/sprites/enemies/dragonfruit/dragondruit_idle.png" id="2_tesoi"]
 [ext_resource type="Texture2D" uid="uid://fw23fys64vmr" path="res://assets/sprites/enemies/dragonfruit/dragondruit_jump.png" id="3_7udfj"]
@@ -314,9 +316,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 200.0
+
 [node name="dragronfruit" type="CharacterBody2D" unique_id=1361431546]
+script = ExtResource("script_enemy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=578930678]
 sprite_frames = SubResource("SpriteFrames_42hxg")
 animation = &"run"
 frame_progress = 0.42510343
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
+
+[node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+shape = SubResource("CircleShape2D_attack")
+
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
+[connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]

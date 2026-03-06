@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bb5p7vhfjmpew" path="res://assets/sprites/enemies/starfruit/startfruit_idle.png" id="1_jao83"]
 [ext_resource type="Texture2D" uid="uid://kfuhiuwr1yoi" path="res://assets/sprites/enemies/starfruit/startfruit_shoot.png" id="2_jao83"]
 [ext_resource type="Texture2D" uid="uid://booqjqt1tkvhi" path="res://assets/sprites/enemies/starfruit/startfruit_hit.png" id="2_l8mry"]
+[ext_resource type="PackedScene" uid="uid://r06ahk4lng4g" path="res://scenes/player/player_bullet.tscn" id="2_oxw1u"]
 [ext_resource type="Texture2D" uid="uid://ce71m8ioytcwx" path="res://assets/sprites/enemies/starfruit/startfruit_die.png" id="2_u63wr"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
@@ -247,7 +249,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="starfruit" type="CharacterBody2D" unique_id=638291107]
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 200.0
+
+[node name="starfruit" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
+script = ExtResource("script_enemy")
+bullet_scene = ExtResource("2_oxw1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -257,3 +267,24 @@ position = Vector2(-1, -2)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"hit"
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
+position = Vector2(50, -103)
+
+[node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+shape = SubResource("CircleShape2D_attack")
+debug_color = Color(0.9811092, 0.04110747, 0.34237793, 0.41960785)
+
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
+[connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]
