@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://7llecjqnsloq"]
+
+[ext_resource type="Texture2D" uid="uid://bk5krjcxr1r77" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet1.png" id="1_ebfe1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebfe1"]
+radius = 64.00781
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1npsf"]
+atlas = ExtResource("1_ebfe1")
+region = Rect2(63, 21, 131, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lh272"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1npsf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MangosteenBullet" type="Area2D" unique_id=1238752377]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1384569646]
+shape = SubResource("CircleShape2D_ebfe1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007238034]
+sprite_frames = SubResource("SpriteFrames_lh272")

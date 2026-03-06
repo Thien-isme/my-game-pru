@@ -1,127 +1,24 @@
 [gd_scene format=3 uid="uid://uyp3og6rd3ng"]
 
+[ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="1_h17s1"]
 [ext_resource type="Texture2D" uid="uid://b1l84aydojta7" path="res://assets/sprites/player/player_crouch.png" id="1_je7p5"]
 [ext_resource type="Texture2D" uid="uid://0yk4351dknsi" path="res://assets/sprites/player/player_idle.png" id="4_0owmy"]
 [ext_resource type="Texture2D" uid="uid://bt6pw03sljrgr" path="res://assets/sprites/player/player_shoot.png" id="4_75vfm"]
 [ext_resource type="Texture2D" uid="uid://cbl387ffomv6k" path="res://assets/sprites/player/player_die.png" id="4_h17s1"]
+[ext_resource type="Texture2D" uid="uid://crfhvfhq8e445" path="res://assets/sprites/player/player_hit.png" id="4_je7p5"]
 [ext_resource type="Texture2D" uid="uid://dexcp4mxwnbbl" path="res://assets/sprites/player/player_run2.png" id="5_h17s1"]
 [ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="9_5gtgg"]
 
-[sub_resource type="GDScript" id="GDScript_p47bc"]
-script/source = "extends CharacterBody2D
-# ==========================================
-# CÀI ĐẶT NHÂN VẬT
-# ==========================================
-@export var speed: float = 200.0          # Tốc độ chạy (pixel/s)
-@export var jump_force: float = -450.0    # Lực nhảy (âm = lên trên)
-@export var gravity: float = 1200.0       # Trọng lực
-# ==========================================
-# THAM CHIẾU ĐẾN CÁC NODE CON
-# ==========================================
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-# ==========================================
-# BIẾN NỘI BỘ
-# ==========================================
-var is_dead: bool = false
-# ==========================================
-# HÀM CHÍNH
-# ==========================================
-func _physics_process(delta: float) -> void:
-	if is_dead:
-		return
-	
-	_apply_gravity(delta)
-	_handle_movement()
-	_handle_jump()
-	_update_animation()
-	
-	move_and_slide()
-# ==========================================
-# XỬ LÝ TRỌNG LỰC
-# ==========================================
-func _apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
-# ==========================================
-# XỬ LÝ DI CHUYỂN NGANG
-# ==========================================
-func _handle_movement() -> void:
-	var direction: float = Input.get_axis(\"ui_left\", \"ui_right\")
-	
-	if direction != 0:
-		velocity.x = direction * speed
-		# Lật sprite theo hướng di chuyển
-		sprite.flip_h = direction < 0
-	else:
-		# Giảm tốc mượt khi thả phím
-		velocity.x = move_toward(velocity.x, 0, speed)
-# ==========================================
-# XỬ LÝ NHẢY
-# ==========================================
-func _handle_jump() -> void:
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
-		velocity.y = jump_force
-# ==========================================
-# CẬP NHẬT ANIMATION
-# ==========================================
-func _update_animation() -> void:
-	if not is_on_floor():
-		# Đang trên không — có thể thêm animation jump sau
-		pass
-	elif abs(velocity.x) > 10:
-		sprite.play(\"run\")
-	else:
-		sprite.play(\"idle\")
-# ==========================================
-# HÀM CHẾT
-# ==========================================
-func die() -> void:
-	if is_dead:
-		return
-	is_dead = true
-	sprite.play(\"Die\")
-	# Tắt va chạm để không bị kẹt
-	$CollisionShape2D.set_deferred(\"disabled\", true)
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.0
 height = 70.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvjb1"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(0, 22, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bysbl"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(703, 22, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2wy34"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(1406, 22, 703, 757)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymths"]
 atlas = ExtResource("1_je7p5")
 region = Rect2(2109, 22, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3p0jd"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(0, 779, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nf13"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(703, 779, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0y4ya"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(1406, 779, 703, 757)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s050l"]
-atlas = ExtResource("1_je7p5")
-region = Rect2(2109, 779, 703, 757)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ln3h3"]
 atlas = ExtResource("4_h17s1")
@@ -154,6 +51,18 @@ region = Rect2(1408, 812, 704, 724)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7072n"]
 atlas = ExtResource("4_h17s1")
 region = Rect2(2112, 812, 704, 724)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("4_je7p5")
+region = Rect2(0, 21, 703, 757)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("4_je7p5")
+region = Rect2(703, 21, 703, 757)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4b4"]
+atlas = ExtResource("4_je7p5")
+region = Rect2(703, 778, 703, 757)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
 atlas = ExtResource("4_0owmy")
@@ -255,14 +164,6 @@ region = Rect2(0, 768, 704, 768)
 atlas = ExtResource("4_75vfm")
 region = Rect2(2112, 768, 704, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
-atlas = ExtResource("7_0owmy")
-region = Rect2(0, 0, 703, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
-atlas = ExtResource("7_0owmy")
-region = Rect2(703, 0, 703, 768)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
 atlas = ExtResource("7_0owmy")
 region = Rect2(1406, 0, 703, 768)
@@ -291,28 +192,7 @@ region = Rect2(2122, 0, 690, 768)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fvjb1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bysbl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2wy34")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ymths")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3p0jd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7nf13")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0y4ya")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s050l")
 }],
 "loop": true,
 "name": &"crouch",
@@ -345,6 +225,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4b4")
+}],
+"loop": true,
+"name": &"hit",
 "speed": 5.0
 }, {
 "frames": [{
@@ -444,12 +338,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qek5x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5gtgg")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_h17s1")
 }, {
 "duration": 1.0,
@@ -477,10 +365,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=638291107]
-script = SubResource("GDScript_p47bc")
+[node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
+script = ExtResource("1_h17s1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+visible = false
 position = Vector2(1, -3)
 shape = SubResource("CapsuleShape2D_lvxji")
 
@@ -488,15 +377,19 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(6.999939, -8)
 scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"crouch"
-frame_progress = 0.6108526
+animation = &"shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
+visible = false
 scale = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=286244500]
+visible = false
 z_index = -1000
 position = Vector2(0.9999924, 0.9999962)
 scale = Vector2(0.819962, 1.2061012)
 texture = ExtResource("9_5gtgg")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
+position = Vector2(39, -1)

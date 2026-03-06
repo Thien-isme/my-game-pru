@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://bjjvikjcs2ynu" path="res://assets/sprites/enemies/corn/corn_idle.png" id="1_o0ebj"]
 [ext_resource type="Texture2D" uid="uid://cwt7tol40p2g4" path="res://assets/sprites/enemies/corn/corn_die.png" id="1_s8d2f"]
+[ext_resource type="Script" uid="uid://cqyu4a8c2uvll" path="res://scenes/enemies/corn/corn.gd" id="1_w2oqy"]
 [ext_resource type="Texture2D" uid="uid://cab51p2pd0xps" path="res://assets/sprites/enemies/corn/corn_run.png" id="3_5em1j"]
 [ext_resource type="Texture2D" uid="uid://c6urw077c3sxj" path="res://assets/sprites/enemies/corn/corn_shoot.png" id="4_06e50"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 26.98
-height = 70.0
+radius = 62.0
+height = 160.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk8lp"]
 atlas = ExtResource("1_s8d2f")
@@ -200,14 +201,37 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="corn" type="CharacterBody2D" unique_id=638291107]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2oqy"]
+radius = 535.412
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xu6rq"]
+radius = 422.14334
+
+[node name="corn" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
+script = ExtResource("1_w2oqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+z_index = 1
+position = Vector2(0, -8.975)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-1, -2)
-scale = Vector2(0.28033355, 0.24553569)
+scale = Vector2(0.28033355, 0.2539833)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot"
-frame_progress = 0.4469289
+animation = &"die"
+
+[node name="DetectZone" type="Area2D" parent="." unique_id=2107948562]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1042713952]
+shape = SubResource("CircleShape2D_w2oqy")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=379559597]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=501428736]
+shape = SubResource("CircleShape2D_xu6rq")
+debug_color = Color(0.83396417, 0.37977424, 0.24474075, 0.41960785)
+
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
+[connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="AttackZone" to="." method="_on_attack_zone_body_exited"]

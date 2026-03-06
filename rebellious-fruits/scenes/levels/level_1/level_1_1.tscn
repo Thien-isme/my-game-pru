@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ctvx8f0lxlfmq"]
 
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
-[ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="3_d87io"]
 [ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="4_5n40v"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="4_6dirs"]
+[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/enemies/corn/corn.tscn" id="6_00e6o"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_d87io"]
 a = Vector2(5, 4)
@@ -1063,8 +1063,7 @@ shape = SubResource("SegmentShape2D_00e6o")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 2
-position = Vector2(572, 293)
-script = ExtResource("3_d87io")
+position = Vector2(556, 296)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1035366024]
 tile_set = SubResource("TileSet_5n40v")
@@ -1073,3 +1072,6 @@ layer_0/tile_data = PackedInt32Array(118, 786432, 1610612748, 65654, 720896, 161
 
 [node name="doorwin" parent="." unique_id=1561142439 instance=ExtResource("4_5n40v")]
 position = Vector2(3688, 362)
+
+[node name="corn" parent="." unique_id=1039651269 instance=ExtResource("6_00e6o")]
+position = Vector2(1071, 241)

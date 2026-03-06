@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c0pn6p0h54mui"]
+
+[ext_resource type="Texture2D" uid="uid://bsmcyis7m3dn8" path="res://assets/sprites/enemies/starfruit/shuriken.png" id="1_sl63t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
+radius = 26.98
+height = 70.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbea0"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(0, 220, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dog6a"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(703, 220, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pluut"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(1406, 220, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im11j"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(2109, 220, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfueq"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(0, 878, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ief"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(703, 878, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pniya"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(1406, 878, 703, 658)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x5ys"]
+atlas = ExtResource("1_sl63t")
+region = Rect2(2109, 878, 703, 658)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbea0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dog6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pluut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im11j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfueq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53ief")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pniya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x5ys")
+}],
+"loop": true,
+"name": &"starfruit_bullet",
+"speed": 5.0
+}]
+
+[node name="starfruit_bullet" type="CharacterBody2D" unique_id=638291107]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+shape = SubResource("CapsuleShape2D_lvxji")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
+position = Vector2(-1, -2)
+scale = Vector2(0.28033355, 0.24553569)
+sprite_frames = SubResource("SpriteFrames_kvlxm")
+animation = &"starfruit_bullet"
+frame_progress = 0.9962246

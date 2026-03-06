@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://r06ahk4lng4g"]
+
+[ext_resource type="Script" uid="uid://dtv0wpsabbyjl" path="res://scenes/player/player_bullet.gd" id="1_2kcj1"]
+[ext_resource type="Texture2D" uid="uid://dqmq06lvsycga" path="res://assets/sprites/player/player_bullet.png" id="1_altju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kcj1"]
+atlas = ExtResource("1_altju")
+region = Rect2(1899, 180, 822, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgkn0"]
+atlas = ExtResource("1_altju")
+region = Rect2(91, 806, 822, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gswxk"]
+atlas = ExtResource("1_altju")
+region = Rect2(995, 806, 822, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyir5"]
+atlas = ExtResource("1_altju")
+region = Rect2(91, 180, 822, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv0me"]
+atlas = ExtResource("1_altju")
+region = Rect2(995, 180, 822, 560)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmhpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kcj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgkn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gswxk")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyir5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv0me")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_altju"]
+radius = 8.0
+
+[node name="player_bullet" type="Area2D" unique_id=390733326]
+script = ExtResource("1_2kcj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875637744]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(0.06732818, 0.06222099)
+sprite_frames = SubResource("SpriteFrames_mmhpf")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356557035]
+position = Vector2(7, 1)
+shape = SubResource("CircleShape2D_altju")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=957075398]
+position = Vector2(-11, -157)
+rect = Rect2(-10, 150, 37, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
