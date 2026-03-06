@@ -1047,18 +1047,18 @@ sources/0 = SubResource("TileSetAtlasSource_d87io")
 
 [node name="Level_1" type="Node2D" unique_id=1798284494]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=284248062]
+[node name="collision" type="StaticBody2D" parent="." unique_id=284248062]
 
-[node name="ground_2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1307020205]
+[node name="ground_2" type="CollisionShape2D" parent="collision" unique_id=1307020205]
 z_index = 1
 position = Vector2(-222, 440)
 shape = SubResource("SegmentShape2D_d87io")
 
-[node name="line_map_left" type="CollisionShape2D" parent="StaticBody2D" unique_id=1610371380]
+[node name="line_map_left" type="CollisionShape2D" parent="collision" unique_id=1610371380]
 position = Vector2(-365, -34)
 shape = SubResource("SegmentShape2D_6dirs")
 
-[node name="line_map_right" type="CollisionShape2D" parent="StaticBody2D" unique_id=1191955171]
+[node name="line_map_right" type="CollisionShape2D" parent="collision" unique_id=1191955171]
 shape = SubResource("SegmentShape2D_00e6o")
 
 [node name="Player" parent="." unique_id=638291107 instance=ExtResource("2_d73my")]

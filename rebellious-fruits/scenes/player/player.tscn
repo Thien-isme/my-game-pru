@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0yk4351dknsi" path="res://assets/sprites/player/player_idle.png" id="4_0owmy"]
 [ext_resource type="Texture2D" uid="uid://bt6pw03sljrgr" path="res://assets/sprites/player/player_shoot.png" id="4_75vfm"]
 [ext_resource type="Texture2D" uid="uid://cbl387ffomv6k" path="res://assets/sprites/player/player_die.png" id="4_h17s1"]
-[ext_resource type="Texture2D" uid="uid://buuoe3chyvgox" path="res://assets/sprites/player/player_run.png" id="5_qek5x"]
+[ext_resource type="Texture2D" uid="uid://dexcp4mxwnbbl" path="res://assets/sprites/player/player_run2.png" id="5_h17s1"]
 [ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
@@ -219,37 +219,25 @@ region = Rect2(1408, 768, 704, 768)
 atlas = ExtResource("6_je7p5")
 region = Rect2(2112, 768, 704, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds1xl"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(0, 0, 704, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("5_h17s1")
+region = Rect2(2109, 0, 703, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1u1sw"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(704, 0, 704, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("5_h17s1")
+region = Rect2(0, 768, 703, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2t3bg"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(1408, 0, 704, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("5_h17s1")
+region = Rect2(0, 22, 703, 757)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jrbya"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(2112, 0, 704, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj68g"]
+atlas = ExtResource("5_h17s1")
+region = Rect2(0, 779, 703, 757)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ahqnk"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(0, 768, 704, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vb1ce"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(704, 768, 704, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ncpa"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(1408, 768, 704, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_upxxc"]
-atlas = ExtResource("5_qek5x")
-region = Rect2(2112, 768, 704, 768)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cv16"]
+atlas = ExtResource("5_h17s1")
+region = Rect2(2109, 779, 703, 757)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
 atlas = ExtResource("4_75vfm")
@@ -419,28 +407,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ds1xl")
+"texture": SubResource("AtlasTexture_lgqa7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1u1sw")
+"texture": SubResource("AtlasTexture_8ydkj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2t3bg")
+"texture": SubResource("AtlasTexture_myrg7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jrbya")
+"texture": SubResource("AtlasTexture_yj68g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ahqnk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vb1ce")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ncpa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_upxxc")
+"texture": SubResource("AtlasTexture_6cv16")
 }],
 "loop": true,
 "name": &"run",
@@ -509,8 +488,8 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(6.999939, -8)
 scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot_low"
-frame_progress = 0.47584125
+animation = &"crouch"
+frame_progress = 0.6108526
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
 scale = Vector2(2, 2)
