@@ -214,8 +214,7 @@ script = ExtResource("script_enemy")
 position = Vector2(-3.9999995, -10.000001)
 scale = Vector2(0.13525817, 0.13256316)
 sprite_frames = SubResource("SpriteFrames_6x2sk")
-animation = &"shoot"
-frame_progress = 0.49199015
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941569135]
 position = Vector2(0, -6)
