@@ -1,9 +1,10 @@
-res://assets/sprites/newPlayer/
+res://assets/doorwin/
+res://assets/sprites/player/
+res://assets/tilemap/level_1/
 res://assets/sprites/enemies/lemon/
 res://assets/sprites/enemies/corn/
 res://assets/sprites/enemies/lychee/
 res://assets/sprites/enemies/starfruit/
 res://assets/sprites/enemies/apple/
-res://assets/sprites/player/
 res://scenes/levels/level_1/
 res://scenes/player/

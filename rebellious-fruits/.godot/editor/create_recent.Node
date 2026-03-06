@@ -1,11 +1,12 @@
+AnimatedSprite2D
 CollisionShape2D
+TileMap
 StaticBody2D
 Sprite2D
 Camera2D
-TextureRect
-CanvasLayer
 ParallaxLayer
 ParallaxBackground
+TextureRect
+CanvasLayer
 Node2D
-AnimatedSprite2D
 CharacterBody2D

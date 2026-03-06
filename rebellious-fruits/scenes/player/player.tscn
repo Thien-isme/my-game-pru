@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://uyp3og6rd3ng"]
 
-[ext_resource type="Texture2D" uid="uid://b1l84aydojta7" path="res://assets/sprites/newPlayer/player_crouch.png" id="1_je7p5"]
-[ext_resource type="Texture2D" uid="uid://0yk4351dknsi" path="res://assets/sprites/newPlayer/player_idle.png" id="4_0owmy"]
-[ext_resource type="Texture2D" uid="uid://bt6pw03sljrgr" path="res://assets/sprites/newPlayer/player_shoot.png" id="4_75vfm"]
-[ext_resource type="Texture2D" uid="uid://cbl387ffomv6k" path="res://assets/sprites/newPlayer/player_die.png" id="4_h17s1"]
-[ext_resource type="Texture2D" uid="uid://buuoe3chyvgox" path="res://assets/sprites/newPlayer/player_run1.png" id="5_qek5x"]
-[ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/newPlayer/player_jump1.png" id="6_je7p5"]
+[ext_resource type="Texture2D" uid="uid://b1l84aydojta7" path="res://assets/sprites/player/player_crouch.png" id="1_je7p5"]
+[ext_resource type="Texture2D" uid="uid://0yk4351dknsi" path="res://assets/sprites/player/player_idle.png" id="4_0owmy"]
+[ext_resource type="Texture2D" uid="uid://bt6pw03sljrgr" path="res://assets/sprites/player/player_shoot.png" id="4_75vfm"]
+[ext_resource type="Texture2D" uid="uid://cbl387ffomv6k" path="res://assets/sprites/player/player_die.png" id="4_h17s1"]
+[ext_resource type="Texture2D" uid="uid://buuoe3chyvgox" path="res://assets/sprites/player/player_run.png" id="5_qek5x"]
+[ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
+[ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
+[ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
+[ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="9_5gtgg"]
 
 [sub_resource type="GDScript" id="GDScript_p47bc"]
 script/source = "extends CharacterBody2D
@@ -69,9 +72,9 @@ func _update_animation() -> void:
 		# Đang trên không — có thể thêm animation jump sau
 		pass
 	elif abs(velocity.x) > 10:
-		sprite.play(\"Run\")
+		sprite.play(\"run\")
 	else:
-		sprite.play(\"Idle\")
+		sprite.play(\"idle\")
 # ==========================================
 # HÀM CHẾT
 # ==========================================
@@ -85,8 +88,8 @@ func die() -> void:
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 32.0
-height = 86.0
+radius = 26.0
+height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvjb1"]
 atlas = ExtResource("1_je7p5")
@@ -248,14 +251,6 @@ region = Rect2(1408, 768, 704, 768)
 atlas = ExtResource("5_qek5x")
 region = Rect2(2112, 768, 704, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pk8ii"]
-atlas = ExtResource("4_75vfm")
-region = Rect2(0, 0, 704, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mf0n"]
-atlas = ExtResource("4_75vfm")
-region = Rect2(704, 0, 704, 768)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
 atlas = ExtResource("4_75vfm")
 region = Rect2(1408, 0, 704, 768)
@@ -268,17 +263,41 @@ region = Rect2(2112, 0, 704, 768)
 atlas = ExtResource("4_75vfm")
 region = Rect2(0, 768, 704, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8qxvo"]
-atlas = ExtResource("4_75vfm")
-region = Rect2(704, 768, 704, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5q8fn"]
-atlas = ExtResource("4_75vfm")
-region = Rect2(1408, 768, 704, 768)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wva7c"]
 atlas = ExtResource("4_75vfm")
 region = Rect2(2112, 768, 704, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("7_0owmy")
+region = Rect2(0, 0, 703, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
+atlas = ExtResource("7_0owmy")
+region = Rect2(703, 0, 703, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("7_0owmy")
+region = Rect2(1406, 0, 703, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("7_0owmy")
+region = Rect2(2109, 0, 703, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("8_qek5x")
+region = Rect2(52, 0, 690, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("8_qek5x")
+region = Rect2(742, 0, 690, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("8_qek5x")
+region = Rect2(742, 768, 690, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("8_qek5x")
+region = Rect2(2122, 0, 690, 768)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
@@ -429,12 +448,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pk8ii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5mf0n")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_4hvnv")
 }, {
 "duration": 1.0,
@@ -444,16 +457,44 @@ animations = [{
 "texture": SubResource("AtlasTexture_kxw46")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8qxvo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5q8fn")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_wva7c")
 }],
 "loop": true,
 "name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gtgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}],
+"loop": true,
+"name": &"shoot_high",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}],
+"loop": true,
+"name": &"shoot_low",
 "speed": 5.0
 }]
 
@@ -461,16 +502,22 @@ animations = [{
 script = SubResource("GDScript_p47bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+position = Vector2(1, -3)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-4, -5)
-scale = Vector2(0.2, 0.204)
+position = Vector2(6.999939, -8)
+scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"jump"
-frame_progress = 0.354317
+animation = &"shoot_low"
+frame_progress = 0.47584125
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=636450516]
-enabled = false
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
+scale = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=286244500]
+z_index = -1000
+position = Vector2(0.9999924, 0.9999962)
+scale = Vector2(0.819962, 1.2061012)
+texture = ExtResource("9_5gtgg")
