@@ -176,7 +176,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_x44hl")
 }],
 "loop": true,
-"name": &"hit",
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{

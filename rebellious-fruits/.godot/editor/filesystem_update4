@@ -13,3 +13,4 @@ res://scenes/enemies/starfruit/starfruit.tscn
 res://scenes/enemies/lychee/lychee.tscn
 res://scenes/enemies/lemon/lemon_bullet.tscn
 res://scenes/enemies/lychee/lychee_bullet.tscn
+res://scenes/enemies/enemy_bullet.gd
