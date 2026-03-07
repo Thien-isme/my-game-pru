@@ -382,11 +382,5 @@ animation = &"shoot"
 scale = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="Background" type="Sprite2D" parent="." unique_id=286244500]
-z_index = -1000
-position = Vector2(0.9999924, 0.9999962)
-scale = Vector2(0.819962, 1.2061012)
-texture = ExtResource("9_5gtgg")
-
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
 position = Vector2(39, -1)

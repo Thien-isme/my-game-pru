@@ -1,3 +1,7 @@
+res://assets/background/
+res://scenes/levels/
+res://assets/sprites/enemies/mangosteen/
+res://assets/tilemap/level_1/
 res://assets/sprites/enemies/watermelon/
 res://assets/sprites/enemies/pumpkin/
 res://assets/sprites/enemies/corn/
@@ -5,9 +9,7 @@ res://assets/sprites/enemies/chili/
 res://assets/sprites/enemies/carrot/
 res://assets/sprites/enemies/bittergourd/
 res://assets/sprites/enemies/apple/
-res://assets/tilemap/level_1/
 res://assets/sprites/player/
-res://assets/sprites/enemies/mangosteen/
 res://assets/sprites/enemies/starfruit/
 res://assets/sprites/enemies/dragonfruit/
 res://scenes/enemies/mangosteen/
