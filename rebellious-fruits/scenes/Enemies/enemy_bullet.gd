@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var direction: Vector2 = Vector2.RIGHT
-var speed = 300.0
-var damage = 1
+@export var speed: float = 300.0
+@export var damage: int = 1
 
 func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)

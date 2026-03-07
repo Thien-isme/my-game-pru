@@ -7,16 +7,29 @@ extends Node2D
 
 @export_category("Spawner Area Settings")
 ## Kích thước vùng nhận diện người chơi
-@export var detect_size: Vector2 = Vector2(800, 600):
+@export var detect_size: Vector2 = Vector2(920, 645):
 	set(value):
 		detect_size = value
 		_update_detect_shape()
 
-## Vị trí quái vật sinh ra (so với tâm của spawner)
-@export var spawn_offset: Vector2 = Vector2.ZERO:
+@export_category("Enemy Stats Overrides")
+## Chỉnh tốc độ bắn riệng cho bầy quái này (để 0 thì xài mặc định của quái)
+@export var override_shoot_cooldown: float = 0.0
+## Chỉnh tốc độ đạn riêng cho bầy quái này (để 0 thì xài mặc định của đạn)
+@export var override_bullet_speed: float = 0.0
+
+@export_group("Enemy Area Previews (Editor Only)")
+## Chỉnh vùng Detect của bầy quái (để 0 thì xài vùng mặc định của quái - chỉ hiển thị để làm chuẩn)
+@export var override_detect_radius: float = 0.0 :
 	set(value):
-		spawn_offset = value
-		_update_spawn_point()
+		override_detect_radius = value
+		queue_redraw()
+## Chỉnh vùng Attack của bầy quái (để 0 thì xài vùng mặc định của quái - chỉ hiển thị để làm chuẩn)
+@export var override_attack_radius: float = 0.0 :
+	set(value):
+		override_attack_radius = value
+		queue_redraw()
+
 
 
 var spawned_count: int = 0
@@ -28,7 +41,6 @@ var spawn_timer: Timer
 
 func _ready():
 	_update_detect_shape()
-	_update_spawn_point()
 	
 	if Engine.is_editor_hint():
 		return # Không chạy logic game trong editor
@@ -46,18 +58,21 @@ func _update_detect_shape():
 	if detect_shape and detect_shape.shape is RectangleShape2D:
 		detect_shape.shape.size = detect_size
 		
-func _update_spawn_point():
-	if not is_node_ready():
-		return
-	if spawn_point:
-		spawn_point.position = spawn_offset
+func _draw():
+	if Engine.is_editor_hint():
+		if override_detect_radius > 0:
+			draw_circle(spawn_point.position, override_detect_radius, Color(0.1, 0.8, 0.8, 0.2))
+		if override_attack_radius > 0:
+			draw_circle(spawn_point.position, override_attack_radius, Color(0.9, 0.1, 0.3, 0.3))
 
 func _on_detect_area_body_entered(body):
 	if Engine.is_editor_hint(): return
 	if body.is_in_group("player"):
 		is_player_near = true
 		if spawn_timer.is_stopped() and spawned_count < max_enemies:
-			spawn_timer.start()
+			_on_spawn_timer_timeout() # Gọi ngay để đẻ 1 con lập tức khi Player dẫm vào vùng xanh
+			if spawned_count < max_enemies: # Nếu vẫn còn quái cần đẻ thì mới bật Timer
+				spawn_timer.start()
 
 func _on_detect_area_body_exited(body):
 	if Engine.is_editor_hint(): return
@@ -82,5 +97,17 @@ func _on_spawn_timer_timeout():
 			get_tree().current_scene.add_child(enemy)
 			
 		enemy.global_position = spawn_point.global_position
+		
+		# Áp dụng các thông số nghi đè nếu có
+		if override_shoot_cooldown > 0.0 and "shoot_cooldown" in enemy:
+			enemy.shoot_cooldown = override_shoot_cooldown
+		if override_bullet_speed > 0.0 and "bullet_speed" in enemy:
+			enemy.bullet_speed = override_bullet_speed
+		
+		# Set custom radius from Spawner into actual script variables if the enemy has them
+		if override_detect_radius > 0.0 and "detect_radius" in enemy:
+			enemy.detect_radius = override_detect_radius
+		if override_attack_radius > 0.0 and "attack_radius" in enemy:
+			enemy.attack_radius = override_attack_radius
+			
 		spawned_count += 1
-

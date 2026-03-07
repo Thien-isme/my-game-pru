@@ -6,13 +6,26 @@ const GRAVITY = 900
 
 @onready var anim = $AnimatedSprite2D
 @onready var spawn_point = $BulletSpawnPoint
+@onready var hud = $HUD
 
 var is_shooting = false
 var is_jump = false
 var is_hit = false
 var is_crouching = false
 var health = 5  # Máu của player
+var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
+
+func _ready():
+	if hud:
+		hud.set_max_health(5)
+		hud.update_health(health)
+		hud.update_score(score)
+
+func add_score(amount: int):
+	score += amount
+	if hud:
+		hud.update_score(score)
 
 
 func _physics_process(delta):
@@ -81,10 +94,14 @@ func _physics_process(delta):
 
 
 	move_and_slide()
+	
 func take_damage(amount):
 	if is_hit:  # Tránh bị hit nhiều lần cùng lúc
 		return
 	health -= amount
+	if hud:
+		hud.update_health(health)
+	
 	is_hit = true
 	anim.play("hit")                          # Phát animation hit
 	await get_tree().create_timer(0.4).timeout  # Chờ animation xong

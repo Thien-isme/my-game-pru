@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
-[ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="9_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://scenes/ui/hud.tscn" id="10_hud"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.0
@@ -366,6 +366,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
+position = Vector2(230, 472)
 script = ExtResource("1_h17s1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -379,8 +380,13 @@ sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
-scale = Vector2(2, 2)
+position = Vector2(346, -154)
 position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.75
+drag_bottom_margin = 0.75
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
 position = Vector2(39, -1)
+
+[node name="HUD" parent="." unique_id=1193628908 instance=ExtResource("10_hud")]

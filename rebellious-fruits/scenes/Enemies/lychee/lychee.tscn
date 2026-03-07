@@ -273,6 +273,7 @@ radius = 300.0
 radius = 200.0
 
 [node name="lychee" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
+position = Vector2(562, 291)
 script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_awwma")
 
@@ -289,13 +290,11 @@ animation = &"shoot"
 position = Vector2(-33, -110)
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
 shape = SubResource("CircleShape2D_attack")
