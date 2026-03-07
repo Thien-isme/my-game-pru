@@ -110,4 +110,5 @@ func take_damage(amount):
 		die()
 
 func die():
-	get_tree().reload_current_scene()  # Reload level khi chết
+	print("Player 'died' but death is temporarily disabled for testing.")
+	# get_tree().reload_current_scene()  # Reload level khi chết

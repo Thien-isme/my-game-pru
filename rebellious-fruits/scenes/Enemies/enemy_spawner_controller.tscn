@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c6fjea7ksdf8a"]
 
-[ext_resource type="Script" uid="uid://8jfxlalidqt7" path="res://scenes/enemies/enemy_spawner.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://b40t1mtdmquo8" path="res://scenes/enemies/enemy_spawner_controller.gd" id="1_mxhdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spawndetect"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[node name="EnemySpawner" type="Node2D" unique_id=2068803941]
-script = ExtResource("1_script")
+[node name="EnemySpawnerController" type="Node2D" unique_id=2068803941]
+script = ExtResource("1_mxhdh")
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=87320655]
+[node name="EnemySpawnerItem" type="Marker2D" parent="." unique_id=87320655]
 position = Vector2(278, -155)
 gizmo_extents = 50.0
 

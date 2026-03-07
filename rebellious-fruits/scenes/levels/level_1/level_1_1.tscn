@@ -3,9 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="2_00e6o"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_6dirs"]
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="2_d73my"]
-[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/enemies/enemy_spawner.tscn" id="3_6dirs"]
+[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/enemies/enemy_spawner_controller.tscn" id="3_6dirs"]
 [ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="4_5n40v"]
 [ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/enemies/mangosteen/mangosteen.tscn" id="4_6dirs"]
+[ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/enemies/enemy_spawner_item.gd" id="4_gp54e"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/enemies/lychee/lychee.tscn" id="4_kc3cb"]
+[ext_resource type="PackedScene" uid="uid://cxa0ivd08hnb4" path="res://scenes/enemies/starfruit/starfruit.tscn" id="6_ha5ow"]
+[ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/enemies/apple/apple.tscn" id="8_ha5ow"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpvs2"]
 texture = ExtResource("2_00e6o")
@@ -9513,7 +9517,7 @@ sources/0 = SubResource("TileSetAtlasSource_bpvs2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00e6o"]
 resource_local_to_scene = true
-size = Vector2(800, 600)
+size = Vector2(920, 645)
 
 [node name="Level_1_1" type="Node2D" unique_id=1798284494]
 
@@ -9557,19 +9561,29 @@ layer_0/tile_data = PackedInt32Array(6619097, 3342336, 39, 6684633, 3342336, 40,
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1569091281]
 
-[node name="EnemySpawner" parent="Entities/Enemies" unique_id=712016486 instance=ExtResource("3_6dirs")]
-position = Vector2(932, 440)
+[node name="EnemySpawnerController" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_6dirs")]
+position = Vector2(689, 326)
+enemy_scene = ExtResource("6_ha5ow")
+max_enemies = 2
+
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController" index="0" unique_id=87320655]
+script = ExtResource("4_gp54e")
 enemy_scene = ExtResource("4_6dirs")
-detect_size = Vector2(800, 600)
+max_enemies = 0
 
-[node name="SpawnPoint" parent="Entities/Enemies/EnemySpawner" index="0" unique_id=87320655]
-position = Vector2(357, 31)
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1616465337]
+position = Vector2(432, -29)
+gizmo_extents = 50.0
+script = ExtResource("4_gp54e")
+enemy_scene = ExtResource("4_kc3cb")
 
-[node name="DetectArea" parent="Entities/Enemies/EnemySpawner" index="1" unique_id=1759932897]
-position = Vector2(-182, -179)
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=2118104029]
+position = Vector2(432, -29)
+gizmo_extents = 50.0
+script = ExtResource("4_gp54e")
+enemy_scene = ExtResource("8_ha5ow")
 
-[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawner/DetectArea" index="0" unique_id=325501346]
-position = Vector2(-60, 61.5)
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
 shape = SubResource("RectangleShape2D_00e6o")
 
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
@@ -9585,4 +9599,4 @@ visible = false
 [node name="doorwin" parent="Triggers" unique_id=1561142439 instance=ExtResource("4_5n40v")]
 position = Vector2(3688, 362)
 
-[editable path="Entities/Enemies/EnemySpawner"]
+[editable path="Entities/Enemies/EnemySpawnerController"]

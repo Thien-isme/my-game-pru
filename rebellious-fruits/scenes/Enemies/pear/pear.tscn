@@ -323,7 +323,7 @@ animations = [{
 radius = 500.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 576.0
 
 [node name="pear" type="CharacterBody2D" unique_id=269960179 groups=["enemy"]]
 script = ExtResource("1_script")
@@ -339,11 +339,13 @@ autoplay = "idle"
 [node name="DetectZone" type="Area2D" parent="." unique_id=914414858]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1065178594]
+visible = false
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=497195366]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1594811789]
+position = Vector2(590, 343)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
