@@ -59,6 +59,18 @@ region = Rect2(938, 768, 938, 768)
 atlas = ExtResource("1_o0ebj")
 region = Rect2(1876, 768, 938, 768)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_um8ve"]
+atlas = ExtResource("3_5em1j")
+region = Rect2(0, 0, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngyt7"]
+atlas = ExtResource("3_5em1j")
+region = Rect2(1876, 0, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ds6x"]
+atlas = ExtResource("3_5em1j")
+region = Rect2(938, 768, 938, 768)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs0ek"]
 atlas = ExtResource("3_5em1j")
 region = Rect2(0, 0, 938, 768)
@@ -158,6 +170,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o0ebj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um8ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngyt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ds6x")
 }],
 "loop": true,
 "name": &"jump",
@@ -229,6 +250,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 scale = Vector2(0.28033355, 0.2539833)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"die"
+frame_progress = 0.46731418
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2107948562]
 
