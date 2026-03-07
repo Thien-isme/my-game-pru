@@ -6,3 +6,6 @@ res://scenes/enemies/bittergourd/bittergourd.tscn
 res://scenes/enemies/lychee/lychee.tscn
 res://scenes/enemies/mangosteen/mangosteen.tscn
 res://scenes/enemies/starfruit/starfruit.tscn
+res://scenes/player/player.gd
+res://scripts/autoloads/audio_manager.gd
+res://scenes/player/player.tscn

@@ -26,8 +26,8 @@ func _ready() -> void:
 	# Sau này bạn có thể tải thêm 2 bus "Music" và "SFX" trong tab Audio phía đáy màn hình,
 	# và chỉnh thuộc tính `.bus` của các loa này về đúng bus tương ứng.
 	
-	# Ví dụ cách load âm thanh mồi (Sau này bạn có audio thì thay đường dẫn vào đây)
-	# load_sfx("shoot", "res://assets/audio/sfx/shoot_sound.mp3")
+	# Load tất cả SFX vào bộ nhớ ngay khi game khởi động
+	load_sfx("player_shoot", "res://assets/audio/sfx/player/player_shoot.mp3")
 	# load_music("level_1", "res://assets/audio/bgm/level1_theme.ogg")
 
 # --- HÀM TẢI ÂM THANH (PRELOAD) ---

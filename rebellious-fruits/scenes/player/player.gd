@@ -7,6 +7,10 @@ const GRAVITY = 900
 @onready var anim = $AnimatedSprite2D
 @onready var spawn_point = $BulletSpawnPoint
 @onready var hud = $HUD
+@onready var sfx_player = $SFXPlayer
+
+@export_category("Audio")
+@export var shoot_sfx: AudioStream  # Kéo file âm thanh vào đây trong Inspector
 
 var is_shooting = false
 var is_jump = false
@@ -65,6 +69,11 @@ func _physics_process(delta):
 		bullet.direction = direction_bullet  # ← Đúng rồi! direction_bullet là Vector2
 		# Xoay toàn bộ bullet theo hướng bắn
 		bullet.rotation = direction_bullet.angle()
+		
+		# Phát âm thanh bắn súng (từ file kéo thả trong Inspector)
+		if shoot_sfx and sfx_player:
+			sfx_player.stream = shoot_sfx
+			sfx_player.play()
 
 		await get_tree().create_timer(0.8).timeout
 		is_shooting = false
