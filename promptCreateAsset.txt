@@ -18,3 +18,8 @@ cho nhân vật
 2816 x 1536
 
 hãy chỉnh lại ảnh gồm 8 frame với size tổng của ảnh là 2816 x 1536
+
+tôi đã có các ảnh chứa asset ở trong folder asset rồi, Bạn hãy dùng nó để để tạo ra các animation tương ứng như các bước tôi gửi
+Bước 1: click vào tên animation chòn tính năng "Add Frames from Sprite Sheet"
+Bước 2: chọn ảnh có tên tương ứng với nhân vật và animation đó và bấm Open
+Bước 3: tùy từng khung ảnh mà chọn Horizontal và Vertical cho phù hợp (đủ hết các frame trong ảnh) -> bấm Auti Slice -> Select All, và Add n Frame

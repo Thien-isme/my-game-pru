@@ -1,3 +1,4 @@
+res://assets/tilemap/level_1/
 res://assets/sprites/enemies/carrot/
 res://assets/sprites/player/
 res://assets/sprites/enemies/mangosteen/
@@ -5,7 +6,6 @@ res://assets/sprites/enemies/starfruit/
 res://assets/sprites/enemies/dragonfruit/
 res://scenes/enemies/mangosteen/
 res://assets/doorwin/
-res://assets/tilemap/level_1/
 res://assets/sprites/enemies/lemon/
 res://assets/sprites/enemies/corn/
 res://assets/sprites/enemies/lychee/

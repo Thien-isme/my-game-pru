@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://7llecjqnsloq"]
 
+[ext_resource type="Texture2D" uid="uid://bk5krjcxr1r77" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet1.png" id="1_ebfe1"]
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="script_bullet"]
 
-[ext_resource type="Texture2D" uid="uid://bk5krjcxr1r77" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet1.png" id="1_ebfe1"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebfe1"]
-radius = 64.00781
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1npsf"]
 atlas = ExtResource("1_ebfe1")
@@ -29,6 +27,8 @@ script = ExtResource("script_bullet")
 shape = SubResource("CircleShape2D_ebfe1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007238034]
+position = Vector2(2.3841858e-07, -4.7683716e-07)
+scale = Vector2(0.16173662, 0.15480769)
 sprite_frames = SubResource("SpriteFrames_lh272")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
