@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6fjea7ksdf8a"]
 
-[ext_resource type="Script" uid="uid://b40t1mtdmquo8" path="res://scenes/enemies/enemy_spawner_controller.gd" id="1_mxhdh"]
+[ext_resource type="Script" uid="uid://b40t1mtdmquo8" path="res://scenes/enemies/spawner/enemy_spawner_controller.gd" id="1_mxhdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spawndetect"]
 resource_local_to_scene = true

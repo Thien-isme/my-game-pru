@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cc0f24pna4h6u"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy_bullet.gd" id="script_bullet"]
+[ext_resource type="Script" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
 [ext_resource type="Texture2D" uid="uid://do67f1gul2a5p" path="res://assets/sprites/enemies/lemon/lemon_bullet.png" id="1_xvtd4"]
 

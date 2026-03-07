@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjjvikjcs2ynu" path="res://assets/sprites/enemies/corn/corn_idle.png" id="1_o0ebj"]
 [ext_resource type="Texture2D" uid="uid://cwt7tol40p2g4" path="res://assets/sprites/enemies/corn/corn_die.png" id="1_s8d2f"]
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="1_w2oqy"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_w2oqy"]
 [ext_resource type="PackedScene" uid="uid://bsj5j7lro8iwb" path="res://scenes/enemies/corn/corn_bullet.tscn" id="2_xu6rq"]
 [ext_resource type="Texture2D" uid="uid://cab51p2pd0xps" path="res://assets/sprites/enemies/corn/corn_run.png" id="3_5em1j"]
 [ext_resource type="Texture2D" uid="uid://c6urw077c3sxj" path="res://assets/sprites/enemies/corn/corn_shoot.png" id="4_06e50"]

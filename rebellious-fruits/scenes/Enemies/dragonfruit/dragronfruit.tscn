@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://fw23fys64vmr" path="res://assets/sprites/enemies/dragonfruit/dragondruit_jump.png" id="3_7udfj"]
 [ext_resource type="Texture2D" uid="uid://d272aaaukorq3" path="res://assets/sprites/enemies/dragonfruit/dragondruit_run.png" id="4_3r8ic"]
 [ext_resource type="Texture2D" uid="uid://dk4lpg68e80sf" path="res://assets/sprites/enemies/dragonfruit/dragondruit_shoot.png" id="5_lm156"]
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfcna"]
 atlas = ExtResource("1_8rqn2")

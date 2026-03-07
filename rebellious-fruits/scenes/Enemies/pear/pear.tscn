@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://w25xrhxyj1jl"]
 
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://t5v7q4nmgndt" path="res://assets/sprites/enemies/pear/pear_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://dp7e3efgtma4a" path="res://assets/sprites/enemies/pear/pear_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://dmgsu3r3818hl" path="res://assets/sprites/enemies/pear/pear_run.png" id="4_run"]

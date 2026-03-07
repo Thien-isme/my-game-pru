@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://owtsctmeexp1"]
 
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://duc61vm8o8k1m" path="res://assets/sprites/enemies/bittergourd/bittergourd_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://4s2tdx1rcnxc" path="res://assets/sprites/enemies/bittergourd/bittergourd_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://bktay3xgjwy2s" path="res://assets/sprites/enemies/bittergourd/bittergourd_run.png" id="4_run"]

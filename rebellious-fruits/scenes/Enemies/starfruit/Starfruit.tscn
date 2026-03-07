@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://booqjqt1tkvhi" path="res://assets/sprites/enemies/starfruit/startfruit_hit.png" id="2_l8mry"]
 [ext_resource type="PackedScene" uid="uid://r06ahk4lng4g" path="res://scenes/player/player_bullet.tscn" id="2_oxw1u"]
 [ext_resource type="Texture2D" uid="uid://ce71m8ioytcwx" path="res://assets/sprites/enemies/starfruit/startfruit_die.png" id="2_u63wr"]
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/enemy_script.gd" id="script_enemy"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
