@@ -3,19 +3,19 @@ extends CanvasLayer
 @onready var health_bar = $MarginContainer/VBoxContainer/HealthBar
 @onready var score_label = $MarginContainer/VBoxContainer/ScoreLabel
 
-var max_health: int = 5
-var current_health: int = 5
+var max_health: float = 500.0
+var current_health: float = 500.0
 var score: int = 0
 
 func _ready():
 	_update_ui()
 
-func set_max_health(value: int):
+func set_max_health(value: float):
 	max_health = value
 	health_bar.max_value = value
 	_update_ui()
 
-func update_health(health: int):
+func update_health(health: float):
 	current_health = health
 	_update_ui()
 

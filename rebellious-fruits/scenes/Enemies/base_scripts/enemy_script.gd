@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @export var speed = 80.0
-@export var health = 3
+@export var health: float = 30.0
 @export var shoot_cooldown = 2.0
 @export var bullet_scene: PackedScene  # Chỉnh trong Inspector cho từng enemy
 @export var bullet_speed: float = 300.0
+@export var bullet_damage: float = 10.0
 
 @export_category("Patrol Settings")
 @export var patrol_distance: float = 100.0 # Khoảng cách đi tuần mỗi bên (để 0 nếu muốn đứng im)
@@ -19,6 +20,10 @@ extends CharacterBody2D
 var player = null
 var can_shoot = true
 var is_attacking = false
+var is_dead = false
+
+var max_health: float = 1.0
+var health_bar: ProgressBar = null
 
 var detect_radius: float = 0.0 # Will be populated by spawner
 var attack_radius: float = 0.0 # Will be populated by spawner
@@ -47,8 +52,43 @@ func _ready():
 		var a_shape = $AttackZone/CollisionShape2D.shape as CircleShape2D
 		if a_shape:
 			a_shape.radius = attack_radius
+			
+	# Lưu max_health và Khởi tạo Thanh Máu (Health Bar)
+	max_health = health
+	_create_health_bar()
+
+func _create_health_bar():
+	health_bar = ProgressBar.new()
+	health_bar.show_percentage = false
+	health_bar.size = Vector2(40, 6)
+	health_bar.position = Vector2(-20, -55) # Căn giữa trên đầu quái
+	health_bar.value = 100.0
+	
+	var sb_bg = StyleBoxFlat.new()
+	sb_bg.bg_color = Color(0.2, 0.2, 0.2, 0.8)
+	sb_bg.corner_radius_top_left = 2
+	sb_bg.corner_radius_top_right = 2
+	sb_bg.corner_radius_bottom_left = 2
+	sb_bg.corner_radius_bottom_right = 2
+	
+	var sb_fill = StyleBoxFlat.new()
+	sb_fill.bg_color = Color(0.9, 0.2, 0.2, 1.0) # Màu đỏ
+	sb_fill.corner_radius_top_left = 2
+	sb_fill.corner_radius_top_right = 2
+	sb_fill.corner_radius_bottom_left = 2
+	sb_fill.corner_radius_bottom_right = 2
+	
+	health_bar.add_theme_stylebox_override("background", sb_bg)
+	health_bar.add_theme_stylebox_override("fill", sb_fill)
+	
+	add_child(health_bar)
 
 func _physics_process(delta):
+	if is_dead:
+		velocity.y += GRAVITY * delta # Xác chết vẫn rơi xuống đất
+		move_and_slide()
+		return
+		
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
@@ -137,19 +177,48 @@ func _shoot():
 	if "shooter" in bullet:
 		bullet.shooter = self
 	
+	if "damage" in bullet:
+		bullet.damage = bullet_damage
+		
 	if "speed" in bullet:
 		bullet.speed = bullet_speed
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 
-func take_damage(amount: int):
+func take_damage(amount: float):
+	if is_dead: return
 	health -= amount
+	
+	if health_bar and max_health > 0:
+		health_bar.value = (health / max_health) * 100.0
+		
 	if health <= 0:
 		_die()
 
 func _die():
-	# Phát tiếng chết trước khi xóa
+	if is_dead: return
+	is_dead = true
+	
+	# Phát tiếng chết
 	_play_sfx(die_sfx)
+	
+	# Ẩn thanh máu
+	if health_bar:
+		health_bar.visible = false
+		
+	# Tắt hết va chạm để không cản đường đạn hay player nữa
+	if has_node("CollisionShape2D"):
+		$CollisionShape2D.set_deferred("disabled", true)
+	if has_node("DetectZone/CollisionShape2D"):
+		$DetectZone/CollisionShape2D.set_deferred("disabled", true)
+	if has_node("AttackZone/CollisionShape2D"):
+		$AttackZone/CollisionShape2D.set_deferred("disabled", true)
+		
+	# Đổi animation sang chết
+	if anim and anim.sprite_frames.has_animation("die"):
+		anim.play("die")
+		await anim.animation_finished
+		
 	queue_free()
 
 func play_explode_sfx():

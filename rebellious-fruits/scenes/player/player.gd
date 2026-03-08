@@ -20,6 +20,7 @@ const GRAVITY = 900
 @export var die_sfx: AudioStream     # Tiếng chết
 
 @export_category("Gun Settings")
+@export var bullet_damage: float = 10.0        # Lực sát thương của đạn
 @export var bullet_count: int = 1         # Số lượng đạn bắn ra mỗi lần click
 @export var bullet_speed: float = 800.0     # Tốc độ đạn
 @export var bullet_spread: float = 15.0   # Độ tỏa (chùm) của đạn nếu bắn nhiều viên (độ)
@@ -29,7 +30,7 @@ var is_shooting = false
 var is_jump = false
 var is_hit = false
 var is_crouching = false
-var health = 5
+var health: float = 500.0
 var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 
@@ -39,7 +40,7 @@ var limit_right_x: float = 9999999.0
 
 func _ready():
 	if hud:
-		hud.set_max_health(5)
+		hud.set_max_health(500)
 		hud.update_health(health)
 		hud.update_score(score)
 
@@ -142,6 +143,7 @@ func _physics_process(delta):
 			bullet.direction = final_dir
 			bullet.rotation = final_angle
 			bullet.speed = bullet_speed # Gán tốc độ từ Inspector vào đạn
+			bullet.damage = bullet_damage # Truyền damage sang cho viên đạn
 
 		_play_sfx(shoot_sfx)
 		shoot_timer = 0.3

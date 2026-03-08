@@ -1,3 +1,4 @@
+res://scripts/autoloads/
 res://assets/sprites/player/
 res://assets/sprites/enemies/carrot/
 res://scenes/enemies/base_scripts/
@@ -19,4 +20,3 @@ res://assets/audio/sfx/player/
 res://scenes/enemies/bittergourd/
 res://scenes/enemies/
 res://scenes/levels/level_1/
-res://assets/tilemap/level_1/

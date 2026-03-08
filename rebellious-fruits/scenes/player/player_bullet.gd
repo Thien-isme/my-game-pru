@@ -2,7 +2,7 @@ extends Area2D
 
 var direction = Vector2.RIGHT
 var speed = 400.0
-var damage = 1
+var damage: float = 10.0
 
 @onready var anim = $AnimatedSprite2D
 
@@ -21,7 +21,8 @@ func hit_enemy(enemy):
 	anim.play("explode")
 	
 	# Gây damage cho enemy
-	# enemy.take_damage(damage)  ← Nếu enemy có hàm này
+	if enemy.has_method("take_damage"):
+		enemy.take_damage(damage)
 	
 	# Chờ animation xong rồi xóa đạn
 	await anim.animation_finished

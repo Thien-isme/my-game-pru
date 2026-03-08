@@ -1,8 +1,8 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
-@export var speed: float = 300.0
-@export var damage: int = 1
+var speed: float = 300.0
+var damage: float = 10.0
 
 @onready var anim = $AnimatedSprite2D
 var is_exploding = false

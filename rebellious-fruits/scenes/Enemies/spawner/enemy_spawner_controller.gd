@@ -13,10 +13,14 @@ extends Node2D
 		_update_detect_shape()
 
 @export_category("Enemy Stats Overrides")
+## Chỉnh Máu (Health) riêng cho bầy quái này (để 0 thì xài mặc định của quái)
+@export var override_health: float = 0.0
 ## Chỉnh tốc độ bắn riệng cho bầy quái này (để 0 thì xài mặc định của quái)
 @export var override_shoot_cooldown: float = 0.0
 ## Chỉnh tốc độ đạn riêng cho bầy quái này (để 0 thì xài mặc định của đạn)
 @export var override_bullet_speed: float = 0.0
+## Chỉnh khoảng cách đi tuần tra (để 0 thì xài mặc định của quái)
+@export var override_patrol_distance: float = 0.0
 
 @export_group("Enemy Area Previews (Editor Only)")
 ## Chỉnh vùng Detect của bầy quái (để 0 thì xài vùng mặc định của quái - chỉ hiển thị để làm chuẩn)
@@ -142,17 +146,23 @@ func _on_point_timer_timeout(data: Dictionary):
 		enemy.global_position = marker.global_position
 		
 		# Tính toán thông số nào sẽ áp dụng (ưu tiên Marker > Spawner gốc)
+		var h_hp = override_health
 		var shoot_cd = override_shoot_cooldown
 		var bullet_spd = override_bullet_speed
 		var d_rad = override_detect_radius
 		var a_rad = override_attack_radius
+		var p_dist = override_patrol_distance
 		
+		if "override_health" in marker and marker.override_health > 0: h_hp = marker.override_health
 		if "override_shoot_cooldown" in marker and marker.override_shoot_cooldown > 0: shoot_cd = marker.override_shoot_cooldown
 		if "override_bullet_speed" in marker and marker.override_bullet_speed > 0: bullet_spd = marker.override_bullet_speed
 		if "override_detect_radius" in marker and marker.override_detect_radius > 0: d_rad = marker.override_detect_radius
 		if "override_attack_radius" in marker and marker.override_attack_radius > 0: a_rad = marker.override_attack_radius
+		if "override_patrol_distance" in marker and marker.override_patrol_distance > 0: p_dist = marker.override_patrol_distance
 		
 		# Áp dụng các thông số
+		if h_hp > 0 and "health" in enemy:
+			enemy.health = h_hp
 		if shoot_cd > 0.0 and "shoot_cooldown" in enemy:
 			enemy.shoot_cooldown = shoot_cd
 		if bullet_spd > 0.0 and "bullet_speed" in enemy:
@@ -161,5 +171,7 @@ func _on_point_timer_timeout(data: Dictionary):
 			enemy.detect_radius = d_rad
 		if a_rad > 0.0 and "attack_radius" in enemy:
 			enemy.attack_radius = a_rad
+		if p_dist > 0.0 and "patrol_distance" in enemy:
+			enemy.patrol_distance = p_dist
 			
 		data["spawned_count"] += 1

@@ -381,9 +381,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqsei"]
-size = Vector2(87, 82)
-
 [node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_fm80t")
@@ -397,8 +394,8 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(3.0000002, -7)
 scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot_rapid_fire"
-frame_progress = 1.0
+animation = &"shoot"
+frame_progress = 0.15958065
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
 position = Vector2(346, -154)
@@ -420,7 +417,3 @@ position = Vector2(36, -10)
 
 [node name="MuzzleFlash" parent="." unique_id=1592498031 instance=ExtResource("15_fcs02")]
 position = Vector2(35, -9)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=137333904]
-position = Vector2(3.5, -7)
-shape = SubResource("RectangleShape2D_iqsei")

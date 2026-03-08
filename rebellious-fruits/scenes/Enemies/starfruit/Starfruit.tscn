@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://bb5p7vhfjmpew" path="res://assets/sprites/enemies/starfruit/startfruit_idle.png" id="1_jao83"]
 [ext_resource type="Texture2D" uid="uid://kfuhiuwr1yoi" path="res://assets/sprites/enemies/starfruit/startfruit_shoot.png" id="2_jao83"]
 [ext_resource type="Texture2D" uid="uid://booqjqt1tkvhi" path="res://assets/sprites/enemies/starfruit/startfruit_hit.png" id="2_l8mry"]
-[ext_resource type="PackedScene" uid="uid://c0pn6p0h54mui" path="res://scenes/enemies/starfruit/starfruit_bullet.tscn" id="2_oxw1u"]
+[ext_resource type="PackedScene" uid="uid://c0pn6p0h54mui" path="res://scenes/Enemies/starfruit/starfruit_bullet.tscn" id="2_oxw1u"]
 [ext_resource type="Texture2D" uid="uid://ce71m8ioytcwx" path="res://assets/sprites/enemies/starfruit/startfruit_die.png" id="2_u63wr"]
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
+[ext_resource type="Script" uid="uid://cadip4ojwhuko" path="res://scripts/autoloads/audio_manager.gd" id="7_x2e2y"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.0
@@ -271,21 +272,18 @@ animation = &"idle"
 position = Vector2(50, -103)
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.9811092, 0.04110747, 0.34237793, 0.41960785)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=561483663]
+script = ExtResource("7_x2e2y")
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

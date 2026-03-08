@@ -1,5 +1,6 @@
-res://scenes/player/player.gd
-res://scenes/player/player.tscn
+res://scenes/Enemies/base_scripts/enemy_script.gd
+res://scenes/Enemies/starfruit/Starfruit.tscn
+res://scenes/Enemies/spawner/enemy_spawner_item.gd
 res://scenes/levels/level_1/level_1_1.tscn
-res://scenes/player/shoot_rapid_fire.tscn
-res://scenes/player/muzzle_flash.tscn
+res://scenes/Enemies/spawner/enemy_spawner_controller.tscn
+res://scenes/Enemies/apple/apple.tscn
