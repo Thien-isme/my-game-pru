@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772968770
+::res://::1772971515
 icon.svg::CompressedTexture2D::7898207504655701237::1772641152::1772729875::1::::<><><>0<>0<>0831e0f2c34cad16ec82a7182458dc46<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1772904427
 ::res://assets/audio/::1772909501
@@ -120,7 +120,7 @@ watermelon_run.png::CompressedTexture2D::5533253054723471481::1772827323::177282
 watermelon_shoot.png::CompressedTexture2D::5130536332780599597::1772827378::1772829505::1::::<><><>0<>0<>ed7fcbb7a46a0c163c5aa7f13a6c8819<>res://.godot/imported/watermelon_shoot.png-b3fe0672f4776cc01980ee67b7e50e4b.ctex::
 ::res://assets/sprites/level/::1772644677
 ::res://assets/sprites/level/level_1/::1772644659
-::res://assets/sprites/player/::1772971433
+::res://assets/sprites/player/::1772975234
 animation_shoot_rapid_fire.png::CompressedTexture2D::191159996119348634::1772971433::1772971435::1::::<><><>0<>0<>371c1a39628e3a530fb005054ddf58c7<>res://.godot/imported/animation_shoot_rapid_fire.png-8173c09c4d9c86bb3931d5faef0ebda6.ctex::
 player_bullet.png::CompressedTexture2D::8308073845264271252::1772814270::1772814272::1::::<><><>0<>0<>281a1005e8725989fe92b6ef051cb83d<>res://.godot/imported/player_bullet.png-dffd2362ef85f39dc57ababbb896d541.ctex::
 player_bullet_boom.png::CompressedTexture2D::7260932269716897793::1772813649::1772813736::1::::<><><>0<>0<>cf674beb6c67d84b7aa9acc2a1cf48cd<>res://.godot/imported/player_bullet_boom.png-86e9bfb3b49e93ebdbb7eaf85547e8ca.ctex::
@@ -137,6 +137,7 @@ player_shoot.png::CompressedTexture2D::3784955822720162265::1772738848::17727782
 player_shoot_high.png::CompressedTexture2D::3545643679910579473::1772778319::1772778322::1::::<><><>0<>0<>bffe836820093c9c336f286abd282e6e<>res://.godot/imported/player_shoot_high.png-c14a2bd33ef8a3dc4bb545b37a4fb009.ctex::
 player_shoot_kneeling.png::CompressedTexture2D::6264464458982528458::1772970066::1772970070::1::::<><><>0<>0<>9073371440e02a7ef57b884afbdc8507<>res://.godot/imported/player_shoot_kneeling.png-049599294ff0ae942593799a723fbe29.ctex::
 player_shoot_kneeling_2.png::CompressedTexture2D::941021982573647413::1772970981::1772971259::1::::<><><>0<>0<>e6f58e1e6640ec55791b96d60b94e4fc<>res://.godot/imported/player_shoot_kneeling_2.png-1434f6b99b9c750c9bd40b71c92a4b58.ctex::
+player_shoot_kneeling_new.png::CompressedTexture2D::6298257194680505903::1772975234::1772975252::1::::<><><>0<>0<>c21acce75ab50ff5757db85710b899c8<>res://.godot/imported/player_shoot_kneeling_new.png-96b0c8f75904a82952d5804e0cefa896.ctex::
 player_shoot_low.png::CompressedTexture2D::243632525590717383::1772778552::1772778554::1::::<><><>0<>0<>06906f905005af3bddefef28499b8c7d<>res://.godot/imported/player_shoot_low.png-470dc7a5fce29899603ac65856705871.ctex::
 ::res://assets/sprites/weapons/::1772825080
 ::res://assets/sprites/weapons/rocket/::1772826408
@@ -215,13 +216,14 @@ level_bounds.tscn::PackedScene::-1::1772968173::0::1::::<><><>0<>0<><>::res://sc
 ::res://scenes/levels/level_1/::1772970311
 level_1_1.tscn::PackedScene::6151237053144388004::1772970311::0::1::::<><><>0<>0<><>::uid://dtiv6xscd0bcr::::res://assets/tilemap/level_1/tilemap_1_4.png<>uid://dsc5675a5w38w::::res://assets/background/background.png<>uid://uyp3og6rd3ng::::res://scenes/player/player.tscn<>uid://dtwcr1y5sp8ty::::res://scenes/doorwin/doorwin.tscn<>res://scenes/levels/components/level_bounds.tscn
 level_1_2.tscn::PackedScene::6968861787312353832::1772790856::0::1::::<><><>0<>0<><>::uid://uyp3og6rd3ng::::res://scenes/player/player.tscn<>uid://cidg1of70ekyd::::res://scenes/player/player.gd<>uid://dxut10u2hj4em::::res://assets/tilemap/level_1/tilemap_1_1.png
-::res://scenes/player/::1772970814
+::res://scenes/player/::1772973804
 camera_lock.gd::GDScript::522792114674844192::1772967173::0::1::::<>Camera2D<><>0<>0<><>::
-player.gd::GDScript::5340956726889202251::1772970565::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene::1454283442006011448::1772970814::0::1::::<><><>0<>0<><>::uid://cidg1of70ekyd::::res://scenes/player/player.gd<>uid://b1l84aydojta7::::res://assets/sprites/player/player_crouch.png<>uid://dbnlr4b3e175n::::res://assets/audio/sfx/player/player_shoot.mp3<>uid://0yk4351dknsi::::res://assets/sprites/player/player_idle.png<>uid://bt6pw03sljrgr::::res://assets/sprites/player/player_shoot.png<>uid://cbl387ffomv6k::::res://assets/sprites/player/player_die.png<>uid://crfhvfhq8e445::::res://assets/sprites/player/player_hit.png<>uid://dexcp4mxwnbbl::::res://assets/sprites/player/player_run2.png<>uid://bocbf10337ye3::::res://assets/sprites/player/player_jump.png<>uid://bqrsh615ihnsb::::res://assets/sprites/player/player_shoot_high.png<>uid://dqauep7kun5x::::res://assets/sprites/player/player_shoot_low.png<>uid://dxhud1234567::::res://scenes/ui/hud.tscn<>uid://cvis2xo1kx6fm::::res://assets/sprites/player/player_shoot_kneeling.png<>uid://hpiksclfeage::::res://scenes/player/camera_lock.gd
+muzzle_flash.tscn::PackedScene::1958763224581376732::1772973913::0::1::::<><><>0<>0<><>::uid://cyum3b0v3ddy::::res://assets/sprites/player/animation_shoot_rapid_fire.png
+player.gd::GDScript::5340956726889202251::1772973269::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::1454283442006011448::1772973804::0::1::::<><><>0<>0<><>::uid://cidg1of70ekyd::::res://scenes/player/player.gd<>uid://b1l84aydojta7::::res://assets/sprites/player/player_crouch.png<>uid://dbnlr4b3e175n::::res://assets/audio/sfx/player/player_shoot.mp3<>uid://0yk4351dknsi::::res://assets/sprites/player/player_idle.png<>uid://bt6pw03sljrgr::::res://assets/sprites/player/player_shoot.png<>uid://cbl387ffomv6k::::res://assets/sprites/player/player_die.png<>uid://crfhvfhq8e445::::res://assets/sprites/player/player_hit.png<>uid://dexcp4mxwnbbl::::res://assets/sprites/player/player_run2.png<>uid://bocbf10337ye3::::res://assets/sprites/player/player_jump.png<>uid://bqrsh615ihnsb::::res://assets/sprites/player/player_shoot_high.png<>uid://dqauep7kun5x::::res://assets/sprites/player/player_shoot_low.png<>uid://dxhud1234567::::res://scenes/ui/hud.tscn<>uid://nn3q2yq7074t::::res://assets/sprites/player/player_shoot_kneeling_2.png<>uid://253sraqp0llc::::res://scenes/player/muzzle_flash.tscn<>uid://hpiksclfeage::::res://scenes/player/camera_lock.gd
 player_bullet.gd::GDScript::8537760040980378421::1772814892::0::1::::<>Area2D<><>0<>0<><>::
 player_bullet.tscn::PackedScene::1246702396918146352::1772963149::0::1::::<><><>0<>0<><>::uid://dtv0wpsabbyjl::::res://scenes/player/player_bullet.gd<>uid://dqmq06lvsycga::::res://assets/sprites/player/player_bullet.png
-ShootRapidFire.tscn::PackedScene::1748715195218890710::1772971480::0::1::::<><><>0<>0<><>::
+shoot_rapid_fire.tscn::PackedScene::1748715195218890710::1772973176::0::1::::<><><>0<>0<><>::uid://cyum3b0v3ddy::::res://assets/sprites/player/animation_shoot_rapid_fire.png
 ::res://scenes/ui/::1772883748
 hud.gd::GDScript::8365693915039369026::1772883658::0::1::::<>CanvasLayer<><>0<>0<><>::
 hud.tscn::PackedScene::258508153085249854::1772883676::0::1::::<><><>0<>0<><>::uid://hudscript123::::res://scenes/ui/hud.gd

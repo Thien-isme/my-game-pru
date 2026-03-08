@@ -63,6 +63,7 @@ func _physics_process(delta):
 
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var is_pressing_shoot = Input.is_action_pressed("click")
+	var is_just_pressing_shoot = Input.is_action_just_pressed("click")
 	
 	if is_pressing_shoot or is_shooting:
 		velocity.x = 0
@@ -87,7 +88,11 @@ func _physics_process(delta):
 
 		anim.flip_h = mouse_pos.x < global_position.x
 		var diff_y = mouse_pos.y - global_position.y
+		
 		var target_anim = "shoot_rapid_fire"
+		if is_just_pressing_shoot:
+			target_anim = "shoot" # Click 1 nhát thì dùng animation cũ
+			
 		if diff_y < -80:
 			target_anim = "shoot_high"
 		elif diff_y > 80:

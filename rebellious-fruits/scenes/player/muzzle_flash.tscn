@@ -4,23 +4,23 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi6vt"]
 atlas = ExtResource("1_tex")
-region = Rect2(200, 0, 640, 752)
+region = Rect2(118, 0, 660, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sag6"]
 atlas = ExtResource("1_tex")
-region = Rect2(840, 0, 640, 752)
+region = Rect2(819, 0, 647, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0di4v"]
 atlas = ExtResource("1_tex")
-region = Rect2(1480, 0, 640, 752)
+region = Rect2(1531, 0, 613, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpycm"]
 atlas = ExtResource("1_tex")
-region = Rect2(2120, 0, 640, 752)
+region = Rect2(174, 752, 646, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mswtd"]
 atlas = ExtResource("1_tex")
-region = Rect2(840, 752, 640, 752)
+region = Rect2(937, 752, 607, 752)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mh34r"]
 animations = [{
@@ -40,7 +40,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mswtd")
 }],
-"loop": false,
+"loop": true,
 "name": &" shoot_rapid_fire",
 "speed": 5.0
 }]
@@ -52,14 +52,13 @@ radius = 8.0
 z_index = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1172336188]
-position = Vector2(-2, 4.470345e-08)
+position = Vector2(17, 2)
 rotation = 0.19198622
 scale = Vector2(0.1, 0.094)
 sprite_frames = SubResource("SpriteFrames_mh34r")
 animation = &" shoot_rapid_fire"
 autoplay = " shoot_rapid_fire"
-frame = 4
-frame_progress = 1.0
+frame_progress = 0.7887504
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1159392032]
 position = Vector2(0, -1)
