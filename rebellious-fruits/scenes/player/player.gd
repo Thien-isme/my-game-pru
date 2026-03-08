@@ -27,6 +27,10 @@ var health = 5
 var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 
+# Giới hạn map
+var limit_left_x: float = 0.0
+var limit_right_x: float = 9999999.0
+
 func _ready():
 	if hud:
 		hud.set_max_health(5)
@@ -105,6 +109,25 @@ func _physics_process(delta):
 				_play_loop_sfx(idle_sfx)
 
 	move_and_slide()
+	
+	# Ngăn không cho nhân vật chạy ra khỏi ranh giới màn hình
+	if global_position.x < limit_left_x:
+		global_position.x = limit_left_x
+	elif global_position.x > limit_right_x:
+		global_position.x = limit_right_x
+
+# --- Hàm thiết lập Ranh Giới (Nhận từ LevelBounds) ---
+func set_left_bound(x_pos: float):
+	limit_left_x = x_pos
+	var cam = $Camera2D
+	if cam:
+		cam.limit_left = int(x_pos)
+
+func set_right_bound(x_pos: float):
+	limit_right_x = x_pos
+	var cam = $Camera2D
+	if cam:
+		cam.limit_right = int(x_pos)
 
 # --- Hàm phát âm thanh ---
 func _play_sfx(stream: AudioStream):

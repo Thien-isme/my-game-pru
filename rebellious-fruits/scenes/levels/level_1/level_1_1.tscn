@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/enemies/bittergourd/bittergourd.tscn" id="7_3c4s6"]
 [ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/enemies/chili/chili.tscn" id="7_ha5ow"]
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/enemies/apple/apple.tscn" id="8_ha5ow"]
+[ext_resource type="PackedScene" path="res://scenes/levels/components/level_bounds.tscn" id="12_13145"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpvs2"]
 texture = ExtResource("2_00e6o")
@@ -9516,7 +9517,7 @@ texture = ExtResource("2_00e6o")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bpvs2")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13145"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sje3b"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -9572,7 +9573,7 @@ script = ExtResource("4_gp54e")
 enemy_scene = ExtResource("6_3c4s6")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_13145")
+shape = SubResource("RectangleShape2D_sje3b")
 
 [node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=969692653]
 position = Vector2(-11, -155)
@@ -9605,4 +9606,11 @@ visible = false
 [node name="doorwin" parent="Triggers" unique_id=1561142439 instance=ExtResource("4_5n40v")]
 position = Vector2(3688, 362)
 
+[node name="LevelBounds" parent="." unique_id=1086334517 instance=ExtResource("12_13145")]
+position = Vector2(501, -25)
+
+[node name="RightBoundary" parent="LevelBounds" index="1"]
+position = Vector2(4443, -2)
+
 [editable path="Entities/Enemies/EnemySpawnerController"]
+[editable path="LevelBounds"]

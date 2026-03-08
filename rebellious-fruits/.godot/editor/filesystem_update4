@@ -36,3 +36,5 @@ res://scenes/enemies/pear/pear_bullet.tscn
 res://scenes/enemies/corn/corn_bullet.gd
 res://scenes/player/player_bullet.tscn
 res://scenes/enemies/spawner/enemy_spawner_controller.gd
+res://scenes/player/camera_lock.gd
+res://scenes/player/player.gd

@@ -391,6 +391,7 @@ animation = &"shoot"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
 script = ExtResource("camera_lock_script")
 position = Vector2(346, -154)
+limit_left = 0
 position_smoothing_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 1.0

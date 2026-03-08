@@ -1,3 +1,4 @@
+Marker2D
 CollisionShape2D
 Area2D
 AnimatedSprite2D
@@ -7,7 +8,6 @@ TileMap
 Sprite2D
 ParallaxLayer
 ParallaxBackground
-Marker2D
 VisibleOnScreenNotifier2D
 StaticBody2D
 Camera2D
