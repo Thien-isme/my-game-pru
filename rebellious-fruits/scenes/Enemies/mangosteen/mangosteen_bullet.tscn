@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7llecjqnsloq"]
 
 [ext_resource type="Texture2D" uid="uid://cwfix1p0mlnts" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet_explode.png" id="2_1npsf"]
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="script_bullet"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebfe1"]
 

@@ -17,6 +17,8 @@ extends Marker2D
 @export var override_shoot_cooldown: float = 0.0
 ## Ép tốc độ bay của viên đạn. Quái ở vị trí xa có thể cho đạn bay nhanh hơn. (Để 0.0 để xài mặc định)
 @export var override_bullet_speed: float = 0.0
+## Cho phép viên đạn bắn xuyên qua tường và đất nấp (Rất hữu ích cho quái đứng trên cao xả đạn xuống)
+@export var override_bullet_pass_terrain: bool = false
 
 @export_group("Enemy Area Previews (Editor Only)")
 ## Khoảng cách (Trái-Phải) mà quái sẽ lượn lờ khi chưa phát hiện người chơi. 

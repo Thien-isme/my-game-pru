@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nr3kl5san3sw"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bg15p4hwv3ib0" path="res://assets/sprites/enemies/apple/apple_bullet.png" id="2_da54q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da54q"]

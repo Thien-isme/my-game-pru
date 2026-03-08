@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbeacbo4u13go"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://crd6rfh61tbxj" path="res://assets/sprites/enemies/dragonfruit/dragondruit_bullet.png" id="2_r1qt6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]

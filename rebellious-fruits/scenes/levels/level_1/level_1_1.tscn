@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="4_bpvs2"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="4_kc3cb"]
 [ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="7_ha5ow"]
-[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="8_3c4s6"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/Enemies/lychee/lychee.tscn" id="8_13145"]
 [ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="9_13145"]
 [ext_resource type="PackedScene" path="res://scenes/levels/components/level_bounds.tscn" id="12_13145"]
 
@@ -11569,7 +11569,7 @@ enemy_scene = ExtResource("4_bpvs2")
 override_patrol_distance = 60.0
 
 [node name="EnemySpawnerController_2" parent="Entities/Enemies" unique_id=395838573 instance=ExtResource("3_bpvs2")]
-position = Vector2(1470, 315)
+position = Vector2(1472, 315)
 
 [node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_2" index="0" unique_id=87320655]
 position = Vector2(350, 126)
@@ -11582,14 +11582,17 @@ shape = SubResource("RectangleShape2D_sje3b")
 position = Vector2(760, 126)
 gizmo_extents = 50.0
 script = ExtResource("7_ha5ow")
-enemy_scene = ExtResource("4_bpvs2")
+enemy_scene = ExtResource("9_13145")
 
-[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_2" unique_id=578078910]
-position = Vector2(1006, -187)
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_2" unique_id=1062969498]
+position = Vector2(1027, -207)
 gizmo_extents = 50.0
 script = ExtResource("7_ha5ow")
-enemy_scene = ExtResource("8_3c4s6")
+enemy_scene = ExtResource("8_13145")
+override_bullet_pass_terrain = true
 override_patrol_distance = 180.0
+override_detect_radius = 600.0
+override_attack_radius = 600.0
 
 [node name="EnemySpawnerController_3" parent="Entities/Enemies" unique_id=675164189 instance=ExtResource("3_bpvs2")]
 position = Vector2(3237, 205)
@@ -11597,6 +11600,7 @@ position = Vector2(3237, 205)
 [node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_3" index="0" unique_id=87320655]
 position = Vector2(114, -83)
 enemy_scene = ExtResource("4_bpvs2")
+override_bullet_pass_terrain = true
 override_patrol_distance = 18.0
 override_detect_radius = 800.0
 override_attack_radius = 700.0
@@ -11612,11 +11616,11 @@ position = Vector2(1277, 190)
 gizmo_extents = 0.0
 script = ExtResource("7_ha5ow")
 enemy_scene = ExtResource("9_13145")
-override_attack_radius = 20.0
+override_bullet_pass_terrain = true
 
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 4
-position = Vector2(233, 473)
+position = Vector2(1989, 478)
 
 [node name="Interactables" type="Node2D" parent="." unique_id=104058799]
 visible = false

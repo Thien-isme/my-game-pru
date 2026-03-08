@@ -7,3 +7,17 @@ res://scenes/Enemies/apple/apple.tscn
 res://scenes/Enemies/spawner/enemy_spawner_controller.gd
 res://scenes/Enemies/starapple/starapple.tscn
 res://scenes/Enemies/corn/corn.tscn
+res://scenes/Enemies/base_scripts/enemy_bullet.gd
+res://scenes/Enemies/lychee/lychee.tscn
+res://scenes/Enemies/mangosteen/mangosteen_bullet.tscn
+res://scenes/Enemies/lychee/lychee_bullet.tscn
+res://scenes/Enemies/mangosteen/mangosteen.tscn
+res://scenes/Enemies/apple/apple_bullet.tscn
+res://scenes/Enemies/bittergourd/bittergourd_bullet.tscn
+res://scenes/Enemies/chili/chili_bullet.tscn
+res://scenes/Enemies/corn/corn_bullet.tscn
+res://scenes/Enemies/dragonfruit/dragonfruit_bullet.tscn
+res://scenes/Enemies/eggplant/eggplant_bullet.tscn
+res://scenes/Enemies/pumpkin/pumpkin_bullet.tscn
+res://scenes/Enemies/starapple/starapple_bullet.tscn
+res://scenes/Enemies/watermelon/watermelon_bullet.tscn

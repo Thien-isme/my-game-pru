@@ -3,6 +3,7 @@ extends Area2D
 var direction: Vector2 = Vector2.RIGHT
 var speed: float = 300.0
 var damage: float = 10.0
+var pass_terrain: bool = false
 
 @onready var anim = $AnimatedSprite2D
 var is_exploding = false
@@ -30,7 +31,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.take_damage(damage)
 		_explode()
-	elif body.name == "TileMap" or body.is_in_group("wall"): # Hoặc các group chứa tường/đất
+	elif not pass_terrain and (body.name == "TileMap" or body.is_in_group("wall")): # Hoặc các group chứa tường/đất
 		# Nổ khi trúng tường
 		_explode()
 

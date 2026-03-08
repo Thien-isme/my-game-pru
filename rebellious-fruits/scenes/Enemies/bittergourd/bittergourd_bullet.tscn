@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chp1gic2mu6fl"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cbo2uvrt4jnlg" path="res://assets/sprites/enemies/bittergourd/bittergourd_bullet.png" id="2_ca2x8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]

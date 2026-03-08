@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwg4dafxsk4ua"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bikvk68kxjg78" path="res://assets/sprites/enemies/watermelon/watermelon_bullet_explode1.png" id="2_hw0c6"]
 [ext_resource type="Texture2D" uid="uid://b878leea4ayab" path="res://assets/sprites/enemies/watermelon/watermelon_bullet_fly.png" id="3_v4fkm"]
 

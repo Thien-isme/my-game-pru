@@ -19,6 +19,8 @@ extends Node2D
 @export var override_shoot_cooldown: float = 0.0
 ## Chỉnh tốc độ đạn riêng cho bầy quái này (để 0 thì xài mặc định của đạn)
 @export var override_bullet_speed: float = 0.0
+## Cho phép viên đạn bắn xuyên qua tường và đất nấp (Rất hữu ích cho quái đứng trên cao xả đạn xuống)
+@export var override_bullet_pass_terrain: bool = false
 ## Chỉnh khoảng cách đi tuần tra (để 0 thì xài mặc định của quái)
 @export var override_patrol_distance: float = 0.0
 
@@ -143,6 +145,7 @@ func _on_point_timer_timeout(data: Dictionary):
 		var d_rad = override_detect_radius
 		var a_rad = override_attack_radius
 		var p_dist = override_patrol_distance
+		var pass_terrain = override_bullet_pass_terrain
 		
 		if "override_health" in marker and marker.override_health > 0: h_hp = marker.override_health
 		if "override_shoot_cooldown" in marker and marker.override_shoot_cooldown > 0: shoot_cd = marker.override_shoot_cooldown
@@ -150,6 +153,7 @@ func _on_point_timer_timeout(data: Dictionary):
 		if "override_detect_radius" in marker and marker.override_detect_radius > 0: d_rad = marker.override_detect_radius
 		if "override_attack_radius" in marker and marker.override_attack_radius > 0: a_rad = marker.override_attack_radius
 		if "override_patrol_distance" in marker and marker.override_patrol_distance > 0: p_dist = marker.override_patrol_distance
+		if "override_bullet_pass_terrain" in marker and marker.override_bullet_pass_terrain: pass_terrain = true
 		
 		# Áp dụng các thông số
 		if h_hp > 0 and "health" in enemy:
@@ -164,6 +168,8 @@ func _on_point_timer_timeout(data: Dictionary):
 			enemy.attack_radius = a_rad
 		if p_dist > 0.0 and "patrol_distance" in enemy:
 			enemy.patrol_distance = p_dist
+		if pass_terrain and "bullet_pass_terrain" in enemy:
+			enemy.bullet_pass_terrain = pass_terrain
 			
 		# Add child MỚI vào hệ thống (lúc này _ready() của enemy mới bắt đầu chạy)
 		var parent_node = get_tree().current_scene.find_child("Enemies", true, false)

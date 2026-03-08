@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene  # Chỉnh trong Inspector cho từng enemy
 @export var bullet_speed: float = 300.0
 @export var bullet_damage: float = 10.0
+@export var bullet_pass_terrain: bool = false # Đạn có thể xuyên tường/đất không
 
 @export_category("Patrol Settings")
 @export var patrol_distance: float = 100.0 : # Khoảng cách đi tuần mỗi bên (để 0 nếu muốn đứng im)
@@ -47,7 +48,7 @@ func _update_shape(zone_name: String, radius_value: float):
 	if Engine.is_editor_hint() and is_inside_tree() and has_node(zone_name + "/CollisionShape2D"):
 		var shape = get_node(zone_name + "/CollisionShape2D").shape as CircleShape2D
 		if shape:
-			shape.radius = radius_value
+			shape.set_deferred("radius", radius_value)
 
 # Biến dùng cho đi tuần
 var start_x: float = 0.0
@@ -73,14 +74,14 @@ func _ready():
 		if d_shape:
 			var new_d_shape = d_shape.duplicate()
 			new_d_shape.radius = detect_radius
-			$DetectZone/CollisionShape2D.shape = new_d_shape
+			$DetectZone/CollisionShape2D.set_deferred("shape", new_d_shape)
 			
 	if attack_radius > 0 and has_node("AttackZone/CollisionShape2D"):
 		var a_shape = $AttackZone/CollisionShape2D.shape as CircleShape2D
 		if a_shape:
 			var new_a_shape = a_shape.duplicate()
 			new_a_shape.radius = attack_radius
-			$AttackZone/CollisionShape2D.shape = new_a_shape
+			$AttackZone/CollisionShape2D.set_deferred("shape", new_a_shape)
 			
 	# Lưu max_health và Khởi tạo Thanh Máu (Health Bar)
 	max_health = health
@@ -92,6 +93,22 @@ func _ready():
 		# Lớp va chạm 1 (thường là môi trường/đất). Bạn có thể chỉnh lại mask cho phù hợp.
 		floor_raycast.collision_mask = 1 
 		add_child(floor_raycast)
+
+	# Chờ 1 frame vật lý để Godot xử lý xong các vùng va chạm vừa được tạo
+	await get_tree().physics_frame
+	
+	# Kiểm tra xem Player có đang đứng sẵn trong vùng không (do đẻ quái sát bên cạnh Player)
+	if has_node("DetectZone"):
+		for body in $DetectZone.get_overlapping_bodies():
+			if body.is_in_group("player"):
+				player = body
+				break
+				
+	if has_node("AttackZone"):
+		for body in $AttackZone.get_overlapping_bodies():
+			if body.is_in_group("player"):
+				is_attacking = true
+				break
 
 func _create_health_bar():
 	health_bar = ProgressBar.new()
@@ -243,6 +260,9 @@ func _shoot():
 		
 	if "speed" in bullet:
 		bullet.speed = bullet_speed
+		
+	if "pass_terrain" in bullet:
+		bullet.pass_terrain = bullet_pass_terrain
 	await get_tree().create_timer(shoot_cooldown).timeout
 	can_shoot = true
 

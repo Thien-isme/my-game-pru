@@ -327,7 +327,7 @@ height = 70.0
 radius = 26.0
 height = 70.0
 
-[node name="dragronfruit" type="CharacterBody2D" unique_id=1361431546]
+[node name="dragronfruit" type="CharacterBody2D" unique_id=1361431546 groups=["enemy"]]
 script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_7udfj")
 
