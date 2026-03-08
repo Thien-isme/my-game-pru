@@ -1,13 +1,48 @@
-extends CharacterBody2D
+extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
 @export var speed: float = 300.0
 @export var damage: int = 1
 
+@onready var anim = $AnimatedSprite2D
+var is_exploding = false
+var shooter: Node2D = null # Lưu reference của quái bắn ra viên đạn này
+
+func _ready():
+	if anim:
+		anim.play("fly")
+	
+	# Kết nối tín hiệu body_entered bằng code để không phải vào từng Scene cài đặt
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+
 func _physics_process(delta):
-	var collision = move_and_collide(direction * speed * delta)
-	if collision:
-		var collider = collision.get_collider()
-		if collider != null and collider.is_in_group("player"):
-			collider.take_damage(damage)
-		queue_free()
+	if is_exploding:
+		return
+	
+	# Di chuyển đạn
+	position += direction * speed * delta
+
+func _on_body_entered(body):
+	if is_exploding:
+		return
+		
+	if body.is_in_group("player"):
+		body.take_damage(damage)
+		_explode()
+	elif body.name == "TileMap" or body.is_in_group("wall"): # Hoặc các group chứa tường/đất
+		# Nổ khi trúng tường
+		_explode()
+
+func _explode():
+	is_exploding = true
+	
+	if shooter != null and is_instance_valid(shooter):
+		if shooter.has_method("play_explode_sfx"):
+			shooter.play_explode_sfx()
+	
+	if anim and anim.sprite_frames.has_animation("explode"):
+		anim.play("explode", 2.5) # Phát hoạt ảnh nổ nhanh gấp 2.5 lần
+		await anim.animation_finished
+	
+	queue_free()

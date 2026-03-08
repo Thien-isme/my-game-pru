@@ -30,3 +30,9 @@ res://scenes/enemies/starapple/starapple_bullet.tscn
 res://scenes/enemies/starfruit/starfruit_bullet.tscn
 res://scenes/enemies/watermelon/watermelon_bullet.tscn
 res://scenes/levels/level_1/level_1_1.tscn
+res://scenes/enemies/base_scripts/enemy_script.gd
+res://scenes/enemies/base_scripts/enemy_bullet.gd
+res://scenes/enemies/pear/pear_bullet.tscn
+res://scenes/enemies/corn/corn_bullet.gd
+res://scenes/player/player_bullet.tscn
+res://scenes/enemies/spawner/enemy_spawner_controller.gd

@@ -271,17 +271,17 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=1411940863]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1894771401]
-position = Vector2(54, 1082)
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1367829167]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1725836191]
-position = Vector2(16, 1086)
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 

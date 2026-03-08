@@ -271,15 +271,17 @@ animation = &"idle"
 position = Vector2(50, -103)
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.9811092, 0.04110747, 0.34237793, 0.41960785)
 

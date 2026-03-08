@@ -193,15 +193,17 @@ autoplay = "idle"
 frame_progress = 0.38467783
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=760654323]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1372235416]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1737092953]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1618159546]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 

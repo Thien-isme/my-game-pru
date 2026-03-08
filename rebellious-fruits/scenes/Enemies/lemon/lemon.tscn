@@ -232,15 +232,18 @@ animation = &"run"
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 debug_color = Color(4.283637e-06, 0.6313123, 0.46681523, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(1, 0, 0.103134416, 0.41960785)
 

@@ -273,18 +273,13 @@ frame = 5
 frame_progress = 1.0
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2072129551]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=744779508]
-position = Vector2(945, -835)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=195368129]
-visible = false
-position = Vector2(217, 226)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=2078908108]
-position = Vector2(208, 531)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 

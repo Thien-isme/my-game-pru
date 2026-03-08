@@ -6,20 +6,28 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 radius = 5.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eutf0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig5aj"]
 atlas = ExtResource("2_ig5aj")
-region = Rect2(0, 752, 1264, 188)
+region = Rect2(0, 1316, 1264, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_htvbn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_eutf0"]
 atlas = ExtResource("2_ig5aj")
 region = Rect2(1264, 752, 1264, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dda2v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_htvbn"]
 atlas = ExtResource("2_ig5aj")
-region = Rect2(1264, 1316, 1264, 188)
+region = Rect2(0, 752, 1264, 188)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig5aj")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eutf0")
@@ -28,14 +36,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_htvbn")
 }],
 "loop": false,
-"name": &"explode",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dda2v")
-}],
-"loop": true,
 "name": &"fly",
 "speed": 5.0
 }]
@@ -47,9 +47,9 @@ script = ExtResource("1_script")
 shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801605938]
-position = Vector2(-43.000004, 0)
+position = Vector2(53.999996, 0)
 scale = Vector2(0.08475079, 0.082446806)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"explode"
+animation = &"fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

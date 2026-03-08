@@ -54,6 +54,7 @@ script = ExtResource("script_bullet")
 shape = SubResource("CircleShape2D_nbea0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
+autoplay = "fly"
 position = Vector2(-8, 2)
 scale = Vector2(0.048366755, 0.042902425)
 sprite_frames = SubResource("SpriteFrames_kvlxm")

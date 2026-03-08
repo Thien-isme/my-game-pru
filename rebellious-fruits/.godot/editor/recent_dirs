@@ -1,3 +1,4 @@
+res://assets/sprites/enemies/carrot/
 res://scenes/enemies/base_scripts/
 res://assets/sprites/enemies/lychee/
 res://assets/sprites/enemies/bittergourd/
@@ -11,7 +12,6 @@ res://assets/sprites/enemies/eggplant/
 res://assets/sprites/enemies/dragonfruit/
 res://assets/sprites/enemies/corn/
 res://assets/sprites/enemies/chili/
-res://assets/sprites/enemies/carrot/
 res://assets/sprites/enemies/apple/
 res://assets/sprites/enemies/pear/
 res://assets/audio/sfx/player/

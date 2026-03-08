@@ -254,15 +254,17 @@ animation = &"die"
 frame_progress = 0.46731418
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2107948562]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1042713952]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_w2oqy")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=379559597]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=501428736]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_xu6rq")
 debug_color = Color(0.83396417, 0.37977424, 0.24474075, 0.41960785)
 

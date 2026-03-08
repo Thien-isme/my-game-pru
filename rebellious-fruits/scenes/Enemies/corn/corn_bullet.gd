@@ -1,16 +1,44 @@
-extends Area2D  
-# (hoặc CharacterBody2D nếu bullet của bạn là CharacterBody2D)
+extends Area2D
 
-var direction = Vector2.RIGHT
-var speed = 300.0
-var damage = 1
+var direction: Vector2 = Vector2.RIGHT
+@export var speed: float = 300.0
+@export var damage: int = 1
+
+@onready var anim = $AnimatedSprite2D
+var is_exploding = false
+var shooter: Node2D = null
+
+func _ready():
+	if anim:
+		anim.play("fly")
+	
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
+	if is_exploding:
+		return
 	position += direction * speed * delta
 
 func _on_body_entered(body):
+	if is_exploding:
+		return
+		
 	if body.is_in_group("player"):
-		body.take_damage(damage)  # Gọi hàm nhận damage của player
-		queue_free()              # Xóa đạn sau khi trúng
-	elif body is TileMapLayer:
-		queue_free()              # Xóa đạn khi chạm tường
+		body.take_damage(damage)
+		_explode()
+	elif body.name == "TileMap" or body.is_in_group("wall"):
+		_explode()
+
+func _explode():
+	is_exploding = true
+	
+	if shooter != null and is_instance_valid(shooter):
+		if shooter.has_method("play_explode_sfx"):
+			shooter.play_explode_sfx()
+	
+	if anim and anim.sprite_frames.has_animation("explode"):
+		anim.play("explode", 2.5) # Phát hoạt ảnh nổ nhanh gấp 2.5 lần
+		await anim.animation_finished
+	
+	queue_free()

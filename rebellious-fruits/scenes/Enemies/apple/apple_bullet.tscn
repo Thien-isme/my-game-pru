@@ -48,8 +48,10 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_da54q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217868503]
-scale = Vector2(0.035356686, 0.023995532)
+position = Vector2(-1.0000001, 1.4901161e-08)
+scale = Vector2(0.01947747, 0.016043527)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"explode"
+autoplay = "fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

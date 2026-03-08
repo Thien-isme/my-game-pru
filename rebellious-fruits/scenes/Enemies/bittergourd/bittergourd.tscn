@@ -355,17 +355,17 @@ animation = &"shoot"
 autoplay = "idle"
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=222266945]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=236899453]
-position = Vector2(-49, 902)
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1536673399]
-visible = false
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=823167070]
-position = Vector2(156, 718)
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 

@@ -7,12 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/enemies/lychee/lychee.tscn" id="4_4p2km"]
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/enemies/apple/apple.tscn" id="6_1ur3b"]
 [ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/enemies/bittergourd/bittergourd.tscn" id="7_jj1x5"]
-[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/enemies/carrot/carrot.tscn" id="8_awixu"]
 [ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/enemies/chili/chili.tscn" id="9_g1eys"]
 [ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/enemies/corn/corn.tscn" id="10_r0nt3"]
 [ext_resource type="PackedScene" uid="uid://cqmy1g8obt4m1" path="res://scenes/enemies/dragonfruit/dragronfruit.tscn" id="11_a4jkn"]
 [ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/enemies/lemon/lemon.tscn" id="12_lwp0h"]
-[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/enemies/eggplant/eggplant.tscn" id="13_jj1x5"]
+[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/enemies/carrot/carrot.tscn" id="13_jj1x5"]
 [ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/enemies/mangosteen/mangosteen.tscn" id="14_awixu"]
 [ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/enemies/pear/pear.tscn" id="15_lwp0h"]
 [ext_resource type="PackedScene" uid="uid://bde0mvmihdubf" path="res://scenes/enemies/pumpkin/pumpkin.tscn" id="16_34ah1"]
@@ -9523,7 +9522,7 @@ texture = ExtResource("1_4p2km")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_13t7t")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwp0h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4jkn"]
 resource_local_to_scene = true
 size = Vector2(300, 600)
 
@@ -9569,7 +9568,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawner/DetectArea" index="0" unique_id=325501346]
 position = Vector2(-125, -167)
-shape = SubResource("RectangleShape2D_lwp0h")
+shape = SubResource("RectangleShape2D_a4jkn")
 
 [node name="Interactables" type="Node2D" parent="." unique_id=1319296049]
 
@@ -9581,7 +9580,7 @@ position = Vector2(439, 252)
 [node name="bittergourd" parent="." unique_id=1774120902 instance=ExtResource("7_jj1x5")]
 position = Vector2(542, 319)
 
-[node name="carrot" parent="." unique_id=49894218 instance=ExtResource("8_awixu")]
+[node name="carrot" parent="." unique_id=49894218 instance=ExtResource("13_jj1x5")]
 position = Vector2(662, 323)
 
 [node name="chili" parent="." unique_id=213129797 instance=ExtResource("9_g1eys")]
@@ -9595,9 +9594,6 @@ position = Vector2(701, 354)
 
 [node name="lemon" parent="." unique_id=888745326 instance=ExtResource("12_lwp0h")]
 position = Vector2(425, 175)
-
-[node name="lychee" parent="." unique_id=212998939 instance=ExtResource("4_4p2km")]
-position = Vector2(858, 400)
 
 [node name="eggplant" parent="." unique_id=2063250104 instance=ExtResource("13_jj1x5")]
 position = Vector2(147, 356)

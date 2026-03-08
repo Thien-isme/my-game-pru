@@ -311,13 +311,17 @@ sprite_frames = SubResource("SpriteFrames_vvfs6")
 animation = &"shoot"
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=1553530925]
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1307082418]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_wbf40")
 debug_color = Color(0.98183614, 0, 0.37168646, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=33990615]
+position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=865067098]
+position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_x1i40")
 debug_color = Color(0.30135283, 0.62818587, 0.027222175, 0.41960785)

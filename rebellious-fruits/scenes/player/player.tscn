@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://dpwjgx1q1rrtj" path="res://scenes/player/camera_lock.gd" id="camera_lock_script"]
 [ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://scenes/ui/hud.tscn" id="10_hud"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
@@ -388,11 +389,12 @@ sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"shoot"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
+script = ExtResource("camera_lock_script")
 position = Vector2(346, -154)
 position_smoothing_enabled = true
 drag_vertical_enabled = true
-drag_top_margin = 0.75
-drag_bottom_margin = 0.75
+drag_top_margin = 1.0
+drag_bottom_margin = 1.0
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
 position = Vector2(39, -1)
