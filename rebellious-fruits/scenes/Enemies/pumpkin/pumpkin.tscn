@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://rlhmpmm6l3sw" path="res://assets/sprites/enemies/pumpkin/pumpkin_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pumpkin"]
-radius = 40.0
-height = 100.0
+radius = 78.0
+height = 210.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tlrs6"]
 atlas = ExtResource("3_die")
@@ -262,16 +262,21 @@ script = ExtResource("1_script")
 shape = SubResource("CapsuleShape2D_pumpkin")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1152659975]
+position = Vector2(-14.124994, -5.750003)
+scale = Vector2(0.24120468, 0.36281335)
 sprite_frames = SubResource("SpriteFrames_pumpkin")
 animation = &"shoot"
 autoplay = "idle"
+frame_progress = 0.52081186
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=1818212653]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=2040837746]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1256778515]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1295166519]
 shape = SubResource("CircleShape2D_attack")
@@ -279,6 +284,8 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1594657468]
 position = Vector2(50, 0)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=2005094220]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

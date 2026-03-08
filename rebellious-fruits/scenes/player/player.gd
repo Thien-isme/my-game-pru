@@ -7,16 +7,23 @@ const GRAVITY = 900
 @onready var anim = $AnimatedSprite2D
 @onready var spawn_point = $BulletSpawnPoint
 @onready var hud = $HUD
-@onready var sfx_player = $SFXPlayer
+@onready var sfx_player = $SFXPlayer        # Dùng cho âm thanh ngắn (bắn, nhảy, chết, bị đánh)
+@onready var sfx_loop = $SFXPlayerLoop      # Dùng cho âm thanh lặp (chạy, đứng yên, cúi)
 
 @export_category("Audio")
-@export var shoot_sfx: AudioStream  # Kéo file âm thanh vào đây trong Inspector
+@export var shoot_sfx: AudioStream   # Tiếng bắn súng
+@export var jump_sfx: AudioStream    # Tiếng nhảy lên
+@export var run_sfx: AudioStream     # Tiếng chạy (lặp)
+@export var idle_sfx: AudioStream    # Tiếng đứng yên thở (lặp)
+@export var crouch_sfx: AudioStream  # Tiếng cúi xuống (lặp)
+@export var hit_sfx: AudioStream     # Tiếng bị trúng đạn
+@export var die_sfx: AudioStream     # Tiếng chết
 
 var is_shooting = false
 var is_jump = false
 var is_hit = false
 var is_crouching = false
-var health = 5  # Máu của player
+var health = 5
 var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 
@@ -31,9 +38,7 @@ func add_score(amount: int):
 	if hud:
 		hud.update_score(score)
 
-
 func _physics_process(delta):
-
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
@@ -43,18 +48,19 @@ func _physics_process(delta):
 	if direction != 0:
 		anim.flip_h = direction < 0
 
+	# Nhảy
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_FORCE
+		_play_sfx(jump_sfx)
 
-	# shoot
+	# Bắn súng
 	if Input.is_action_just_pressed("click") and not is_shooting:
 		is_shooting = true
-		
+
 		var mouse_pos = get_global_mouse_position()
 		var direction_bullet = (mouse_pos - global_position).normalized()
-		
+
 		anim.flip_h = mouse_pos.x < global_position.x
-		#Chọn animation dựa vào hướng chuột
 		var diff_y = mouse_pos.y - global_position.y
 		if diff_y < -80:
 			anim.play("shoot_high")
@@ -62,62 +68,78 @@ func _physics_process(delta):
 			anim.play("shoot_low")
 		else:
 			anim.play("shoot")
-	
+
 		var bullet = bullet_scene.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_position = spawn_point.global_position
-		bullet.direction = direction_bullet  # ← Đúng rồi! direction_bullet là Vector2
-		# Xoay toàn bộ bullet theo hướng bắn
+		bullet.direction = direction_bullet
 		bullet.rotation = direction_bullet.angle()
-		
-		# Phát âm thanh bắn súng (từ file kéo thả trong Inspector)
-		if shoot_sfx and sfx_player:
-			sfx_player.stream = shoot_sfx
-			sfx_player.play()
+
+		_play_sfx(shoot_sfx)
 
 		await get_tree().create_timer(0.8).timeout
 		is_shooting = false
 
-# crouch
+	# Cúi
 	is_crouching = Input.is_action_pressed("crouch") and is_on_floor()
 	if is_crouching:
-		velocity.x = 0  # Đứng yên khi cúi
-		
-	# animation
-	# animation
+		velocity.x = 0
+
+	# Animation + âm thanh trạng thái (looping)
 	if not is_shooting and not is_hit:
 		if is_crouching:
-			if anim.animation != "crouch":   # ← Chỉ play nếu chưa đang chạy
+			if anim.animation != "crouch":
 				anim.play("crouch")
+				_play_loop_sfx(crouch_sfx)
 		elif not is_on_floor():
 			if anim.animation != "jump":
 				anim.play("jump")
+				_stop_loop_sfx()
 		elif direction != 0:
 			if anim.animation != "run":
 				anim.play("run")
+				_play_loop_sfx(run_sfx)
 		else:
 			if anim.animation != "idle":
 				anim.play("idle")
-
-
-
+				_play_loop_sfx(idle_sfx)
 
 	move_and_slide()
-	
+
+# --- Hàm phát âm thanh ---
+func _play_sfx(stream: AudioStream):
+	if stream and sfx_player:
+		sfx_player.stream = stream
+		sfx_player.play()
+
+func _play_loop_sfx(stream: AudioStream):
+	if stream and sfx_loop:
+		if sfx_loop.stream == stream and sfx_loop.playing:
+			return  # Đang phát rồi, không bật lại
+		sfx_loop.stream = stream
+		sfx_loop.play()
+
+func _stop_loop_sfx():
+	if sfx_loop and sfx_loop.playing:
+		sfx_loop.stop()
+
+# --- Nhận sát thương ---
 func take_damage(amount):
-	if is_hit:  # Tránh bị hit nhiều lần cùng lúc
+	if is_hit:
 		return
 	health -= amount
 	if hud:
 		hud.update_health(health)
-	
+
 	is_hit = true
-	anim.play("hit")                          # Phát animation hit
-	await get_tree().create_timer(0.4).timeout  # Chờ animation xong
+	anim.play("hit")
+	_play_sfx(hit_sfx)
+	await get_tree().create_timer(0.4).timeout
 	is_hit = false
 	if health <= 0:
 		die()
 
 func die():
+	_play_sfx(die_sfx)
 	print("Player 'died' but death is temporarily disabled for testing.")
-	# get_tree().reload_current_scene()  # Reload level khi chết
+	# get_tree().reload_current_scene()  # Bật lại khi cần

@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://6aej444komnx" path="res://assets/sprites/enemies/bittergourd/bittergourd_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bittergourd"]
-radius = 40.0
-height = 100.0
+radius = 26.0
+height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7jxb"]
 atlas = ExtResource("3_die")
@@ -346,25 +346,31 @@ script = ExtResource("1_script")
 shape = SubResource("CapsuleShape2D_bittergourd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=21293532]
+position = Vector2(10, -7.9999995)
+scale = Vector2(0.17782739, 0.16011237)
 sprite_frames = SubResource("SpriteFrames_bittergourd")
 animation = &"shoot"
 autoplay = "idle"
-frame = 5
-frame_progress = 1.0
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=222266945]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=236899453]
+position = Vector2(-49, 902)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1536673399]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=823167070]
+position = Vector2(156, 718)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=635254067]
 position = Vector2(50, 0)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1214629707]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

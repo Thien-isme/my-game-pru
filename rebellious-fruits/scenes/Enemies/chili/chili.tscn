@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bettgnnwnfmsr" path="res://assets/sprites/enemies/chili/chili_shoot.png" id="5_shoot"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_chili"]
-radius = 40.0
-height = 100.0
+radius = 26.0
+height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxof1"]
 atlas = ExtResource("3_die")
@@ -32,10 +32,6 @@ region = Rect2(938, 768, 938, 768)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bskc"]
 atlas = ExtResource("3_die")
 region = Rect2(1876, 768, 938, 768)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yog71"]
-atlas = ExtResource("2_idle")
-region = Rect2(0, 0, 938, 768)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw1v7"]
 atlas = ExtResource("2_idle")
@@ -116,9 +112,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yog71")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dw1v7")
 }, {
 "duration": 1.0,
@@ -190,17 +183,21 @@ script = ExtResource("1_script")
 shape = SubResource("CapsuleShape2D_chili")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=615425461]
+position = Vector2(-6.999998, -6.000003)
+scale = Vector2(0.1363273, 0.15218097)
 sprite_frames = SubResource("SpriteFrames_chili")
-animation = &"shoot"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.26624444
+frame_progress = 0.38467783
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=760654323]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1372235416]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1737092953]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1618159546]
 shape = SubResource("CircleShape2D_attack")
@@ -208,6 +205,8 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=42198726]
 position = Vector2(50, 0)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1100188295]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

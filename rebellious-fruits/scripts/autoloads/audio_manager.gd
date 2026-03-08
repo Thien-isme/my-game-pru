@@ -45,6 +45,14 @@ func load_music(track_name: String, file_path: String) -> void:
 	else:
 		push_error("AudioManager: Không tìm thấy file nhạc nền '%s' tại đường dẫn '%s'" % [track_name, file_path])
 
+## Nạp nhạc trực tiếp từ biến AudioStream (dùng khi nhạc được kéo thả vào Inspector)
+func load_music_stream(track_name: String, stream: AudioStream) -> void:
+	if stream:
+		music_tracks[track_name] = stream
+	else:
+		push_warning("AudioManager: Stream nhạc '%s' bị null, bỏ qua." % track_name)
+
+
 # --- HÀM PHÁT HIỆU ỨNG ÂM THANH (SFX) ---
 # Ví dụ: Măng cụt chết, gọi -> AudioManager.play_sfx("mangosteen_die")
 func play_sfx(sound_name: String, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:

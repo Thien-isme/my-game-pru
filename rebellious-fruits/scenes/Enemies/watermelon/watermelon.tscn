@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ch6hdbtq25n1l" path="res://assets/sprites/enemies/watermelon/watermelon_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_watermelon"]
-radius = 40.0
-height = 100.0
+radius = 90.0
+height = 250.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmb7m"]
 atlas = ExtResource("3_die")
@@ -123,14 +123,6 @@ region = Rect2(1896, 60, 918, 738)
 atlas = ExtResource("5_shoot")
 region = Rect2(60, 798, 918, 738)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxyo7"]
-atlas = ExtResource("5_shoot")
-region = Rect2(978, 798, 918, 738)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d7bdd"]
-atlas = ExtResource("5_shoot")
-region = Rect2(1896, 798, 918, 738)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_watermelon"]
 animations = [{
 "frames": [{
@@ -237,12 +229,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ymn8f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pxyo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d7bdd")
 }],
 "loop": false,
 "name": &"shoot",
@@ -262,16 +248,22 @@ script = ExtResource("1_script")
 shape = SubResource("CapsuleShape2D_watermelon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2059906057]
+position = Vector2(30.000002, 3)
+scale = Vector2(0.36328974, 0.39464772)
 sprite_frames = SubResource("SpriteFrames_watermelon")
 animation = &"shoot"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=753180135]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1415659545]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=41680860]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=138188327]
 shape = SubResource("CircleShape2D_attack")
@@ -279,6 +271,8 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1840518741]
 position = Vector2(50, 0)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=145350560]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

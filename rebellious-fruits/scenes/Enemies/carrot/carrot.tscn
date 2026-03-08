@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://brwtpgh8mgu5j" path="res://assets/sprites/enemies/carrot/carrot_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_carrot"]
-radius = 40.0
-height = 100.0
+radius = 26.0
+height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr8md"]
 atlas = ExtResource("3_die")
@@ -262,23 +262,32 @@ script = ExtResource("1_script")
 shape = SubResource("CapsuleShape2D_carrot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2052750239]
+position = Vector2(11.999999, -2.3841858e-07)
+scale = Vector2(0.09217525, 0.10255984)
 sprite_frames = SubResource("SpriteFrames_carrot")
 animation = &"shoot"
 autoplay = "idle"
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2072129551]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=744779508]
+position = Vector2(945, -835)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=195368129]
+visible = false
+position = Vector2(217, 226)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=2078908108]
+position = Vector2(208, 531)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1289973207]
 position = Vector2(50, 0)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1713229979]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

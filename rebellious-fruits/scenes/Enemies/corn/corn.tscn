@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c6urw077c3sxj" path="res://assets/sprites/enemies/corn/corn_shoot.png" id="4_06e50"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 62.0
-height = 160.0
+radius = 90.0
+height = 216.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk8lp"]
 atlas = ExtResource("1_s8d2f")
@@ -243,21 +243,24 @@ bullet_scene = ExtResource("2_xu6rq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 z_index = 1
-position = Vector2(0, -8.975)
+position = Vector2(-7, -19)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-scale = Vector2(0.28033355, 0.2539833)
+position = Vector2(8, -12)
+scale = Vector2(0.3086103, 0.33003032)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"die"
 frame_progress = 0.46731418
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2107948562]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1042713952]
 shape = SubResource("CircleShape2D_w2oqy")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=379559597]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=501428736]
 shape = SubResource("CircleShape2D_xu6rq")
@@ -265,6 +268,8 @@ debug_color = Color(0.83396417, 0.37977424, 0.24474075, 0.41960785)
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1684154569]
 position = Vector2(-79, -53)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1213271804]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

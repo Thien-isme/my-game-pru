@@ -207,8 +207,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xs7gl"]
-radius = 33.0
-height = 80.0
+radius = 42.0
+height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
 radius = 300.0
@@ -221,27 +221,29 @@ script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_uwx3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1052839285]
-position = Vector2(-3.9999995, -10.000001)
 scale = Vector2(0.13525817, 0.13256316)
 sprite_frames = SubResource("SpriteFrames_6x2sk")
 animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941569135]
-position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_xs7gl")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.9682879, 0.10152895, 0.37886953, 0.41960785)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=769252980]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

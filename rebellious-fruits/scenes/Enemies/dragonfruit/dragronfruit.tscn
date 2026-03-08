@@ -318,13 +318,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
 radius = 300.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 200.0
+[sub_resource type="CapsuleShape2D" id="CircleShape2D_attack"]
+radius = 26.0
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tesoi"]
+radius = 26.0
+height = 70.0
 
 [node name="dragronfruit" type="CharacterBody2D" unique_id=1361431546]
 script = ExtResource("script_enemy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=578930678]
+position = Vector2(6.999998, -6)
+scale = Vector2(0.26529852, 0.2486979)
 sprite_frames = SubResource("SpriteFrames_42hxg")
 animation = &"shoot"
 frame_progress = 0.37247238
@@ -332,14 +339,21 @@ frame_progress = 0.37247238
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
 shape = SubResource("CircleShape2D_attack")
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=938890316]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2087236528]
+shape = SubResource("CapsuleShape2D_tesoi")
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

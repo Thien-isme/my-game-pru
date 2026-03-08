@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 26.98
+radius = 26.0
 height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e85ym"]
@@ -260,10 +260,11 @@ script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_oxw1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+position = Vector2(0, 0)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-1, -2)
+position = Vector2(0, 0)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"idle"
@@ -272,15 +273,19 @@ animation = &"idle"
 position = Vector2(50, -103)
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.9811092, 0.04110747, 0.34237793, 0.41960785)
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=561483663]
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
