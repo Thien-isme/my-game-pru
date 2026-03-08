@@ -1,36 +1,84 @@
 [gd_scene format=3 uid="uid://cc0f24pna4h6u"]
 
-[ext_resource type="Script" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
-
-[ext_resource type="Texture2D" uid="uid://do67f1gul2a5p" path="res://assets/sprites/enemies/lemon/lemon_bullet.png" id="1_xvtd4"]
+[ext_resource type="Texture2D" uid="uid://bfkt3upet8cca" path="res://assets/sprites/enemies/lemon/lemon_bullet_explode.png" id="2_mvq2n"]
+[ext_resource type="Texture2D" uid="uid://s14mxa3ey3us" path="res://assets/sprites/enemies/lemon/lemon_bullet_fly.png" id="3_y4pwk"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
 height = 70.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_081in"]
-atlas = ExtResource("1_xvtd4")
-region = Rect2(150, 195, 1150, 326)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw5gy"]
+atlas = ExtResource("2_mvq2n")
+region = Rect2(2316, 0, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mc8e"]
+atlas = ExtResource("2_mvq2n")
+region = Rect2(0, 592, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tq54"]
+atlas = ExtResource("2_mvq2n")
+region = Rect2(1158, 592, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvaoy"]
+atlas = ExtResource("3_y4pwk")
+region = Rect2(2316, 592, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_281af"]
+atlas = ExtResource("3_y4pwk")
+region = Rect2(1158, 592, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvac2"]
+atlas = ExtResource("3_y4pwk")
+region = Rect2(0, 592, 1158, 592)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fypjk"]
+atlas = ExtResource("3_y4pwk")
+region = Rect2(2316, 0, 1158, 592)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_081in")
+"texture": SubResource("AtlasTexture_vw5gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mc8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tq54")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvaoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_281af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvac2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fypjk")
 }],
 "loop": true,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="lemon_bullet" type="CharacterBody2D" unique_id=638291107]
+[node name="lemon_bullet" type="Area2D" unique_id=389430230]
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-1, -2)
+position = Vector2(-146, 0)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
+frame_progress = 0.30373353

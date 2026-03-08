@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqmy1g8obt4m1"]
 
 [ext_resource type="Texture2D" uid="uid://c0yaytry7sq0a" path="res://assets/sprites/enemies/dragonfruit/dragondruit_die.png" id="1_8rqn2"]
+[ext_resource type="PackedScene" uid="uid://dbeacbo4u13go" path="res://scenes/enemies/dragonfruit/dragonfruit_bullet.tscn" id="2_7udfj"]
 [ext_resource type="Texture2D" uid="uid://u6r6cu5k2io7" path="res://assets/sprites/enemies/dragonfruit/dragondruit_idle.png" id="2_tesoi"]
 [ext_resource type="Texture2D" uid="uid://fw23fys64vmr" path="res://assets/sprites/enemies/dragonfruit/dragondruit_jump.png" id="3_7udfj"]
 [ext_resource type="Texture2D" uid="uid://d272aaaukorq3" path="res://assets/sprites/enemies/dragonfruit/dragondruit_run.png" id="4_3r8ic"]
@@ -328,6 +329,7 @@ height = 70.0
 
 [node name="dragronfruit" type="CharacterBody2D" unique_id=1361431546]
 script = ExtResource("script_enemy")
+bullet_scene = ExtResource("2_7udfj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=578930678]
 position = Vector2(6.999998, -6)

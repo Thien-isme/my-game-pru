@@ -1,31 +1,55 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://cnd6ceukdthfh"]
 
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ba62nb2eexqdb" path="res://assets/sprites/enemies/carrot/carrot_bullet.png" id="2_ig5aj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
-radius = 10.0
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eutf0"]
+atlas = ExtResource("2_ig5aj")
+region = Rect2(0, 752, 1264, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htvbn"]
+atlas = ExtResource("2_ig5aj")
+region = Rect2(1264, 752, 1264, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dda2v"]
+atlas = ExtResource("2_ig5aj")
+region = Rect2(1264, 1316, 1264, 188)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htvbn")
+}],
 "loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dda2v")
+}],
 "loop": true,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="carrot_bullet" type="Area2D"]
+[node name="carrot_bullet" type="Area2D" unique_id=1963396140]
 script = ExtResource("1_script")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1555247957]
 shape = SubResource("CircleShape2D_bullet")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1801605938]
+position = Vector2(-43.000004, 0)
+scale = Vector2(0.08475079, 0.082446806)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
+animation = &"explode"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

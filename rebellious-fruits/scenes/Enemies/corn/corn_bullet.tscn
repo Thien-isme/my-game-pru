@@ -4,21 +4,46 @@
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_j5dd0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 3.0
-height = 6.0
+height = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5dd0"]
 atlas = ExtResource("1_8aggf")
-region = Rect2(1484, 340, 742, 564)
+region = Rect2(876, 490, 314, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j5sf"]
+atlas = ExtResource("1_8aggf")
+region = Rect2(1294, 490, 314, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxsxg"]
+atlas = ExtResource("1_8aggf")
+region = Rect2(1712, 490, 314, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xku5"]
+atlas = ExtResource("1_8aggf")
+region = Rect2(40, 490, 314, 700)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j5dd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j5sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxsxg")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xku5")
 }],
 "loop": true,
-"name": &"corn_bullet",
+"name": &"fly",
 "speed": 5.0
 }]
 
@@ -26,13 +51,13 @@ animations = [{
 script = ExtResource("1_j5dd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
-position = Vector2(7, -3)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(0, 1.9073486e-06)
-scale = Vector2(0.026956702, 0.023263354)
+position = Vector2(2.1403718, -2.2865431)
+rotation = 1.0821041
+scale = Vector2(0.05667244, 0.052790117)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"corn_bullet"
+animation = &"fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

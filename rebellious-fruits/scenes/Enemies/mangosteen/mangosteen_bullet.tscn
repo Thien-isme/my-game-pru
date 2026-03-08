@@ -1,19 +1,52 @@
 [gd_scene format=3 uid="uid://7llecjqnsloq"]
 
-[ext_resource type="Texture2D" uid="uid://vqj0qaynigbg" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet_fly.png" id="2_1npsf"]
+[ext_resource type="Texture2D" uid="uid://cwfix1p0mlnts" path="res://assets/sprites/enemies/mangosteen/mangosteen_bullet_explode.png" id="2_1npsf"]
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ebfe1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lh272"]
 atlas = ExtResource("2_1npsf")
-region = Rect2(800, 0, 800, 753)
+region = Rect2(800, 108, 800, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hefvo"]
+atlas = ExtResource("2_1npsf")
+region = Rect2(1600, 108, 800, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cp7h"]
+atlas = ExtResource("2_1npsf")
+region = Rect2(0, 988, 800, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d34ya"]
+atlas = ExtResource("2_1npsf")
+region = Rect2(800, 988, 800, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c2b6"]
+atlas = ExtResource("2_1npsf")
+region = Rect2(0, 108, 800, 600)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lh272"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lh272")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hefvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cp7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d34ya")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c2b6")
 }],
 "loop": true,
 "name": &"fly",
@@ -27,9 +60,10 @@ script = ExtResource("script_bullet")
 shape = SubResource("CircleShape2D_ebfe1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007238034]
-position = Vector2(2.3841858e-07, -4.7683716e-07)
-scale = Vector2(0.16173662, 0.15480769)
+position = Vector2(5.9604645e-08, -5.9604645e-08)
+scale = Vector2(0.03802958, 0.0376843)
 sprite_frames = SubResource("SpriteFrames_lh272")
 animation = &"fly"
+frame_progress = 0.052373253
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

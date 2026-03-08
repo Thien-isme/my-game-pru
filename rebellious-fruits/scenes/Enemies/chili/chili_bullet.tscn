@@ -1,31 +1,70 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://dxttkqlob880e"]
 
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://iqn5mnbddtms" path="res://assets/sprites/enemies/chili/chili_bullet.png" id="2_5abp1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
-radius = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5abp1"]
+atlas = ExtResource("2_5abp1")
+region = Rect2(1846, 0, 923, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jckbl"]
+atlas = ExtResource("2_5abp1")
+region = Rect2(0, 752, 923, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg8h5"]
+atlas = ExtResource("2_5abp1")
+region = Rect2(923, 752, 923, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_she86"]
+atlas = ExtResource("2_5abp1")
+region = Rect2(0, 0, 923, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfpc3"]
+atlas = ExtResource("2_5abp1")
+region = Rect2(923, 0, 923, 752)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5abp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jckbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg8h5")
+}],
 "loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_she86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfpc3")
+}],
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="chili_bullet" type="Area2D"]
+[node name="chili_bullet" type="Area2D" unique_id=1141161269]
 script = ExtResource("1_script")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=576379258]
 shape = SubResource("CircleShape2D_bullet")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146187083]
+position = Vector2(-6, 3)
+scale = Vector2(0.08565818, 0.07413564)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
+animation = &"explode"
+frame = 2
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

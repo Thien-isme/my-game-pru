@@ -9523,7 +9523,7 @@ texture = ExtResource("1_4p2km")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_13t7t")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_awixu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwp0h"]
 resource_local_to_scene = true
 size = Vector2(300, 600)
 
@@ -9569,7 +9569,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawner/DetectArea" index="0" unique_id=325501346]
 position = Vector2(-125, -167)
-shape = SubResource("RectangleShape2D_awixu")
+shape = SubResource("RectangleShape2D_lwp0h")
 
 [node name="Interactables" type="Node2D" parent="." unique_id=1319296049]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://t5v7q4nmgndt" path="res://assets/sprites/enemies/pear/pear_idle.png" id="2_idle"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/pear/pear_bullet.tscn" id="2_lbwit"]
 [ext_resource type="Texture2D" uid="uid://dp7e3efgtma4a" path="res://assets/sprites/enemies/pear/pear_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://dmgsu3r3818hl" path="res://assets/sprites/enemies/pear/pear_run.png" id="4_run"]
 [ext_resource type="Texture2D" uid="uid://s03xmk5fbfry" path="res://assets/sprites/enemies/pear/pear_shoot.png" id="5_shoot"]
@@ -243,6 +244,7 @@ radius = 576.0
 
 [node name="pear" type="CharacterBody2D" unique_id=269960179 groups=["enemy"]]
 script = ExtResource("1_script")
+bullet_scene = ExtResource("2_lbwit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=25142237]
 shape = SubResource("CapsuleShape2D_pear")

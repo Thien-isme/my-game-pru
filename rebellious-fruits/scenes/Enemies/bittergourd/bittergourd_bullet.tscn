@@ -1,31 +1,48 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://chp1gic2mu6fl"]
 
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cbo2uvrt4jnlg" path="res://assets/sprites/enemies/bittergourd/bittergourd_bullet.png" id="2_ca2x8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
-radius = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wvjy"]
+atlas = ExtResource("2_ca2x8")
+region = Rect2(1454, 0, 727, 976)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca2x8"]
+atlas = ExtResource("2_ca2x8")
+region = Rect2(0, 0, 727, 976)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wvjy")
+}],
 "loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca2x8")
+}],
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="bittergourd_bullet" type="Area2D"]
+[node name="bittergourd_bullet" type="Area2D" unique_id=1053153322]
 script = ExtResource("1_script")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428218249]
 shape = SubResource("CircleShape2D_bullet")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1006761232]
+position = Vector2(-7.000004, 5.999999)
+rotation = 2.0804324
+scale = Vector2(-0.058938105, 0.07865969)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
+animation = &"explode"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

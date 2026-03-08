@@ -3,33 +3,67 @@
 [ext_resource type="Texture2D" uid="uid://c8lav18jgf47f" path="res://assets/sprites/enemies/lychee/lychee_bullet.png" id="1_5j5lm"]
 [ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-radius = 26.98
-height = 70.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2ee0"]
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2ee0"]
 atlas = ExtResource("1_5j5lm")
-region = Rect2(888, 396, 730, 730)
+region = Rect2(947, 752, 947, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82p81"]
+atlas = ExtResource("1_5j5lm")
+region = Rect2(1894, 752, 947, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhfdr"]
+atlas = ExtResource("1_5j5lm")
+region = Rect2(0, 0, 947, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo3e7"]
+atlas = ExtResource("1_5j5lm")
+region = Rect2(947, 0, 947, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kajw"]
+atlas = ExtResource("1_5j5lm")
+region = Rect2(1894, 0, 947, 752)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c2ee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82p81")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhfdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo3e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kajw")
 }],
 "loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="lychee_bullet" type="CharacterBody2D" unique_id=638291107]
+[node name="lychee_bullet" type="Area2D" unique_id=1294912303]
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
-shape = SubResource("CapsuleShape2D_lvxji")
+shape = SubResource("CircleShape2D_c2ee0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-1, -2)
-scale = Vector2(0.28033355, 0.24553569)
+position = Vector2(10, -1)
+scale = Vector2(0.052895717, 0.051915135)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
+frame = 2
+frame_progress = 1.0

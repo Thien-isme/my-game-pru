@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ca6e6n3rnwa8j"]
 
 [ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cwg4dafxsk4ua" path="res://scenes/enemies/watermelon/watermelon_bullet.tscn" id="2_24awb"]
 [ext_resource type="Texture2D" uid="uid://shty28f0vy8r" path="res://assets/sprites/enemies/watermelon/watermelon_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://d027hgfe8wdjk" path="res://assets/sprites/enemies/watermelon/watermelon_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://ck3l4tavbl35f" path="res://assets/sprites/enemies/watermelon/watermelon_run.png" id="4_run"]
@@ -243,6 +244,7 @@ radius = 300.0
 
 [node name="watermelon" type="CharacterBody2D" unique_id=789602549 groups=["enemy"]]
 script = ExtResource("1_script")
+bullet_scene = ExtResource("2_24awb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=840774768]
 shape = SubResource("CapsuleShape2D_watermelon")

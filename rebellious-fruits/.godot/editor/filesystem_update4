@@ -15,3 +15,17 @@ res://scenes/enemies/pumpkin/pumpkin.tscn
 res://scenes/enemies/starapple/starapple.tscn
 res://scenes/enemies/watermelon/watermelon.tscn
 res://scenes/enemies/eggplant/eggplant.tscn
+res://scenes/enemies/apple/apple_bullet.tscn
+res://scenes/enemies/bittergourd/bittergourd_bullet.tscn
+res://scenes/enemies/carrot/carrot_bullet.tscn
+res://scenes/enemies/chili/chili_bullet.tscn
+res://scenes/enemies/corn/corn_bullet.tscn
+res://scenes/enemies/dragonfruit/dragonfruit_bullet.tscn
+res://scenes/enemies/eggplant/eggplant_bullet.tscn
+res://scenes/enemies/lemon/lemon_bullet.tscn
+res://scenes/enemies/lychee/lychee_bullet.tscn
+res://scenes/enemies/mangosteen/mangosteen_bullet.tscn
+res://scenes/enemies/pumpkin/pumpkin_bullet.tscn
+res://scenes/enemies/starapple/starapple_bullet.tscn
+res://scenes/enemies/starfruit/starfruit_bullet.tscn
+res://scenes/enemies/watermelon/watermelon_bullet.tscn

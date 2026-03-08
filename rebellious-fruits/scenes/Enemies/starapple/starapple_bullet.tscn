@@ -1,31 +1,78 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://b3mbbb6wkm570"]
 
 [ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b246a0fpuiri3" path="res://assets/sprites/enemies/starapple/starapple_bullet.png" id="2_tveem"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
-radius = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jcgu"]
+atlas = ExtResource("2_tveem")
+region = Rect2(842, 600, 421, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2ity"]
+atlas = ExtResource("2_tveem")
+region = Rect2(1263, 600, 421, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iofms"]
+atlas = ExtResource("2_tveem")
+region = Rect2(1684, 600, 421, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mnjj"]
+atlas = ExtResource("2_tveem")
+region = Rect2(2105, 600, 421, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di18w"]
+atlas = ExtResource("2_tveem")
+region = Rect2(0, 600, 421, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8idy"]
+atlas = ExtResource("2_tveem")
+region = Rect2(421, 600, 421, 600)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jcgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2ity")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iofms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mnjj")
+}],
 "loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di18w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8idy")
+}],
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="starapple_bullet" type="Area2D"]
+[node name="starapple_bullet" type="Area2D" unique_id=1867455979]
 script = ExtResource("1_script")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690303075]
 shape = SubResource("CircleShape2D_bullet")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=51490658]
+position = Vector2(-10, 4.0000005)
+rotation = 0.95294976
+scale = Vector2(0.08671664, 0.084218845)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
+animation = &"explode"
+frame = 3
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bb5p7vhfjmpew" path="res://assets/sprites/enemies/starfruit/startfruit_idle.png" id="1_jao83"]
 [ext_resource type="Texture2D" uid="uid://kfuhiuwr1yoi" path="res://assets/sprites/enemies/starfruit/startfruit_shoot.png" id="2_jao83"]
 [ext_resource type="Texture2D" uid="uid://booqjqt1tkvhi" path="res://assets/sprites/enemies/starfruit/startfruit_hit.png" id="2_l8mry"]
-[ext_resource type="PackedScene" uid="uid://r06ahk4lng4g" path="res://scenes/player/player_bullet.tscn" id="2_oxw1u"]
+[ext_resource type="PackedScene" uid="uid://c0pn6p0h54mui" path="res://scenes/enemies/starfruit/starfruit_bullet.tscn" id="2_oxw1u"]
 [ext_resource type="Texture2D" uid="uid://ce71m8ioytcwx" path="res://assets/sprites/enemies/starfruit/startfruit_die.png" id="2_u63wr"]
 [ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
@@ -260,11 +260,9 @@ script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_oxw1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
-position = Vector2(0, 0)
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(0, 0)
 scale = Vector2(0.28033355, 0.24553569)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"idle"
