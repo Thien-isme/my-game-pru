@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="4_bpvs2"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="4_kc3cb"]
 [ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="7_ha5ow"]
+[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="8_3c4s6"]
+[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="9_13145"]
 [ext_resource type="PackedScene" path="res://scenes/levels/components/level_bounds.tscn" id="12_13145"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpvs2"]
@@ -11487,7 +11489,15 @@ sources/0 = SubResource("TileSetAtlasSource_bpvs2")
 sources/1 = SubResource("TileSetAtlasSource_ha5ow")
 sources/2 = SubResource("TileSetAtlasSource_3c4s6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_00e6o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13145"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sje3b"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_746xv"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -11533,26 +11543,76 @@ layer_0/tile_data = PackedInt32Array(6619097, 3342336, 39, 6684633, 3342336, 40,
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1569091281]
 
-[node name="EnemySpawnerController" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_bpvs2")]
-position = Vector2(696, 221)
+[node name="EnemySpawnerController_1" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_bpvs2")]
+position = Vector2(695, 319)
 
-[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController" index="0" unique_id=87320655]
-position = Vector2(121, 240)
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_1" index="0" unique_id=87320655]
+position = Vector2(79, 66)
 enemy_scene = ExtResource("4_bpvs2")
-override_patrol_distance = 60.0
-override_detect_radius = 600.0
-override_attack_radius = 500.0
 
-[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1147582976]
-position = Vector2(800, 225)
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController_1/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
+position = Vector2(-1, 6)
+shape = SubResource("RectangleShape2D_13145")
+debug_color = Color(0.37532368, 0.7754075, 1.1551381e-06, 0.2)
+
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_1" unique_id=1122847680]
+position = Vector2(712, 88)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+enemy_scene = ExtResource("4_bpvs2")
+
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_1" unique_id=1147582976]
+position = Vector2(385, 95)
 gizmo_extents = 50.0
 script = ExtResource("7_ha5ow")
 enemy_scene = ExtResource("4_bpvs2")
 override_patrol_distance = 60.0
 
-[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-position = Vector2(-1, 6)
-shape = SubResource("RectangleShape2D_00e6o")
+[node name="EnemySpawnerController_2" parent="Entities/Enemies" unique_id=395838573 instance=ExtResource("3_bpvs2")]
+position = Vector2(1470, 315)
+
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_2" index="0" unique_id=87320655]
+position = Vector2(350, 126)
+enemy_scene = ExtResource("4_bpvs2")
+
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController_2/DetectArea" parent_id_path=PackedInt32Array(395838573, 1759932897) index="0" unique_id=325501346]
+shape = SubResource("RectangleShape2D_sje3b")
+
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_2" unique_id=714434835]
+position = Vector2(760, 126)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+enemy_scene = ExtResource("4_bpvs2")
+
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_2" unique_id=578078910]
+position = Vector2(1006, -187)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+enemy_scene = ExtResource("8_3c4s6")
+override_patrol_distance = 180.0
+
+[node name="EnemySpawnerController_3" parent="Entities/Enemies" unique_id=675164189 instance=ExtResource("3_bpvs2")]
+position = Vector2(3237, 205)
+
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_3" index="0" unique_id=87320655]
+position = Vector2(114, -83)
+enemy_scene = ExtResource("4_bpvs2")
+override_patrol_distance = 18.0
+override_detect_radius = 800.0
+override_attack_radius = 700.0
+
+[node name="DetectArea" parent="Entities/Enemies/EnemySpawnerController_3" index="1" unique_id=1759932897]
+position = Vector2(-372, 4)
+
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController_3/DetectArea" index="0" unique_id=325501346]
+shape = SubResource("RectangleShape2D_746xv")
+
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_3" unique_id=255464533]
+position = Vector2(1277, 190)
+gizmo_extents = 0.0
+script = ExtResource("7_ha5ow")
+enemy_scene = ExtResource("9_13145")
+override_attack_radius = 20.0
 
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 4
@@ -11573,5 +11633,7 @@ position = Vector2(501, -25)
 [node name="RightBoundary" parent="LevelBounds" index="1"]
 position = Vector2(4443, -2)
 
-[editable path="Entities/Enemies/EnemySpawnerController"]
+[editable path="Entities/Enemies/EnemySpawnerController_1"]
+[editable path="Entities/Enemies/EnemySpawnerController_2"]
+[editable path="Entities/Enemies/EnemySpawnerController_3"]
 [editable path="LevelBounds"]

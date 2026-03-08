@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 
 @export var speed = 80.0
@@ -8,9 +9,13 @@ extends CharacterBody2D
 @export var bullet_damage: float = 10.0
 
 @export_category("Patrol Settings")
-@export var patrol_distance: float = 100.0 # Khoảng cách đi tuần mỗi bên (để 0 nếu muốn đứng im)
+@export var patrol_distance: float = 100.0 : # Khoảng cách đi tuần mỗi bên (để 0 nếu muốn đứng im)
+	set(value):
+		patrol_distance = value
+		queue_redraw()
 @export var patrol_speed: float = 40.0   # Tốc độ đi tuần (chậm hơn speed rượt đuổi)
 @export var patrol_wait_time: float = 1.5 # Thời gian đứng ngó nghiêng ở mỗi đầu
+@export var avoid_ledges: bool = true # Không cho phép té khỏi mép vực khi đi tuần / rượt đuổi
 
 @export_category("Audio")
 @export var shoot_sfx: AudioStream  # Tiếng bắn đạn - kéo thả file âm thanh vào đây
@@ -25,8 +30,24 @@ var is_dead = false
 var max_health: float = 1.0
 var health_bar: ProgressBar = null
 
-var detect_radius: float = 0.0 # Will be populated by spawner
-var attack_radius: float = 0.0 # Will be populated by spawner
+@export_category("Detection Areas")
+@export var detect_radius: float = 500.0 :
+	set(value):
+		detect_radius = value
+		_update_shape("DetectZone", value)
+		queue_redraw()
+		
+@export var attack_radius: float = 300.0 :
+	set(value):
+		attack_radius = value
+		_update_shape("AttackZone", value)
+		queue_redraw()
+
+func _update_shape(zone_name: String, radius_value: float):
+	if Engine.is_editor_hint() and is_inside_tree() and has_node(zone_name + "/CollisionShape2D"):
+		var shape = get_node(zone_name + "/CollisionShape2D").shape as CircleShape2D
+		if shape:
+			shape.radius = radius_value
 
 # Biến dùng cho đi tuần
 var start_x: float = 0.0
@@ -34,28 +55,43 @@ var patrol_target_x: float = 0.0
 var patrol_dir: int = 1
 var is_patrol_waiting: bool = false
 
+var floor_raycast: RayCast2D = null
+
 @onready var anim = $AnimatedSprite2D
 @onready var sfx_player = $SFXPlayer
 
 const GRAVITY = 900
 
 func _ready():
+	if Engine.is_editor_hint(): return
+	
 	start_x = global_position.x
 	patrol_target_x = start_x + patrol_distance * patrol_dir
 	
 	if detect_radius > 0 and has_node("DetectZone/CollisionShape2D"):
 		var d_shape = $DetectZone/CollisionShape2D.shape as CircleShape2D
 		if d_shape:
-			d_shape.radius = detect_radius
+			var new_d_shape = d_shape.duplicate()
+			new_d_shape.radius = detect_radius
+			$DetectZone/CollisionShape2D.shape = new_d_shape
 			
 	if attack_radius > 0 and has_node("AttackZone/CollisionShape2D"):
 		var a_shape = $AttackZone/CollisionShape2D.shape as CircleShape2D
 		if a_shape:
-			a_shape.radius = attack_radius
+			var new_a_shape = a_shape.duplicate()
+			new_a_shape.radius = attack_radius
+			$AttackZone/CollisionShape2D.shape = new_a_shape
 			
 	# Lưu max_health và Khởi tạo Thanh Máu (Health Bar)
 	max_health = health
 	_create_health_bar()
+	
+	if avoid_ledges:
+		floor_raycast = RayCast2D.new()
+		floor_raycast.target_position = Vector2(0, 50) # Bắn tia xuống dưới 50px
+		# Lớp va chạm 1 (thường là môi trường/đất). Bạn có thể chỉnh lại mask cho phù hợp.
+		floor_raycast.collision_mask = 1 
+		add_child(floor_raycast)
 
 func _create_health_bar():
 	health_bar = ProgressBar.new()
@@ -84,6 +120,8 @@ func _create_health_bar():
 	add_child(health_bar)
 
 func _physics_process(delta):
+	if Engine.is_editor_hint(): return
+	
 	if is_dead:
 		velocity.y += GRAVITY * delta # Xác chết vẫn rơi xuống đất
 		move_and_slide()
@@ -105,19 +143,35 @@ func _physics_process(delta):
 	# Reset trạng thái tuần tra khi thấy người chơi để lúc mất dấu nó không bị kẹt
 	is_patrol_waiting = false
 
+	# Xử lý hướng quay mặt và vị trí tia dò vực (Raycast)
+	var facing_dir = 1
 	if is_attacking:
 		# Trong tầm bắn → đứng yên và bắn
 		velocity.x = 0
-		anim.flip_h = player.global_position.x < global_position.x
+		facing_dir = -1 if player.global_position.x < global_position.x else 1
+		anim.flip_h = facing_dir < 0
 		anim.play("shoot")
 		if can_shoot and bullet_scene != null:
 			_shoot()
 	else:
 		# Thấy player nhưng chưa trong tầm bắn → đuổi theo
-		var dir = sign(player.global_position.x - global_position.x)
-		velocity.x = dir * speed
-		anim.flip_h = dir < 0
-		anim.play("run")
+		facing_dir = sign(player.global_position.x - global_position.x)
+		
+		# Dò vực
+		var at_ledge = false
+		if avoid_ledges and floor_raycast != null and is_on_floor():
+			floor_raycast.position.x = facing_dir * 30.0 # Dịch tia dò lên phía trước 30px
+			floor_raycast.force_raycast_update()
+			if not floor_raycast.is_colliding():
+				at_ledge = true
+				
+		if at_ledge:
+			velocity.x = 0 # Đầu hàng vực thẳm, đứng lại
+			anim.play("idle")
+		else:
+			velocity.x = facing_dir * speed
+			anim.flip_h = facing_dir < 0
+			anim.play("run")
 
 	move_and_slide()
 
@@ -143,6 +197,13 @@ func _patrol_update():
 	# Hoặc bị vướng tường
 	if is_on_wall():
 		reached_target = true
+		
+	# Hoặc gặp mép vực sâu
+	if avoid_ledges and floor_raycast != null and is_on_floor():
+		floor_raycast.position.x = patrol_dir * 30.0 # Dời tia xuống phía trước
+		floor_raycast.force_raycast_update()
+		if not floor_raycast.is_colliding():
+			reached_target = true
 		
 	if reached_target:
 		_start_patrol_wait()
@@ -247,3 +308,22 @@ func _on_attack_zone_body_entered(body):
 func _on_attack_zone_body_exited(body):
 	if body.is_in_group("player"):
 		is_attacking = false
+
+func _draw():
+	if Engine.is_editor_hint():
+		# Vòng Phát Hiện (Màu xanh ngọc trong suốt)
+		if detect_radius > 0:
+			draw_circle(Vector2.ZERO, detect_radius, Color(0.1, 0.8, 0.8, 0.2))
+			
+		# Vòng Tấn Công (Màu đỏ trong suốt)
+		if attack_radius > 0:
+			draw_circle(Vector2.ZERO, attack_radius, Color(0.9, 0.1, 0.3, 0.3))
+			
+		# Đường báo hiệu khoảng cách tuần tra (Patrol Distance)
+		if patrol_distance > 0:
+			var p_dist = patrol_distance
+			# Vẽ 1 đường ngang mảnh
+			draw_line(Vector2(-p_dist, 0), Vector2(p_dist, 0), Color.YELLOW, 1.0)
+			# Vẽ 2 vạch chặn đứng ở 2 đầu
+			draw_line(Vector2(-p_dist, -10), Vector2(-p_dist, 10), Color.YELLOW, 2.0)
+			draw_line(Vector2(p_dist, -10), Vector2(p_dist, 10), Color.YELLOW, 2.0)

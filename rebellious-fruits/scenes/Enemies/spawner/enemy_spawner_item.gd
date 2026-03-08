@@ -49,8 +49,13 @@ func _draw():
 		if override_detect_radius > 0:
 			draw_circle(Vector2.ZERO, override_detect_radius, Color(0.1, 0.8, 0.8, 0.2))
 		if override_attack_radius > 0:
-			draw_circle(Vector2.ZERO, override_attack_radius, Color(0.9, 0.1, 0.3, 0.3))
+			draw_circle(Vector2.ZERO, override_attack_radius, Color(0.717, 0.407, 0.0, 0.3))
 			
-		# Vẽ vòng tròn báo hiệu khoảng cách tuần tra (Patrol Distance)
+		# Vẽ đường báo hiệu khoảng cách tuần tra (Patrol Distance)
 		if override_patrol_distance > 0:
-			draw_circle(Vector2.ZERO, override_patrol_distance, Color(1.0, 0.8, 0.0, 0.25))
+			var p_dist = override_patrol_distance
+			# Vẽ 1 đường ngang mảnh
+			draw_line(Vector2(-p_dist, 0), Vector2(p_dist, 0), Color.YELLOW, 1.0)
+			# Vẽ 2 vạch chặn đứng ở 2 đầu
+			draw_line(Vector2(-p_dist, -10), Vector2(-p_dist, 10), Color.YELLOW, 2.0)
+			draw_line(Vector2(p_dist, -10), Vector2(p_dist, 10), Color.YELLOW, 2.0)

@@ -4,3 +4,6 @@ res://scenes/Enemies/spawner/enemy_spawner_item.gd
 res://scenes/levels/level_1/level_1_1.tscn
 res://scenes/Enemies/spawner/enemy_spawner_controller.tscn
 res://scenes/Enemies/apple/apple.tscn
+res://scenes/Enemies/spawner/enemy_spawner_controller.gd
+res://scenes/Enemies/starapple/starapple.tscn
+res://scenes/Enemies/corn/corn.tscn

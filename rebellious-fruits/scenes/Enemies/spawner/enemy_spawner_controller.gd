@@ -136,15 +136,6 @@ func _on_point_timer_timeout(data: Dictionary):
 		var enemy = data["enemy_scene"].instantiate()
 		var marker = data["node"]
 		
-		# Tìm node Entities/Enemies trong Level để gom chung kẻ địch thay vì làm con của Spawner
-		var parent_node = get_tree().current_scene.find_child("Enemies", true, false)
-		if parent_node:
-			parent_node.add_child(enemy)
-		else:
-			get_tree().current_scene.add_child(enemy)
-			
-		enemy.global_position = marker.global_position
-		
 		# Tính toán thông số nào sẽ áp dụng (ưu tiên Marker > Spawner gốc)
 		var h_hp = override_health
 		var shoot_cd = override_shoot_cooldown
@@ -173,5 +164,14 @@ func _on_point_timer_timeout(data: Dictionary):
 			enemy.attack_radius = a_rad
 		if p_dist > 0.0 and "patrol_distance" in enemy:
 			enemy.patrol_distance = p_dist
+			
+		# Add child MỚI vào hệ thống (lúc này _ready() của enemy mới bắt đầu chạy)
+		var parent_node = get_tree().current_scene.find_child("Enemies", true, false)
+		if parent_node:
+			parent_node.add_child(enemy)
+		else:
+			get_tree().current_scene.add_child(enemy)
+			
+		enemy.global_position = marker.global_position
 			
 		data["spawned_count"] += 1

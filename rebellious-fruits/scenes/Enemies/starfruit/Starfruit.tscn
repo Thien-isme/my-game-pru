@@ -251,14 +251,20 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 300.0
+radius = 800.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 200.0
+radius = 700.0
 
 [node name="starfruit" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
 script = ExtResource("script_enemy")
+speed = 120.0
+health = 40.0
 bullet_scene = ExtResource("2_oxw1u")
+patrol_distance = 300.0
+patrol_speed = 60.0
+detect_radius = 800.0
+attack_radius = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
