@@ -19,6 +19,12 @@ const GRAVITY = 900
 @export var hit_sfx: AudioStream     # Tiếng bị trúng đạn
 @export var die_sfx: AudioStream     # Tiếng chết
 
+@export_category("Gun Settings")
+@export var bullet_count: int = 1         # Số lượng đạn bắn ra mỗi lần click
+@export var bullet_speed: float = 800.0     # Tốc độ đạn
+@export var bullet_spread: float = 15.0   # Độ tỏa (chùm) của đạn nếu bắn nhiều viên (độ)
+
+var shoot_timer: float = 0.0
 var is_shooting = false
 var is_jump = false
 var is_hit = false
@@ -43,22 +49,37 @@ func add_score(amount: int):
 		hud.update_score(score)
 
 func _physics_process(delta):
+	if is_shooting:
+		shoot_timer -= delta
+		if shoot_timer <= 0:
+			is_shooting = false
+			# Ẩn tia lửa súng khi ngừng bắn
+			var muzzle_flash = get_node_or_null("MuzzleFlash")
+			if muzzle_flash:
+				muzzle_flash.visible = false
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 
 	var direction = Input.get_axis("ui_left", "ui_right")
-	velocity.x = direction * SPEED
+	var is_pressing_shoot = Input.is_action_pressed("click")
+	
+	if is_pressing_shoot or is_shooting:
+		velocity.x = 0
+	else:
+		velocity.x = direction * SPEED
 
-	if direction != 0:
+	if direction != 0 and not is_pressing_shoot and not is_shooting:
 		anim.flip_h = direction < 0
 
 	# Nhảy
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# Mới: Chỉ cho phép nhảy nếu không đè nút bắn (trên mặt đất)
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_pressing_shoot:
 		velocity.y = JUMP_FORCE
 		_play_sfx(jump_sfx)
 
 	# Bắn súng
-	if Input.is_action_just_pressed("click") and not is_shooting:
+	if is_pressing_shoot and not is_shooting:
 		is_shooting = true
 
 		var mouse_pos = get_global_mouse_position()
@@ -66,23 +87,59 @@ func _physics_process(delta):
 
 		anim.flip_h = mouse_pos.x < global_position.x
 		var diff_y = mouse_pos.y - global_position.y
+		var target_anim = "shoot_rapid_fire"
 		if diff_y < -80:
-			anim.play("shoot_high")
+			target_anim = "shoot_high"
 		elif diff_y > 80:
-			anim.play("shoot_low")
-		else:
-			anim.play("shoot")
+			target_anim = "shoot_low"
+			
+		if anim.animation != target_anim:
+			anim.play(target_anim)
+			
+		# Bật/Tắt Tia Lửa Đầu Súng
+		var muzzle_flash = get_node_or_null("MuzzleFlash")
+		if muzzle_flash:
+			muzzle_flash.visible = (target_anim == "shoot_rapid_fire")
+			
+			var flash_sprite = muzzle_flash.get_node_or_null("AnimatedSprite2D")
+			if not flash_sprite:
+				flash_sprite = muzzle_flash.get_node_or_null("Sprite2D")
+				
+			if flash_sprite:
+				flash_sprite.flip_h = anim.flip_h
+			
+			# Lật tia lửa dựa theo nhân vật (offset lại vị trí nếu cần)
+			if anim.flip_h:
+				muzzle_flash.position.x = -abs(muzzle_flash.position.x)
+			else:
+				muzzle_flash.position.x = abs(muzzle_flash.position.x)
 
-		var bullet = bullet_scene.instantiate()
-		get_parent().add_child(bullet)
-		bullet.global_position = spawn_point.global_position
-		bullet.direction = direction_bullet
-		bullet.rotation = direction_bullet.angle()
+		# Tính toán góc bắn chùm (Spread)
+		var base_angle = direction_bullet.angle()
+		var spread_rad = deg_to_rad(bullet_spread)
+		
+		var start_angle = base_angle
+		if bullet_count > 1:
+			start_angle = base_angle - (spread_rad / 2.0)
+			
+		var angle_step = 0.0
+		if bullet_count > 1:
+			angle_step = spread_rad / (bullet_count - 1)
+
+		for i in range(bullet_count):
+			var final_angle = start_angle + (angle_step * i)
+			var final_dir = Vector2.RIGHT.rotated(final_angle)
+			
+			var bullet = bullet_scene.instantiate()
+			get_parent().add_child(bullet)
+			
+			bullet.global_position = spawn_point.global_position
+			bullet.direction = final_dir
+			bullet.rotation = final_angle
+			bullet.speed = bullet_speed # Gán tốc độ từ Inspector vào đạn
 
 		_play_sfx(shoot_sfx)
-
-		await get_tree().create_timer(0.8).timeout
-		is_shooting = false
+		shoot_timer = 0.3
 
 	# Cúi
 	is_crouching = Input.is_action_pressed("crouch") and is_on_floor()

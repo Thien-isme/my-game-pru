@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://y6dc33xidags"]
+
+[ext_resource type="Texture2D" uid="uid://cyum3b0v3ddy" path="res://assets/sprites/player/animation_shoot_rapid_fire.png" id="1_v5ob2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atsg4"]
+atlas = ExtResource("1_v5ob2")
+region = Rect2(200, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btpa8"]
+atlas = ExtResource("1_v5ob2")
+region = Rect2(840, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gywh5"]
+atlas = ExtResource("1_v5ob2")
+region = Rect2(1480, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dff0n"]
+atlas = ExtResource("1_v5ob2")
+region = Rect2(2120, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v34qi"]
+atlas = ExtResource("1_v5ob2")
+region = Rect2(840, 752, 640, 752)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bh0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atsg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btpa8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gywh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dff0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v34qi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShootRapidFire" type="Area2D" unique_id=179425207]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163337018]
+sprite_frames = SubResource("SpriteFrames_8bh0q")
+frame_progress = 0.87263507

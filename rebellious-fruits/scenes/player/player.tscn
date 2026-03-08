@@ -11,15 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://bocbf10337ye3" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://bqrsh615ihnsb" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://dqauep7kun5x" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
-[ext_resource type="Script" uid="uid://dpwjgx1q1rrtj" path="res://scenes/player/camera_lock.gd" id="camera_lock_script"]
 [ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://scenes/ui/hud.tscn" id="10_hud"]
+[ext_resource type="Texture2D" uid="uid://nn3q2yq7074t" path="res://assets/sprites/player/player_shoot_kneeling_2.png" id="12_fcs02"]
+[ext_resource type="PackedScene" uid="uid://253sraqp0llc" path="res://scenes/player/muzzle_flash.tscn" id="15_fcs02"]
+[ext_resource type="Script" uid="uid://hpiksclfeage" path="res://scenes/player/camera_lock.gd" id="camera_lock_script"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.0
 height = 70.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_je7p5"]
-custom_solver_bias = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymths"]
 atlas = ExtResource("1_je7p5")
@@ -192,6 +191,10 @@ region = Rect2(742, 768, 690, 768)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
 atlas = ExtResource("8_qek5x")
 region = Rect2(2122, 0, 690, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnsyf"]
+atlas = ExtResource("12_fcs02")
+region = Rect2(1406, 0, 703, 768)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
@@ -368,34 +371,40 @@ animations = [{
 "loop": true,
 "name": &"shoot_low",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnsyf")
+}],
+"loop": false,
+"name": &"shoot_rapid_fire",
+"speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_fm80t")
+bullet_spread = 90.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 position = Vector2(1, -3)
 shape = SubResource("CapsuleShape2D_lvxji")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=2093865968]
-position = Vector2(76, -27)
-shape = SubResource("CircleShape2D_je7p5")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(6.999939, -8)
 scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot"
+animation = &"shoot_rapid_fire"
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
-script = ExtResource("camera_lock_script")
 position = Vector2(346, -154)
 limit_left = 0
 position_smoothing_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 1.0
 drag_bottom_margin = 1.0
+script = ExtResource("camera_lock_script")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
 position = Vector2(39, -1)
@@ -405,3 +414,6 @@ position = Vector2(39, -1)
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=2089341234]
 
 [node name="SFXPlayerLoop" type="AudioStreamPlayer" parent="." unique_id=2089341235]
+
+[node name="MuzzleFlash" parent="." unique_id=1592498031 instance=ExtResource("15_fcs02")]
+position = Vector2(44, -11)
