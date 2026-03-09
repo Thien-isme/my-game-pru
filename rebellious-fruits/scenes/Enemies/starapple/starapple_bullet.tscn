@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3mbbb6wkm570"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/corn/corn_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://b246a0fpuiri3" path="res://assets/sprites/enemies/starapple/starapple_bullet.png" id="2_tveem"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
@@ -67,13 +67,10 @@ script = ExtResource("1_script")
 shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=51490658]
-autoplay = "fly"
 position = Vector2(-10, 4.0000005)
 rotation = 0.95294976
 scale = Vector2(0.08671664, 0.084218845)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"explode"
-frame = 3
-frame_progress = 1.0
+animation = &"fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

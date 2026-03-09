@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RebelliousFruits"
-run/main_scene="uid://ctvx8f0lxlfmq"
+run/main_scene="uid://b1x2y304w5v6u"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

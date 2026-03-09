@@ -3,20 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="1_4p2km"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="1_13t7t"]
 [ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="1_player"]
-[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/enemies/spawner/enemy_spawner_controller.tscn" id="3_spawner"]
-[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/enemies/lychee/lychee.tscn" id="4_4p2km"]
-[ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/enemies/apple/apple.tscn" id="6_1ur3b"]
-[ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/enemies/bittergourd/bittergourd.tscn" id="7_jj1x5"]
-[ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/enemies/chili/chili.tscn" id="9_g1eys"]
-[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/enemies/corn/corn.tscn" id="10_r0nt3"]
-[ext_resource type="PackedScene" uid="uid://cqmy1g8obt4m1" path="res://scenes/enemies/dragonfruit/dragronfruit.tscn" id="11_a4jkn"]
-[ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/enemies/lemon/lemon.tscn" id="12_lwp0h"]
-[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/enemies/carrot/carrot.tscn" id="13_jj1x5"]
-[ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/enemies/mangosteen/mangosteen.tscn" id="14_awixu"]
-[ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/enemies/pear/pear.tscn" id="15_lwp0h"]
-[ext_resource type="PackedScene" uid="uid://bde0mvmihdubf" path="res://scenes/enemies/pumpkin/pumpkin.tscn" id="16_34ah1"]
-[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/enemies/starapple/starapple.tscn" id="17_ol53j"]
-[ext_resource type="PackedScene" uid="uid://ca6e6n3rnwa8j" path="res://scenes/enemies/watermelon/watermelon.tscn" id="18_h64rf"]
+[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="3_spawner"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/Enemies/lychee/lychee.tscn" id="4_4p2km"]
+[ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="6_1ur3b"]
+[ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/Enemies/bittergourd/bittergourd.tscn" id="7_jj1x5"]
+[ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/Enemies/chili/chili.tscn" id="9_g1eys"]
+[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="10_r0nt3"]
+[ext_resource type="PackedScene" uid="uid://cqmy1g8obt4m1" path="res://scenes/Enemies/dragonfruit/dragronfruit.tscn" id="11_a4jkn"]
+[ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/Enemies/lemon/lemon.tscn" id="12_lwp0h"]
+[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/Enemies/eggplant/eggplant.tscn" id="13_jj1x5"]
+[ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/Enemies/mangosteen/mangosteen.tscn" id="14_awixu"]
+[ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/Enemies/pear/pear.tscn" id="15_lwp0h"]
+[ext_resource type="PackedScene" uid="uid://bde0mvmihdubf" path="res://scenes/Enemies/pumpkin/pumpkin.tscn" id="16_34ah1"]
+[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="17_ol53j"]
+[ext_resource type="PackedScene" uid="uid://ca6e6n3rnwa8j" path="res://scenes/Enemies/watermelon/watermelon.tscn" id="18_h64rf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13t7t"]
 texture = ExtResource("1_4p2km")
@@ -9554,7 +9554,7 @@ layer_0/tile_data = PackedInt32Array(2162690, 3473408, 35, 2228226, 3473408, 36,
 [node name="Entities" type="Node2D" parent="." unique_id=1245945608]
 
 [node name="Player" parent="Entities" unique_id=2114650789 instance=ExtResource("1_player")]
-position = Vector2(231, 481)
+position = Vector2(581, 364)
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1927658523]
 

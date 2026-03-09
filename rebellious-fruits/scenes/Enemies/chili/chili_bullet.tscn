@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxttkqlob880e"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/corn/corn_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://iqn5mnbddtms" path="res://assets/sprites/enemies/chili/chili_bullet.png" id="2_5abp1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
@@ -63,7 +63,6 @@ shape = SubResource("CircleShape2D_bullet")
 position = Vector2(23, 4)
 scale = Vector2(0.08565818, 0.07413564)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
-autoplay = "fly"
+animation = &"explode"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

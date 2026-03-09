@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bsj5j7lro8iwb"]
 
 [ext_resource type="Texture2D" uid="uid://s5o38x7m7q0x" path="res://assets/sprites/enemies/corn/corn_bullet.png" id="1_8aggf"]
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_j5dd0"]
+[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/corn/corn_bullet.gd" id="1_j5dd0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
-height = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nwqt"]
+custom_solver_bias = 1.0
+radius = 25.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5dd0"]
 atlas = ExtResource("1_8aggf")
@@ -51,14 +52,13 @@ animations = [{
 script = ExtResource("1_j5dd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
-shape = SubResource("CapsuleShape2D_lvxji")
+shape = SubResource("CircleShape2D_1nwqt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(23, -4)
-rotation = 1.0821041
-scale = Vector2(0.05667244, 0.052790117)
+position = Vector2(59, -7)
+rotation = 1.033235
+scale = Vector2(0.20520103, 0.14888848)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"fly"
-autoplay = "fly"
+animation = &"explode"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

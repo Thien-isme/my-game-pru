@@ -140,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1r0nn")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -238,7 +238,6 @@ radius = 800.0
 radius = 750.0
 
 [node name="corn" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
-position = Vector2(1033, 526)
 script = ExtResource("1_w2oqy")
 health = 100.0
 bullet_scene = ExtResource("2_xu6rq")

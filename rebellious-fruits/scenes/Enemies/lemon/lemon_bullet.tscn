@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bfkt3upet8cca" path="res://assets/sprites/enemies/lemon/lemon_bullet_explode.png" id="2_mvq2n"]
 [ext_resource type="Texture2D" uid="uid://s14mxa3ey3us" path="res://assets/sprites/enemies/lemon/lemon_bullet_fly.png" id="3_y4pwk"]
-[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.98
@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tq54")
 }],
-"loop": true,
+"loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
@@ -65,7 +65,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fypjk")
 }],
-"loop": true,
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
@@ -77,9 +77,7 @@ script = ExtResource("script_bullet")
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-autoplay = "fly"
-position = Vector2(-146, 0)
-scale = Vector2(0.28033355, 0.24553569)
+position = Vector2(-86, -1.9073486e-06)
+scale = Vector2(0.16866419, 0.15148407)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
-frame_progress = 0.30373353

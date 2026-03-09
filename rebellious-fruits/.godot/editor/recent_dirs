@@ -1,3 +1,5 @@
+res://scenes/levels/level_1/
+res://scenes/levels/
 res://scenes/Enemies/corn/
 res://scenes/Enemies/lychee/
 res://scenes/Enemies/mangosteen/
@@ -18,5 +20,3 @@ res://assets/sprites/enemies/dragonfruit/
 res://assets/sprites/enemies/corn/
 res://assets/sprites/enemies/chili/
 res://assets/sprites/enemies/apple/
-res://assets/sprites/enemies/pear/
-res://assets/audio/sfx/player/

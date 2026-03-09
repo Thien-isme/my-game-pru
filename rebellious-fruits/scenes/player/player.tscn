@@ -394,8 +394,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(3.0000002, -7)
 scale = Vector2(0.12581168, 0.10598956)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot"
-frame_progress = 0.15958065
+animation = &"die"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
 position = Vector2(346, -154)

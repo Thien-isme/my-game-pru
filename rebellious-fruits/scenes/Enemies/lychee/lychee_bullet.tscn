@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3lk7vdh5611g"]
 
 [ext_resource type="Texture2D" uid="uid://c8lav18jgf47f" path="res://assets/sprites/enemies/lychee/lychee_bullet.png" id="1_5j5lm"]
-[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="script_bullet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2ee0"]
 radius = 8.0
@@ -35,7 +35,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_82p81")
 }],
-"loop": true,
+"loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
@@ -61,10 +61,7 @@ script = ExtResource("script_bullet")
 shape = SubResource("CircleShape2D_c2ee0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-autoplay = "fly"
 position = Vector2(10, -1)
 scale = Vector2(0.052895717, 0.051915135)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
-frame = 2
-frame_progress = 1.0

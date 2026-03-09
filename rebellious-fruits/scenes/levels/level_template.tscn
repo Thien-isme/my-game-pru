@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="1_bg"]
+[ext_resource type="PackedScene" path="res://scenes/levels/components/level_bounds.tscn" id="2_bounds"]
+[ext_resource type="PackedScene" uid="uid://uyp3og6rd3ng" path="res://scenes/player/player.tscn" id="3_player"]
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Environment"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Environment/ParallaxBackground"]
+
+[node name="Background_1" type="Sprite2D" parent="Environment/ParallaxBackground/ParallaxLayer"]
+position = Vector2(-49, -47)
+scale = Vector2(0.420397, 0.552827)
+texture = ExtResource("1_bg")
+centered = false
+
+[node name="TileMap" type="TileMap" parent="Environment"]
+scale = Vector2(0.3, 0.3)
+format = 2
+
+[node name="BoundaryLine" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("3_player")]
+position = Vector2(200, 200)
+
+[node name="Enemies" type="Node2D" parent="Entities"]
+
+[node name="Interactable" type="Node2D" parent="."]
+
+[node name="LevelBounds" parent="." instance=ExtResource("2_bounds")]
+
+[node name="Trigger" type="Node2D" parent="."]
