@@ -51,6 +51,10 @@ var skill_r_scene: PackedScene = preload("res://scenes/player/skills/skill_r_eff
 @export var skill_e_cooldown: float = 8.0
 @export var skill_r_cooldown: float = 15.0
 
+@export_subgroup("Skill Damage")
+@export var skill_q_damage: float = 20.0
+@export var skill_r_damage: float = 100.0
+
 # Timer đếm ngược (cooldown - đếm từ max về 0)
 var skill_q_timer: float = 0.0
 var skill_w_timer: float = 0.0
@@ -265,7 +269,7 @@ func _physics_process(delta):
 	# Nhận nút Kỹ năng (Q, W, E, R)
 	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching:
 		if Input.is_action_just_pressed("skill_q") and skill_q_timer <= 0:
-			_cast_skill(skill_q_scene, skill_q_cooldown, "shoot_high_medium") # Dùng tạm animation bắn
+			_cast_skill(skill_q_scene, skill_q_cooldown, "shoot_high_medium", null, 0.0, 0.5, skill_q_damage) # Dùng tạm animation bắn
 			skill_q_timer = skill_q_cooldown
 		elif Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
 			# Cast W internally (Aura directly on Player, lasts 5s)
@@ -343,7 +347,7 @@ func _physics_process(delta):
 					active_spawn = spawn_low
 				
 				var direction_bullet = (mouse_pos - global_position).normalized()
-				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle(), 0.6)
+				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle(), 0.6, skill_r_damage)
 				skill_r_timer = skill_r_cooldown
 
 	# Nhận nút Lướt (Dash)
@@ -390,7 +394,7 @@ func _physics_process(delta):
 		global_position.x = limit_right_x
 
 # --- Hàm Cast Skill Chung ---
-func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5):
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5, skill_damage: float = 0.0):
 	is_casting_skill = true
 	# Cộng thêm 0.38s giữ dáng (post-cast delay) sau khi gồng chiêu xong
 	cast_timer = custom_cast_time + 0.38
@@ -422,6 +426,10 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, s
 		# Truyền hướng mặt vào Skill (nếu skill có hỗ trợ lật hình)
 		if skill_instance.get("is_player_facing_right") != null:
 			skill_instance.is_player_facing_right = not anim.flip_h
+			
+		# Truyền sát thương vào Skill (nếu có thiết lập trên Player)
+		if skill_damage > 0 and skill_instance.get("damage") != null:
+			skill_instance.damage = skill_damage
 
 # --- Hàm thiết lập Ranh Giới (Nhận từ LevelBounds) ---
 func set_left_bound(x_pos: float):
