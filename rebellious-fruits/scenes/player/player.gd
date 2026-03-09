@@ -343,7 +343,7 @@ func _physics_process(delta):
 					active_spawn = spawn_low
 				
 				var direction_bullet = (mouse_pos - global_position).normalized()
-				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle())
+				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle(), 0.6)
 				skill_r_timer = skill_r_cooldown
 
 	# Nhận nút Lướt (Dash)
@@ -363,7 +363,7 @@ func _physics_process(delta):
 		_play_sfx(run_sfx) # Hoặc bạn có thể dùng một sfx_dash riêng nếu có
 
 	# Animation + âm thanh trạng thái (looping)
-	if not is_shooting and not is_hit and not is_dashing:
+	if not is_shooting and not is_hit and not is_dashing and not is_casting_skill:
 		if is_crouching:
 			if anim.animation != "crouch":
 				anim.play("crouch")
@@ -390,13 +390,21 @@ func _physics_process(delta):
 		global_position.x = limit_right_x
 
 # --- Hàm Cast Skill Chung ---
-func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0):
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5):
 	is_casting_skill = true
-	cast_timer = 0.5 # Thời gian đứng yên gồng chiêu (có thể tuỳ chỉnh theo frame của anim)
+	# Cộng thêm 0.38s giữ dáng (post-cast delay) sau khi gồng chiêu xong
+	cast_timer = custom_cast_time + 0.38
 	
 	anim.play(cast_anim)
 	
 	if skill_scene:
+		# Đợi khoảng thời gian custom_cast_time trước khi thực sự bắn skill ra
+		if custom_cast_time > 0:
+			await get_tree().create_timer(custom_cast_time).timeout
+		
+		# Khởi tạo lại các giá trị vị trí phòng trường hợp nhân vật di chuyển (nếu bị đẩy, v.v.)
+		# Hoặc nếu người chơi bấm lật mặt trong lúc niệm
+		
 		print(">>> Dang ban Skill: ", skill_scene.resource_path)
 		var skill_instance = skill_scene.instantiate()
 		get_parent().add_child(skill_instance)
@@ -453,11 +461,17 @@ func take_damage(amount):
 	if hud:
 		hud.update_health(health)
 
-	is_hit = true
-	anim.play("hit")
-	_play_sfx(hit_sfx)
-	await get_tree().create_timer(0.4).timeout
-	is_hit = false
+	# Bỏ qua hoạt ảnh bị đánh (hit) nếu đang gồng chiêu thức
+	if not is_casting_skill:
+		is_hit = true
+		anim.play("hit")
+		_play_sfx(hit_sfx)
+		await get_tree().create_timer(0.4).timeout
+		is_hit = false
+	else:
+		# Chỉ phát âm thanh trúng đòn mà không đổi hoạt ảnh
+		_play_sfx(hit_sfx)
+		
 	if health <= 0:
 		die()
 
