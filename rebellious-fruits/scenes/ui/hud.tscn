@@ -72,6 +72,16 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillQ"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="LeftSide/SkillQ"]
 layout_mode = 1
 anchors_preset = 15
@@ -98,6 +108,16 @@ script = ExtResource("2_cooldown")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
+
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillW"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="LeftSide/SkillW"]
 layout_mode = 1
@@ -126,6 +146,16 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillE"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="LeftSide/SkillE"]
 layout_mode = 1
 anchors_preset = 15
@@ -152,6 +182,16 @@ script = ExtResource("2_cooldown")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
+
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillR"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="LeftSide/SkillR"]
 layout_mode = 1

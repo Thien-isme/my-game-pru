@@ -309,8 +309,10 @@ func _physics_process(delta):
 				
 				_cast_skill(skill_q_scene, skill_q_cooldown, target_anim, active_spawn, 0.0, 0.5, skill_q_damage, mouse_pos)
 				skill_q_timer = skill_q_cooldown
+				if hud:
+					hud.start_skill_cooldown("q", skill_q_cooldown)
 				return # Tránh kích hoạt đạn thường
-		elif Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("ui_right_click") or Input.is_action_just_pressed("dash"):
+		elif Input.is_action_just_pressed("ui_cancel") or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) or Input.is_action_just_pressed("dash"):
 			# Hủy ngắm Q
 			is_aiming_q = false
 
@@ -362,6 +364,8 @@ func _physics_process(delta):
 			_stop_loop_sfx()
 			_play_sfx(run_sfx)
 			skill_e_timer = skill_e_cooldown
+			if hud:
+				hud.start_skill_cooldown("e", skill_e_cooldown)
 		elif Input.is_action_just_pressed("skill_r") and skill_r_timer <= 0:
 			var mouse_pos = get_global_mouse_position()
 			anim.flip_h = mouse_pos.x < global_position.x
@@ -395,6 +399,8 @@ func _physics_process(delta):
 				var direction_bullet = (mouse_pos - global_position).normalized()
 				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle(), 0.6, skill_r_damage)
 				skill_r_timer = skill_r_cooldown
+				if hud:
+					hud.start_skill_cooldown("r", skill_r_cooldown)
 
 	# Nhận nút Lướt (Dash)
 	if Input.is_action_just_pressed("dash") and not is_dashing and not is_shooting and not is_crouching:
