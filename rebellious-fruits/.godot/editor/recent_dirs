@@ -1,10 +1,10 @@
 res://scenes/levels/level_1/
+res://assets/sprites/player/
 res://scenes/levels/
 res://scenes/Enemies/corn/
 res://scenes/Enemies/lychee/
 res://scenes/Enemies/mangosteen/
 res://scripts/autoloads/
-res://assets/sprites/player/
 res://assets/sprites/enemies/carrot/
 res://scenes/enemies/base_scripts/
 res://assets/sprites/enemies/lychee/

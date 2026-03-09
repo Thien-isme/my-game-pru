@@ -1,16 +1,2 @@
-res://scenes/levels/level_1/level_1_1.tscn
-res://scenes/Enemies/corn/corn.tscn
-res://scenes/Enemies/corn/corn_bullet.tscn
-res://scenes/Enemies/apple/apple_bullet.tscn
-res://scenes/Enemies/lemon/lemon_bullet.tscn
-res://scenes/levels/level_mau.tscn
-res://scenes/Enemies/lychee/lychee_bullet.tscn
-res://scenes/Enemies/starapple/starapple_bullet.tscn
-res://scenes/Enemies/watermelon/watermelon_bullet.tscn
-res://scenes/Enemies/mangosteen/mangosteen_bullet.tscn
-res://scenes/Enemies/bittergourd/bittergourd_bullet.tscn
-res://scenes/Enemies/chili/chili_bullet.tscn
-res://scenes/Enemies/pumpkin/pumpkin_bullet.tscn
-res://scenes/Enemies/starfruit/starfruit_bullet.tscn
-res://scenes/levels/level_1/level_1_2.tscn
 res://scenes/player/player.tscn
+res://scenes/player/player_bullet.tscn
