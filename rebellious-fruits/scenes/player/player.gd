@@ -32,10 +32,10 @@ const GRAVITY = 900
 var is_dashing = false
 var dash_timer = 0.0
 var dash_direction = 0
+var dash_velocity_2d = Vector2.ZERO
 
 @export_category("Skills")
 @export var skill_q_scene: PackedScene
-@export var skill_w_scene: PackedScene
 @export var skill_e_scene: PackedScene
 @export var skill_r_scene: PackedScene
 
@@ -45,11 +45,14 @@ var dash_direction = 0
 @export var skill_e_cooldown: float = 8.0
 @export var skill_r_cooldown: float = 15.0
 
-# Timer đếm ngược
+# Timer đếm ngược (cooldown - đếm từ max về 0)
 var skill_q_timer: float = 0.0
 var skill_w_timer: float = 0.0
 var skill_e_timer: float = 0.0
 var skill_r_timer: float = 0.0
+
+# Timer kỹ năng W đang hoạt động (active duration)
+var skill_w_active_timer: float = 0.0
 
 var is_casting_skill = false
 var cast_timer: float = 0.0
@@ -85,6 +88,14 @@ func _physics_process(delta):
 	if skill_e_timer > 0: skill_e_timer -= delta
 	if skill_r_timer > 0: skill_r_timer -= delta
 	
+	# Đếm ngược thời gian W đang active (5s aura)
+	if skill_w_active_timer > 0:
+		skill_w_active_timer -= delta
+		if hud:
+			hud.update_skill_active("w", skill_w_active_timer, skill_w_cooldown)
+		if skill_w_active_timer <= 0:
+			_deactivate_w_effect()
+	
 	if is_casting_skill:
 		cast_timer -= delta
 		velocity.x = 0 # Đứng lại khi cast skill
@@ -99,6 +110,7 @@ func _physics_process(delta):
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
+			dash_velocity_2d = Vector2.ZERO
 			# Khôi phục tốc độ animation về bình thường
 			anim.speed_scale = 1.0
 	if is_shooting:
@@ -120,8 +132,11 @@ func _physics_process(delta):
 	if is_pressing_shoot or is_shooting:
 		velocity.x = 0
 	elif is_dashing:
-		velocity.x = dash_direction * dash_speed
-		velocity.y = 0 # Khi lướt giữ nguyên độ cao
+		if dash_velocity_2d != Vector2.ZERO: # Lướt tự do (Skill E)
+			velocity = dash_velocity_2d
+		else: # Lướt ngang (Dash thường)
+			velocity.x = dash_direction * dash_speed
+			velocity.y = 0 # Khi lướt giữ nguyên độ cao
 	else:
 		velocity.x = direction * SPEED
 
@@ -213,10 +228,40 @@ func _physics_process(delta):
 			_cast_skill(skill_q_scene, skill_q_cooldown, "shoot_high_medium") # Dùng tạm animation bắn
 			skill_q_timer = skill_q_cooldown
 		elif Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
-			_cast_skill(skill_w_scene, skill_w_cooldown, "shoot_high")
-			skill_w_timer = skill_w_cooldown
+			# Cast W internally (Aura directly on Player, lasts 5s)
+			is_casting_skill = true
+			cast_timer = 0.5
+			anim.play("shoot_high")
+			
+			var w_effect = $SkillWEffect
+			var w_anim = w_effect.get_node("AnimatedSprite2D")
+			w_anim.visible = true
+			w_anim.play("default")
+			
+			if anim.flip_h:
+				w_anim.flip_h = true
+				w_effect.position.x = -abs(w_effect.position.x)
+			else:
+				w_anim.flip_h = false
+				w_effect.position.x = abs(w_effect.position.x)
+			
+			# Bắt đầu active duration 5s, đặt cooldown sau khi hết
+			skill_w_active_timer = skill_w_cooldown  # 5s active
+			skill_w_timer = skill_w_cooldown * 2      # Tổng cooldown = active + hồi
+			if hud:
+				hud.set_skill_active("w")
 		elif Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
-			_cast_skill(skill_e_scene, skill_e_cooldown, "shoot")
+			# Kỹ năng E: Lướt NGANG theo phía chuột trên trục X
+			is_dashing = true
+			dash_timer = dash_duration
+			var mouse_pos = get_global_mouse_position()
+			var h_dir = sign(mouse_pos.x - global_position.x) # Chỉ lấy hướng ngang
+			dash_velocity_2d = Vector2(h_dir * dash_speed, 0)
+			anim.flip_h = (h_dir < 0)
+			anim.speed_scale = 2.0
+			anim.play("dash")
+			_stop_loop_sfx()
+			_play_sfx(run_sfx)
 			skill_e_timer = skill_e_cooldown
 		elif Input.is_action_just_pressed("skill_r") and skill_r_timer <= 0:
 			_cast_skill(skill_r_scene, skill_r_cooldown, "shoot_rapid_fire")
@@ -226,6 +271,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") and not is_dashing and not is_shooting and not is_crouching:
 		is_dashing = true
 		dash_timer = dash_duration
+		dash_velocity_2d = Vector2.ZERO
 		# Lướt theo hướng con trỏ chuột nếu không bấm hướng, nếu không thì theo trục X (hướng mặt)
 		dash_direction = -1 if anim.flip_h else 1
 		# Nếu người chơi bấm hướng thì lướt theo hướng đang bấm
@@ -333,3 +379,27 @@ func die():
 	_play_sfx(die_sfx)
 	print("Player 'died' but death is temporarily disabled for testing.")
 	# get_tree().reload_current_scene()  # Bật lại khi cần
+
+# --- Skill W Signals ---
+func _on_skill_w_body_entered(body):
+	if body.is_in_group("enemy") and body.has_method("take_damage"):
+		body.take_damage(50.0)
+
+func _on_skill_w_anim_finished():
+	# Khi animation kết thúc 1 lần, tự play lại nếu còn trong active duration
+	var w_effect = $SkillWEffect
+	if w_effect and skill_w_active_timer > 0:
+		var w_anim = w_effect.get_node_or_null("AnimatedSprite2D")
+		if w_anim:
+			w_anim.play("default")
+
+# Tắt hiệu ứng W khi hết 5 giây
+func _deactivate_w_effect():
+	var w_effect = $SkillWEffect
+	if w_effect:
+		var w_anim = w_effect.get_node_or_null("AnimatedSprite2D")
+		if w_anim:
+			w_anim.visible = false
+			w_anim.stop()
+	if hud:
+		hud.start_skill_cooldown("w", skill_w_cooldown)
