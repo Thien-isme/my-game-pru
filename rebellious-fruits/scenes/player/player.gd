@@ -397,13 +397,18 @@ func _physics_process(delta):
 					active_spawn = spawn_low
 				
 				var direction_bullet = (mouse_pos - global_position).normalized()
-				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle(), 0.6, skill_r_damage)
+				var final_angle = direction_bullet.angle()
+				if anim.flip_h:
+					# Khi lật x = -1, góc quay sẽ bị ngược so với màn hình, cần phải bù PI vào góc
+					final_angle -= PI
+					
+				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, final_angle, 0.6, skill_r_damage)
 				skill_r_timer = skill_r_cooldown
 				if hud:
 					hud.start_skill_cooldown("r", skill_r_cooldown)
 
 	# Nhận nút Lướt (Dash)
-	if Input.is_action_just_pressed("dash") and not is_dashing and not is_shooting and not is_crouching:
+	if Input.is_action_just_pressed("dash") and skill_e_timer <= 0 and not is_dashing and not is_shooting and not is_crouching:
 		is_dashing = true
 		dash_timer = dash_duration
 		dash_velocity_2d = Vector2.ZERO
@@ -417,6 +422,11 @@ func _physics_process(delta):
 		anim.play("dash")
 		_stop_loop_sfx()
 		_play_sfx(run_sfx) # Hoặc bạn có thể dùng một sfx_dash riêng nếu có
+		
+		# Tính cooldown cho dash thường bằng cooldown của E
+		skill_e_timer = skill_e_cooldown
+		if hud:
+			hud.start_skill_cooldown("e", skill_e_cooldown)
 
 	# Animation + âm thanh trạng thái (looping)
 	if not is_shooting and not is_hit and not is_dashing and not is_casting_skill:
@@ -479,7 +489,7 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, s
 		print(">>> Da them Skill vao Scene, Toa do: ", skill_instance.global_position)
 		
 		# Truyền hướng mặt vào Skill (nếu skill có hỗ trợ lật hình)
-		if skill_instance.get("is_player_facing_right") != null:
+		if "is_player_facing_right" in skill_instance:
 			skill_instance.is_player_facing_right = not anim.flip_h
 			
 		# Truyền sát thương vào Skill (nếu có thiết lập trên Player)
