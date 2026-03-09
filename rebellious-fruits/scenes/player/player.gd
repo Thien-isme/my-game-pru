@@ -25,6 +25,35 @@ const GRAVITY = 900
 @export var bullet_speed: float = 800.0     # Tốc độ đạn
 @export var bullet_spread: float = 15.0   # Độ tỏa (chùm) của đạn nếu bắn nhiều viên (độ)
 
+@export_category("Dash Settings")
+@export var dash_speed: float = 800.0     # Tốc độ lướt
+@export var dash_duration: float = 0.2    # Thời gian lướt
+
+var is_dashing = false
+var dash_timer = 0.0
+var dash_direction = 0
+
+@export_category("Skills")
+@export var skill_q_scene: PackedScene
+@export var skill_w_scene: PackedScene
+@export var skill_e_scene: PackedScene
+@export var skill_r_scene: PackedScene
+
+# Cooldown gốc
+@export var skill_q_cooldown: float = 3.0
+@export var skill_w_cooldown: float = 5.0
+@export var skill_e_cooldown: float = 8.0
+@export var skill_r_cooldown: float = 15.0
+
+# Timer đếm ngược
+var skill_q_timer: float = 0.0
+var skill_w_timer: float = 0.0
+var skill_e_timer: float = 0.0
+var skill_r_timer: float = 0.0
+
+var is_casting_skill = false
+var cast_timer: float = 0.0
+
 var shoot_timer: float = 0.0
 var is_shooting = false
 var is_jump = false
@@ -50,6 +79,28 @@ func add_score(amount: int):
 		hud.update_score(score)
 
 func _physics_process(delta):
+	# Trừ thời gian hồi chiêu
+	if skill_q_timer > 0: skill_q_timer -= delta
+	if skill_w_timer > 0: skill_w_timer -= delta
+	if skill_e_timer > 0: skill_e_timer -= delta
+	if skill_r_timer > 0: skill_r_timer -= delta
+	
+	if is_casting_skill:
+		cast_timer -= delta
+		velocity.x = 0 # Đứng lại khi cast skill
+		velocity.y += GRAVITY * delta
+		move_and_slide()
+		if cast_timer <= 0:
+			is_casting_skill = false
+		return # Bỏ qua tất cả logic di chuyển/bắn súng khác khi đang cast skill
+		
+	# Xử lý thời gian lướt
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+			# Khôi phục tốc độ animation về bình thường
+			anim.speed_scale = 1.0
 	if is_shooting:
 		shoot_timer -= delta
 		if shoot_timer <= 0:
@@ -59,7 +110,7 @@ func _physics_process(delta):
 			if muzzle_flash:
 				muzzle_flash.visible = false
 
-	if not is_on_floor():
+	if not is_on_floor() and not is_dashing:
 		velocity.y += GRAVITY * delta
 
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -68,6 +119,9 @@ func _physics_process(delta):
 	
 	if is_pressing_shoot or is_shooting:
 		velocity.x = 0
+	elif is_dashing:
+		velocity.x = dash_direction * dash_speed
+		velocity.y = 0 # Khi lướt giữ nguyên độ cao
 	else:
 		velocity.x = direction * SPEED
 
@@ -75,13 +129,13 @@ func _physics_process(delta):
 		anim.flip_h = direction < 0
 
 	# Nhảy
-	# Mới: Chỉ cho phép nhảy nếu không đè nút bắn (trên mặt đất)
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_pressing_shoot:
+	# Mới: Chỉ cho phép nhảy nếu không đè nút bắn (trên mặt đất) và không đang lướt
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_pressing_shoot and not is_dashing:
 		velocity.y = JUMP_FORCE
 		_play_sfx(jump_sfx)
 
 	# Bắn súng
-	if is_pressing_shoot and not is_shooting:
+	if is_pressing_shoot and not is_shooting and not is_dashing:
 		is_shooting = true
 
 		var mouse_pos = get_global_mouse_position()
@@ -149,12 +203,42 @@ func _physics_process(delta):
 		shoot_timer = 0.3
 
 	# Cúi
-	is_crouching = Input.is_action_pressed("crouch") and is_on_floor()
+	is_crouching = Input.is_action_pressed("crouch") and is_on_floor() and not is_dashing
 	if is_crouching:
 		velocity.x = 0
 
+	# Nhận nút Kỹ năng (Q, W, E, R)
+	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching:
+		if Input.is_action_just_pressed("skill_q") and skill_q_timer <= 0:
+			_cast_skill(skill_q_scene, skill_q_cooldown, "shoot_high_medium") # Dùng tạm animation bắn
+			skill_q_timer = skill_q_cooldown
+		elif Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
+			_cast_skill(skill_w_scene, skill_w_cooldown, "shoot_high")
+			skill_w_timer = skill_w_cooldown
+		elif Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
+			_cast_skill(skill_e_scene, skill_e_cooldown, "shoot")
+			skill_e_timer = skill_e_cooldown
+		elif Input.is_action_just_pressed("skill_r") and skill_r_timer <= 0:
+			_cast_skill(skill_r_scene, skill_r_cooldown, "shoot_rapid_fire")
+			skill_r_timer = skill_r_cooldown
+
+	# Nhận nút Lướt (Dash)
+	if Input.is_action_just_pressed("dash") and not is_dashing and not is_shooting and not is_crouching:
+		is_dashing = true
+		dash_timer = dash_duration
+		# Lướt theo hướng con trỏ chuột nếu không bấm hướng, nếu không thì theo trục X (hướng mặt)
+		dash_direction = -1 if anim.flip_h else 1
+		# Nếu người chơi bấm hướng thì lướt theo hướng đang bấm
+		if direction != 0:
+			dash_direction = sign(direction)
+
+		anim.speed_scale = 2.0 # Tốc độ animation x2
+		anim.play("dash")
+		_stop_loop_sfx()
+		_play_sfx(run_sfx) # Hoặc bạn có thể dùng một sfx_dash riêng nếu có
+
 	# Animation + âm thanh trạng thái (looping)
-	if not is_shooting and not is_hit:
+	if not is_shooting and not is_hit and not is_dashing:
 		if is_crouching:
 			if anim.animation != "crouch":
 				anim.play("crouch")
@@ -179,6 +263,25 @@ func _physics_process(delta):
 		global_position.x = limit_left_x
 	elif global_position.x > limit_right_x:
 		global_position.x = limit_right_x
+
+# --- Hàm Cast Skill Chung ---
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String):
+	is_casting_skill = true
+	cast_timer = 0.5 # Thời gian đứng yên gồng chiêu (có thể tuỳ chỉnh theo frame của anim)
+	
+	anim.play(cast_anim)
+	
+	if skill_scene:
+		var skill_instance = skill_scene.instantiate()
+		get_parent().add_child(skill_instance)
+		
+		# Vị trí spawn trước mặt player
+		var offset_x = 80 if not anim.flip_h else -80
+		skill_instance.global_position = global_position + Vector2(offset_x, -10)
+		
+		# Truyền hướng mặt vào Skill (nếu skill có hỗ trợ lật hình)
+		if skill_instance.get("is_player_facing_right") != null:
+			skill_instance.is_player_facing_right = not anim.flip_h
 
 # --- Hàm thiết lập Ranh Giới (Nhận từ LevelBounds) ---
 func set_left_bound(x_pos: float):

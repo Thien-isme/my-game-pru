@@ -1,3 +1,4 @@
+res://assets/sprites/skills/
 res://assets/sprites/player/
 res://scenes/levels/level_1/
 res://scenes/levels/
@@ -19,4 +20,3 @@ res://assets/sprites/enemies/eggplant/
 res://assets/sprites/enemies/dragonfruit/
 res://assets/sprites/enemies/corn/
 res://assets/sprites/enemies/chili/
-res://assets/sprites/enemies/apple/
