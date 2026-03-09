@@ -60,13 +60,19 @@ func _ready():
 				"enemy_scene": enemy_scene, # Fallback mặc định
 			}
 			
-			# Lấy dữ liệu riêng của điểm này (trừ đè)
+			# Lấy dữ liệu riêng của điểm này (ghi đè)
 			if "max_enemies" in child and child.max_enemies > 0:
 				point_data["max_enemies"] = child.max_enemies
-			if "enemy_scene" in child and child.get("enemy_scene") != null:
-				point_data["enemy_scene"] = child.get("enemy_scene")
+				
+			# Cực kỳ quan trọng: Phải kiểm tra thuộc tính enemy_scene của child
+			if "enemy_scene" in child and child.enemy_scene != null:
+				point_data["enemy_scene"] = child.enemy_scene
 			
-			print("Spawner [%s] child [%s] will spawn: %s" % [name, child.name, point_data["enemy_scene"].resource_path if point_data["enemy_scene"] else "NULL"])
+			print("Spawner [%s] -> Child [%s] is spawning: %s" % [
+				name, 
+				child.name, 
+				point_data["enemy_scene"].resource_path if point_data["enemy_scene"] else "NULL! (Quên ko gắn quái?)"
+			])
 				
 			var interval = spawn_interval
 			if "spawn_interval" in child and child.spawn_interval > 0:

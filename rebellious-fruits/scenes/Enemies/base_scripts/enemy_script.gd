@@ -160,13 +160,16 @@ func _physics_process(delta):
 	# Reset trạng thái tuần tra khi thấy người chơi để lúc mất dấu nó không bị kẹt
 	is_patrol_waiting = false
 
-	# Xử lý hướng quay mặt và vị trí tia dò vực (Raycast)
 	var facing_dir = 1
+	var spawn_point = get_node_or_null("BulletSpawnPoint")
+	
 	if is_attacking:
 		# Trong tầm bắn → đứng yên và bắn
 		velocity.x = 0
 		facing_dir = -1 if player.global_position.x < global_position.x else 1
 		anim.flip_h = facing_dir < 0
+		if spawn_point:
+			spawn_point.scale.x = -1 if anim.flip_h else 1
 		anim.play("shoot")
 		if can_shoot and bullet_scene != null:
 			_shoot()
@@ -188,6 +191,8 @@ func _physics_process(delta):
 		else:
 			velocity.x = facing_dir * speed
 			anim.flip_h = facing_dir < 0
+			if spawn_point:
+				spawn_point.scale.x = -1 if anim.flip_h else 1
 			anim.play("run")
 
 	move_and_slide()
@@ -245,7 +250,13 @@ func _shoot():
 	
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
-	bullet.global_position = global_position
+	
+	var spawn_point = get_node_or_null("BulletSpawnPoint")
+	if spawn_point:
+		bullet.global_position = spawn_point.global_position
+	else:
+		bullet.global_position = global_position
+		
 	bullet.direction = (player.global_position - global_position).normalized()
 	
 	# Xoay viên đạn theo hướng bay. 

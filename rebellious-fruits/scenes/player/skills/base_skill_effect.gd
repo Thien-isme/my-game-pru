@@ -11,19 +11,19 @@ func _ready():
 	# Gắn tín hiệu khi có người/quái đi vào vùng sát thương
 	body_entered.connect(_on_body_entered)
 	
+	print(">>> Skill Spawned! Z-Index set to 100.")
+	z_index = 100 # Đảm bảo hỉện thị đè lên mọi background/tilemap
+	
 	if anim:
 		# Gắn tín hiệu chạy xong animation thì tự hủy
 		anim.animation_finished.connect(_on_animation_finished)
 		anim.play() # Tự động chạy animation mặc định
 		
-		# Lật hình ảnh (VFX) dựa theo hướng đứng của Player
+		# Lật toàn bộ kỹ năng (VFX + Vùng sát thương) dựa theo hướng đứng của Player
 		if not is_player_facing_right:
-			anim.flip_h = true
-			# Lật vùng sát thương (nếu nó không nằm ở tọa độ 0,0)
-			position.x = -abs(position.x)
+			scale.x = -1
 		else:
-			anim.flip_h = false
-			position.x = abs(position.x)
+			scale.x = 1
 
 func _on_body_entered(body: Node2D):
 	# Nếu đối tượng chạm vào thuộc nhóm "enemy" và có hàm take_damage

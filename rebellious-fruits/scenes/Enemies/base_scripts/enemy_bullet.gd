@@ -21,7 +21,7 @@ func _physics_process(delta):
 	if is_exploding:
 		return
 	
-	# Di chuyển đạn
+	# Di chuyển đạn theo hướng đã quay
 	position += direction * speed * delta
 
 func _on_body_entered(body):

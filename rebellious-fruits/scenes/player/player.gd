@@ -5,6 +5,7 @@ const JUMP_FORCE = -550
 const GRAVITY = 900
 
 @onready var anim = $AnimatedSprite2D
+@onready var spawn_points_parent = $BulletSpawnPoints
 @onready var spawn_point = $BulletSpawnPoints/BulletSpawnPoint
 @onready var spawn_high = $BulletSpawnPoints/SpawnHigh
 @onready var spawn_high_medium = $BulletSpawnPoints/SpawnHighMedium
@@ -39,9 +40,10 @@ var dash_direction = 0
 var dash_velocity_2d = Vector2.ZERO
 
 @export_category("Skills")
-@export var skill_q_scene: PackedScene
-@export var skill_e_scene: PackedScene
-@export var skill_r_scene: PackedScene
+# Gắn cứng kỹ năng vào Player, không cho phép Level đè bẹp qua Inspector
+var skill_q_scene: PackedScene = preload("res://scenes/player/skills/skill_q_effect.tscn")
+var skill_e_scene: PackedScene = preload("res://scenes/player/skills/skill_e_effect.tscn")
+var skill_r_scene: PackedScene = preload("res://scenes/player/skills/skill_r_effect.tscn")
 
 # Cooldown gốc
 @export var skill_q_cooldown: float = 3.0
@@ -145,8 +147,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = direction * SPEED
 
-	if direction != 0 and not is_pressing_shoot and not is_shooting:
+	if direction != 0 and not is_pressing_shoot and not is_shooting and not is_dashing:
 		anim.flip_h = direction < 0
+		if anim.flip_h:
+			spawn_points_parent.scale.x = -1
+		else:
+			spawn_points_parent.scale.x = 1
 
 	# Nhảy
 	# Mới: Chỉ cho phép nhảy nếu không đè nút bắn (trên mặt đất) và không đang lướt
@@ -162,6 +168,10 @@ func _physics_process(delta):
 		var direction_bullet = (mouse_pos - global_position).normalized()
 
 		anim.flip_h = mouse_pos.x < global_position.x
+		if anim.flip_h:
+			spawn_points_parent.scale.x = -1
+		else:
+			spawn_points_parent.scale.x = 1
 		
 		# Tính góc từ player đến chuột (theo trục X ngang), đơn vị degrees
 		# Chú ý: Y tăng xuống, nên góc âm = bắn lên cao
@@ -249,6 +259,9 @@ func _physics_process(delta):
 	if is_crouching:
 		velocity.x = 0
 
+	if Input.is_action_just_pressed("skill_r"):
+		print(">>> Phat hien ban phim go nut R! (is_shooting: ", is_shooting, ", is_on_floor: ", is_on_floor(), ", is_dashing: ", is_dashing, ")")
+
 	# Nhận nút Kỹ năng (Q, W, E, R)
 	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching:
 		if Input.is_action_just_pressed("skill_q") and skill_q_timer <= 0:
@@ -282,8 +295,18 @@ func _physics_process(delta):
 			dash_timer = dash_duration
 			var mouse_pos = get_global_mouse_position()
 			var h_dir = sign(mouse_pos.x - global_position.x) # Chỉ lấy hướng ngang
+			if h_dir == 0:
+				h_dir = -1 if anim.flip_h else 1 # Fallback nếu trỏ ngay giữa người
+				
 			dash_velocity_2d = Vector2(h_dir * dash_speed, 0)
+			
+			# Lật mặt nhân vật theo hướng lướt
 			anim.flip_h = (h_dir < 0)
+			if anim.flip_h:
+				spawn_points_parent.scale.x = -1
+			else:
+				spawn_points_parent.scale.x = 1
+				
 			anim.speed_scale = 2.0
 			anim.play("dash")
 			_stop_loop_sfx()
@@ -344,12 +367,15 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String):
 	anim.play(cast_anim)
 	
 	if skill_scene:
+		print(">>> Dang ban Skill: ", skill_scene.resource_path)
 		var skill_instance = skill_scene.instantiate()
 		get_parent().add_child(skill_instance)
 		
 		# Vị trí spawn trước mặt player
 		var offset_x = 80 if not anim.flip_h else -80
 		skill_instance.global_position = global_position + Vector2(offset_x, -10)
+		
+		print(">>> Da them Skill vao Scene, Toa do: ", skill_instance.global_position)
 		
 		# Truyền hướng mặt vào Skill (nếu skill có hỗ trợ lật hình)
 		if skill_instance.get("is_player_facing_right") != null:

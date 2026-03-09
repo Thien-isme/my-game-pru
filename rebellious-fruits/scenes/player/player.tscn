@@ -484,6 +484,7 @@ z_index = 1
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_fm80t")
 bullet_spread = 60.0
+skill_r_cooldown = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 position = Vector2(1, -3)

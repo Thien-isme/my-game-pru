@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="7_ha5ow"]
 [ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/Enemies/lychee/lychee.tscn" id="8_13145"]
 [ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="9_13145"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="10_sje3b"]
 [ext_resource type="PackedScene" path="res://scenes/levels/components/level_bounds.tscn" id="12_13145"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpvs2"]
@@ -11489,15 +11490,15 @@ sources/0 = SubResource("TileSetAtlasSource_bpvs2")
 sources/1 = SubResource("TileSetAtlasSource_ha5ow")
 sources/2 = SubResource("TileSetAtlasSource_3c4s6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_13145"]
-resource_local_to_scene = true
-size = Vector2(920, 645)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sje3b"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_746xv"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4cbf"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -11542,31 +11543,6 @@ layer_0/tile_data = PackedInt32Array(6619097, 3342336, 39, 6684633, 3342336, 40,
 [node name="Entities" type="Node2D" parent="." unique_id=1793113809]
 
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1569091281]
-
-[node name="EnemySpawnerController_1" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_bpvs2")]
-position = Vector2(695, 319)
-
-[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_1" index="0" unique_id=87320655]
-position = Vector2(79, 66)
-enemy_scene = ExtResource("4_bpvs2")
-
-[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController_1/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-position = Vector2(-1, 6)
-shape = SubResource("RectangleShape2D_13145")
-debug_color = Color(0.37532368, 0.7754075, 1.1551381e-06, 0.2)
-
-[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_1" unique_id=1122847680]
-position = Vector2(712, 88)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-enemy_scene = ExtResource("4_bpvs2")
-
-[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController_1" unique_id=1147582976]
-position = Vector2(385, 95)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-enemy_scene = ExtResource("4_bpvs2")
-override_patrol_distance = 60.0
 
 [node name="EnemySpawnerController_2" parent="Entities/Enemies" unique_id=395838573 instance=ExtResource("3_bpvs2")]
 position = Vector2(1472, 315)
@@ -11618,11 +11594,20 @@ script = ExtResource("7_ha5ow")
 enemy_scene = ExtResource("9_13145")
 override_bullet_pass_terrain = true
 
+[node name="EnemySpawnerController_1" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_bpvs2")]
+position = Vector2(546, 316)
+
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController_1" index="0" unique_id=87320655]
+enemy_scene = ExtResource("10_sje3b")
+
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController_1/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
+shape = SubResource("RectangleShape2D_x4cbf")
+
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 4
 position = Vector2(168, 469)
-bullet_count = 1
 bullet_spread = 0.0
+skill_r_cooldown = 0.0
 
 [node name="Interactables" type="Node2D" parent="." unique_id=104058799]
 visible = false
@@ -11639,7 +11624,7 @@ position = Vector2(501, -25)
 [node name="RightBoundary" parent="LevelBounds" index="1"]
 position = Vector2(4443, -2)
 
-[editable path="Entities/Enemies/EnemySpawnerController_1"]
 [editable path="Entities/Enemies/EnemySpawnerController_2"]
 [editable path="Entities/Enemies/EnemySpawnerController_3"]
+[editable path="Entities/Enemies/EnemySpawnerController_1"]
 [editable path="LevelBounds"]
