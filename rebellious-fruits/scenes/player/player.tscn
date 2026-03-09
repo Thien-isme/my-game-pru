@@ -481,7 +481,8 @@ animations = [{
 [node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_fm80t")
-bullet_spread = 90.0
+bullet_count = 3
+bullet_spread = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 position = Vector2(1, -3)
@@ -492,7 +493,7 @@ position = Vector2(-0.63772106, -5.78718)
 scale = Vector2(0.10450946, 0.09849313)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"shoot_high_medium"
-frame_progress = 0.24369104
+frame_progress = 0.6641014
 speed_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
