@@ -11621,7 +11621,8 @@ override_bullet_pass_terrain = true
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 4
 position = Vector2(168, 469)
-bullet_spread = 60.0
+bullet_count = 1
+bullet_spread = 0.0
 
 [node name="Interactables" type="Node2D" parent="." unique_id=104058799]
 visible = false

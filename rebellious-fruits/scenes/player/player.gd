@@ -5,7 +5,11 @@ const JUMP_FORCE = -550
 const GRAVITY = 900
 
 @onready var anim = $AnimatedSprite2D
-@onready var spawn_point = $BulletSpawnPoint
+@onready var spawn_point = $BulletSpawnPoints/BulletSpawnPoint
+@onready var spawn_high = $BulletSpawnPoints/SpawnHigh
+@onready var spawn_high_medium = $BulletSpawnPoints/SpawnHighMedium
+@onready var spawn_normal = $BulletSpawnPoints/SpawnNormal
+@onready var spawn_low = $BulletSpawnPoints/SpawnLow
 @onready var hud = $HUD
 @onready var sfx_player = $SFXPlayer        # Dùng cho âm thanh ngắn (bắn, nhảy, chết, bị đánh)
 @onready var sfx_loop = $SFXPlayerLoop      # Dùng cho âm thanh lặp (chạy, đứng yên, cúi)
@@ -53,6 +57,7 @@ var skill_r_timer: float = 0.0
 
 # Timer kỹ năng W đang hoạt động (active duration)
 var skill_w_active_timer: float = 0.0
+var skill_w_active: bool = false  # true khi W đang cường hóa tốc độ bắn
 
 var is_casting_skill = false
 var cast_timer: float = 0.0
@@ -157,65 +162,87 @@ func _physics_process(delta):
 		var direction_bullet = (mouse_pos - global_position).normalized()
 
 		anim.flip_h = mouse_pos.x < global_position.x
-		var diff_y = mouse_pos.y - global_position.y
 		
-		var target_anim = "shoot_rapid_fire"
-		if is_just_pressing_shoot:
-			target_anim = "shoot" # Click 1 nhát thì dùng animation cũ
-			
-		if diff_y < -80:
-			target_anim = "shoot_high"
-		elif diff_y > 80:
+		# Tính góc từ player đến chuột (theo trục X ngang), đơn vị degrees
+		# Chú ý: Y tăng xuống, nên góc âm = bắn lên cao
+		var delta_x = abs(mouse_pos.x - global_position.x)
+		var delta_y = mouse_pos.y - global_position.y # ām = lên cao
+		var angle_deg = 0.0
+		if delta_x > 0 or delta_y != 0:
+			# độ nghịng so với mặt phẳng ngang. âm = hướng lên
+			angle_deg = rad_to_deg(atan2(-delta_y, delta_x))
+		
+		var target_anim: String
+		var active_spawn: Marker2D
+		
+		# Không cho bắn nếu góc nằm ngoài khoảng cho phép (> 60° hoặc < -60°)
+		if angle_deg > 60 or angle_deg < -60:
+			is_shooting = false  # Hủy trạng thái bắn
+		elif angle_deg > 20:
+			# Bắn lên chéo cao-trung bình (20° - 60°)
+			target_anim = "shoot_high_medium"
+			active_spawn = spawn_high_medium
+		elif angle_deg >= -15:
+			# Bắn ngang hoặc hơi chéo (-15° - 20°)
+			target_anim = "shoot"
+			active_spawn = spawn_normal
+		else:
+			# Bắn chéo xuống (-60° đến -15°)
 			target_anim = "shoot_low"
-			
-		if anim.animation != target_anim:
-			anim.play(target_anim)
-			
-		# Bật/Tắt Tia Lửa Đầu Súng
-		var muzzle_flash = get_node_or_null("MuzzleFlash")
-		if muzzle_flash:
-			muzzle_flash.visible = (target_anim == "shoot_rapid_fire")
-			
-			var flash_sprite = muzzle_flash.get_node_or_null("AnimatedSprite2D")
-			if not flash_sprite:
-				flash_sprite = muzzle_flash.get_node_or_null("Sprite2D")
-				
-			if flash_sprite:
-				flash_sprite.flip_h = anim.flip_h
-			
-			# Lật tia lửa dựa theo nhân vật (offset lại vị trí nếu cần)
-			if anim.flip_h:
-				muzzle_flash.position.x = -abs(muzzle_flash.position.x)
-			else:
-				muzzle_flash.position.x = abs(muzzle_flash.position.x)
-
-		# Tính toán góc bắn chùm (Spread)
-		var base_angle = direction_bullet.angle()
-		var spread_rad = deg_to_rad(bullet_spread)
+			active_spawn = spawn_low
 		
-		var start_angle = base_angle
-		if bullet_count > 1:
-			start_angle = base_angle - (spread_rad / 2.0)
+		if is_shooting and anim.animation != target_anim:
+			anim.play(target_anim)
+			anim.speed_scale = 2.5  # Tăng tốc độ animation khi bắn
 			
-		var angle_step = 0.0
-		if bullet_count > 1:
-			angle_step = spread_rad / (bullet_count - 1)
+		# Chỉ bắt đầu bắn nếu góc hợp lệ
+		if is_shooting:
+			# Bật/Tắt Tia Lửa Đầu Súng
+			var muzzle_flash = get_node_or_null("MuzzleFlash")
+			if muzzle_flash:
+				muzzle_flash.visible = (target_anim == "shoot_rapid_fire")
+				
+				var flash_sprite = muzzle_flash.get_node_or_null("AnimatedSprite2D")
+				if not flash_sprite:
+					flash_sprite = muzzle_flash.get_node_or_null("Sprite2D")
+					
+				if flash_sprite:
+					flash_sprite.flip_h = anim.flip_h
+				
+				# Lật tia lửa dựa theo nhân vật (offset lại vị trí nếu cần)
+				if anim.flip_h:
+					muzzle_flash.position.x = -abs(muzzle_flash.position.x)
+				else:
+					muzzle_flash.position.x = abs(muzzle_flash.position.x)
 
-		for i in range(bullet_count):
-			var final_angle = start_angle + (angle_step * i)
-			var final_dir = Vector2.RIGHT.rotated(final_angle)
+			# Tính toán góc bắn chùm (Spread)
+			var base_angle = direction_bullet.angle()
+			var spread_rad = deg_to_rad(bullet_spread)
 			
-			var bullet = bullet_scene.instantiate()
-			get_parent().add_child(bullet)
-			
-			bullet.global_position = spawn_point.global_position
-			bullet.direction = final_dir
-			bullet.rotation = final_angle
-			bullet.speed = bullet_speed # Gán tốc độ từ Inspector vào đạn
-			bullet.damage = bullet_damage # Truyền damage sang cho viên đạn
+			var start_angle = base_angle
+			if bullet_count > 1:
+				start_angle = base_angle - (spread_rad / 2.0)
+				
+			var angle_step = 0.0
+			if bullet_count > 1:
+				angle_step = spread_rad / (bullet_count - 1)
 
-		_play_sfx(shoot_sfx)
-		shoot_timer = 0.3
+			for i in range(bullet_count):
+				var final_angle = start_angle + (angle_step * i)
+				var final_dir = Vector2.RIGHT.rotated(final_angle)
+				
+				var bullet = bullet_scene.instantiate()
+				get_parent().add_child(bullet)
+				
+				bullet.global_position = active_spawn.global_position
+				bullet.direction = final_dir
+				bullet.rotation = final_angle
+				bullet.speed = bullet_speed
+				bullet.damage = bullet_damage
+
+			_play_sfx(shoot_sfx)
+			# Tốc độ bắn tăng x2 khi W đang active
+			shoot_timer = 0.15 if skill_w_active else 0.3
 
 	# Cúi
 	is_crouching = Input.is_action_pressed("crouch") and is_on_floor() and not is_dashing
@@ -240,14 +267,13 @@ func _physics_process(delta):
 			
 			if anim.flip_h:
 				w_anim.flip_h = true
-				w_effect.position.x = -abs(w_effect.position.x)
 			else:
 				w_anim.flip_h = false
-				w_effect.position.x = abs(w_effect.position.x)
 			
 			# Bắt đầu active duration 5s, đặt cooldown sau khi hết
 			skill_w_active_timer = skill_w_cooldown  # 5s active
 			skill_w_timer = skill_w_cooldown * 2      # Tổng cooldown = active + hồi
+			skill_w_active = true  # Kích hoạt tăng tốc bắn
 			if hud:
 				hud.set_skill_active("w")
 		elif Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
@@ -395,6 +421,7 @@ func _on_skill_w_anim_finished():
 
 # Tắt hiệu ứng W khi hết 5 giây
 func _deactivate_w_effect():
+	skill_w_active = false  # Tắt tăng tốc bắn
 	var w_effect = $SkillWEffect
 	if w_effect:
 		var w_anim = w_effect.get_node_or_null("AnimatedSprite2D")

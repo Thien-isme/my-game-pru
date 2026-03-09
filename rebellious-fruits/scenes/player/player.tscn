@@ -483,7 +483,6 @@ animations = [{
 z_index = 1
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_fm80t")
-bullet_count = 3
 bullet_spread = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -506,8 +505,22 @@ drag_top_margin = 1.0
 drag_bottom_margin = 1.0
 script = ExtResource("camera_lock_script")
 
-[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1968379945]
+[node name="BulletSpawnPoints" type="Node2D" parent="." unique_id=1968379950]
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379945]
 position = Vector2(36, -10)
+
+[node name="SpawnHigh" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379946]
+position = Vector2(20, -35)
+
+[node name="SpawnHighMedium" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379947]
+position = Vector2(36, -22)
+
+[node name="SpawnNormal" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379948]
+position = Vector2(36, -10)
+
+[node name="SpawnLow" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379949]
+position = Vector2(36, 5)
 
 [node name="HUD" parent="." unique_id=1193628908 instance=ExtResource("10_hud")]
 
@@ -520,17 +533,17 @@ position = Vector2(35, -9)
 
 [node name="SkillWEffect" type="Area2D" parent="." unique_id=999999999]
 z_index = -1
-position = Vector2(80, -10)
+position = Vector2(0, -10)
 collision_layer = 4
 collision_mask = 2
 monitoring = false
 monitorable = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SkillWEffect" unique_id=999999997]
-position = Vector2(-84, -6)
+visible = false
+position = Vector2(0, -5)
 scale = Vector2(0.15, 0.14)
 sprite_frames = SubResource("SpriteFrames_w_effect")
-frame_progress = 0.009755985
 
 [connection signal="body_entered" from="SkillWEffect" to="." method="_on_skill_w_body_entered"]
 [connection signal="animation_finished" from="SkillWEffect/AnimatedSprite2D" to="." method="_on_skill_w_anim_finished"]
