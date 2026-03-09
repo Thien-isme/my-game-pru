@@ -313,8 +313,38 @@ func _physics_process(delta):
 			_play_sfx(run_sfx)
 			skill_e_timer = skill_e_cooldown
 		elif Input.is_action_just_pressed("skill_r") and skill_r_timer <= 0:
-			_cast_skill(skill_r_scene, skill_r_cooldown, "shoot_rapid_fire")
-			skill_r_timer = skill_r_cooldown
+			var mouse_pos = get_global_mouse_position()
+			anim.flip_h = mouse_pos.x < global_position.x
+			if anim.flip_h:
+				spawn_points_parent.scale.x = -1
+			else:
+				spawn_points_parent.scale.x = 1
+				
+			var delta_x = abs(mouse_pos.x - global_position.x)
+			var delta_y = mouse_pos.y - global_position.y
+			var angle_deg = 0.0
+			if delta_x > 0 or delta_y != 0:
+				angle_deg = rad_to_deg(atan2(-delta_y, delta_x))
+				
+			var target_anim: String
+			var active_spawn: Marker2D
+			
+			if angle_deg > 60 or angle_deg < -60:
+				pass # Out of range, do nothing
+			else:
+				if angle_deg > 20:
+					target_anim = "shoot_high_medium"
+					active_spawn = spawn_high_medium
+				elif angle_deg >= -15:
+					target_anim = "shoot"
+					active_spawn = spawn_normal
+				else:
+					target_anim = "shoot_low"
+					active_spawn = spawn_low
+				
+				var direction_bullet = (mouse_pos - global_position).normalized()
+				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, direction_bullet.angle())
+				skill_r_timer = skill_r_cooldown
 
 	# Nhận nút Lướt (Dash)
 	if Input.is_action_just_pressed("dash") and not is_dashing and not is_shooting and not is_crouching:
@@ -360,7 +390,7 @@ func _physics_process(delta):
 		global_position.x = limit_right_x
 
 # --- Hàm Cast Skill Chung ---
-func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String):
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0):
 	is_casting_skill = true
 	cast_timer = 0.5 # Thời gian đứng yên gồng chiêu (có thể tuỳ chỉnh theo frame của anim)
 	
@@ -371,9 +401,13 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String):
 		var skill_instance = skill_scene.instantiate()
 		get_parent().add_child(skill_instance)
 		
-		# Vị trí spawn trước mặt player
-		var offset_x = 80 if not anim.flip_h else -80
-		skill_instance.global_position = global_position + Vector2(offset_x, -10)
+		if spawn_marker:
+			skill_instance.global_position = spawn_marker.global_position
+			skill_instance.rotation = base_angle
+		else:
+			# Vị trí spawn trước mặt player (fallback cho skill Q)
+			var offset_x = 80 if not anim.flip_h else -80
+			skill_instance.global_position = global_position + Vector2(offset_x, -10)
 		
 		print(">>> Da them Skill vao Scene, Toa do: ", skill_instance.global_position)
 		
@@ -433,9 +467,6 @@ func die():
 	# get_tree().reload_current_scene()  # Bật lại khi cần
 
 # --- Skill W Signals ---
-func _on_skill_w_body_entered(body):
-	if body.is_in_group("enemy") and body.has_method("take_damage"):
-		body.take_damage(50.0)
 
 func _on_skill_w_anim_finished():
 	# Khi animation kết thúc 1 lần, tự play lại nếu còn trong active duration
