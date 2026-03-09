@@ -23,10 +23,6 @@
 radius = 26.0
 height = 70.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
-atlas = ExtResource("3_qek5x")
-region = Rect2(38, 10, 680, 747)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
 atlas = ExtResource("3_qek5x")
 region = Rect2(718, 10, 680, 747)
@@ -38,18 +34,6 @@ region = Rect2(1398, 10, 680, 747)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
 atlas = ExtResource("3_qek5x")
 region = Rect2(2078, 10, 680, 747)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
-atlas = ExtResource("3_qek5x")
-region = Rect2(38, 757, 680, 747)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
-atlas = ExtResource("3_qek5x")
-region = Rect2(718, 757, 680, 747)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
-atlas = ExtResource("3_qek5x")
-region = Rect2(1398, 757, 680, 747)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_niom3"]
 atlas = ExtResource("4_kvlxm")
@@ -227,9 +211,6 @@ region = Rect2(1394, 757, 682, 747)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h17s1")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_je7p5")
 }, {
 "duration": 1.0,
@@ -237,17 +218,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gx1jg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ugbui")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fcs02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_myrg7")
 }],
-"loop": true,
+"loop": false,
 "name": &"crouch",
 "speed": 5.0
 }, {
@@ -495,8 +467,9 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-0.63772106, -5.78718)
 scale = Vector2(0.10450946, 0.09849313)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot"
-frame_progress = 0.15064898
+animation = &"crouch"
+frame = 2
+frame_progress = 1.0
 speed_scale = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]

@@ -70,6 +70,7 @@ var cast_timer: float = 0.0
 
 var shoot_timer: float = 0.0
 var is_shooting = false
+var is_aiming_q = false
 var is_jump = false
 var is_hit = false
 var is_crouching = false
@@ -164,8 +165,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_FORCE
 		_play_sfx(jump_sfx)
 
-	# Bắn súng
-	if is_pressing_shoot and not is_shooting and not is_dashing:
+	# Bắn súng thường
+	if is_pressing_shoot and not is_shooting and not is_dashing and not is_aiming_q:
 		is_shooting = true
 
 		var mouse_pos = get_global_mouse_position()
@@ -266,12 +267,56 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("skill_r"):
 		print(">>> Phat hien ban phim go nut R! (is_shooting: ", is_shooting, ", is_on_floor: ", is_on_floor(), ", is_dashing: ", is_dashing, ")")
 
-	# Nhận nút Kỹ năng (Q, W, E, R)
-	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching:
+	# Ngắm Q: Kích hoạt chế độ ngắm
+	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching and not is_aiming_q:
 		if Input.is_action_just_pressed("skill_q") and skill_q_timer <= 0:
-			_cast_skill(skill_q_scene, skill_q_cooldown, "shoot_high_medium", null, 0.0, 0.5, skill_q_damage) # Dùng tạm animation bắn
-			skill_q_timer = skill_q_cooldown
-		elif Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
+			is_aiming_q = true
+			# Trả về luôn để tránh kích nổ Q trong cùng 1 frame nếu lỡ tay bấm chuột
+			return
+
+	# Bắn Q nếu đang trong chế độ ngắm và click chuột trái
+	if is_aiming_q:
+		if is_just_pressing_shoot:
+			is_aiming_q = false
+			var mouse_pos = get_global_mouse_position()
+			anim.flip_h = mouse_pos.x < global_position.x
+			if anim.flip_h:
+				spawn_points_parent.scale.x = -1
+			else:
+				spawn_points_parent.scale.x = 1
+				
+			var delta_x = abs(mouse_pos.x - global_position.x)
+			var delta_y = mouse_pos.y - global_position.y
+			var angle_deg = 0.0
+			if delta_x > 0 or delta_y != 0:
+				angle_deg = rad_to_deg(atan2(-delta_y, delta_x))
+				
+			var target_anim: String
+			var active_spawn: Marker2D
+			
+			if angle_deg > 60 or angle_deg < -60:
+				pass # Out of range, do nothing
+			else:
+				if angle_deg > 20:
+					target_anim = "shoot_high_medium"
+					active_spawn = spawn_high_medium
+				elif angle_deg >= -15:
+					target_anim = "shoot"
+					active_spawn = spawn_normal
+				else:
+					target_anim = "shoot_low"
+					active_spawn = spawn_low
+				
+				_cast_skill(skill_q_scene, skill_q_cooldown, target_anim, active_spawn, 0.0, 0.5, skill_q_damage, mouse_pos)
+				skill_q_timer = skill_q_cooldown
+				return # Tránh kích hoạt đạn thường
+		elif Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("ui_right_click") or Input.is_action_just_pressed("dash"):
+			# Hủy ngắm Q
+			is_aiming_q = false
+
+	# Nhận nút Kỹ năng (Q, W, E, R) (Bỏ cái kích hoạt Q chớp nhoáng ở đây)
+	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching and not is_aiming_q:
+		if Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
 			# Cast W internally (Aura directly on Player, lasts 5s)
 			is_casting_skill = true
 			cast_timer = 0.5
@@ -293,6 +338,7 @@ func _physics_process(delta):
 			skill_w_active = true  # Kích hoạt tăng tốc bắn
 			if hud:
 				hud.set_skill_active("w")
+
 		elif Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
 			# Kỹ năng E: Lướt NGANG theo phía chuột trên trục X
 			is_dashing = true
@@ -394,7 +440,7 @@ func _physics_process(delta):
 		global_position.x = limit_right_x
 
 # --- Hàm Cast Skill Chung ---
-func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5, skill_damage: float = 0.0):
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5, skill_damage: float = 0.0, custom_spawn_pos: Vector2 = Vector2.INF):
 	is_casting_skill = true
 	# Cộng thêm 0.38s giữ dáng (post-cast delay) sau khi gồng chiêu xong
 	cast_timer = custom_cast_time + 0.38
@@ -411,13 +457,16 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, s
 		
 		print(">>> Dang ban Skill: ", skill_scene.resource_path)
 		var skill_instance = skill_scene.instantiate()
-		get_parent().add_child(skill_instance)
 		
+		# Khởi tạo target_pos cho kỹ năng (như Skill Q) nếu có điểm custom_spawn_pos (nhập từ chuột)
+		if "target_pos" in skill_instance and custom_spawn_pos != Vector2.INF:
+			skill_instance.target_pos = custom_spawn_pos
+			
 		if spawn_marker:
 			skill_instance.global_position = spawn_marker.global_position
 			skill_instance.rotation = base_angle
 		else:
-			# Vị trí spawn trước mặt player (fallback cho skill Q)
+			# Vị trí spawn trước mặt player (fallback)
 			var offset_x = 80 if not anim.flip_h else -80
 			skill_instance.global_position = global_position + Vector2(offset_x, -10)
 		
@@ -428,8 +477,14 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, s
 			skill_instance.is_player_facing_right = not anim.flip_h
 			
 		# Truyền sát thương vào Skill (nếu có thiết lập trên Player)
-		if skill_damage > 0 and skill_instance.get("damage") != null:
-			skill_instance.damage = skill_damage
+		if skill_damage > 0:
+			if "damage_per_second" in skill_instance:
+				skill_instance.damage_per_second = skill_damage
+			elif "damage" in skill_instance:
+				skill_instance.damage = skill_damage
+				
+		# Thêm vào scene sau khi đã cài đặt xong các thông số để hàm _ready() bên kia nhận được
+		get_parent().add_child(skill_instance)
 
 # --- Hàm thiết lập Ranh Giới (Nhận từ LevelBounds) ---
 func set_left_bound(x_pos: float):
