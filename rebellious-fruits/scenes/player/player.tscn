@@ -183,13 +183,13 @@ region = Rect2(1394, 0, 682, 747)
 atlas = ExtResource("7_0owmy")
 region = Rect2(30, 792, 682, 712)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1aof"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds1xl"]
 atlas = ExtResource("11_kvlxm")
-region = Rect2(1473, 10, 682, 747)
+region = Rect2(1475, 0, 690, 752)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8qe1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u1sw"]
 atlas = ExtResource("11_kvlxm")
-region = Rect2(1473, 757, 682, 747)
+region = Rect2(1475, 752, 690, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdvrm"]
 atlas = ExtResource("8_qek5x")
@@ -392,10 +392,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t1aof")
+"texture": SubResource("AtlasTexture_ds1xl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w8qe1")
+"texture": SubResource("AtlasTexture_1u1sw")
 }],
 "loop": true,
 "name": &"shoot_high_medium",
@@ -493,8 +493,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-0.63772106, -5.78718)
 scale = Vector2(0.10450946, 0.09849313)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"dash"
-frame_progress = 0.4007635
+animation = &"shoot_high_medium"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
 position = Vector2(346, -154)
@@ -508,19 +507,19 @@ script = ExtResource("camera_lock_script")
 [node name="BulletSpawnPoints" type="Node2D" parent="." unique_id=1968379950]
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379945]
-position = Vector2(36, -10)
+position = Vector2(30, -7)
 
 [node name="SpawnHigh" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379946]
-position = Vector2(20, -35)
+position = Vector2(24, -27)
 
 [node name="SpawnHighMedium" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379947]
-position = Vector2(36, -22)
+position = Vector2(24, -19)
 
 [node name="SpawnNormal" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379948]
-position = Vector2(36, -10)
+position = Vector2(30, -9)
 
 [node name="SpawnLow" type="Marker2D" parent="BulletSpawnPoints" unique_id=1968379949]
-position = Vector2(36, 5)
+position = Vector2(32, 12)
 
 [node name="HUD" parent="." unique_id=1193628908 instance=ExtResource("10_hud")]
 

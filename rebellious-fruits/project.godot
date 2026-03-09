@@ -13,6 +13,7 @@ config_version=5
 config/name="RebelliousFruits"
 run/main_scene="uid://ctvx8f0lxlfmq"
 config/features=PackedStringArray("4.6", "Mobile")
+run/max_fps=120
 config/icon="res://icon.svg"
 
 [autoload]
@@ -76,6 +77,7 @@ skill_w={
 
 [physics]
 
+common/physics_ticks_per_second=120
 3d/physics_engine="Jolt Physics"
 
 [rendering]
