@@ -4,9 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://b5784aqv7620g" path="res://assets/ui/ui_background.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://gcu1f2sgnrqb" path="res://assets/ui/ui_text.png" id="3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_play"]
+atlas = ExtResource("3")
+region = Rect2(989.3458, 507.35287, 794.02295, 227.85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_settings"]
+atlas = ExtResource("3")
+region = Rect2(982.4413, 721.3938, 797.4752, 224.39777)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_exit"]
 atlas = ExtResource("3")
-region = Rect2(0, 500, 1920, 250)
+region = Rect2(1023.86865, 931.9825, 756.04785, 238.20685)
 
 [node name="MainMenu" type="Control" unique_id=2016756014]
 layout_mode = 3
@@ -35,10 +43,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
+offset_left = -201.0
+offset_top = -140.0
+offset_right = 199.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -47,20 +55,24 @@ alignment = 1
 [node name="PlayButton" type="TextureButton" parent="VBoxContainer" unique_id=2055500474]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-texture_normal = ExtResource("3")
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_play")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="SettingsButton" type="TextureButton" parent="VBoxContainer" unique_id=287740747]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-texture_normal = ExtResource("3")
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_settings")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ExitButton" type="TextureButton" parent="VBoxContainer" unique_id=1599162501]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+mouse_default_cursor_shape = 2
+button_mask = 3
 texture_normal = SubResource("AtlasTexture_exit")
 ignore_texture_size = true
 stretch_mode = 5

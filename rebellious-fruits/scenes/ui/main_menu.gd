@@ -8,9 +8,40 @@ var settings_scene = preload("res://scenes/ui/settings_menu.tscn")
 var settings_instance = null
 
 func _ready():
-	play_button.pressed.connect(_on_play_pressed)
-	settings_button.pressed.connect(_on_settings_pressed)
-	exit_button.pressed.connect(_on_exit_pressed)
+	_setup_button(play_button, _on_play_pressed)
+	_setup_button(settings_button, _on_settings_pressed)
+	_setup_button(exit_button, _on_exit_pressed)
+
+func _setup_button(btn: TextureButton, callback: Callable):
+	btn.pressed.connect(callback)
+	
+	# Hiệu ứng hover (phóng to nhẹ)
+	btn.mouse_entered.connect(func():
+		var tween = create_tween()
+		tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.1)
+	)
+	btn.mouse_exited.connect(func():
+		var tween = create_tween()
+		tween.tween_property(btn, "scale", Vector2(1.0, 1.0), 0.1)
+	)
+	
+	# Hiệu ứng bấm (nhỏ lại và tối đi)
+	btn.button_down.connect(func():
+		var tween = create_tween()
+		tween.tween_property(btn, "scale", Vector2(0.95, 0.95), 0.05)
+		btn.modulate = Color(0.8, 0.8, 0.8)
+	)
+	btn.button_up.connect(func():
+		var tween = create_tween()
+		tween.tween_property(btn, "scale", Vector2(1.05, 1.05), 0.05)
+		btn.modulate = Color(1, 1, 1)
+	)
+
+	# Đảm bảo pivot (tâm xoay/scale) nằm ở giữa nút
+	btn.pivot_offset = btn.custom_minimum_size / 2.0
+	if btn.size.x > 0:
+		btn.pivot_offset = btn.size / 2.0
+
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://scenes/levels/level_1/level_1_1.tscn")

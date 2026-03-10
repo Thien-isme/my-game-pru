@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bg15p4hwv3ib0" path="res://assets/sprites/enemies/apple/apple_bullet.png" id="2_da54q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da54q"]
-size = Vector2(27, 9)
+size = Vector2(37, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_da54q"]
 atlas = ExtResource("2_da54q")
@@ -44,12 +44,11 @@ animations = [{
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687808004]
-position = Vector2(-0.5, 0.5)
+position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_da54q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217868503]
-position = Vector2(-2.999999, 0)
-scale = Vector2(0.05769419, 0.030439105)
+scale = Vector2(0.08641906, 0.039773125)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 
