@@ -52,13 +52,14 @@ animations = [{
 script = ExtResource("1_j5dd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
+position = Vector2(45, -55)
 shape = SubResource("CircleShape2D_1nwqt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(59, -7)
+position = Vector2(59.000004, -65)
 rotation = 1.033235
 scale = Vector2(0.20520103, 0.14888848)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"explode"
+animation = &"fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

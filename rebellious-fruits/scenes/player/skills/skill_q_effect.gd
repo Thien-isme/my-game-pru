@@ -17,7 +17,7 @@ var flight_duration: float = 0.5
 var current_flight_time: float = 0.0
 
 func _ready():
-	collision_layer = 0
+	# Mask 1 = Enemy group
 	collision_mask = 1
 	z_index = 100
 	
@@ -71,11 +71,17 @@ func _explode():
 	
 	if anim:
 		anim.play("explode")
+	
+	# Khi nổ, kiểm tra ngay xem có quái nào đang nằm trong vùng này không
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("enemy") and not active_enemies.has(body):
+			active_enemies.append(body)
 
 func _on_body_entered(body: Node2D):
-	if body.is_in_group("enemy"):
-		if not is_exploded:
-			_explode()
+	# Chỉ bắt đầu theo dõi kẻ địch nếu đã nổ. 
+	# Không cho nổ sớm khi đang bay (bỏ qua lệnh _explode() ở đây)
+	if is_exploded and body.is_in_group("enemy"):
 		if not active_enemies.has(body):
 			active_enemies.append(body)
 

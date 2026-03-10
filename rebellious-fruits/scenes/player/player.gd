@@ -147,6 +147,28 @@ func _physics_process(delta):
 	var is_pressing_shoot = Input.is_action_pressed("click")
 	var is_just_pressing_shoot = Input.is_action_just_pressed("click")
 	
+	# --- Kỹ năng W (Có thể dùng trong bất kỳ trường hợp nào) ---
+	if Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0 and not skill_w_active:
+		# Cast W internally (Aura directly on Player, lasts 5s)
+		# Không set is_casting_skill = true để không bị ngắt các hành động khác
+		var w_effect = $SkillWEffect
+		var w_anim = w_effect.get_node("AnimatedSprite2D")
+		w_anim.visible = true
+		w_anim.play("default")
+		
+		if anim.flip_h:
+			w_anim.flip_h = true
+		else:
+			w_anim.flip_h = false
+		
+		# Bắt đầu active duration 5s, đặt cooldown sau khi hết
+		skill_w_active_timer = 5.0  # Cố định 5s active theo yêu cầu
+		skill_w_timer = 0.0          # Chưa tính cooldown vội
+		skill_w_active = true  # Kích hoạt tăng tốc bắn
+		_play_sfx(skill_w_sfx)
+		if hud:
+			hud.set_skill_active("w")
+	
 	if is_pressing_shoot or is_shooting:
 		velocity.x = 0
 	elif is_dashing:
@@ -340,33 +362,9 @@ func _physics_process(delta):
 			# Hủy ngắm Q
 			is_aiming_q = false
 
-	# Nhận nút Kỹ năng (Q, W, E, R) (Bỏ cái kích hoạt Q chớp nhoáng ở đây)
+	# Nhận nút Kỹ năng (Q, E, R)
 	if is_on_floor() and not is_dashing and not is_shooting and not is_crouching and not is_aiming_q:
-		if Input.is_action_just_pressed("skill_w") and skill_w_timer <= 0:
-			# Cast W internally (Aura directly on Player, lasts 5s)
-			is_casting_skill = true
-			cast_timer = 0.5
-			anim.play("shoot_high")
-			
-			var w_effect = $SkillWEffect
-			var w_anim = w_effect.get_node("AnimatedSprite2D")
-			w_anim.visible = true
-			w_anim.play("default")
-			
-			if anim.flip_h:
-				w_anim.flip_h = true
-			else:
-				w_anim.flip_h = false
-			
-			# Bắt đầu active duration 5s, đặt cooldown sau khi hết
-			skill_w_active_timer = 5.0  # Cố định 5s active theo yêu cầu
-			skill_w_timer = 0.0          # Chưa tính cooldown vội
-			skill_w_active = true  # Kích hoạt tăng tốc bắn
-			_play_sfx(skill_w_sfx)
-			if hud:
-				hud.set_skill_active("w")
-
-		elif Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
+		if Input.is_action_just_pressed("skill_e") and skill_e_timer <= 0:
 			# Kỹ năng E: Lướt NGANG theo phía chuột trên trục X
 			is_dashing = true
 			dash_timer = dash_duration
