@@ -193,8 +193,12 @@ func _physics_process(delta):
 		# Không cho bắn nếu góc nằm ngoài khoảng cho phép (> 60° hoặc < -60°)
 		if angle_deg > 60 or angle_deg < -60:
 			is_shooting = false  # Hủy trạng thái bắn
+		elif angle_deg > 30:
+			# Bắn lên chéo cao (30° - 60°)
+			target_anim = "shoot_high"
+			active_spawn = spawn_high
 		elif angle_deg > 20:
-			# Bắn lên chéo cao-trung bình (20° - 60°)
+			# Bắn lên chéo trung bình (20° - 45°)
 			target_anim = "shoot_high_medium"
 			active_spawn = spawn_high_medium
 		elif angle_deg >= -15:
@@ -260,9 +264,19 @@ func _physics_process(delta):
 			shoot_timer = 0.15 if skill_w_active else 0.3
 
 	# Cúi
+	var was_crouching = is_crouching
 	is_crouching = Input.is_action_pressed("crouch") and is_on_floor() and not is_dashing
 	if is_crouching:
 		velocity.x = 0
+		if not was_crouching:
+			if $CollisionShape2D.shape is CapsuleShape2D:
+				$CollisionShape2D.shape.height = 52.0
+			$CollisionShape2D.position.y = 6.0
+	else:
+		if was_crouching:
+			if $CollisionShape2D.shape is CapsuleShape2D:
+				$CollisionShape2D.shape.height = 70.0
+			$CollisionShape2D.position.y = -3.0
 
 	if Input.is_action_just_pressed("skill_r"):
 		print(">>> Phat hien ban phim go nut R! (is_shooting: ", is_shooting, ", is_on_floor: ", is_on_floor(), ", is_dashing: ", is_dashing, ")")
@@ -297,7 +311,10 @@ func _physics_process(delta):
 			if angle_deg > 60 or angle_deg < -60:
 				pass # Out of range, do nothing
 			else:
-				if angle_deg > 20:
+				if angle_deg > 30:
+					target_anim = "shoot_high"
+					active_spawn = spawn_high
+				elif angle_deg > 20:
 					target_anim = "shoot_high_medium"
 					active_spawn = spawn_high_medium
 				elif angle_deg >= -15:
@@ -386,7 +403,10 @@ func _physics_process(delta):
 			if angle_deg > 60 or angle_deg < -60:
 				pass # Out of range, do nothing
 			else:
-				if angle_deg > 20:
+				if angle_deg > 30:
+					target_anim = "shoot_high"
+					active_spawn = spawn_high
+				elif angle_deg > 20:
 					target_anim = "shoot_high_medium"
 					active_spawn = spawn_high_medium
 				elif angle_deg >= -15:
@@ -433,18 +453,22 @@ func _physics_process(delta):
 		if is_crouching:
 			if anim.animation != "crouch":
 				anim.play("crouch")
+				anim.speed_scale = 4.0
 				_play_loop_sfx(crouch_sfx)
 		elif not is_on_floor():
 			if anim.animation != "jump":
 				anim.play("jump")
+				anim.speed_scale = 1.0
 				_stop_loop_sfx()
 		elif direction != 0:
 			if anim.animation != "run":
 				anim.play("run")
+				anim.speed_scale = 1.0
 				_play_loop_sfx(run_sfx)
 		else:
 			if anim.animation != "idle":
 				anim.play("idle")
+				anim.speed_scale = 1.0
 				_play_loop_sfx(idle_sfx)
 
 	move_and_slide()

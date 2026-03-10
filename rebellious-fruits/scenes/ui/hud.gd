@@ -70,6 +70,7 @@ func update_skill_active(skill_key: String, remaining: float, total: float):
 # --- Gọi khi bắt đầu cooldown (sau khi W hết 5s) ---
 func start_skill_cooldown(skill_key: String, cool_time: float):
 	skill_active[skill_key] = false
+	_refresh_skill_panel(skill_key)
 	skill_cooldowns[skill_key] = cool_time
 	skill_max_cooldowns[skill_key] = cool_time
 	var panel = _get_skill_panel(skill_key)
