@@ -2,10 +2,10 @@ extends CanvasLayer
 
 @onready var health_bar = $TopCenter/HealthBar
 @onready var score_label = $ScoreLabel
-@onready var skill_q_panel = $LeftSide/SkillQ
-@onready var skill_w_panel = $LeftSide/SkillW
-@onready var skill_e_panel = $LeftSide/SkillE
-@onready var skill_r_panel = $LeftSide/SkillR
+@onready var skill_q_panel = $BottomCenter/SkillQ
+@onready var skill_w_panel = $BottomCenter/SkillW
+@onready var skill_e_panel = $BottomCenter/SkillE
+@onready var skill_r_panel = $BottomCenter/SkillR
 
 var max_health: float = 500.0
 var current_health: float = 500.0

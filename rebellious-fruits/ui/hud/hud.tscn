@@ -22,7 +22,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skill"]
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
+bg_color = Color(0.1, 0.1, 0.1, 0)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -60,53 +60,56 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="LeftSide" type="VBoxContainer" parent="." unique_id=208108024]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 26.0
-offset_top = -176.0
-offset_right = 86.0
-offset_bottom = 109.0
-grow_vertical = 2
+[node name="BottomCenter" type="HBoxContainer" parent="." unique_id=208108024]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 15
-metadata/_edit_use_anchors_ = true
+alignment = 1
 
-[node name="SkillQ" type="Panel" parent="LeftSide" unique_id=1795358716]
+[node name="SkillQ" type="Panel" parent="BottomCenter" unique_id=1795358716]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillQ" unique_id=791294032]
+[node name="TextureRect" type="TextureRect" parent="BottomCenter/SkillQ" unique_id=791294032]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8qguk")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="LeftSide/SkillQ" unique_id=1715402593]
+[node name="Label" type="Label" parent="BottomCenter/SkillQ" unique_id=1715402593]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 49.0
-offset_top = -4.0
-offset_right = 49.0
-offset_bottom = 7.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+offset_left = -20.0
+offset_top = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
 text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillQ" unique_id=189403457]
+[node name="CooldownOverlay" type="Control" parent="BottomCenter/SkillQ" unique_id=189403457]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,60 +119,55 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillW" type="Panel" parent="LeftSide" unique_id=576638074]
+[node name="SkillW" type="Panel" parent="BottomCenter" unique_id=576638074]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillW" unique_id=1472526257]
+[node name="TextureRect" type="TextureRect" parent="BottomCenter/SkillW" unique_id=1472526257]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_136eg")
-expand_mode = 2
-stretch_mode = 5
+expand_mode = 1
 
-[node name="Label" type="Label" parent="LeftSide/SkillW" unique_id=1177737562]
+[node name="Label" type="Label" parent="BottomCenter/SkillW" unique_id=1177737562]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 52.0
-offset_top = 4.0
-offset_right = 52.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+offset_left = -20.0
+offset_top = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
 text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillW" unique_id=1706669358]
+[node name="CooldownOverlay" type="Control" parent="BottomCenter/SkillW" unique_id=1706669358]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillE" type="Panel" parent="LeftSide" unique_id=2037672131]
+[node name="SkillE" type="Panel" parent="BottomCenter" unique_id=2037672131]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillE" unique_id=2027706547]
+[node name="TextureRect" type="TextureRect" parent="BottomCenter/SkillE" unique_id=2027706547]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,25 +176,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_oj5la")
 expand_mode = 1
-stretch_mode = 5
 
-[node name="Label" type="Label" parent="LeftSide/SkillE" unique_id=1006016738]
+[node name="Label" type="Label" parent="BottomCenter/SkillE" unique_id=1006016738]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 48.0
-offset_top = -2.0
-offset_right = 48.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+offset_left = -20.0
+offset_top = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillE" unique_id=1965584279]
+[node name="CooldownOverlay" type="Control" parent="BottomCenter/SkillE" unique_id=1965584279]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,42 +205,40 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillR" type="Panel" parent="LeftSide" unique_id=259457705]
+[node name="SkillR" type="Panel" parent="BottomCenter" unique_id=259457705]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillR" unique_id=1886946668]
+[node name="TextureRect" type="TextureRect" parent="BottomCenter/SkillR" unique_id=1886946668]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 3.0
-offset_right = -0.6268654
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_gss2c")
-expand_mode = 3
-stretch_mode = 5
+expand_mode = 1
 
-[node name="Label" type="Label" parent="LeftSide/SkillR" unique_id=740675103]
+[node name="Label" type="Label" parent="BottomCenter/SkillR" unique_id=740675103]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -1.0
-offset_right = 50.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+offset_left = -20.0
+offset_top = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
 text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillR" unique_id=1630772327]
+[node name="CooldownOverlay" type="Control" parent="BottomCenter/SkillR" unique_id=1630772327]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
