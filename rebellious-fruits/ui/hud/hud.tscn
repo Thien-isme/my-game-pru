@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://dxhud1234567"]
 
-[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://c7wdgme1dr75l" path="res://ui/hud/hud.gd" id="1_hud"]
 [ext_resource type="Texture2D" uid="uid://dt8htinuxsr0y" path="res://assets/ui/skills/skill_q.png" id="2_8qguk"]
-[ext_resource type="Script" path="res://ui/hud/cooldown_overlay.gd" id="2_cooldown"]
-[ext_resource type="Texture2D" uid="uid://cy2s7xmgl47mq" path="res://assets/ui/skills/skill_w.png" id="4_136eg"]
+[ext_resource type="Script" uid="uid://bw6vj11nb4hm2" path="res://ui/hud/cooldown_overlay.gd" id="2_cooldown"]
 [ext_resource type="Texture2D" uid="uid://18lnbn6huu6l" path="res://assets/ui/skills/skill_e.png" id="5_oj5la"]
 [ext_resource type="Texture2D" uid="uid://djmfvygm51lpe" path="res://assets/ui/skills/skill_r.png" id="6_gss2c"]
 
@@ -27,11 +26,14 @@ border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.678431, 0.109804, 0.109804, 1)
+border_color = Color(0, 0.42469501, 0.43177593, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_imuuq"]
+load_path = "res://.godot/imported/skill_w.png-68f60463327a64a6251cfb192a08516a.ctex"
 
 [node name="HUD" type="CanvasLayer" unique_id=1506087887]
 script = ExtResource("1_hud")
@@ -86,6 +88,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_8qguk")
@@ -114,6 +118,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -129,9 +137,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_136eg")
+texture = SubResource("CompressedTexture2D_imuuq")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="BottomCenter/SkillW" unique_id=1177737562]
@@ -157,6 +168,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -172,6 +187,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_oj5la")
@@ -200,6 +219,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -215,6 +238,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_gss2c")
@@ -243,6 +270,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
