@@ -110,7 +110,7 @@ func _physics_process(delta):
 	if skill_w_active_timer > 0:
 		skill_w_active_timer -= delta
 		if hud:
-			hud.update_skill_active("w", skill_w_active_timer, skill_w_cooldown)
+			hud.update_skill_active("w", skill_w_active_timer, 5.0)
 		if skill_w_active_timer <= 0:
 			_deactivate_w_effect()
 	
@@ -359,8 +359,8 @@ func _physics_process(delta):
 				w_anim.flip_h = false
 			
 			# Bắt đầu active duration 5s, đặt cooldown sau khi hết
-			skill_w_active_timer = skill_w_cooldown  # 5s active
-			skill_w_timer = skill_w_cooldown * 2      # Tổng cooldown = active + hồi
+			skill_w_active_timer = 5.0  # Cố định 5s active theo yêu cầu
+			skill_w_timer = 0.0          # Chưa tính cooldown vội
 			skill_w_active = true  # Kích hoạt tăng tốc bắn
 			_play_sfx(skill_w_sfx)
 			if hud:
@@ -611,5 +611,8 @@ func _deactivate_w_effect():
 		if w_anim:
 			w_anim.visible = false
 			w_anim.stop()
+	
+	# Sau 5s active mới bắt đầu tính cooldown
+	skill_w_timer = skill_w_cooldown
 	if hud:
 		hud.start_skill_cooldown("w", skill_w_cooldown)

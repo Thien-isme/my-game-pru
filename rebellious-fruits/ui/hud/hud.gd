@@ -109,7 +109,7 @@ func _refresh_skill_panel(skill_key: String):
 	if skill_active[skill_key]:
 		style.border_color = Color(1.0, 0.9, 0.0, 1.0) # Vàng sáng khi active
 	else:
-		style.border_color = Color(0.678, 0.11, 0.11, 1.0) # Đỏ đậm mặc định
+		style.border_color = Color.from_string("006c6e", Color.CADET_BLUE) # Màu xanh mặc định mới
 	panel.add_theme_stylebox_override("panel", style)
 
 func _get_skill_panel(key: String) -> Panel:
