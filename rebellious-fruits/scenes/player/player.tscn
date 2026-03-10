@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cidg1of70ekyd" path="res://scenes/player/player.gd" id="1_h17s1"]
 [ext_resource type="AudioStream" uid="uid://vdg2yrcpvavj" path="res://assets/audio/sfx/player/player-shoot.mp3" id="2_6cv16"]
+[ext_resource type="AudioStream" uid="uid://c0bo2i1vj8h28" path="res://assets/audio/sfx/player/shoot-rapid-fire.mp3" id="3_28m0y"]
 [ext_resource type="AudioStream" uid="uid://dofewwjf2ferb" path="res://assets/audio/sfx/player/jump-sfx.mp3" id="3_j4nxn"]
 [ext_resource type="Texture2D" uid="uid://futc6xddopew" path="res://assets/sprites/player/player_crounch.png" id="3_qek5x"]
 [ext_resource type="AudioStream" uid="uid://cm256phe3dk8q" path="res://assets/audio/sfx/player/skills/skill_q_sfx.mp3" id="3_yj68g"]
@@ -23,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://ui/hud/hud.tscn" id="10_hud"]
 [ext_resource type="Texture2D" uid="uid://bdvpewjn8x1uh" path="res://assets/sprites/player/player_shoot_high_medium.png" id="11_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://c0jy6bwg0oowk" path="res://assets/sprites/player/player_shoot_rapid_fire.png" id="13_uf5tr"]
-[ext_resource type="PackedScene" uid="uid://253sraqp0llc" path="res://scenes/player/muzzle_flash.tscn" id="15_fcs02"]
+[ext_resource type="PackedScene" uid="uid://y6dc33xidags" path="res://scenes/player/shoot_rapid_fire.tscn" id="15_rapid"]
 [ext_resource type="Script" uid="uid://hpiksclfeage" path="res://scenes/player/camera_lock.gd" id="camera_lock_script"]
 [ext_resource type="Texture2D" uid="uid://685v08w0oer2" path="res://assets/sprites/skills/skill_w.png" id="w_effect_tex"]
 
@@ -454,8 +455,10 @@ animations = [{
 
 [node name="player" type="CharacterBody2D" unique_id=638291107 groups=["player"]]
 z_index = 1
+position = Vector2(-2, 0)
 script = ExtResource("1_h17s1")
 shoot_sfx = ExtResource("2_6cv16")
+shoot_rapid_sfx = ExtResource("3_28m0y")
 jump_sfx = ExtResource("3_j4nxn")
 run_sfx = ExtResource("4_28m0y")
 hit_sfx = ExtResource("5_uniwh")
@@ -513,8 +516,11 @@ position = Vector2(32, 12)
 
 [node name="SFXPlayerLoop" type="AudioStreamPlayer" parent="." unique_id=2089341235]
 
-[node name="MuzzleFlash" parent="." unique_id=1592498031 instance=ExtResource("15_fcs02")]
+[node name="ShootRapidFireEffect" parent="." unique_id=999425207 instance=ExtResource("15_rapid")]
+visible = false
+z_index = 10
 position = Vector2(35, -9)
+scale = Vector2(0.1, 0.1)
 
 [node name="SkillWEffect" type="Area2D" parent="." unique_id=999999999]
 z_index = -1

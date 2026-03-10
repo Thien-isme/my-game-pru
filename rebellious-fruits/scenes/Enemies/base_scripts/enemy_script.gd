@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene  # Chỉnh trong Inspector cho từng enemy
 @export var bullet_speed: float = 300.0
 @export var bullet_damage: float = 10.0
-@export var bullet_pass_terrain: bool = false # Đạn có thể xuyên tường/đất không
+@export var bullet_pass_terrain: bool = true # Đạn có thể xuyên tường/đất không
 
 @export_category("Patrol Settings")
 @export var patrol_distance: float = 100.0 : # Khoảng cách đi tuần mỗi bên (để 0 nếu muốn đứng im)

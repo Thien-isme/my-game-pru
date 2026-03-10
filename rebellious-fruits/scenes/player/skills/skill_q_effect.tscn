@@ -93,6 +93,7 @@ animations = [{
 }]
 
 [node name="SkillQEffect" type="Area2D" unique_id=2141848069]
+z_index = -1
 collision_layer = 0
 script = ExtResource("1_script")
 

@@ -17,6 +17,7 @@ const GRAVITY = 900
 
 @export_category("Audio")
 @export var shoot_sfx: AudioStream   # Tiếng bắn súng
+@export var shoot_rapid_sfx: AudioStream # Tiếng bắn liên thanh (lặp)
 @export var jump_sfx: AudioStream    # Tiếng nhảy lên
 @export var run_sfx: AudioStream     # Tiếng chạy (lặp)
 @export var idle_sfx: AudioStream    # Tiếng đứng yên thở (lặp)
@@ -136,9 +137,11 @@ func _physics_process(delta):
 		if shoot_timer <= 0:
 			is_shooting = false
 			# Ẩn tia lửa súng khi ngừng bắn
-			var muzzle_flash = get_node_or_null("MuzzleFlash")
-			if muzzle_flash:
-				muzzle_flash.visible = false
+			var rapid_fire_flash = get_node_or_null("ShootRapidFireEffect")
+			if rapid_fire_flash:
+				rapid_fire_flash.visible = false
+			# Dừng âm thanh bắn liên thanh
+			_stop_loop_sfx()
 
 	if not is_on_floor() and not is_dashing:
 		velocity.y += GRAVITY * delta
@@ -231,7 +234,10 @@ func _physics_process(delta):
 			active_spawn = spawn_high_medium
 		elif angle_deg >= -15:
 			# Bắn ngang hoặc hơi chéo (-15° - 20°)
-			target_anim = "shoot"
+			if (Input.is_action_pressed("click") and not Input.is_action_just_pressed("click")) or skill_w_active:
+				target_anim = "shoot_rapid_fire"
+			else:
+				target_anim = "shoot"
 			active_spawn = spawn_normal
 		else:
 			# Bắn chéo xuống (-60° đến -15°)
@@ -244,23 +250,27 @@ func _physics_process(delta):
 			
 		# Chỉ bắt đầu bắn nếu góc hợp lệ
 		if is_shooting:
-			# Bật/Tắt Tia Lửa Đầu Súng
-			var muzzle_flash = get_node_or_null("MuzzleFlash")
-			if muzzle_flash:
-				muzzle_flash.visible = (target_anim == "shoot_rapid_fire")
-				
-				var flash_sprite = muzzle_flash.get_node_or_null("AnimatedSprite2D")
-				if not flash_sprite:
-					flash_sprite = muzzle_flash.get_node_or_null("Sprite2D")
+			# Bật/Tắt Tia Lửa Đầu Súng (Muzzle Flash)
+			var rapid_fire_flash = get_node_or_null("ShootRapidFireEffect")
+			if rapid_fire_flash:
+				# Chỉ hiện tia lửa và chơi âm thanh liên thanh nếu ĐÈ chuột (không phải vừa mới CLICK phát đầu)
+				# Hoặc nếu đang trong trạng thái Skill W (mặc định là liên thanh)
+				if (Input.is_action_pressed("click") and not Input.is_action_just_pressed("click")) or skill_w_active:
+					rapid_fire_flash.visible = true
+					rapid_fire_flash.global_position = active_spawn.global_position
+					rapid_fire_flash.rotation = direction_bullet.angle()
 					
-				if flash_sprite:
-					flash_sprite.flip_h = anim.flip_h
-				
-				# Lật tia lửa dựa theo nhân vật (offset lại vị trí nếu cần)
-				if anim.flip_h:
-					muzzle_flash.position.x = -abs(muzzle_flash.position.x)
+					var flash_anim = rapid_fire_flash.get_node_or_null("AnimatedSprite2D")
+					if flash_anim:
+						flash_anim.flip_v = anim.flip_h
+						flash_anim.play("default")
+					
+					_play_loop_sfx(shoot_rapid_sfx)
 				else:
-					muzzle_flash.position.x = abs(muzzle_flash.position.x)
+					# Phát tiếng đơn cho phát súng đầu tiên hoặc khi nhắp chuột lẻ
+					rapid_fire_flash.visible = false
+					_play_sfx(shoot_sfx)
+					_stop_loop_sfx()
 
 			# Tính toán góc bắn chùm (Spread)
 			var base_angle = direction_bullet.angle()
@@ -287,7 +297,6 @@ func _physics_process(delta):
 				bullet.speed = bullet_speed
 				bullet.damage = bullet_damage
 
-			_play_sfx(shoot_sfx)
 			# Tốc độ bắn tăng x2 khi W đang active
 			shoot_timer = 0.15 if skill_w_active else 0.3
 
