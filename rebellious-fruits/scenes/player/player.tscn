@@ -155,10 +155,6 @@ region = Rect2(786, 10, 682, 747)
 atlas = ExtResource("4_75vfm")
 region = Rect2(1468, 10, 682, 747)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
-atlas = ExtResource("7_0owmy")
-region = Rect2(712, 0, 682, 747)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
 atlas = ExtResource("7_0owmy")
 region = Rect2(1394, 0, 682, 747)
@@ -350,9 +346,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kvlxm")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_uf5tr")
 }, {
 "duration": 1.0,
@@ -467,9 +460,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-0.63772106, -5.78718)
 scale = Vector2(0.10450946, 0.09849313)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"crouch"
-frame = 2
-frame_progress = 1.0
+animation = &"shoot_high"
 speed_scale = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
