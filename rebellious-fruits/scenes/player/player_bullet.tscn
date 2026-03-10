@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dtv0wpsabbyjl" path="res://scenes/player/player_bullet.gd" id="1_2kcj1"]
 [ext_resource type="Texture2D" uid="uid://dhejn82e3nshy" path="res://assets/sprites/player/durian_bullet_explode.png" id="2_fgkn0"]
+[ext_resource type="AudioStream" uid="uid://xql1367u8w8" path="res://assets/audio/sfx/player/hit-sfx.mp3" id="2_hit"]
 [ext_resource type="Texture2D" uid="uid://c5yfnb6d7l4g3" path="res://assets/sprites/player/durian_bullet_fly.png" id="3_gswxk"]
+[ext_resource type="AudioStream" uid="uid://cmr6fwnbbkbqw" path="res://assets/audio/sfx/player/bullet_explode.mp3" id="5_tyir5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tyir5"]
 atlas = ExtResource("2_fgkn0")
@@ -71,6 +73,7 @@ radius = 8.0
 
 [node name="player_bullet" type="Area2D" unique_id=390733326]
 script = ExtResource("1_2kcj1")
+hit_sfx = ExtResource("2_hit")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875637744]
 position = Vector2(-2, 0)
@@ -85,6 +88,9 @@ shape = SubResource("CircleShape2D_altju")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=957075398]
 position = Vector2(-11, -157)
 rect = Rect2(-10, 150, 37, 16)
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="." unique_id=1418480691]
+stream = ExtResource("5_tyir5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

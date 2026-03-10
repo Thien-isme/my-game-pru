@@ -4,10 +4,15 @@ var direction = Vector2.RIGHT
 var speed = 400.0
 var damage: float = 10.0
 
+@export var hit_sfx: AudioStream
+
 @onready var anim = $AnimatedSprite2D
+@onready var hit_audio = $HitAudio
 
 func _ready():
 	anim.play("fly")  # Bắt đầu với animation bay
+	if hit_sfx:
+		hit_audio.stream = hit_sfx
 
 func _physics_process(delta):
 	position += direction * speed * delta
@@ -20,14 +25,19 @@ func hit_enemy(enemy):
 	# Chơi animation explode
 	anim.play("explode")
 	
+	# Phát âm thanh trúng đạn
+	if hit_audio and hit_audio.stream:
+		hit_audio.play()
+	
 	# Gây damage cho enemy
 	if enemy.has_method("take_damage"):
 		enemy.take_damage(damage)
 	
 	# Chờ animation xong rồi xóa đạn
+	# Lưu ý: Nếu âm thanh dài hơn animation, đạn vẫn sẽ tồn tại cho đến khi anim xong.
+	# Nếu muốn chờ cả âm thanh, có thể dùng await hit_audio.finished
 	await anim.animation_finished
 	queue_free()
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
