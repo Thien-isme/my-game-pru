@@ -24,6 +24,12 @@ const GRAVITY = 900
 @export var hit_sfx: AudioStream     # Tiếng bị trúng đạn
 @export var die_sfx: AudioStream     # Tiếng chết
 
+@export_subgroup("Skill Audio")
+@export var skill_q_sfx: AudioStream   # Âm thanh khi dùng Q
+@export var skill_w_sfx: AudioStream   # Âm thanh khi dùng W
+@export var skill_e_sfx: AudioStream   # Âm thanh khi dùng E
+@export var skill_r_sfx: AudioStream   # Âm thanh khi dùng R
+
 @export_category("Gun Settings")
 @export var bullet_damage: float = 10.0        # Lực sát thương của đạn
 @export var bullet_count: int = 1         # Số lượng đạn bắn ra mỗi lần click
@@ -325,6 +331,7 @@ func _physics_process(delta):
 					active_spawn = spawn_low
 				
 				_cast_skill(skill_q_scene, skill_q_cooldown, target_anim, active_spawn, 0.0, 0.5, skill_q_damage, mouse_pos)
+				_play_sfx(skill_q_sfx)
 				skill_q_timer = skill_q_cooldown
 				if hud:
 					hud.start_skill_cooldown("q", skill_q_cooldown)
@@ -355,6 +362,7 @@ func _physics_process(delta):
 			skill_w_active_timer = skill_w_cooldown  # 5s active
 			skill_w_timer = skill_w_cooldown * 2      # Tổng cooldown = active + hồi
 			skill_w_active = true  # Kích hoạt tăng tốc bắn
+			_play_sfx(skill_w_sfx)
 			if hud:
 				hud.set_skill_active("w")
 
@@ -379,7 +387,7 @@ func _physics_process(delta):
 			anim.speed_scale = 2.0
 			anim.play("dash")
 			_stop_loop_sfx()
-			_play_sfx(run_sfx)
+			_play_sfx(skill_e_sfx)
 			skill_e_timer = skill_e_cooldown
 			if hud:
 				hud.start_skill_cooldown("e", skill_e_cooldown)
@@ -423,6 +431,7 @@ func _physics_process(delta):
 					final_angle -= PI
 					
 				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, final_angle, 0.6, skill_r_damage)
+				_play_sfx(skill_r_sfx)
 				skill_r_timer = skill_r_cooldown
 				if hud:
 					hud.start_skill_cooldown("r", skill_r_cooldown)
