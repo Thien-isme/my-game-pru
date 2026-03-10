@@ -4,10 +4,12 @@ extends Control
 @onready var settings_button: TextureButton = $VBoxContainer/SettingsButton
 @onready var exit_button: TextureButton = $VBoxContainer/ExitButton
 
-var settings_scene = preload("res://scenes/ui/settings_menu.tscn")
+var settings_scene = preload("res://ui/menus/settings_menu.tscn")
 var settings_instance = null
 
 func _ready():
+	AudioManager.play_music("menu_theme")
+	
 	_setup_button(play_button, _on_play_pressed)
 	_setup_button(settings_button, _on_settings_pressed)
 	_setup_button(exit_button, _on_exit_pressed)
@@ -44,6 +46,7 @@ func _setup_button(btn: TextureButton, callback: Callable):
 
 
 func _on_play_pressed():
+	AudioManager.play_music("level1_theme")
 	get_tree().change_scene_to_file("res://scenes/levels/level_1/level_1_1.tscn")
 
 func _on_settings_pressed():

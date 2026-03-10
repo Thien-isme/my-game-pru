@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qancwijksy1o"]
 
-[ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1"]
+[ext_resource type="Script" path="res://ui/menus/settings_menu.gd" id="1"]
 [ext_resource type="Texture" uid="uid://settinguid123" path="res://assets/ui/ui_setting.png" id="2"]
 [ext_resource type="Texture" uid="uid://buttonuid123" path="res://assets/ui/ui_button.png" id="3"]
 

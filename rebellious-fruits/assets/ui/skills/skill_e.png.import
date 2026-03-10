@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpq4jv5jlr335"
-path="res://.godot/imported/cursor_no_shoot.png-098dd4504ab2c0848aa530d5a4457e72.ctex"
+uid="uid://18lnbn6huu6l"
+path="res://.godot/imported/skill_e.png-90600d4998a4c7ef3747dbf32f612eed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/cursor_no_shoot.png"
-dest_files=["res://.godot/imported/cursor_no_shoot.png-098dd4504ab2c0848aa530d5a4457e72.ctex"]
+source_file="res://assets/ui/skills/skill_e.png"
+dest_files=["res://.godot/imported/skill_e.png-90600d4998a4c7ef3747dbf32f612eed.ctex"]
 
 [params]
 

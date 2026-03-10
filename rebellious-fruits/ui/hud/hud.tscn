@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxhud1234567"]
+[gd_scene format=3 uid="uid://dxhud1234567"]
 
-[ext_resource type="Script" uid="uid://hudscript123" path="res://scenes/ui/hud.gd" id="1_hud"]
-[ext_resource type="Script" path="res://scenes/ui/cooldown_overlay.gd" id="2_cooldown"]
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://dt8htinuxsr0y" path="res://assets/ui/skills/skill_q.png" id="2_8qguk"]
+[ext_resource type="Script" path="res://ui/hud/cooldown_overlay.gd" id="2_cooldown"]
+[ext_resource type="Texture2D" uid="uid://cy2s7xmgl47mq" path="res://assets/ui/skills/skill_w.png" id="4_136eg"]
+[ext_resource type="Texture2D" uid="uid://18lnbn6huu6l" path="res://assets/ui/skills/skill_e.png" id="5_oj5la"]
+[ext_resource type="Texture2D" uid="uid://djmfvygm51lpe" path="res://assets/ui/skills/skill_r.png" id="6_gss2c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.2, 0.2, 0.2, 0.8)
@@ -29,10 +33,10 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1506087887]
 script = ExtResource("1_hud")
 
-[node name="TopCenter" type="Control" parent="."]
+[node name="TopCenter" type="Control" parent="." unique_id=757055387]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -43,7 +47,7 @@ offset_right = 200.0
 offset_bottom = 50.0
 grow_horizontal = 2
 
-[node name="HealthBar" type="ProgressBar" parent="TopCenter"]
+[node name="HealthBar" type="ProgressBar" parent="TopCenter" unique_id=1111272874]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,37 +60,45 @@ max_value = 5.0
 value = 5.0
 show_percentage = false
 
-[node name="LeftSide" type="VBoxContainer" parent="."]
+[node name="LeftSide" type="VBoxContainer" parent="." unique_id=208108024]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -142.5
-offset_right = 80.0
-offset_bottom = 142.5
+offset_left = 26.0
+offset_top = -176.0
+offset_right = 86.0
+offset_bottom = 109.0
 grow_vertical = 2
 theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
 
-[node name="SkillQ" type="Panel" parent="LeftSide"]
+[node name="SkillQ" type="Panel" parent="LeftSide" unique_id=1795358716]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillQ"]
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillQ" unique_id=791294032]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_8qguk")
 expand_mode = 1
-stretch_mode = 5
 
-[node name="Label" type="Label" parent="LeftSide/SkillQ"]
+[node name="Label" type="Label" parent="LeftSide/SkillQ" unique_id=1715402593]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -4.0
+offset_right = 49.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
@@ -94,7 +106,7 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillQ"]
+[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillQ" unique_id=189403457]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,26 +116,35 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillW" type="Panel" parent="LeftSide"]
+[node name="SkillW" type="Panel" parent="LeftSide" unique_id=576638074]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillW"]
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillW" unique_id=1472526257]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
+texture = ExtResource("4_136eg")
+expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="LeftSide/SkillW"]
+[node name="Label" type="Label" parent="LeftSide/SkillW" unique_id=1177737562]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 4.0
+offset_right = 52.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
@@ -131,36 +152,43 @@ text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillW"]
+[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillW" unique_id=1706669358]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillE" type="Panel" parent="LeftSide"]
+[node name="SkillE" type="Panel" parent="LeftSide" unique_id=2037672131]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillE"]
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillE" unique_id=2027706547]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("5_oj5la")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="LeftSide/SkillE"]
+[node name="Label" type="Label" parent="LeftSide/SkillE" unique_id=1006016738]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
@@ -168,7 +196,7 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillE"]
+[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillE" unique_id=1965584279]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,26 +206,34 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="SkillR" type="Panel" parent="LeftSide"]
+[node name="SkillR" type="Panel" parent="LeftSide" unique_id=259457705]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_skill")
 
-[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillR"]
+[node name="TextureRect" type="TextureRect" parent="LeftSide/SkillR" unique_id=1886946668]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = -0.6268654
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
+texture = ExtResource("6_gss2c")
+expand_mode = 3
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="LeftSide/SkillR"]
+[node name="Label" type="Label" parent="LeftSide/SkillR" unique_id=740675103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -1.0
+offset_right = 50.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
@@ -205,7 +241,7 @@ text = "R"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillR"]
+[node name="CooldownOverlay" type="Control" parent="LeftSide/SkillR" unique_id=1630772327]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,7 +251,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_cooldown")
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=1966192939]
 visible = false
 offset_left = 20.0
 offset_top = 20.0

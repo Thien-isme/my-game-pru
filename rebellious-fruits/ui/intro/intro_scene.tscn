@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6d3auoyqrdai"]
 
-[ext_resource type="Script" uid="uid://b5bxtb4olvi3i" path="res://scenes/ui/intro_scene.gd" id="1"]
+[ext_resource type="Script" uid="uid://b5bxtb4olvi3i" path="res://ui/intro/intro_scene.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://7ktru0f3vj7m" path="res://assets/audio/bgm/audio_intro.mp3" id="2_h77ab"]
 
 [node name="IntroScene" type="Control" unique_id=1559632125]
 layout_mode = 3
@@ -20,15 +21,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=858213706]
+[node name="VideoRect" type="TextureRect" parent="." unique_id=1704553817]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-autoplay = true
-expand = true
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=48806736]
+stream = ExtResource("2_h77ab")
 
 [node name="SkipButton" type="Button" parent="." unique_id=715383622]
 layout_mode = 1

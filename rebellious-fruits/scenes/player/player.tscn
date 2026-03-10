@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://r7gb8rh82jki" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
 [ext_resource type="Texture2D" uid="uid://buveqmh1vtj0x" path="res://assets/sprites/player/player_run.png" id="8_myrg7"]
 [ext_resource type="Texture2D" uid="uid://dgdgkfr6fs82b" path="res://assets/sprites/player/player_shoot_low.png" id="8_qek5x"]
-[ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://scenes/ui/hud.tscn" id="10_hud"]
+[ext_resource type="PackedScene" uid="uid://dxhud1234567" path="res://ui/hud/hud.tscn" id="10_hud"]
 [ext_resource type="Texture2D" uid="uid://bdvpewjn8x1uh" path="res://assets/sprites/player/player_shoot_high_medium.png" id="11_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://c0jy6bwg0oowk" path="res://assets/sprites/player/player_shoot_rapid_fire.png" id="13_uf5tr"]
 [ext_resource type="PackedScene" uid="uid://253sraqp0llc" path="res://scenes/player/muzzle_flash.tscn" id="15_fcs02"]

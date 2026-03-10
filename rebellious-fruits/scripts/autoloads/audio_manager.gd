@@ -28,7 +28,10 @@ func _ready() -> void:
 	
 	# Load tất cả SFX vào bộ nhớ ngay khi game khởi động
 	load_sfx("player_shoot", "res://assets/audio/sfx/player/player_shoot.mp3")
-	# load_music("level_1", "res://assets/audio/bgm/level1_theme.ogg")
+	
+	# Load BGM
+	load_music("menu_theme", "res://assets/audio/bgm/bgm_menu.mp3")
+	load_music("level1_theme", "res://assets/audio/bgm/bgm_play.mp3")
 
 # --- HÀM TẢI ÂM THANH (PRELOAD) ---
 # Dùng các hàm này ở màn hình loading hoặc menu chính để máy tính tải sẵn file nhạc vào RAM,
