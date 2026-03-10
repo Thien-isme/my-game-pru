@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dfjlst1dgayj3"]
+
+[ext_resource type="Texture2D" uid="uid://dslv1tnlnh7ke" path="res://assets/sprites/weapons/rocket/rocket_explode.png" id="1_rhil1"]
+[ext_resource type="Texture2D" uid="uid://epdh2pqeq8nk" path="res://assets/sprites/weapons/rocket/rocket_fly.png" id="2_gyqfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irjrv"]
+atlas = ExtResource("1_rhil1")
+region = Rect2(1474, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3iiw"]
+atlas = ExtResource("1_rhil1")
+region = Rect2(145, 752, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0546x"]
+atlas = ExtResource("1_rhil1")
+region = Rect2(1073, 752, 700, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw42n"]
+atlas = ExtResource("2_gyqfe")
+region = Rect2(35, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3ed6"]
+atlas = ExtResource("2_gyqfe")
+region = Rect2(730, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eabni"]
+atlas = ExtResource("2_gyqfe")
+region = Rect2(1425, 0, 640, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3g65"]
+atlas = ExtResource("2_gyqfe")
+region = Rect2(2120, 0, 640, 752)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rkv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irjrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3iiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0546x")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw42n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3ed6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eabni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3g65")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[node name="Rocket" type="Area2D" unique_id=1024194392]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=774477174]
+rotation = 0.057595864
+sprite_frames = SubResource("SpriteFrames_6rkv0")
+animation = &"fly"
+frame_progress = 0.36211377
