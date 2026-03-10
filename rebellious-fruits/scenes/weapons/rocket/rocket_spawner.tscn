@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckmi7sxhkvi8l"]
+
+[ext_resource type="Script" uid="uid://ctqh5jdhe3vyn" path="res://scenes/weapons/rocket/rocket_spawner.gd" id="1_1"]
+
+[node name="RocketSpawner" type="Node2D" unique_id=740805794]
+script = ExtResource("1_1")
+spawn_interval = 1.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1384310222]
+autostart = true

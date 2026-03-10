@@ -1,53 +1,45 @@
 [gd_scene format=3 uid="uid://dfjlst1dgayj3"]
 
-[ext_resource type="Texture2D" uid="uid://dslv1tnlnh7ke" path="res://assets/sprites/weapons/rocket/rocket_explode.png" id="1_rhil1"]
-[ext_resource type="Texture2D" uid="uid://epdh2pqeq8nk" path="res://assets/sprites/weapons/rocket/rocket_fly.png" id="2_gyqfe"]
+[ext_resource type="Script" uid="uid://bak2fugwbv6b6" path="res://scenes/weapons/rocket/rocket.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cg145ac0bp87d" path="res://assets/sprites/weapons/rocket/rocket.png" id="2_rhil1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_irjrv"]
-atlas = ExtResource("1_rhil1")
-region = Rect2(1474, 0, 640, 752)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3iiw"]
-atlas = ExtResource("1_rhil1")
-region = Rect2(145, 752, 640, 752)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gyqfe"]
+radius = 35.014282
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0546x"]
-atlas = ExtResource("1_rhil1")
-region = Rect2(1073, 752, 700, 752)
+atlas = ExtResource("2_rhil1")
+region = Rect2(89, 752, 626, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rw42n"]
-atlas = ExtResource("2_gyqfe")
-region = Rect2(35, 0, 640, 752)
+atlas = ExtResource("2_rhil1")
+region = Rect2(770, 752, 626, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3ed6"]
-atlas = ExtResource("2_gyqfe")
-region = Rect2(730, 0, 640, 752)
+atlas = ExtResource("2_rhil1")
+region = Rect2(1451, 752, 626, 752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eabni"]
-atlas = ExtResource("2_gyqfe")
-region = Rect2(1425, 0, 640, 752)
+atlas = ExtResource("2_rhil1")
+region = Rect2(2132, 752, 626, 752)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3g65"]
-atlas = ExtResource("2_gyqfe")
-region = Rect2(2120, 0, 640, 752)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyqfe"]
+atlas = ExtResource("2_rhil1")
+region = Rect2(89, 0, 626, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irjrv"]
+atlas = ExtResource("2_rhil1")
+region = Rect2(770, 0, 626, 752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3iiw"]
+atlas = ExtResource("2_rhil1")
+region = Rect2(1451, 0, 626, 752)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6rkv0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_irjrv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q3iiw")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0546x")
-}],
-"loop": true,
-"name": &"explode",
-"speed": 5.0
 }, {
-"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw42n")
 }, {
@@ -56,19 +48,37 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eabni")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyqfe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o3g65")
+"texture": SubResource("AtlasTexture_irjrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3iiw")
 }],
-"loop": true,
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
 
-[node name="Rocket" type="Area2D" unique_id=1024194392]
+[node name="Rocket" type="Area2D" unique_id=1024194392 groups=["enemy_attack"]]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=-1905537659]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_gyqfe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=774477174]
-rotation = 0.057595864
+position = Vector2(-2.0000153, 111.00001)
+rotation = -3.0752702
+scale = Vector2(0.10911587, 0.10381102)
 sprite_frames = SubResource("SpriteFrames_6rkv0")
 animation = &"fly"
-frame_progress = 0.36211377
+speed_scale = 0.2
