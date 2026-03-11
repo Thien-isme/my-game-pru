@@ -1,15 +1,15 @@
-[gd_scene format=3]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/starapple/starapple.tscn" id="res_starapple"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/starfruit/Starfruit.tscn" id="res_starfruit"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/pear/pear.tscn" id="res_pear"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/lemon/lemon.tscn" id="res_lemon"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/chili/chili.tscn" id="res_chili"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/apple/apple.tscn" id="res_apple"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
+[gd_scene format=3 uid="uid://mhhua8bkg02w"]
+
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="2_g255m"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
+[ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/Enemies/chili/chili.tscn" id="res_chili"]
+[ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/Enemies/lemon/lemon.tscn" id="res_lemon"]
+[ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/Enemies/pear/pear.tscn" id="res_pear"]
+[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="res_starapple"]
+[ext_resource type="PackedScene" uid="uid://cxa0ivd08hnb4" path="res://scenes/Enemies/starfruit/Starfruit.tscn" id="res_starfruit"]
+[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="tileset_tilemap_1_1"]
 [ext_resource type="Texture2D" uid="uid://c5k8p2pwwef3r" path="res://assets/tilemap/level_1/tilemap_1_2.png" id="tileset_tilemap_1_2"]
 [ext_resource type="Texture2D" uid="uid://bk7qxqa7mxfww" path="res://assets/tilemap/level_1/tilemap_1_3.png" id="tileset_tilemap_1_3"]
@@ -9534,12 +9534,12 @@ texture = ExtResource("tileset_tilemap_1_5")
 [sub_resource type="TileSet" id="TileSet_viccf"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yoyh")
-
 sources/1 = SubResource("TileSetAtlasSource_tilemap_1_1")
 sources/2 = SubResource("TileSetAtlasSource_tilemap_1_2")
 sources/3 = SubResource("TileSetAtlasSource_tilemap_1_3")
 sources/4 = SubResource("TileSetAtlasSource_tilemap_1_5")
-[node name="LevelTemplate" unique_id=555782197 instance=ExtResource("1_1v7n3")]
+
+[node name="LevelTemplate2" unique_id=555782197 instance=ExtResource("1_1v7n3")]
 
 [node name="Background_1" parent="Environment/ParallaxBackground/ParallaxLayer" parent_id_path=PackedInt32Array(1950711179) index="0" unique_id=119188798]
 position = Vector2(-29, -51)
@@ -9593,46 +9593,34 @@ layer_0/tile_data = PackedInt32Array(6881277, 3342336, 35, 6946813, 3342336, 36,
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(546494529) index="0" unique_id=995554852]
 position = Vector2(126, 474)
 
-[node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
-position = Vector2(-9, 10)
-
-
-
-
-
-
-
-
-# --- Auto-Generated Spawners ---
-[node name="Spawner_apple" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(1200, 200)
-enemy_scene = ExtResource("res_apple")
-
-[node name="Spawner_carrot" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_carrot" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="0" unique_id=996447660 instance=ExtResource("spawner_lib")]
 position = Vector2(1900, 200)
 enemy_scene = ExtResource("res_carrot")
 
-[node name="Spawner_chili" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_chili" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=1725669872 instance=ExtResource("spawner_lib")]
 position = Vector2(2600, 200)
 enemy_scene = ExtResource("res_chili")
 
-[node name="Spawner_lemon" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_lemon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=1490446312 instance=ExtResource("spawner_lib")]
 position = Vector2(3300, 200)
 enemy_scene = ExtResource("res_lemon")
 
-[node name="Spawner_pear" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_pear" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=96648291 instance=ExtResource("spawner_lib")]
 position = Vector2(4000, 200)
 enemy_scene = ExtResource("res_pear")
 
-[node name="Spawner_starfruit" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_starfruit" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=1046091450 instance=ExtResource("spawner_lib")]
 position = Vector2(4700, 200)
 enemy_scene = ExtResource("res_starfruit")
 
-[node name="Spawner_starapple" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+[node name="Spawner_starapple" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=262365606 instance=ExtResource("spawner_lib")]
 position = Vector2(5400, 200)
 enemy_scene = ExtResource("res_starapple")
 
-[node name="RightBoundary" parent="LevelBounds" index="1"]
-position = Vector2(6400, 0)
-[editable path="LevelBounds"]
+[node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
+position = Vector2(-9, 10)
 
+[node name="RightBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="1"]
+position = Vector2(6400, 0)
+
+[editable path="LevelBounds"]

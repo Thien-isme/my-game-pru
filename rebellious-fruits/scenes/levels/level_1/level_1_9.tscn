@@ -1,21 +1,21 @@
-[gd_scene format=3]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/mangosteen/mangosteen.tscn" id="res_mangosteen"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/dragonfruit/dragronfruit.tscn" id="res_dragonfruit"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/lychee/lychee.tscn" id="res_lychee"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/watermelon/watermelon.tscn" id="res_watermelon"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/corn/corn.tscn" id="res_corn"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/bittergourd/bittergourd.tscn" id="res_bittergourd"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/starapple/starapple.tscn" id="res_starapple"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/starfruit/Starfruit.tscn" id="res_starfruit"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/pear/pear.tscn" id="res_pear"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/lemon/lemon.tscn" id="res_lemon"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/chili/chili.tscn" id="res_chili"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/apple/apple.tscn" id="res_apple"]
-[ext_resource type="PackedScene" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
+[gd_scene format=3 uid="uid://dl3kdym2uwgrd"]
+
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="2_g255m"]
+[ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/Enemies/bittergourd/bittergourd.tscn" id="res_bittergourd"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
+[ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/Enemies/chili/chili.tscn" id="res_chili"]
+[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="res_corn"]
+[ext_resource type="PackedScene" uid="uid://cqmy1g8obt4m1" path="res://scenes/Enemies/dragonfruit/dragronfruit.tscn" id="res_dragonfruit"]
+[ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/Enemies/lemon/lemon.tscn" id="res_lemon"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/Enemies/lychee/lychee.tscn" id="res_lychee"]
+[ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/Enemies/mangosteen/mangosteen.tscn" id="res_mangosteen"]
+[ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/Enemies/pear/pear.tscn" id="res_pear"]
+[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="res_starapple"]
+[ext_resource type="PackedScene" uid="uid://cxa0ivd08hnb4" path="res://scenes/Enemies/starfruit/Starfruit.tscn" id="res_starfruit"]
+[ext_resource type="PackedScene" uid="uid://ca6e6n3rnwa8j" path="res://scenes/Enemies/watermelon/watermelon.tscn" id="res_watermelon"]
+[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
 [ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="tileset_tilemap_1_1"]
 [ext_resource type="Texture2D" uid="uid://c5k8p2pwwef3r" path="res://assets/tilemap/level_1/tilemap_1_2.png" id="tileset_tilemap_1_2"]
 [ext_resource type="Texture2D" uid="uid://bk7qxqa7mxfww" path="res://assets/tilemap/level_1/tilemap_1_3.png" id="tileset_tilemap_1_3"]
@@ -9540,11 +9540,11 @@ texture = ExtResource("tileset_tilemap_1_5")
 [sub_resource type="TileSet" id="TileSet_viccf"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yoyh")
-
 sources/1 = SubResource("TileSetAtlasSource_tilemap_1_1")
 sources/2 = SubResource("TileSetAtlasSource_tilemap_1_2")
 sources/3 = SubResource("TileSetAtlasSource_tilemap_1_3")
 sources/4 = SubResource("TileSetAtlasSource_tilemap_1_5")
+
 [node name="LevelTemplate" unique_id=555782197 instance=ExtResource("1_1v7n3")]
 
 [node name="Background_1" parent="Environment/ParallaxBackground/ParallaxLayer" parent_id_path=PackedInt32Array(1950711179) index="0" unique_id=119188798]
@@ -9599,69 +9599,58 @@ layer_0/tile_data = PackedInt32Array(6881277, 3342336, 35, 6946813, 3342336, 36,
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(546494529) index="0" unique_id=995554852]
 position = Vector2(126, 474)
 
+[node name="Spawner_carrot" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="0" unique_id=634102119 instance=ExtResource("spawner_lib")]
+position = Vector2(1900, 200)
+enemy_scene = ExtResource("res_carrot")
+
+[node name="Spawner_chili" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=594355043 instance=ExtResource("spawner_lib")]
+position = Vector2(2600, 200)
+enemy_scene = ExtResource("res_chili")
+
+[node name="Spawner_lemon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=1726119861 instance=ExtResource("spawner_lib")]
+position = Vector2(3300, 200)
+enemy_scene = ExtResource("res_lemon")
+
+[node name="Spawner_pear" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=116868310 instance=ExtResource("spawner_lib")]
+position = Vector2(4000, 200)
+enemy_scene = ExtResource("res_pear")
+
+[node name="Spawner_starfruit" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=1992939958 instance=ExtResource("spawner_lib")]
+position = Vector2(4700, 200)
+enemy_scene = ExtResource("res_starfruit")
+
+[node name="Spawner_starapple" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=1643661839 instance=ExtResource("spawner_lib")]
+position = Vector2(5400, 200)
+enemy_scene = ExtResource("res_starapple")
+
+[node name="Spawner_bittergourd" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="6" unique_id=991990926 instance=ExtResource("spawner_lib")]
+position = Vector2(6100, 200)
+enemy_scene = ExtResource("res_bittergourd")
+
+[node name="Spawner_corn" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="7" unique_id=793452286 instance=ExtResource("spawner_lib")]
+position = Vector2(6800, 200)
+enemy_scene = ExtResource("res_corn")
+
+[node name="Spawner_watermelon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="8" unique_id=1928095497 instance=ExtResource("spawner_lib")]
+position = Vector2(7500, 200)
+enemy_scene = ExtResource("res_watermelon")
+
+[node name="Spawner_lychee" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="9" unique_id=479509264 instance=ExtResource("spawner_lib")]
+position = Vector2(8000, 200)
+enemy_scene = ExtResource("res_lychee")
+
+[node name="Spawner_dragonfruit" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="10" unique_id=104100409 instance=ExtResource("spawner_lib")]
+position = Vector2(8000, 200)
+enemy_scene = ExtResource("res_dragonfruit")
+
+[node name="Spawner_mangosteen" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="11" unique_id=111977122 instance=ExtResource("spawner_lib")]
+position = Vector2(8000, 200)
+enemy_scene = ExtResource("res_mangosteen")
+
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)
 
 [node name="RightBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="1"]
-position = Vector2(9935, 305)
-
-
-
-
-# --- Auto-Generated Spawners ---
-[node name="Spawner_apple" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(1200, 200)
-enemy_scene = ExtResource("res_apple")
-
-[node name="Spawner_carrot" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(1900, 200)
-enemy_scene = ExtResource("res_carrot")
-
-[node name="Spawner_chili" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(2600, 200)
-enemy_scene = ExtResource("res_chili")
-
-[node name="Spawner_lemon" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(3300, 200)
-enemy_scene = ExtResource("res_lemon")
-
-[node name="Spawner_pear" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(4000, 200)
-enemy_scene = ExtResource("res_pear")
-
-[node name="Spawner_starfruit" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(4700, 200)
-enemy_scene = ExtResource("res_starfruit")
-
-[node name="Spawner_starapple" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(5400, 200)
-enemy_scene = ExtResource("res_starapple")
-
-[node name="Spawner_bittergourd" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(6100, 200)
-enemy_scene = ExtResource("res_bittergourd")
-
-[node name="Spawner_corn" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(6800, 200)
-enemy_scene = ExtResource("res_corn")
-
-[node name="Spawner_watermelon" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(7500, 200)
-enemy_scene = ExtResource("res_watermelon")
-
-[node name="Spawner_lychee" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(8000, 200)
-enemy_scene = ExtResource("res_lychee")
-
-[node name="Spawner_dragonfruit" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(8000, 200)
-enemy_scene = ExtResource("res_dragonfruit")
-
-[node name="Spawner_mangosteen" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
-position = Vector2(8000, 200)
-enemy_scene = ExtResource("res_mangosteen")
-
-[node name="RightBoundary" parent="LevelBounds" index="1"]
 position = Vector2(8800, 0)
-[editable path="LevelBounds"]
 
+[editable path="LevelBounds"]

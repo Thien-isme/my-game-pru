@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dj22bj4afioxl" path="res://assets/sprites/enemies/apple/apple_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apple"]
-radius = 26.0
+radius = 32.0
 height = 70.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0uidk"]
@@ -254,23 +254,25 @@ animations = [{
 radius = 600.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 500.0
+radius = 557.01434
 
 [node name="apple" type="CharacterBody2D" unique_id=1981458563 groups=["enemy"]]
 script = ExtResource("1_script")
 health = 20.0
 bullet_scene = ExtResource("2_cefhm")
-bullet_damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=174945917]
+position = Vector2(11, -2)
 shape = SubResource("CapsuleShape2D_apple")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2038359568]
 position = Vector2(10, -8)
 scale = Vector2(0.14618869, 0.14638157)
 sprite_frames = SubResource("SpriteFrames_apple")
-animation = &"jump"
+animation = &"shoot"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=1411940863]
 
@@ -287,7 +289,6 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 position = Vector2(50, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1065898637]
-bus = &"SFX"
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]
