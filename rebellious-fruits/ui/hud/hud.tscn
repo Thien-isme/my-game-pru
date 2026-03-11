@@ -289,3 +289,13 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
+
+[node name="ExitButton" type="Button" parent="." unique_id=987654321]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 20
+text = "Thoát (Exit)"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
