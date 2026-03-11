@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtwcr1y5sp8ty"]
 
 [ext_resource type="Texture2D" uid="uid://cbbu84ucf3dp2" path="res://assets/doorwin/doorwin.png" id="1_nbnqx"]
+[ext_resource type="Script" path="res://scenes/doorwin/doorwin.gd" id="1_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbnqx"]
 atlas = ExtResource("1_nbnqx")
@@ -66,7 +67,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="doorwin" type="Node2D" unique_id=1561142439]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_door"]
+radius = 45.0
+height = 140.0
+
+[node name="doorwin" type="Area2D" unique_id=1561142439]
+script = ExtResource("1_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=757996777]
 position = Vector2(3.9999924, -12)
@@ -74,3 +80,7 @@ scale = Vector2(0.44758064, 0.47241378)
 sprite_frames = SubResource("SpriteFrames_5jq51")
 animation = &"idle"
 frame_progress = 0.02515824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987654321]
+position = Vector2(26, 5)
+shape = SubResource("CapsuleShape2D_door")

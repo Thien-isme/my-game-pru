@@ -1,9 +1,22 @@
+@tool
 extends Node2D
 
 @export var rocket_scene: PackedScene = preload("res://scenes/weapons/rocket/rocket.tscn")
 @export var spawn_interval: float = 5.0
-@export var spawn_width: float = 1600.0 # Chiều rộng của đường thẳng (line) thả tên lửa
+@export var spawn_width: float = 1600.0: # Chiều rộng của đường thẳng (line) thả tên lửa
+	set(value):
+		spawn_width = value
+		queue_redraw()
 @export var spawn_height_offset: float = 800.0 # Khoảng cách từ đỉnh đầu Player lên tới đường thả bom
+
+func _draw():
+	if Engine.is_editor_hint():
+		# Vẽ đường thẳng minh họa vùng spawn trong editor
+		var start = Vector2(-spawn_width / 2.0, -spawn_height_offset)
+		var end = Vector2(spawn_width / 2.0, -spawn_height_offset)
+		draw_line(start, end, Color.RED, 5.0)
+		draw_circle(start, 10.0, Color.RED)
+		draw_circle(end, 10.0, Color.RED)
 
 @onready var timer: Timer = $Timer
 

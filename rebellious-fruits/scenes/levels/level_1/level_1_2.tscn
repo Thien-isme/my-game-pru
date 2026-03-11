@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://c6j1euuwh1nk7"]
-[ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="doorwin_res"]
-
+[ext_resource type="PackedScene" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/apple/apple.tscn" id="res_apple"]
+[ext_resource type="PackedScene" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="2_g255m"]
+[ext_resource type="Texture2D" uid="uid://dxut10u2hj4em" path="res://assets/tilemap/level_1/tilemap_1_1.png" id="tileset_tilemap_1_1"]
+[ext_resource type="Texture2D" uid="uid://c5k8p2pwwef3r" path="res://assets/tilemap/level_1/tilemap_1_2.png" id="tileset_tilemap_1_2"]
+[ext_resource type="Texture2D" uid="uid://bk7qxqa7mxfww" path="res://assets/tilemap/level_1/tilemap_1_3.png" id="tileset_tilemap_1_3"]
+[ext_resource type="Texture2D" uid="uid://bbghhiffnmo3i" path="res://assets/tilemap/level_1/tilemap_1_5.png" id="tileset_tilemap_1_5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yoyh"]
 texture = ExtResource("2_g255m")
@@ -9505,10 +9510,30 @@ texture = ExtResource("2_g255m")
 160:83/0 = 0
 161:83/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tilemap_1_1"]
+texture = ExtResource("tileset_tilemap_1_1")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tilemap_1_2"]
+texture = ExtResource("tileset_tilemap_1_2")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tilemap_1_3"]
+texture = ExtResource("tileset_tilemap_1_3")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tilemap_1_5"]
+texture = ExtResource("tileset_tilemap_1_5")
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_viccf"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yoyh")
 
+sources/1 = SubResource("TileSetAtlasSource_tilemap_1_1")
+sources/2 = SubResource("TileSetAtlasSource_tilemap_1_2")
+sources/3 = SubResource("TileSetAtlasSource_tilemap_1_3")
+sources/4 = SubResource("TileSetAtlasSource_tilemap_1_5")
 [node name="LevelTemplate" unique_id=555782197 instance=ExtResource("1_1v7n3")]
 
 [node name="Background_1" parent="Environment/ParallaxBackground/ParallaxLayer" parent_id_path=PackedInt32Array(1950711179) index="0" unique_id=119188798]
@@ -9566,10 +9591,23 @@ position = Vector2(230, 478)
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)
 
-[node name="RightBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="1"]
-position = Vector2(9894, 407)
 
 
-[node name="doorwin" parent="." instance=ExtResource("doorwin_res")]
-position = Vector2(3688, 362)
+
+
+
+
+
+# --- Auto-Generated Spawners ---
+[node name="Spawner_apple" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+position = Vector2(1200, 200)
+enemy_scene = ExtResource("res_apple")
+
+[node name="Spawner_carrot" parent="Entities/Enemies" instance=ExtResource("spawner_lib")]
+position = Vector2(1900, 200)
+enemy_scene = ExtResource("res_carrot")
+
+[node name="RightBoundary" parent="LevelBounds" index="1"]
+position = Vector2(4600, 0)
 [editable path="LevelBounds"]
+
