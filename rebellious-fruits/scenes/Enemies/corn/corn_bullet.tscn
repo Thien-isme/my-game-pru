@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsj5j7lro8iwb"]
 
 [ext_resource type="Texture2D" uid="uid://s5o38x7m7q0x" path="res://assets/sprites/enemies/corn/corn_bullet.png" id="1_8aggf"]
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/corn/corn_bullet.gd" id="1_j5dd0"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="1_j5dd0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nwqt"]
 custom_solver_bias = 1.0

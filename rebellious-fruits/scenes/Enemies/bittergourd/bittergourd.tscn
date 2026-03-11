@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://6aej444komnx" path="res://assets/sprites/enemies/bittergourd/bittergourd_jump.png" id="6_jump"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bittergourd"]
-radius = 26.0
-height = 70.0
+radius = 33.0
+height = 116.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7jxb"]
 atlas = ExtResource("3_die")
@@ -343,17 +343,19 @@ radius = 600.0
 [node name="bittergourd" type="CharacterBody2D" unique_id=1774120902 groups=["enemy"]]
 script = ExtResource("1_script")
 health = 100.0
+shoot_cooldown = 1.5
 bullet_scene = ExtResource("2_yec33")
 bullet_damage = 25.0
 detect_radius = 700.0
 attack_radius = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=464834102]
+position = Vector2(-6, 0)
 shape = SubResource("CapsuleShape2D_bittergourd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=21293532]
-position = Vector2(10, -7.9999995)
-scale = Vector2(0.17782739, 0.16011237)
+position = Vector2(9, -12.999994)
+scale = Vector2(0.21688987, 0.26966292)
 sprite_frames = SubResource("SpriteFrames_bittergourd")
 animation = &"shoot"
 autoplay = "idle"

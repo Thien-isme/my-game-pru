@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dood6r7mk0h2t"]
 
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
-[ext_resource type="PackedScene" uid="uid://dxttkqlob880e" path="res://scenes/enemies/chili/chili_bullet.tscn" id="2_atha6"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dxttkqlob880e" path="res://scenes/Enemies/chili/chili_bullet.tscn" id="2_atha6"]
 [ext_resource type="Texture2D" uid="uid://co8col70ycohk" path="res://assets/sprites/enemies/chili/chili_idle.png" id="2_idle"]
 [ext_resource type="Texture2D" uid="uid://bupxiuvfsgwt4" path="res://assets/sprites/enemies/chili/chili_die.png" id="3_die"]
-[ext_resource type="Texture2D" uid="uid://bettgnnwnfmsr" path="res://assets/sprites/enemies/chili/chili_shoot.png" id="5_shoot"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_chili"]
 radius = 26.0
@@ -82,9 +81,29 @@ region = Rect2(0, 768, 938, 768)
 atlas = ExtResource("2_idle")
 region = Rect2(938, 768, 938, 768)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfjt8"]
-atlas = ExtResource("5_shoot")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pohed"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 0, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wol1d"]
+atlas = ExtResource("2_idle")
+region = Rect2(938, 0, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v15li"]
+atlas = ExtResource("2_idle")
 region = Rect2(1876, 0, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw2u4"]
+atlas = ExtResource("2_idle")
+region = Rect2(0, 768, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6grp"]
+atlas = ExtResource("2_idle")
+region = Rect2(938, 768, 938, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kje83"]
+atlas = ExtResource("2_idle")
+region = Rect2(1876, 768, 938, 768)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_chili"]
 animations = [{
@@ -164,7 +183,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gfjt8")
+"texture": SubResource("AtlasTexture_pohed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wol1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v15li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw2u4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6grp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kje83")
 }],
 "loop": true,
 "name": &"shoot",
@@ -172,14 +206,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 500.0
+radius = 700.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 600.0
 
 [node name="chili" type="CharacterBody2D" unique_id=213129797 groups=["enemy"]]
 script = ExtResource("1_script")
+health = 50.0
 bullet_scene = ExtResource("2_atha6")
+bullet_damage = 20.0
+detect_radius = 700.0
+attack_radius = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440352177]
 shape = SubResource("CapsuleShape2D_chili")
@@ -188,22 +226,17 @@ shape = SubResource("CapsuleShape2D_chili")
 position = Vector2(-6.999998, -6.000003)
 scale = Vector2(0.1363273, 0.15218097)
 sprite_frames = SubResource("SpriteFrames_chili")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
-frame_progress = 0.38467783
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=760654323]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=1372235416]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1737092953]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1618159546]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 

@@ -29447,6 +29447,10 @@ sources/6 = SubResource("TileSetAtlasSource_6j45f")
 sources/7 = SubResource("TileSetAtlasSource_rw0u5")
 sources/8 = SubResource("TileSetAtlasSource_w27a1")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j45f"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw0u5"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
@@ -29472,10 +29476,6 @@ resource_local_to_scene = true
 size = Vector2(920, 645)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc3i4"]
-resource_local_to_scene = true
-size = Vector2(920, 645)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bldw"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -29532,6 +29532,7 @@ layer_0/tile_data = PackedInt32Array(6881277, 3342336, 35, 6946813, 3342336, 36,
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(546494529) index="0" unique_id=995554852]
 position = Vector2(126, 474)
+skill_e_cooldown = 0.1
 
 [node name="Spawner_carrot" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="0" unique_id=2064440052 instance=ExtResource("spawner_lib")]
 position = Vector2(517, 301)
@@ -29559,7 +29560,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_carrot/DetectArea" parent_id_path=PackedInt32Array(2064440052, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_rw0u5")
+shape = SubResource("RectangleShape2D_6j45f")
 
 [node name="Spawner_chili" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=635135205 instance=ExtResource("spawner_lib")]
 position = Vector2(1318, 274)
@@ -29622,7 +29623,7 @@ enemy_scene = ExtResource("res_apple")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_chili/DetectArea" parent_id_path=PackedInt32Array(635135205, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-101, 0)
-shape = SubResource("RectangleShape2D_w27a1")
+shape = SubResource("RectangleShape2D_rw0u5")
 
 [node name="Spawner_lemon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=2996720 instance=ExtResource("spawner_lib")]
 position = Vector2(2000, 292)
@@ -29683,7 +29684,7 @@ script = ExtResource("10_6j45f")
 enemy_scene = ExtResource("res_apple")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_lemon/DetectArea" parent_id_path=PackedInt32Array(2996720, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_3dyxd")
+shape = SubResource("RectangleShape2D_w27a1")
 
 [node name="Spawner_pear" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=2145701837 instance=ExtResource("spawner_lib")]
 position = Vector2(2571, 287)
@@ -29744,7 +29745,7 @@ script = ExtResource("10_6j45f")
 enemy_scene = ExtResource("res_lemon")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_pear/DetectArea" parent_id_path=PackedInt32Array(2145701837, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_8nt68")
+shape = SubResource("RectangleShape2D_3dyxd")
 
 [node name="Spawner_starapple" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=1098171540 instance=ExtResource("spawner_lib")]
 position = Vector2(3491, 290)
@@ -29799,7 +29800,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_starapple/DetectArea" parent_id_path=PackedInt32Array(1098171540, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_3pkug")
+shape = SubResource("RectangleShape2D_8nt68")
 
 [node name="Spawner_bittergourd2" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=2068803941 instance=ExtResource("spawner_lib")]
 position = Vector2(4941, 296)
@@ -29860,7 +29861,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd2/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_1iqj4")
+shape = SubResource("RectangleShape2D_3pkug")
 
 [node name="Spawner_bittergourd3" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="6" unique_id=254143680 instance=ExtResource("spawner_lib")]
 position = Vector2(7226, 292)
@@ -29915,7 +29916,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd3/DetectArea" parent_id_path=PackedInt32Array(254143680, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_hc3i4")
+shape = SubResource("RectangleShape2D_1iqj4")
 
 [node name="Spawner_bittergourd4" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="7" unique_id=1455895568 instance=ExtResource("spawner_lib")]
 position = Vector2(6372, 296)
@@ -29976,7 +29977,7 @@ enemy_scene = ExtResource("res_lemon")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd4/DetectArea" parent_id_path=PackedInt32Array(1455895568, 1759932897) index="0" unique_id=325501346]
 position = Vector2(1872, -15)
-shape = SubResource("RectangleShape2D_7bldw")
+shape = SubResource("RectangleShape2D_hc3i4")
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)

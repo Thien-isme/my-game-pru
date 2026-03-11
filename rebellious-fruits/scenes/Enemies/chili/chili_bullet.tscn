@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxttkqlob880e"]
 
-[ext_resource type="Script" uid="uid://dlsfl0r6ipawi" path="res://scenes/Enemies/corn/corn_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://iqn5mnbddtms" path="res://assets/sprites/enemies/chili/chili_bullet.png" id="2_5abp1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
@@ -54,15 +54,18 @@ animations = [{
 }]
 
 [node name="chili_bullet" type="Area2D" unique_id=1141161269]
+position = Vector2(20130.002, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=576379258]
 shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146187083]
-position = Vector2(23, 4)
-scale = Vector2(0.08565818, 0.07413564)
+position = Vector2(26.234264, 4)
+scale = Vector2(0.092666335, 0.07413564)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"explode"
+animation = &"fly"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
