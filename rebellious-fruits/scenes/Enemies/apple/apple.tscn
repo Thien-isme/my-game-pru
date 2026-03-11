@@ -254,12 +254,16 @@ animations = [{
 radius = 600.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 557.01434
+radius = 500.0
 
 [node name="apple" type="CharacterBody2D" unique_id=1981458563 groups=["enemy"]]
+position = Vector2(600, 150)
 script = ExtResource("1_script")
 health = 20.0
 bullet_scene = ExtResource("2_cefhm")
+patrol_distance = 200.0
+detect_radius = 600.0
+attack_radius = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=174945917]
 position = Vector2(11, -2)

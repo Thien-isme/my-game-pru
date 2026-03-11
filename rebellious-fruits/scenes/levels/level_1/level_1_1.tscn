@@ -19160,9 +19160,9 @@ sources/0 = SubResource("TileSetAtlasSource_bpvs2")
 sources/1 = SubResource("TileSetAtlasSource_ha5ow")
 sources/5 = SubResource("TileSetAtlasSource_3c4s6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sje3b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c4s6"]
 resource_local_to_scene = true
-size = Vector2(920, 800)
+size = Vector2(920, 645)
 
 [node name="Level_1_1" type="Node2D" unique_id=1798284494]
 
@@ -19207,71 +19207,78 @@ layer_0/tile_data = PackedInt32Array(6619097, 3342336, 35, 6684633, 3342336, 36,
 [node name="Enemies" type="Node2D" parent="Entities" unique_id=1569091281]
 
 [node name="EnemySpawnerController" parent="Entities/Enemies" unique_id=2068803941 instance=ExtResource("3_bpvs2")]
-position = Vector2(530, 328)
+position = Vector2(779, 325)
 enemy_scene = ExtResource("4_bpvs2")
-detect_size = Vector2(920, 800)
 
 [node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController" index="0" unique_id=87320655]
-position = Vector2(274, 70)
-override_detect_radius = 1000.0
-override_attack_radius = 900.0
-
-[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1327521084]
-position = Vector2(584, -2)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1454722937]
-position = Vector2(1003, 36)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem4" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1907599740]
-position = Vector2(1299, -102)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem9" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=547513413]
-position = Vector2(3281, -121)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem10" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1081070464]
-position = Vector2(3411, 179)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem5" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1216486640]
-position = Vector2(1587, 78)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem6" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1265532738]
-position = Vector2(1818, -253)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-
-[node name="EnemySpawnerItem7" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1786301257]
-position = Vector2(2039, -237)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
-override_detect_radius = 900.0
-override_attack_radius = 900.0
-
-[node name="EnemySpawnerItem8" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=595565653]
-position = Vector2(2824, -258)
-gizmo_extents = 50.0
-script = ExtResource("7_ha5ow")
+position = Vector2(-1, 35)
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_sje3b")
+shape = SubResource("RectangleShape2D_3c4s6")
+
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=362557801]
+position = Vector2(243, 126)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1527598850]
+position = Vector2(499, 45)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem4" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=597005429]
+position = Vector2(890, 133)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem5" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1950938417]
+position = Vector2(1023, -99)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem6" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=2019009023]
+position = Vector2(1258, 131)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem7" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=893683058]
+position = Vector2(1592, -239)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem8" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=173354600]
+position = Vector2(1775, -209)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem9" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=218198015]
+position = Vector2(2576, -205)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem10" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=132386177]
+position = Vector2(2864, 109)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem11" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=333940476]
+position = Vector2(3173, 20)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem12" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=877502049]
+position = Vector2(3379, 113)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
+
+[node name="EnemySpawnerItem13" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" unique_id=1751685611]
+position = Vector2(3592, 136)
+gizmo_extents = 50.0
+script = ExtResource("7_ha5ow")
 
 [node name="Player" parent="Entities" unique_id=638291107 instance=ExtResource("2_d73my")]
 z_index = 4
 position = Vector2(128, 412)
-bullet_spread = 0.0
-skill_q_cooldown = 1.0
-skill_r_cooldown = 1.0
 
 [node name="RocketSpawner" parent="Entities" unique_id=740805794 instance=ExtResource("12_746xv")]
 position = Vector2(169, -35)

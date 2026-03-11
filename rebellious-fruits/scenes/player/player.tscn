@@ -467,9 +467,13 @@ skill_q_sfx = ExtResource("3_yj68g")
 skill_w_sfx = ExtResource("4_ioxgp")
 skill_e_sfx = ExtResource("10_j4nxn")
 skill_r_sfx = ExtResource("6_007i1")
-bullet_spread = 60.0
-skill_w_cooldown = 1.0
-skill_e_cooldown = 1.0
+bullet_damage = 5.0
+bullet_speed = 600.0
+bullet_spread = 0.0
+skill_q_cooldown = 6.0
+skill_w_cooldown = 10.0
+skill_e_cooldown = 4.0
+skill_r_cooldown = 30.0
 skill_q_damage = 15.0
 skill_r_damage = 20.0
 
