@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dppcbksvmvd25" path="res://assets/sprites/enemies/lemon/lemon_die.png" id="1_4bgtn"]
 [ext_resource type="Texture2D" uid="uid://b4g2phuuprdy0" path="res://assets/sprites/enemies/lemon/lemon_idle.png" id="1_8cuo1"]
-[ext_resource type="PackedScene" uid="uid://cc0f24pna4h6u" path="res://scenes/enemies/lemon/lemon_bullet.tscn" id="2_aqtyw"]
+[ext_resource type="PackedScene" uid="uid://cc0f24pna4h6u" path="res://scenes/Enemies/lemon/lemon_bullet.tscn" id="2_aqtyw"]
 [ext_resource type="Texture2D" uid="uid://nqrwsqilbtew" path="res://assets/sprites/enemies/lemon/lemon_run.png" id="2_sof2r"]
 [ext_resource type="Texture2D" uid="uid://s2ciw8gpljli" path="res://assets/sprites/enemies/lemon/lemon_shoot.png" id="3_2sk3g"]
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="script_enemy"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="script_enemy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvxji"]
 radius = 26.0
@@ -211,14 +211,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 300.0
+radius = 800.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 200.0
+radius = 600.0
 
 [node name="lemon" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
 script = ExtResource("script_enemy")
+health = 50.0
+shoot_cooldown = 3.0
 bullet_scene = ExtResource("2_aqtyw")
+bullet_damage = 15.0
+detect_radius = 800.0
+attack_radius = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
@@ -232,18 +237,14 @@ animation = &"run"
 [node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=100000001]
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 debug_color = Color(4.283637e-06, 0.6313123, 0.46681523, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=100000005]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(1, 0, 0.103134416, 0.41960785)
 

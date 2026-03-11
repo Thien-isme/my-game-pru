@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://owtsctmeexp1"]
 
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://duc61vm8o8k1m" path="res://assets/sprites/enemies/bittergourd/bittergourd_idle.png" id="2_idle"]
-[ext_resource type="PackedScene" uid="uid://chp1gic2mu6fl" path="res://scenes/enemies/bittergourd/bittergourd_bullet.tscn" id="2_yec33"]
+[ext_resource type="PackedScene" uid="uid://chp1gic2mu6fl" path="res://scenes/Enemies/bittergourd/bittergourd_bullet.tscn" id="2_yec33"]
 [ext_resource type="Texture2D" uid="uid://4s2tdx1rcnxc" path="res://assets/sprites/enemies/bittergourd/bittergourd_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://bktay3xgjwy2s" path="res://assets/sprites/enemies/bittergourd/bittergourd_run.png" id="4_run"]
 [ext_resource type="Texture2D" uid="uid://cqepm2xff4lvy" path="res://assets/sprites/enemies/bittergourd/bittergourd_shoot.png" id="5_shoot"]
@@ -335,14 +335,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 500.0
+radius = 700.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 600.0
 
 [node name="bittergourd" type="CharacterBody2D" unique_id=1774120902 groups=["enemy"]]
 script = ExtResource("1_script")
+health = 100.0
 bullet_scene = ExtResource("2_yec33")
+bullet_damage = 25.0
+detect_radius = 700.0
+attack_radius = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=464834102]
 shape = SubResource("CapsuleShape2D_bittergourd")
@@ -355,17 +359,13 @@ animation = &"shoot"
 autoplay = "idle"
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=222266945]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=236899453]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1536673399]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=823167070]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
