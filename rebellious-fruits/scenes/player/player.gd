@@ -146,6 +146,13 @@ func _physics_process(delta):
 	if not is_on_floor() and not is_dashing:
 		velocity.y += GRAVITY * delta
 
+	# KHÓA HÀNH ĐỘNG NẾU ĐANG GỒNG CHIÊU
+	if is_casting_skill:
+		if is_on_floor():
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
+		
 	var direction = Input.get_axis("ui_left", "ui_right")
 	var is_pressing_shoot = Input.is_action_pressed("click")
 	var is_just_pressing_shoot = Input.is_action_just_pressed("click")
@@ -361,8 +368,7 @@ func _physics_process(delta):
 					target_anim = "shoot_low"
 					active_spawn = spawn_low
 				
-				_cast_skill(skill_q_scene, skill_q_cooldown, target_anim, active_spawn, 0.0, 0.5, skill_q_damage, mouse_pos)
-				_play_sfx(skill_q_sfx)
+				_cast_skill(skill_q_scene, skill_q_cooldown, target_anim, active_spawn, 0.0, 0.5, skill_q_damage, mouse_pos, skill_q_sfx)
 				skill_q_timer = skill_q_cooldown
 				if hud:
 					hud.start_skill_cooldown("q", skill_q_cooldown)
@@ -437,8 +443,7 @@ func _physics_process(delta):
 					# Khi lật x = -1, góc quay sẽ bị ngược so với màn hình, cần phải bù PI vào góc
 					final_angle -= PI
 					
-				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, final_angle, 0.6, skill_r_damage)
-				_play_sfx(skill_r_sfx)
+				_cast_skill(skill_r_scene, skill_r_cooldown, target_anim, active_spawn, final_angle, 0.6, skill_r_damage, Vector2.INF, skill_r_sfx)
 				skill_r_timer = skill_r_cooldown
 				if hud:
 					hud.start_skill_cooldown("r", skill_r_cooldown)
@@ -496,18 +501,22 @@ func _physics_process(delta):
 		global_position.x = limit_right_x
 
 # --- Hàm Cast Skill Chung ---
-func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5, skill_damage: float = 0.0, custom_spawn_pos: Vector2 = Vector2.INF):
+func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, spawn_marker: Marker2D = null, base_angle: float = 0.0, custom_cast_time: float = 0.5, skill_damage: float = 0.0, custom_spawn_pos: Vector2 = Vector2.INF, skill_sfx: AudioStream = null):
 	is_casting_skill = true
 	# Cộng thêm 0.38s giữ dáng (post-cast delay) sau khi gồng chiêu xong
 	cast_timer = custom_cast_time + 0.38
 	
+	# Phát âm thanh Kỹ năng ngay lập tức khi bắt đầu gồng chiêu
+	if skill_sfx:
+		_play_sfx(skill_sfx)
+		
 	anim.play(cast_anim)
 	
 	if skill_scene:
 		# Đợi khoảng thời gian custom_cast_time trước khi thực sự bắn skill ra
 		if custom_cast_time > 0:
 			await get_tree().create_timer(custom_cast_time).timeout
-		
+			
 		# Khởi tạo lại các giá trị vị trí phòng trường hợp nhân vật di chuyển (nếu bị đẩy, v.v.)
 		# Hoặc nếu người chơi bấm lật mặt trong lúc niệm
 		
@@ -558,8 +567,16 @@ func set_right_bound(x_pos: float):
 # --- Hàm phát âm thanh ---
 func _play_sfx(stream: AudioStream):
 	if stream and sfx_player:
-		sfx_player.stream = stream
-		sfx_player.play()
+		if sfx_player.playing:
+			var temp_player = AudioStreamPlayer.new()
+			temp_player.stream = stream
+			temp_player.bus = "SFX"
+			add_child(temp_player)
+			temp_player.play()
+			temp_player.finished.connect(temp_player.queue_free)
+		else:
+			sfx_player.stream = stream
+			sfx_player.play()
 
 func _play_loop_sfx(stream: AudioStream):
 	if stream and sfx_loop:
