@@ -251,14 +251,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 500.0
+radius = 700.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 600.0
 
 [node name="eggplant" type="CharacterBody2D" unique_id=49894218 groups=["enemy"]]
 script = ExtResource("1_script")
+speed = 60.0
+health = 35.0
 bullet_scene = ExtResource("2_v32co")
+bullet_damage = 15.0
+detect_radius = 700.0
+attack_radius = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994686185]
 shape = SubResource("CapsuleShape2D_eggplant")

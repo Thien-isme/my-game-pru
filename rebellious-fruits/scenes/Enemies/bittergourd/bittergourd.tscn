@@ -343,7 +343,6 @@ radius = 600.0
 [node name="bittergourd" type="CharacterBody2D" unique_id=1774120902 groups=["enemy"]]
 script = ExtResource("1_script")
 health = 100.0
-shoot_cooldown = 1.5
 bullet_scene = ExtResource("2_yec33")
 bullet_damage = 25.0
 detect_radius = 700.0

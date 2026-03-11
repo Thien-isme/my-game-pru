@@ -1,7 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://24n0fn2nu5um"]
+
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
 [ext_resource type="Texture2D" uid="uid://dtiv6xscd0bcr" path="res://assets/tilemap/level_1/tilemap_1_4.png" id="2_g255m"]
+[ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="4_ucuwc"]
+[ext_resource type="PackedScene" uid="uid://ca6e6n3rnwa8j" path="res://scenes/Enemies/watermelon/watermelon.tscn" id="5_6a05l"]
+[ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="6_p5cy6"]
+[ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="7_s7cve"]
+[ext_resource type="PackedScene" uid="uid://bde0mvmihdubf" path="res://scenes/Enemies/pumpkin/pumpkin.tscn" id="8_ustqi"]
+[ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/Enemies/pear/pear.tscn" id="9_ok8hq"]
+[ext_resource type="PackedScene" uid="uid://c4b02mj3f7sy0" path="res://scenes/Enemies/mangosteen/mangosteen.tscn" id="10_du5vg"]
+[ext_resource type="PackedScene" uid="uid://de7jkdcagbj4b" path="res://scenes/Enemies/lychee/lychee.tscn" id="11_2axxs"]
+[ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/Enemies/lemon/lemon.tscn" id="12_msnbi"]
+[ext_resource type="PackedScene" uid="uid://nu8odefjv5yk" path="res://scenes/Enemies/eggplant/eggplant.tscn" id="13_pngvj"]
+[ext_resource type="PackedScene" uid="uid://phoc7aqii0q3" path="res://scenes/Enemies/corn/corn.tscn" id="14_cflp8"]
+[ext_resource type="PackedScene" uid="uid://dood6r7mk0h2t" path="res://scenes/Enemies/chili/chili.tscn" id="15_r2xhf"]
+[ext_resource type="PackedScene" uid="uid://bqnf4d3qj34lb" path="res://scenes/Enemies/carrot/carrot.tscn" id="16_88ja0"]
+[ext_resource type="PackedScene" uid="uid://owtsctmeexp1" path="res://scenes/Enemies/bittergourd/bittergourd.tscn" id="17_0qjho"]
+[ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="18_kemwc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0yoyh"]
 texture = ExtResource("2_g255m")
@@ -9507,6 +9523,10 @@ texture = ExtResource("2_g255m")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0yoyh")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8n0m"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
 [node name="LevelTemplate" unique_id=555782197 instance=ExtResource("1_1v7n3")]
 
 [node name="Background_1" parent="Environment/ParallaxBackground/ParallaxLayer" parent_id_path=PackedInt32Array(1950711179) index="0" unique_id=119188798]
@@ -9561,11 +9581,92 @@ layer_0/tile_data = PackedInt32Array(6881277, 3342336, 35, 6946813, 3342336, 36,
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(546494529) index="0" unique_id=995554852]
 position = Vector2(126, 474)
 
+[node name="EnemySpawnerController" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="0" unique_id=2068803941 instance=ExtResource("4_ucuwc")]
+position = Vector2(468, 340)
+
+[node name="EnemySpawnerItem" parent="Entities/Enemies/EnemySpawnerController" index="0" unique_id=87320655]
+enemy_scene = ExtResource("5_6a05l")
+
+[node name="EnemySpawnerItem2" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="1" unique_id=746913473]
+position = Vector2(1577, -227)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("7_s7cve")
+
+[node name="EnemySpawnerItem3" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="2" unique_id=1224351600]
+position = Vector2(6666, -179)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("8_ustqi")
+
+[node name="EnemySpawnerItem4" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="3" unique_id=2066455975]
+position = Vector2(3782, 48)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("9_ok8hq")
+
+[node name="EnemySpawnerItem5" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="4" unique_id=6126748]
+position = Vector2(4342, -227)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("10_du5vg")
+
+[node name="EnemySpawnerItem6" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="5" unique_id=728193116]
+position = Vector2(8507, 114)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("11_2axxs")
+
+[node name="EnemySpawnerItem7" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="6" unique_id=1892430029]
+position = Vector2(8794, -83)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("12_msnbi")
+
+[node name="EnemySpawnerItem8" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="7" unique_id=696735692]
+position = Vector2(7629, -66)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("13_pngvj")
+
+[node name="EnemySpawnerItem9" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="8" unique_id=1120090189]
+position = Vector2(5910, -200)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("14_cflp8")
+
+[node name="EnemySpawnerItem10" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="9" unique_id=946047809]
+position = Vector2(4755, -92)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("15_r2xhf")
+
+[node name="EnemySpawnerItem11" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="10" unique_id=1096280729]
+position = Vector2(3636, -57)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("16_88ja0")
+
+[node name="EnemySpawnerItem12" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="11" unique_id=1671412058]
+position = Vector2(2884, -65)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("17_0qjho")
+
+[node name="EnemySpawnerItem13" type="Marker2D" parent="Entities/Enemies/EnemySpawnerController" index="12" unique_id=516927036]
+position = Vector2(1532, -57)
+gizmo_extents = 50.0
+script = ExtResource("6_p5cy6")
+enemy_scene = ExtResource("18_kemwc")
+
+[node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
+shape = SubResource("RectangleShape2D_r8n0m")
+
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)
 
 [node name="RightBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="1"]
 position = Vector2(9935, 305)
 
-
+[editable path="Entities/Enemies/EnemySpawnerController"]
 [editable path="LevelBounds"]

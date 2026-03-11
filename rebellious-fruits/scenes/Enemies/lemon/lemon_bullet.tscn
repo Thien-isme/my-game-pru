@@ -71,14 +71,14 @@ animations = [{
 }]
 
 [node name="lemon_bullet" type="Area2D" unique_id=389430230]
-position = Vector2(9500.001, 0)
+position = Vector2(15760.001, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
-position = Vector2(-86, -1.9073486e-06)
+position = Vector2(-31.000977, 5)
 scale = Vector2(0.16866419, 0.15148407)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"

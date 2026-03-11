@@ -245,8 +245,7 @@ radius = 800.0
 [node name="pear" type="CharacterBody2D" unique_id=269960179 groups=["enemy"]]
 position = Vector2(4, 1)
 script = ExtResource("1_script")
-health = 80.0
-shoot_cooldown = 1.0
+health = 60.0
 bullet_scene = ExtResource("2_lbwit")
 bullet_damage = 20.0
 patrol_distance = 300.0

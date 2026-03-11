@@ -211,14 +211,19 @@ radius = 42.0
 height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 300.0
+radius = 800.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 200.0
+radius = 600.0
 
 [node name="mangosteen" type="CharacterBody2D" unique_id=493491145 groups=["enemy"]]
 script = ExtResource("script_enemy")
+speed = 40.0
+health = 150.0
 bullet_scene = ExtResource("2_uwx3w")
+bullet_damage = 15.0
+detect_radius = 800.0
+attack_radius = 600.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1052839285]
 scale = Vector2(0.13525817, 0.13256316)

@@ -46,8 +46,8 @@ func _setup_button(btn: TextureButton, callback: Callable):
 
 
 func _on_play_pressed():
-	AudioManager.play_music("level1_theme")
-	get_tree().change_scene_to_file("res://scenes/levels/level_1/level_1_1.tscn")
+	AudioManager.play_music("menu_theme")
+	get_tree().change_scene_to_file("res://ui/roadmap/roadmap.tscn")
 
 func _on_settings_pressed():
 	if settings_instance == null:

@@ -469,12 +469,10 @@ skill_e_sfx = ExtResource("10_j4nxn")
 skill_r_sfx = ExtResource("6_007i1")
 bullet_speed = 600.0
 bullet_spread = 0.0
-skill_q_cooldown = 6.0
-skill_w_cooldown = 10.0
-skill_e_cooldown = 4.0
+skill_q_cooldown = 7.0
+skill_e_cooldown = 3.0
 skill_r_cooldown = 30.0
 skill_q_damage = 15.0
-skill_r_damage = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
 position = Vector2(1, -3)

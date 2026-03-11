@@ -239,9 +239,9 @@ radius = 750.0
 
 [node name="corn" type="CharacterBody2D" unique_id=638291107 groups=["enemy"]]
 script = ExtResource("1_w2oqy")
-health = 100.0
+health = 130.0
 bullet_scene = ExtResource("2_xu6rq")
-bullet_damage = 15.0
+bullet_damage = 20.0
 detect_radius = 800.0
 attack_radius = 750.0
 

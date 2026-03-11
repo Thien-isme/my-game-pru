@@ -213,7 +213,6 @@ radius = 600.0
 
 [node name="chili" type="CharacterBody2D" unique_id=213129797 groups=["enemy"]]
 script = ExtResource("1_script")
-health = 50.0
 bullet_scene = ExtResource("2_atha6")
 bullet_damage = 20.0
 detect_radius = 700.0

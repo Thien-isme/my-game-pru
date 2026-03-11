@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 200
 const JUMP_FORCE = -550
 const GRAVITY = 900
+const MAX_HEALTH = 500.0
 
 @onready var anim = $AnimatedSprite2D
 @onready var spawn_points_parent = $BulletSpawnPoints
@@ -88,6 +89,11 @@ var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 # Giới hạn map
 var limit_left_x: float = 0.0
 var limit_right_x: float = 9999999.0
+
+func heal(amount: float):
+	health = min(health + amount, MAX_HEALTH)
+	if hud:
+		hud.update_health(health)
 
 func _ready():
 	if hud:
@@ -303,6 +309,10 @@ func _physics_process(delta):
 				bullet.rotation = final_angle
 				bullet.speed = bullet_speed
 				bullet.damage = bullet_damage
+				
+				# Gán player làm shooter để bullet có thể gọi hàm heal() khi trúng quái
+				if "shooter" in bullet:
+					bullet.shooter = self
 
 			# Tốc độ bắn tăng x2 khi W đang active
 			shoot_timer = 0.15 if skill_w_active else 0.3

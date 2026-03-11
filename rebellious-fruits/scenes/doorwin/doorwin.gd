@@ -42,7 +42,7 @@ func _go_to_next_level():
 			print("Cổng dịch chuyển: Chuyển sang màn ", next_num)
 			get_tree().change_scene_to_file(next_scene_path)
 		else:
-			print("Cổng dịch chuyển: Không tìm thấy màn ", next_num, ". Quay về Menu.")
-			get_tree().change_scene_to_file("res://ui/menus/main_menu.tscn")
+			print("Cổng dịch chuyển: Không tìm thấy màn ", next_num, ". Quay về Roadmap.")
+			get_tree().change_scene_to_file("res://ui/roadmap/roadmap.tscn")
 	else:
-		get_tree().change_scene_to_file("res://ui/menus/main_menu.tscn")
+		get_tree().change_scene_to_file("res://ui/roadmap/roadmap.tscn")

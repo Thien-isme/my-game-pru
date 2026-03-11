@@ -3,6 +3,7 @@ extends Area2D
 var direction = Vector2.RIGHT
 var speed = 400.0
 var damage: float = 10.0
+var shooter: Node2D = null # Tham chiếu tới Player bắn ra đạn này
 
 @export var hit_sfx: AudioStream
 
@@ -32,6 +33,10 @@ func hit_enemy(enemy):
 	# Gây damage cho enemy
 	if enemy.has_method("take_damage"):
 		enemy.take_damage(damage)
+		
+	# Hồi máu cho Player khi trúng quái
+	if shooter and shooter.has_method("heal"):
+		shooter.heal(3.0)
 	
 	# Chờ animation xong rồi xóa đạn
 	# Lưu ý: Nếu âm thanh dài hơn animation, đạn vẫn sẽ tồn tại cho đến khi anim xong.

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bde0mvmihdubf"]
 
-[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/enemies/base_scripts/enemy_script.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cjgbnmohnbh2e" path="res://assets/sprites/enemies/pumpkin/pumpkin_idle.png" id="2_idle"]
-[ext_resource type="PackedScene" uid="uid://bhelhrkni2001" path="res://scenes/enemies/pumpkin/pumpkin_bullet.tscn" id="2_pnf4y"]
+[ext_resource type="PackedScene" uid="uid://bhelhrkni2001" path="res://scenes/Enemies/pumpkin/pumpkin_bullet.tscn" id="2_pnf4y"]
 [ext_resource type="Texture2D" uid="uid://bggcxy6gq4w8x" path="res://assets/sprites/enemies/pumpkin/pumpkin_die.png" id="3_die"]
 [ext_resource type="Texture2D" uid="uid://dmmunptmgesul" path="res://assets/sprites/enemies/pumpkin/pumpkin_run.png" id="4_run"]
 [ext_resource type="Texture2D" uid="uid://ck34tb6iyh0di" path="res://assets/sprites/enemies/pumpkin/pumpkin_shoot.png" id="5_shoot"]
@@ -251,14 +251,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 500.0
+radius = 800.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 700.0
 
 [node name="pumpkin" type="CharacterBody2D" unique_id=1068581795 groups=["enemy"]]
 script = ExtResource("1_script")
+health = 220.0
 bullet_scene = ExtResource("2_pnf4y")
+bullet_damage = 25.0
+detect_radius = 800.0
+attack_radius = 700.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=122630522]
 shape = SubResource("CapsuleShape2D_pumpkin")
@@ -272,17 +276,13 @@ autoplay = "idle"
 frame_progress = 0.52081186
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=1818212653]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=2040837746]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1256778515]
-position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1295166519]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 debug_color = Color(0.833, 0.38, 0.245, 0.42)
 
