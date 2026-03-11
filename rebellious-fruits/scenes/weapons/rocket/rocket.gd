@@ -2,6 +2,8 @@ extends Area2D
 
 @export var speed: float = 400.0
 @export var damage: float = 30.0
+## Nếu true, rocket sẽ xuyên qua tường/địa hình và chỉ nổ khi chạm người chơi
+@export var pass_terrain: bool = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 var is_exploding: bool = false
@@ -36,6 +38,9 @@ func _on_body_entered(body: Node2D) -> void:
 			body.take_damage(damage)
 		_explode()
 	elif body.name == "TileMap" or body.is_in_group("wall"):
+		# Nếu pass_terrain = true thì bỏ qua tường, không nổ
+		if pass_terrain:
+			return
 		# Nổ khi chạm đất
 		_explode()
 

@@ -25,7 +25,7 @@ func _ready() -> void:
 		add_child(sfx_player)
 	
 	# Load tất cả SFX vào bộ nhớ ngay khi game khởi động
-	load_sfx("player_shoot", "res://assets/audio/sfx/player/player_shoot.mp3")
+	load_sfx("player_shoot", "res://assets/audio/sfx/player/player-shoot_sfx.mp3")
 	
 	# Load BGM
 	load_music("menu_theme", "res://assets/audio/bgm/bgm_menu.mp3")

@@ -8,6 +8,8 @@ extends Node2D
 		spawn_width = value
 		queue_redraw()
 @export var spawn_height_offset: float = 800.0 # Khoảng cách từ đỉnh đầu Player lên tới đường thả bom
+## Nếu true, rocket sẽ xuyên qua tường/địa hình. Hữu ích cho rocket thả từ trên cao.
+@export var pass_terrain: bool = false
 
 func _draw():
 	if Engine.is_editor_hint():
@@ -62,10 +64,11 @@ func _spawn_rocket_at_player() -> void:
 		if "direction" in rocket:
 			rocket.direction = dir_to_player
 		
+		# Gán thuộc tính xuyên tường cho rocket
+		if "pass_terrain" in rocket:
+			rocket.pass_terrain = pass_terrain
+		
 		# Lưu ý: Do Sprite gốc của Rocket có hình bay ngang hay dọc? 
 		# Nếu Sprite tên lửa gốc đang bay NGANG ngòi sang PHẢI (như viên đạn) thì để nguyên.
-		# Hiện tại trong SpriteFrames, nó bay NGANG chéo chéo, có thể cần cộng thêm một offset (VD: + PI/2)
-		# Tạm thời cứ để angle() thuần túy, có thể quan sát và bổ sung offset sau.
-		
 		# Trong bản cập nhật mới nhất, ta đã chỉnh rocket.tscn AnimatedSprite2D rotation = 1.68 (~96 độ)
 		# Nghĩa là sprite gốc chĩa lên trên hoặc chéo. Việc gán lại `rocket.rotation` sẽ xoay toàn bộ cụm Area2D.
