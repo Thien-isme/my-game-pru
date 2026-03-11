@@ -69,6 +69,8 @@ animations = [{
 
 [node name="Rocket" type="Area2D" unique_id=1024194392 groups=["enemy_attack"]]
 script = ExtResource("1_script")
+speed = 300.0
+damage = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=-1905537659]
 position = Vector2(0, -13)
