@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bw6vj11nb4hm2" path="res://ui/hud/cooldown_overlay.gd" id="2_cooldown"]
 [ext_resource type="Texture2D" uid="uid://18lnbn6huu6l" path="res://assets/ui/skills/skill_e.png" id="5_oj5la"]
 [ext_resource type="Texture2D" uid="uid://djmfvygm51lpe" path="res://assets/ui/skills/skill_r.png" id="6_gss2c"]
-[ext_resource type="Texture2D" uid="uid://5sv1vhhl42vx" path="res://assets/ui/ui_settings/setting_button_backhome.png" id="4_b2f6y"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.2, 0.2, 0.2, 0.8)
@@ -309,13 +309,4 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 
-[node name="ExitButton" type="TextureButton" parent="." unique_id=987654321]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 110.0
-offset_bottom = 60.0
-texture_normal = ExtResource("4_b2f6y")
-ignore_texture_size = true
-stretch_mode = 5
 
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

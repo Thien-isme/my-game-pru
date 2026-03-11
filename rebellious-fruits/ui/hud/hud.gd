@@ -105,9 +105,7 @@ func _update_skill_cooldown_overlay(skill_key: String):
 		overlay.is_active_phase = false
 		overlay.queue_redraw()
 
-func _on_exit_button_pressed():
-	get_tree().paused = false # Ensure game is unpaused before leaving
-	get_tree().change_scene_to_file("res://ui/menus/main_menu.tscn")
+
 
 func _refresh_skill_panel(skill_key: String):
 	var panel = _get_skill_panel(skill_key)
