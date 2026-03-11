@@ -13,6 +13,7 @@ func _on_exit_pressed():
 	print("PauseMenu: Exit pressed")
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://ui/roadmap/roadmap.tscn")
+	queue_free()
 
 func _input(event):
 	# Nếu đang pause mà nhấn ESC lần nữa thì resume
