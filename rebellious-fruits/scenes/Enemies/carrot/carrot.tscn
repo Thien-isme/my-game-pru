@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bqnf4d3qj34lb"]
 
 [ext_resource type="Script" uid="uid://diq3ll0n3vdxd" path="res://scenes/Enemies/base_scripts/enemy_script.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://cnd6ceukdthfh" path="res://scenes/Enemies/carrot/carrot_bullet.tscn" id="2_43lpr"]
@@ -251,14 +251,20 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
-radius = 500.0
+radius = 700.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 300.0
+radius = 650.0
 
 [node name="carrot" type="CharacterBody2D" unique_id=49894218 groups=["enemy"]]
 script = ExtResource("1_script")
 bullet_scene = ExtResource("2_43lpr")
+bullet_speed = 400.0
+patrol_distance = 250.0
+patrol_speed = 60.0
+patrol_wait_time = 1.0
+detect_radius = 700.0
+attack_radius = 650.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994686185]
 shape = SubResource("CapsuleShape2D_carrot")
@@ -285,7 +291,6 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 position = Vector2(50, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1713229979]
-bus = &"SFX"
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

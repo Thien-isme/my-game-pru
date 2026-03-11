@@ -257,7 +257,7 @@ radius = 600.0
 radius = 500.0
 
 [node name="apple" type="CharacterBody2D" unique_id=1981458563 groups=["enemy"]]
-position = Vector2(600, 150)
+position = Vector2(-2, 2)
 script = ExtResource("1_script")
 health = 20.0
 bullet_scene = ExtResource("2_cefhm")
