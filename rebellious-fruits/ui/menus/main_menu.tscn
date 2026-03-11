@@ -1,20 +1,10 @@
 [gd_scene format=3 uid="uid://7amc0170yy2s"]
 
-[ext_resource type="Script" uid="uid://bws8nd3unutem" path="res://ui/menus/main_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://pldmt6oklmdj" path="res://ui/menus/main_menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://b5784aqv7620g" path="res://assets/ui/ui_background.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://gcu1f2sgnrqb" path="res://assets/ui/ui_text.png" id="3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_play"]
-atlas = ExtResource("3")
-region = Rect2(989.3458, 507.35287, 794.02295, 227.85)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_settings"]
-atlas = ExtResource("3")
-region = Rect2(982.4413, 721.3938, 797.4752, 224.39777)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_exit"]
-atlas = ExtResource("3")
-region = Rect2(1023.86865, 931.9825, 756.04785, 238.20685)
+[ext_resource type="Texture2D" uid="uid://84s7uyro5asr" path="res://assets/ui/ui_settings/setting_button_play.png" id="3_h223f"]
+[ext_resource type="Texture2D" uid="uid://djetb5sycdpdw" path="res://assets/ui/ui_settings/setting_button_settings.png" id="4_l3r6a"]
+[ext_resource type="Texture2D" uid="uid://cfoxm3parg50g" path="res://assets/ui/ui_settings/setting_button_exit.png" id="5_h223f"]
 
 [node name="MainMenu" type="Control" unique_id=2016756014]
 layout_mode = 3
@@ -56,7 +46,7 @@ alignment = 1
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_play")
+texture_normal = ExtResource("3_h223f")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -64,7 +54,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = SubResource("AtlasTexture_settings")
+texture_normal = ExtResource("4_l3r6a")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -73,6 +63,6 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_mask = 3
-texture_normal = SubResource("AtlasTexture_exit")
+texture_normal = ExtResource("5_h223f")
 ignore_texture_size = true
 stretch_mode = 5

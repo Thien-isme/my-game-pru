@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://c6fjea7ksdf8b"]
 
-[ext_resource type="Script" path="res://ui/menus/game_over.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://b50dbbtbtwhqh" path="res://ui/menus/game_over.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dnv1pw8tvnk4v" path="res://assets/ui/ui_settings/setting_button_GameOver.png" id="2_k5c08"]
+[ext_resource type="Texture2D" uid="uid://4g3m8yt7nt0y" path="res://assets/ui/ui_settings/setting_button_play_again.png" id="3_ghdab"]
+[ext_resource type="Texture2D" uid="uid://5sv1vhhl42vx" path="res://assets/ui/ui_settings/setting_button_backhome.png" id="4_b2f6y"]
 
-[node name="GameOver" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer" unique_id=1464632643]
+process_mode = 3
 script = ExtResource("1_script")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1050498475]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,41 +17,42 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1632104653]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=642038078]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 40
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TitleTexture" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=1898794304]
+custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.878431, 0.160784, 0.160784, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 80
-text = "Game OVER"
-horizontal_alignment = 1
+texture = ExtResource("2_k5c08")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=698762349]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(250, 60)
+[node name="RetryButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Buttons" unique_id=139917089]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Chơi lại"
+texture_normal = ExtResource("3_ghdab")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(250, 60)
+[node name="MenuButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Buttons" unique_id=709233603]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Quay lại trang chính"
+texture_normal = ExtResource("4_b2f6y")
+ignore_texture_size = true
+stretch_mode = 5
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RetryButton" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/MenuButton" to="." method="_on_menu_pressed"]

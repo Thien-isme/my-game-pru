@@ -107,6 +107,20 @@ func add_score(amount: int):
 	if hud:
 		hud.update_score(score)
 
+
+func _input(event):
+	if is_dead:
+		return
+		
+	if event.is_action_pressed("ui_cancel"):
+		_toggle_settings_menu()
+
+func _toggle_settings_menu():
+	if is_instance_valid(SettingsMenuAutoload):
+		SettingsMenuAutoload.visible = true
+		SettingsMenuAutoload._load_current_settings()
+		get_tree().paused = true
+
 func _physics_process(delta):
 	if is_dead:
 		velocity.x = 0
