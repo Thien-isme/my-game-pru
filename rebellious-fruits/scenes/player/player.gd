@@ -462,7 +462,7 @@ func _physics_process(delta):
 		anim.speed_scale = 2.0 # Tốc độ animation x2
 		anim.play("dash")
 		_stop_loop_sfx()
-		_play_sfx(run_sfx) # Hoặc bạn có thể dùng một sfx_dash riêng nếu có
+		_play_sfx(skill_e_sfx)
 		
 		# Tính cooldown cho dash thường bằng cooldown của E
 		skill_e_timer = skill_e_cooldown

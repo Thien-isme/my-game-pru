@@ -63,7 +63,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8s4lq")
 }],
-"loop": true,
+"loop": false,
 "name": &"fly",
 "speed": 5.0
 }]
@@ -88,8 +88,8 @@ shape = SubResource("CircleShape2D_altju")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=957075398]
 position = Vector2(-11, -157)
 rect = Rect2(-10, 150, 37, 16)
+
 [node name="HitAudio" type="AudioStreamPlayer" parent="." unique_id=1418480691]
-bus = &"SFX"
 stream = ExtResource("5_tyir5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

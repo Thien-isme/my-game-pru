@@ -37,6 +37,9 @@ func _update_ui():
 	if health_bar:
 		health_bar.value = current_health
 		_update_health_color()
+		var health_text = health_bar.get_node_or_null("HealthText")
+		if health_text:
+			health_text.text = str(round(current_health)) + " / " + str(round(max_health))
 	if score_label:
 		score_label.text = "Score: " + str(score)
 
