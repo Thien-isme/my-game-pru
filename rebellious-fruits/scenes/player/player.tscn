@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://3ek2oeytyyla" path="res://assets/sprites/player/player_hit.png" id="4_je7p5"]
 [ext_resource type="Texture2D" uid="uid://cjovi5efqhs2u" path="res://assets/sprites/player/player_dash.png" id="4_kvlxm"]
 [ext_resource type="AudioStream" uid="uid://xql1367u8w8" path="res://assets/audio/sfx/player/hit-sfx.mp3" id="5_uniwh"]
-[ext_resource type="AudioStream" uid="uid://dy7isfg0ufclh" path="res://assets/audio/sfx/player/skills - Copy/skill_r_sfx.mp3" id="6_007i1"]
+[ext_resource type="AudioStream" uid="uid://dy7isfg0ufclh" path="res://assets/audio/sfx/player/skills/skill_r_sfx.mp3" id="6_007i1"]
 [ext_resource type="AudioStream" uid="uid://1cne6ts5xjm7" path="res://assets/audio/sfx/player/die-sfx.mp3" id="6_iqsei"]
 [ext_resource type="Texture2D" uid="uid://dtiqcoboj8kjp" path="res://assets/sprites/player/player_jump.png" id="6_je7p5"]
 [ext_resource type="Texture2D" uid="uid://r7gb8rh82jki" path="res://assets/sprites/player/player_shoot_high.png" id="7_0owmy"]
@@ -485,7 +485,7 @@ animation = &"shoot_rapid_fire"
 speed_scale = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]
-position = Vector2(346, -154)
+position = Vector2(346, -80)
 limit_left = 0
 position_smoothing_enabled = true
 drag_vertical_enabled = true

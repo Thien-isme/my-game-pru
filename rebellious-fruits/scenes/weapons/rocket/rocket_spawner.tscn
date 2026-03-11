@@ -4,7 +4,6 @@
 
 [node name="RocketSpawner" type="Node2D" unique_id=740805794]
 script = ExtResource("1_1")
-spawn_interval = 1.0
 spawn_width = 1800.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1384310222]
