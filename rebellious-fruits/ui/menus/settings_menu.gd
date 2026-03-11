@@ -12,9 +12,6 @@ var bus_music = AudioServer.get_bus_index("Music")
 var bus_sfx = AudioServer.get_bus_index("SFX")
 
 func _ready():
-	# Đảm bảo menu hoạt động khi game pause
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	
 	# Cố gắng tự động tạo Bus nếu chưa có để tránh lỗi (dù đã setup file .tres)
 	if bus_music == -1: AudioServer.add_bus(1); AudioServer.set_bus_name(1, "Music"); bus_music = AudioServer.get_bus_index("Music")
 	if bus_sfx == -1: AudioServer.add_bus(2); AudioServer.set_bus_name(2, "SFX"); bus_sfx = AudioServer.get_bus_index("SFX")
@@ -26,10 +23,6 @@ func _ready():
 	apply_btn.pressed.connect(_on_apply_pressed)
 	cancel_btn.pressed.connect(_on_cancel_pressed)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and visible:
-		_on_cancel_pressed()
-		get_viewport().set_input_as_handled()
 
 func _load_current_settings():
 	# Convert db to percentage (0 to 100) or just use standard range like -24db to 0db mapped to 0-100
@@ -42,17 +35,20 @@ func _on_apply_pressed():
 	_set_bus_volume(bus_music, music_slider.value)
 	_set_bus_volume(bus_sfx, sfx_slider.value)
 	
-	# Resume game
-	visible = false
-	get_tree().paused = false
-
 func _set_bus_volume(bus_index: int, slider_val: float):
 	if slider_val <= 0.01:
 		AudioServer.set_bus_volume_db(bus_index, -80.0)
 	else:
 		AudioServer.set_bus_volume_db(bus_index, linear_to_db(slider_val / 100.0))
+	
+	# Resume game
+	visible = false
+	get_tree().paused = false
 
 func _on_cancel_pressed():
-	# Close and discard, resume game
+	# Revert logic isn't strictly necessary for a simple UI, just close it and discard slider changes
+	_load_current_settings() # Reset visually
+	
+	# Resume game
 	visible = false
 	get_tree().paused = false

@@ -84,6 +84,7 @@ var is_hit = false
 var is_crouching = false
 var health: float = 500.0
 var is_dead = false
+var pause_menu_ref: Node = null
 var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 
@@ -113,13 +114,17 @@ func _input(event):
 		return
 		
 	if event.is_action_pressed("ui_cancel"):
-		_toggle_settings_menu()
+		_show_pause_menu()
 
-func _toggle_settings_menu():
-	if is_instance_valid(SettingsMenuAutoload):
-		SettingsMenuAutoload.visible = true
-		SettingsMenuAutoload._load_current_settings()
-		get_tree().paused = true
+func _show_pause_menu():
+	# Kiểm tra nếu menu đã tồn tại thì không tạo thêm
+	if pause_menu_ref and is_instance_valid(pause_menu_ref):
+		return
+		
+	var pause_menu_scene = preload("res://ui/menus/pause_menu.tscn")
+	pause_menu_ref = pause_menu_scene.instantiate()
+	get_tree().root.add_child(pause_menu_ref)
+	get_tree().paused = true
 
 func _physics_process(delta):
 	if is_dead:
