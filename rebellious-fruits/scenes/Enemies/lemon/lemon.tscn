@@ -248,6 +248,7 @@ shape = SubResource("CircleShape2D_attack")
 debug_color = Color(1, 0, 0.103134416, 0.41960785)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1624910098]
+bus = &"SFX"
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

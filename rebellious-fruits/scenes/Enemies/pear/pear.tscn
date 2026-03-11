@@ -278,6 +278,7 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 position = Vector2(50, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=236452000]
+bus = &"SFX"
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

@@ -513,8 +513,10 @@ position = Vector2(32, 12)
 [node name="HUD" parent="." unique_id=1193628908 instance=ExtResource("10_hud")]
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=2089341234]
+bus = &"SFX"
 
 [node name="SFXPlayerLoop" type="AudioStreamPlayer" parent="." unique_id=2089341235]
+bus = &"SFX"
 
 [node name="ShootRapidFireEffect" parent="." unique_id=999425207 instance=ExtResource("15_rapid")]
 visible = false

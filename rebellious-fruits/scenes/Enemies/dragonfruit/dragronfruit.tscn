@@ -355,6 +355,7 @@ position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_attack")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=938890316]
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2087236528]
 shape = SubResource("CapsuleShape2D_tesoi")

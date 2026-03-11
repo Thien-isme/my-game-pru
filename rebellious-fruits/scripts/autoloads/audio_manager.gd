@@ -14,17 +14,15 @@ var max_sfx_players: int = 15 # Số lượng âm thanh hiệu ứng tối đa p
 func _ready() -> void:
 	# Cài đặt Music Player
 	music_player = AudioStreamPlayer.new()
+	music_player.bus = "Music"
 	add_child(music_player)
 	
 	# Cài đặt SFX Pool
 	for i in range(max_sfx_players):
 		var sfx_player = AudioStreamPlayer.new()
+		sfx_player.bus = "SFX"
 		sfx_pool.append(sfx_player)
 		add_child(sfx_player)
-		
-	# Mặc định, Godot đưa tất cả vào bus "Master".
-	# Sau này bạn có thể tải thêm 2 bus "Music" và "SFX" trong tab Audio phía đáy màn hình,
-	# và chỉnh thuộc tính `.bus` của các loa này về đúng bus tương ứng.
 	
 	# Load tất cả SFX vào bộ nhớ ngay khi game khởi động
 	load_sfx("player_shoot", "res://assets/audio/sfx/player/player_shoot.mp3")

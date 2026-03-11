@@ -5,13 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dl1vk528cc0cm" path="res://assets/ui/ui_settings/setting_button_apply.png" id="3_etr7b"]
 [ext_resource type="Texture2D" uid="uid://cm85mapl3phce" path="res://assets/ui/ui_settings/setting_button_cancel.png" id="4_etr7b"]
 
-[node name="SettingsMenu" type="Control" unique_id=1093880253]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SettingsMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+visible = false
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=320085549]

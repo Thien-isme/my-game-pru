@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cg145ac0bp87d" path="res://assets/sprites/weapons/rocket/rocket.png" id="2_rhil1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gyqfe"]
-radius = 35.014282
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0546x"]
 atlas = ExtResource("2_rhil1")
@@ -72,13 +71,13 @@ animations = [{
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=-1905537659]
-position = Vector2(0, -15)
+position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_gyqfe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=774477174]
-position = Vector2(-2.0000153, 111.00001)
+position = Vector2(4.9999995, -28.999998)
 rotation = -3.0752702
 scale = Vector2(0.10911587, 0.10381102)
 sprite_frames = SubResource("SpriteFrames_6rkv0")
-animation = &"fly"
+animation = &"explode"
 speed_scale = 0.2
