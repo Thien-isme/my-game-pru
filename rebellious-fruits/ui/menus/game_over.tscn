@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c6fjea7ksdf8b"]
+
+[ext_resource type="Script" path="res://ui/menus/game_over.gd" id="1_script"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.878431, 0.160784, 0.160784, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 80
+text = "Game OVER"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Chơi lại"
+
+[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quay lại trang chính"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/RetryButton" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Buttons/MenuButton" to="." method="_on_menu_pressed"]

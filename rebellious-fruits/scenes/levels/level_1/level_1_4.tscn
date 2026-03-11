@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ovk2bl7rilgb"]
 
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
@@ -29432,23 +29432,23 @@ sources/6 = SubResource("TileSetAtlasSource_jlogg")
 sources/7 = SubResource("TileSetAtlasSource_xkwko")
 sources/8 = SubResource("TileSetAtlasSource_60kmq")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxgh8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tulvs"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjh76"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syo8g"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo8vh"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8n2qy"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o41e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6w52"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm1sa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k58a1"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -29529,7 +29529,7 @@ enemy_scene = ExtResource("res_apple")
 override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_kxgh8")
+shape = SubResource("RectangleShape2D_tulvs")
 
 [node name="EnemySpawnerController2" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=340326821 instance=ExtResource("spawner_lib")]
 position = Vector2(1527, 422)
@@ -29568,7 +29568,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController2/DetectArea" parent_id_path=PackedInt32Array(340326821, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-257, -3)
-shape = SubResource("RectangleShape2D_yjh76")
+shape = SubResource("RectangleShape2D_syo8g")
 
 [node name="EnemySpawnerController3" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=1998670222 instance=ExtResource("spawner_lib")]
 position = Vector2(2449, 422)
@@ -29599,7 +29599,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController3/DetectArea" parent_id_path=PackedInt32Array(1998670222, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-588, -6)
-shape = SubResource("RectangleShape2D_mo8vh")
+shape = SubResource("RectangleShape2D_8n2qy")
 
 [node name="EnemySpawnerController4" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=1189195458 instance=ExtResource("spawner_lib")]
 position = Vector2(3036, 419)
@@ -29639,7 +29639,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController4/DetectArea" parent_id_path=PackedInt32Array(1189195458, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-419, 0)
-shape = SubResource("RectangleShape2D_0o41e")
+shape = SubResource("RectangleShape2D_y6w52")
 
 [node name="EnemySpawnerController5" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=342907830 instance=ExtResource("spawner_lib")]
 position = Vector2(4012, 423)
@@ -29678,7 +29678,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController5/DetectArea" parent_id_path=PackedInt32Array(342907830, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-314, -6)
-shape = SubResource("RectangleShape2D_jm1sa")
+shape = SubResource("RectangleShape2D_k58a1")
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)

@@ -267,7 +267,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cnsyf")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -482,7 +482,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 position = Vector2(-0.63772106, -5.78718)
 scale = Vector2(0.10450946, 0.09849313)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
-animation = &"shoot_rapid_fire"
+animation = &"die"
 speed_scale = 0.3
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1136044850]

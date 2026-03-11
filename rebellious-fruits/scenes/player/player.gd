@@ -83,6 +83,7 @@ var is_jump = false
 var is_hit = false
 var is_crouching = false
 var health: float = 500.0
+var is_dead = false
 var score = 0
 var bullet_scene = preload("res://scenes/player/player_bullet.tscn")
 
@@ -107,6 +108,12 @@ func add_score(amount: int):
 		hud.update_score(score)
 
 func _physics_process(delta):
+	if is_dead:
+		velocity.x = 0
+		velocity.y += GRAVITY * delta
+		move_and_slide()
+		return
+
 	# Trừ thời gian hồi chiêu
 	if skill_q_timer > 0: skill_q_timer -= delta
 	if skill_w_timer > 0: skill_w_timer -= delta
@@ -627,9 +634,29 @@ func take_damage(amount):
 		die()
 
 func die():
+	if is_dead:
+		return
+	is_dead = true
 	_play_sfx(die_sfx)
-	print("Player 'died' but death is temporarily disabled for testing.")
-	# get_tree().reload_current_scene()  # Bật lại khi cần
+	_stop_loop_sfx() # Dừng các âm thanh lặp như chạy/thở
+	
+	# Chơi animation chết
+	anim.play("die")
+	
+	# Tạm dừng toàn bộ game (kẻ địch và đạn sẽ đứng yên)
+	get_tree().paused = true
+	# Cho phép Player tiếp tục hoạt động để hoàn thành animation
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# Đợi animation chết kết thúc
+	await anim.animation_finished
+	
+	# Hiện UI Game Over
+	var game_over_scene = preload("res://ui/menus/game_over.tscn")
+	var game_over_instance = game_over_scene.instantiate()
+	get_tree().root.add_child(game_over_instance)
+	
+	print("Player died. Showing Game Over UI.")
 
 # --- Skill W Signals ---
 
