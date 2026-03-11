@@ -285,19 +285,24 @@ func _physics_process(delta):
 					_play_sfx(shoot_sfx)
 					_stop_loop_sfx()
 
+			# --- Xử lý thông số đạn khi có Skill W ---
+			var current_damage = 15.0 if skill_w_active else bullet_damage
+			var current_count = 3 if skill_w_active else bullet_count
+			var current_spread = 60.0 if skill_w_active else bullet_spread
+			
 			# Tính toán góc bắn chùm (Spread)
 			var base_angle = direction_bullet.angle()
-			var spread_rad = deg_to_rad(bullet_spread)
+			var spread_rad = deg_to_rad(current_spread)
 			
 			var start_angle = base_angle
-			if bullet_count > 1:
+			if current_count > 1:
 				start_angle = base_angle - (spread_rad / 2.0)
 				
 			var angle_step = 0.0
-			if bullet_count > 1:
-				angle_step = spread_rad / (bullet_count - 1)
+			if current_count > 1:
+				angle_step = spread_rad / (current_count - 1)
 
-			for i in range(bullet_count):
+			for i in range(current_count):
 				var final_angle = start_angle + (angle_step * i)
 				var final_dir = Vector2.RIGHT.rotated(final_angle)
 				
@@ -308,7 +313,7 @@ func _physics_process(delta):
 				bullet.direction = final_dir
 				bullet.rotation = final_angle
 				bullet.speed = bullet_speed
-				bullet.damage = bullet_damage
+				bullet.damage = current_damage
 				
 				# Gán player làm shooter để bullet có thể gọi hàm heal() khi trúng quái
 				if "shooter" in bullet:
