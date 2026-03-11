@@ -3,6 +3,7 @@ extends Area2D
 var direction: Vector2 = Vector2.RIGHT
 @export var speed: float = 300.0
 @export var damage: int = 1
+@export var pass_terrain: bool = true
 
 @onready var anim = $AnimatedSprite2D
 var is_exploding = false
@@ -27,7 +28,7 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.take_damage(damage)
 		_explode()
-	elif body.name == "TileMap" or body.is_in_group("wall"):
+	elif not pass_terrain and (body.name == "TileMap" or body.is_in_group("wall")):
 		_explode()
 
 func _explode():

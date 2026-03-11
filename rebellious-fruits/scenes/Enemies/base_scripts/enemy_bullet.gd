@@ -1,9 +1,10 @@
+@tool
 extends Area2D
 
 var direction: Vector2 = Vector2.RIGHT
 var speed: float = 300.0
 var damage: float = 10.0
-var pass_terrain: bool = false
+var pass_terrain: bool = true
 
 @onready var anim = $AnimatedSprite2D
 var is_exploding = false

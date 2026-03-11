@@ -254,15 +254,18 @@ animations = [{
 radius = 700.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
-radius = 700.0
+radius = 650.0
 
 [node name="starapple" type="CharacterBody2D" unique_id=100583018 groups=["enemy"]]
 script = ExtResource("1_script")
+health = 40.0
+shoot_cooldown = 1.5
 bullet_scene = ExtResource("2_qs1n4")
-bullet_speed = 500.0
+bullet_speed = 450.0
+bullet_damage = 15.0
 patrol_distance = 200.0
 detect_radius = 700.0
-attack_radius = 700.0
+attack_radius = 650.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1718896865]
 shape = SubResource("CapsuleShape2D_starapple")
@@ -289,7 +292,6 @@ debug_color = Color(0.833, 0.38, 0.245, 0.42)
 position = Vector2(50, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1448875604]
-bus = &"SFX"
 
 [connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]
 [connection signal="body_exited" from="DetectZone" to="." method="_on_detect_zone_body_exited"]

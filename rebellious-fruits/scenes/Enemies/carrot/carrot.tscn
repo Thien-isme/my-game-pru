@@ -258,6 +258,8 @@ radius = 650.0
 
 [node name="carrot" type="CharacterBody2D" unique_id=49894218 groups=["enemy"]]
 script = ExtResource("1_script")
+health = 25.0
+shoot_cooldown = 1.5
 bullet_scene = ExtResource("2_43lpr")
 bullet_speed = 400.0
 patrol_distance = 250.0

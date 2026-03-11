@@ -20,7 +20,7 @@ extends Node2D
 ## Chỉnh tốc độ đạn riêng cho bầy quái này (để 0 thì xài mặc định của đạn)
 @export var override_bullet_speed: float = 0.0
 ## Cho phép viên đạn bắn xuyên qua tường và đất nấp (Rất hữu ích cho quái đứng trên cao xả đạn xuống)
-@export var override_bullet_pass_terrain: bool = false
+@export var override_bullet_pass_terrain: bool = true
 ## Chỉnh khoảng cách đi tuần tra (để 0 thì xài mặc định của quái)
 @export var override_patrol_distance: float = 0.0
 
