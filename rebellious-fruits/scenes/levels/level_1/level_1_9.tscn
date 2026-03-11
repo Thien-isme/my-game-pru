@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cemnein0h77tn"]
 
 [ext_resource type="PackedScene" uid="uid://ccbykevlh8obl" path="res://scenes/levels/level_template.tscn" id="1_1v7n3"]
 [ext_resource type="Texture2D" uid="uid://dsc5675a5w38w" path="res://assets/background/background.png" id="2_0yoyh"]
@@ -29447,35 +29447,35 @@ sources/6 = SubResource("TileSetAtlasSource_6j45f")
 sources/7 = SubResource("TileSetAtlasSource_rw0u5")
 sources/8 = SubResource("TileSetAtlasSource_w27a1")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j45f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5apeg"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw0u5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qss5v"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w27a1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x60up"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dyxd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p77fu"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nt68"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spryo"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pkug"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvyhd"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iqj4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awi2e"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc3i4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjysk"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -29560,7 +29560,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_carrot/DetectArea" parent_id_path=PackedInt32Array(2064440052, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_6j45f")
+shape = SubResource("RectangleShape2D_5apeg")
 
 [node name="Spawner_chili" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=635135205 instance=ExtResource("spawner_lib")]
 position = Vector2(1318, 274)
@@ -29623,7 +29623,7 @@ enemy_scene = ExtResource("res_apple")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_chili/DetectArea" parent_id_path=PackedInt32Array(635135205, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-101, 0)
-shape = SubResource("RectangleShape2D_rw0u5")
+shape = SubResource("RectangleShape2D_qss5v")
 
 [node name="Spawner_lemon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=2996720 instance=ExtResource("spawner_lib")]
 position = Vector2(2000, 292)
@@ -29684,7 +29684,7 @@ script = ExtResource("10_6j45f")
 enemy_scene = ExtResource("res_apple")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_lemon/DetectArea" parent_id_path=PackedInt32Array(2996720, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_w27a1")
+shape = SubResource("RectangleShape2D_x60up")
 
 [node name="Spawner_pear" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=2145701837 instance=ExtResource("spawner_lib")]
 position = Vector2(2571, 287)
@@ -29745,7 +29745,7 @@ script = ExtResource("10_6j45f")
 enemy_scene = ExtResource("res_lemon")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_pear/DetectArea" parent_id_path=PackedInt32Array(2145701837, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_3dyxd")
+shape = SubResource("RectangleShape2D_p77fu")
 
 [node name="Spawner_starapple" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=1098171540 instance=ExtResource("spawner_lib")]
 position = Vector2(3491, 290)
@@ -29800,7 +29800,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_starapple/DetectArea" parent_id_path=PackedInt32Array(1098171540, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_8nt68")
+shape = SubResource("RectangleShape2D_spryo")
 
 [node name="Spawner_bittergourd2" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=2068803941 instance=ExtResource("spawner_lib")]
 position = Vector2(4941, 296)
@@ -29861,7 +29861,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd2/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_3pkug")
+shape = SubResource("RectangleShape2D_nvyhd")
 
 [node name="Spawner_bittergourd3" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="6" unique_id=254143680 instance=ExtResource("spawner_lib")]
 position = Vector2(7226, 292)
@@ -29916,7 +29916,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_6j45f")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd3/DetectArea" parent_id_path=PackedInt32Array(254143680, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_1iqj4")
+shape = SubResource("RectangleShape2D_awi2e")
 
 [node name="Spawner_bittergourd4" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="7" unique_id=1455895568 instance=ExtResource("spawner_lib")]
 position = Vector2(6372, 296)
@@ -29977,7 +29977,7 @@ enemy_scene = ExtResource("res_lemon")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd4/DetectArea" parent_id_path=PackedInt32Array(1455895568, 1759932897) index="0" unique_id=325501346]
 position = Vector2(1872, -15)
-shape = SubResource("RectangleShape2D_hc3i4")
+shape = SubResource("RectangleShape2D_xjysk")
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)
@@ -29986,7 +29986,7 @@ position = Vector2(-9, 10)
 position = Vector2(9937, 10)
 
 [node name="doorwin" parent="." index="6" unique_id=1561142439 instance=ExtResource("16_wi1os")]
-position = Vector2(4333, 648)
+position = Vector2(9837, 461)
 
 [editable path="Entities/Enemies/Spawner_carrot"]
 [editable path="Entities/Enemies/Spawner_chili"]

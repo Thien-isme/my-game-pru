@@ -36,7 +36,7 @@ func hit_enemy(enemy):
 		
 	# Hồi máu cho Player khi trúng quái
 	if shooter and shooter.has_method("heal"):
-		shooter.heal(3.0)
+		shooter.heal(0.5)
 	
 	# Chờ animation xong rồi xóa đạn
 	# Lưu ý: Nếu âm thanh dài hơn animation, đạn vẫn sẽ tồn tại cho đến khi anim xong.

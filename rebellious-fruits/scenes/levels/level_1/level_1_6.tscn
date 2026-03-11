@@ -29986,7 +29986,7 @@ position = Vector2(-9, 10)
 position = Vector2(9937, 10)
 
 [node name="doorwin" parent="." index="6" unique_id=1561142439 instance=ExtResource("16_wi1os")]
-position = Vector2(4333, 648)
+position = Vector2(9807, 456)
 
 [editable path="Entities/Enemies/Spawner_carrot"]
 [editable path="Entities/Enemies/Spawner_chili"]
