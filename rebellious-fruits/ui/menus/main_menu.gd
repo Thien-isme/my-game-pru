@@ -2,7 +2,9 @@ extends Control
 
 @onready var play_button: TextureButton = $VBoxContainer/PlayButton
 @onready var settings_button: TextureButton = $VBoxContainer/SettingsButton
+@onready var instructions_button: TextureButton = $VBoxContainer/InstructionsButton
 @onready var exit_button: TextureButton = $VBoxContainer/ExitButton
+@onready var instructions_overlay: Control = $InstructionsOverlay
 
 var settings_scene = preload("res://ui/menus/settings_menu.tscn")
 var settings_instance = null
@@ -12,7 +14,10 @@ func _ready():
 	
 	_setup_button(play_button, _on_play_pressed)
 	_setup_button(settings_button, _on_settings_pressed)
+	_setup_button(instructions_button, _on_instructions_pressed)
 	_setup_button(exit_button, _on_exit_pressed)
+	
+	$InstructionsOverlay/CloseButton.pressed.connect(_on_close_instructions_pressed)
 
 func _setup_button(btn: TextureButton, callback: Callable):
 	btn.pressed.connect(callback)
@@ -55,6 +60,12 @@ func _on_settings_pressed():
 		add_child(settings_instance)
 	else:
 		settings_instance.visible = true
+
+func _on_instructions_pressed():
+	instructions_overlay.visible = true
+
+func _on_close_instructions_pressed():
+	instructions_overlay.visible = false
 
 func _on_exit_pressed():
 	get_tree().quit()

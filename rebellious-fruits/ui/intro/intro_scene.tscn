@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6d3auoyqrdai"]
 
-[ext_resource type="Script" uid="uid://b5bxtb4olvi3i" path="res://ui/intro/intro_scene.gd" id="1"]
+[ext_resource type="Script" uid="uid://bh3jwlnxlw43g" path="res://ui/intro/intro_scene.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://7ktru0f3vj7m" path="res://assets/audio/bgm/audio_intro.mp3" id="2_h77ab"]
 
 [node name="IntroScene" type="Control" unique_id=1559632125]
@@ -48,5 +48,5 @@ offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "Skip >>"
+text = "Bỏ qua >>"
 flat = true
