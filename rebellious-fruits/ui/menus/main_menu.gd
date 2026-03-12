@@ -2,7 +2,7 @@ extends Control
 
 @onready var play_button: TextureButton = $VBoxContainer/PlayButton
 @onready var settings_button: TextureButton = $VBoxContainer/SettingsButton
-@onready var instructions_button: TextureButton = $VBoxContainer/InstructionsButton
+@onready var instructions_button: TextureButton = $InstructionsButton
 @onready var exit_button: TextureButton = $VBoxContainer/ExitButton
 @onready var instructions_overlay: Control = $InstructionsOverlay
 

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djetb5sycdpdw" path="res://assets/ui/ui_settings/setting_button_settings.png" id="4_l3r6a"]
 [ext_resource type="Texture2D" uid="uid://cfoxm3parg50g" path="res://assets/ui/ui_settings/setting_button_exit.png" id="5_h223f"]
 [ext_resource type="Texture2D" uid="uid://dae4x4embs7yc" path="res://assets/ui/instructions.png" id="6"]
-[ext_resource type="Texture2D" path="res://assets/ui/ui_settings/setting_button_instructions.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bxpwjxcu1ca8g" path="res://assets/ui/ui_settings/setting_button_instructions.png" id="7"]
 
 [node name="MainMenu" type="Control" unique_id=2016756014]
 layout_mode = 3
@@ -77,10 +77,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -220.0
-offset_top = -100.0
-offset_right = -20.0
-offset_bottom = -20.0
+offset_left = -91.0
+offset_top = -87.0
+offset_right = -1.0
+offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 2
