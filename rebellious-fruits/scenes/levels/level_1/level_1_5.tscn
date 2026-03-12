@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="9_j5tlr"]
 [ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="10_0x72j"]
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="12_wrser"]
+[ext_resource type="PackedScene" uid="uid://ckmi7sxhkvi8l" path="res://scenes/weapons/rocket/rocket_spawner.tscn" id="15_wrser"]
 [ext_resource type="PackedScene" uid="uid://bqnf4d3qj34lb" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
 [ext_resource type="PackedScene" uid="uid://dv4ghbwb5baqd" path="res://scenes/Enemies/lemon/lemon.tscn" id="res_lemon"]
 [ext_resource type="PackedScene" uid="uid://w25xrhxyj1jl" path="res://scenes/Enemies/pear/pear.tscn" id="res_pear"]
@@ -29912,6 +29913,8 @@ script = ExtResource("10_0x72j")
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController9/DetectArea" parent_id_path=PackedInt32Array(1568504341, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-313, 5)
 shape = SubResource("RectangleShape2D_5qeb1")
+
+[node name="RocketSpawner" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="9" unique_id=740805794 instance=ExtResource("15_wrser")]
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)

@@ -29452,10 +29452,6 @@ sources/6 = SubResource("TileSetAtlasSource_wi7ca")
 sources/7 = SubResource("TileSetAtlasSource_vnnmn")
 sources/8 = SubResource("TileSetAtlasSource_g2xly")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccupr"]
-resource_local_to_scene = true
-size = Vector2(920, 645)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi7ca"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
@@ -29501,6 +29497,10 @@ resource_local_to_scene = true
 size = Vector2(920, 645)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2chk3"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti81o"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -29591,7 +29591,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_chili")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_carrot/DetectArea" parent_id_path=PackedInt32Array(97444260, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_ccupr")
+shape = SubResource("RectangleShape2D_wi7ca")
 
 [node name="Spawner_chili" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=206773669 instance=ExtResource("spawner_lib")]
 position = Vector2(1120, 325)
@@ -29637,13 +29637,13 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_mangosteen")
 
 [node name="EnemySpawnerItem8" type="Marker2D" parent="Entities/Enemies/Spawner_chili" index="7" unique_id=713143475]
-position = Vector2(795, 272)
+position = Vector2(1631, 119)
 gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_apple")
 
 [node name="EnemySpawnerItem9" type="Marker2D" parent="Entities/Enemies/Spawner_chili" index="8" unique_id=2097860641]
-position = Vector2(773, 299)
+position = Vector2(378, 297)
 gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_starapple")
@@ -29654,7 +29654,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_chili/DetectArea" parent_id_path=PackedInt32Array(206773669, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_wi7ca")
+shape = SubResource("RectangleShape2D_vnnmn")
 
 [node name="Spawner_lemon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=1130692814 instance=ExtResource("spawner_lib")]
 position = Vector2(1903, 329)
@@ -29721,7 +29721,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_lemon/DetectArea" parent_id_path=PackedInt32Array(1130692814, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_vnnmn")
+shape = SubResource("RectangleShape2D_g2xly")
 
 [node name="Spawner_pear" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=1757482195 instance=ExtResource("spawner_lib")]
 position = Vector2(2472, 329)
@@ -29783,7 +29783,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_lychee")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_pear/DetectArea" parent_id_path=PackedInt32Array(1757482195, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_g2xly")
+shape = SubResource("RectangleShape2D_uw4ob")
 
 [node name="Spawner_starfruit" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=464587708 instance=ExtResource("spawner_lib")]
 position = Vector2(3220, 337)
@@ -29843,7 +29843,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_chili")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_starfruit/DetectArea" parent_id_path=PackedInt32Array(464587708, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_uw4ob")
+shape = SubResource("RectangleShape2D_p6402")
 
 [node name="Spawner_starapple" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=1468189053 instance=ExtResource("spawner_lib")]
 position = Vector2(4018, 341)
@@ -29904,7 +29904,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_pumpkin")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_starapple/DetectArea" parent_id_path=PackedInt32Array(1468189053, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_p6402")
+shape = SubResource("RectangleShape2D_bbqiw")
 
 [node name="Spawner_bittergourd" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="6" unique_id=504532318 instance=ExtResource("spawner_lib")]
 position = Vector2(4530, 337)
@@ -29965,7 +29965,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_bittergourd/DetectArea" parent_id_path=PackedInt32Array(504532318, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_bbqiw")
+shape = SubResource("RectangleShape2D_0d2e3")
 
 [node name="Spawner_corn" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="7" unique_id=879470168 instance=ExtResource("spawner_lib")]
 position = Vector2(5118, 312)
@@ -30027,7 +30027,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_lychee")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_corn/DetectArea" parent_id_path=PackedInt32Array(879470168, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_0d2e3")
+shape = SubResource("RectangleShape2D_kmuwg")
 
 [node name="Spawner_watermelon" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="8" unique_id=964515015 instance=ExtResource("spawner_lib")]
 position = Vector2(5907, 341)
@@ -30088,7 +30088,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_pear")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_watermelon/DetectArea" parent_id_path=PackedInt32Array(964515015, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_kmuwg")
+shape = SubResource("RectangleShape2D_nnyd5")
 
 [node name="Spawner_lychee" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="9" unique_id=2041675928 instance=ExtResource("spawner_lib")]
 position = Vector2(6653, 363)
@@ -30150,7 +30150,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_bittergourd")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_lychee/DetectArea" parent_id_path=PackedInt32Array(2041675928, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_nnyd5")
+shape = SubResource("RectangleShape2D_3yfx6")
 
 [node name="Spawner_dragonfruit" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="10" unique_id=827699080 instance=ExtResource("spawner_lib")]
 position = Vector2(7416, 363)
@@ -30213,7 +30213,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_pear")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_dragonfruit/DetectArea" parent_id_path=PackedInt32Array(827699080, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_3yfx6")
+shape = SubResource("RectangleShape2D_bxf2k")
 
 [node name="Spawner_mangosteen" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="11" unique_id=573458142 instance=ExtResource("spawner_lib")]
 position = Vector2(8169, 342)
@@ -30275,7 +30275,7 @@ script = ExtResource("10_ccupr")
 enemy_scene = ExtResource("res_lemon")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_mangosteen/DetectArea" parent_id_path=PackedInt32Array(573458142, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_bxf2k")
+shape = SubResource("RectangleShape2D_2chk3")
 
 [node name="Spawner_pumpkin" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="12" unique_id=19402127 instance=ExtResource("spawner_lib")]
 position = Vector2(8927, 339)
@@ -30315,7 +30315,7 @@ gizmo_extents = 50.0
 script = ExtResource("10_ccupr")
 
 [node name="CollisionShape2D" parent="Entities/Enemies/Spawner_pumpkin/DetectArea" parent_id_path=PackedInt32Array(19402127, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_2chk3")
+shape = SubResource("RectangleShape2D_ti81o")
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-5, -97)

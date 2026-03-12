@@ -27,7 +27,7 @@ func _setup_button_hover(btn: TextureButton):
 
 func _on_level_pressed(level_num: int):
 	var scene_path = "res://scenes/levels/level_1/level_1_" + str(level_num) + ".tscn"
-	if FileAccess.file_exists(scene_path):
+	if ResourceLoader.exists(scene_path):
 		AudioManager.play_music("level1_theme")
 		get_tree().change_scene_to_file(scene_path)
 	else:

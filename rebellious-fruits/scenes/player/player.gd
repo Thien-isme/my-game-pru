@@ -27,6 +27,7 @@ const MAX_HEALTH = 500.0
 @export var die_sfx: AudioStream     # Tiếng chết
 
 @export_subgroup("Skill Audio")
+@export var skill_volume_boost: float = 6.0   # Tăng âm lượng cho kỹ năng (dB)
 @export var skill_q_sfx: AudioStream   # Âm thanh khi dùng Q
 @export var skill_w_sfx: AudioStream   # Âm thanh khi dùng W
 @export var skill_e_sfx: AudioStream   # Âm thanh khi dùng E
@@ -207,7 +208,7 @@ func _physics_process(delta):
 		skill_w_active_timer = 5.0  # Cố định 5s active theo yêu cầu
 		skill_w_timer = 0.0          # Chưa tính cooldown vội
 		skill_w_active = true  # Kích hoạt tăng tốc bắn
-		_play_sfx(skill_w_sfx)
+		_play_sfx(skill_w_sfx, skill_volume_boost)
 		if hud:
 			hud.set_skill_active("w")
 	
@@ -441,7 +442,7 @@ func _physics_process(delta):
 			anim.speed_scale = 2.0
 			anim.play("dash")
 			_stop_loop_sfx()
-			_play_sfx(skill_e_sfx)
+			_play_sfx(skill_e_sfx, skill_volume_boost)
 			skill_e_timer = skill_e_cooldown
 			if hud:
 				hud.start_skill_cooldown("e", skill_e_cooldown)
@@ -503,7 +504,7 @@ func _physics_process(delta):
 		anim.speed_scale = 2.0 # Tốc độ animation x2
 		anim.play("dash")
 		_stop_loop_sfx()
-		_play_sfx(skill_e_sfx)
+		_play_sfx(skill_e_sfx, skill_volume_boost)
 		
 		# Tính cooldown cho dash thường bằng cooldown của E
 		skill_e_timer = skill_e_cooldown
@@ -549,7 +550,7 @@ func _cast_skill(skill_scene: PackedScene, cooldown: float, cast_anim: String, s
 	
 	# Phát âm thanh Kỹ năng ngay lập tức khi bắt đầu gồng chiêu
 	if skill_sfx:
-		_play_sfx(skill_sfx)
+		_play_sfx(skill_sfx, skill_volume_boost)
 		
 	anim.play(cast_anim)
 	
@@ -606,24 +607,27 @@ func set_right_bound(x_pos: float):
 		cam.limit_right = int(x_pos)
 
 # --- Hàm phát âm thanh ---
-func _play_sfx(stream: AudioStream):
+func _play_sfx(stream: AudioStream, volume_db: float = 0.0):
 	if stream and sfx_player:
 		if sfx_player.playing:
 			var temp_player = AudioStreamPlayer.new()
 			temp_player.stream = stream
 			temp_player.bus = "SFX"
+			temp_player.volume_db = volume_db
 			add_child(temp_player)
 			temp_player.play()
 			temp_player.finished.connect(temp_player.queue_free)
 		else:
 			sfx_player.stream = stream
+			sfx_player.volume_db = volume_db
 			sfx_player.play()
 
-func _play_loop_sfx(stream: AudioStream):
+func _play_loop_sfx(stream: AudioStream, volume_db: float = 0.0):
 	if stream and sfx_loop:
 		if sfx_loop.stream == stream and sfx_loop.playing:
 			return  # Đang phát rồi, không bật lại
 		sfx_loop.stream = stream
+		sfx_loop.volume_db = volume_db
 		sfx_loop.play()
 
 func _stop_loop_sfx():

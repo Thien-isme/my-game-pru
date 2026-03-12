@@ -27,28 +27,26 @@ func _ready():
 		_go_to_main_menu()
 
 func _load_frames():
-	var dir = DirAccess.open(dir_path)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		var file_list: Array[String] = []
+	# Vì trong bản build (export), DirAccess không thể liệt kê các file đã được remapped (.png -> .png.import)
+	# Chúng ta sẽ nạp trực tiếp theo tên file vì biết rõ số lượng (192 frames) và quy tắc đặt tên (001 -> 192)
+	var total_frames = 192
+	for i in range(1, total_frames + 1):
+		# Định dạng số thứ tự thành 3 chữ số (ví dụ: 1 -> "001", 10 -> "010")
+		var frame_num = str(i).pad_zeros(3)
+		var file_path = dir_path + "ezgif-frame-" + frame_num + ".png"
 		
-		while file_name != "":
-			# Chỉ lấy các file ảnh .png, bỏ qua các file .import sinh ra bởi Godot
-			if not dir.current_is_dir() and file_name.ends_with(".png"):
-				file_list.append(file_name)
-			file_name = dir.get_next()
-			
-		# Sắp xếp các file theo thứ tự bảng chữ cái để chạy đúng timeline 001 -> 192
-		file_list.sort()
-		
-		# Nạp texture vào mảng RAM
-		for file in file_list:
-			var tex = load(dir_path + file)
+		# Load texture trực tiếp. Godot sẽ tự động xử lý việc tìm file .import trong bản build
+		if ResourceLoader.exists(file_path):
+			var tex = load(file_path)
 			if tex:
 				frames.append(tex)
-	else:
-		print("Không thể mở thư mục: ", dir_path)
+		else:
+			# Chỉ in lỗi nếu không tìm thấy frame đầu tiên (để tránh spam log nếu thiếu file)
+			if i == 1:
+				print("Intro: Không tìm thấy frame đầu tiên tại: ", file_path)
+	
+	if frames.size() == 0:
+		print("Intro: Không nạp được bất kỳ frame nào từ: ", dir_path)
 
 func _process(delta: float):
 	if not is_playing or frames.size() == 0:

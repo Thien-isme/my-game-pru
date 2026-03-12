@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cd7hgda2fte38" path="res://scenes/Enemies/spawner/enemy_spawner_item.gd" id="10_kxgh8"]
 [ext_resource type="PackedScene" uid="uid://j2tl53a4lupp" path="res://scenes/Enemies/starapple/starapple.tscn" id="12_kcogu"]
 [ext_resource type="PackedScene" uid="uid://dtwcr1y5sp8ty" path="res://scenes/doorwin/doorwin.tscn" id="13_kcogu"]
+[ext_resource type="PackedScene" uid="uid://ckmi7sxhkvi8l" path="res://scenes/weapons/rocket/rocket_spawner.tscn" id="13_syo8g"]
 [ext_resource type="PackedScene" uid="uid://dykdfumiwe1p4" path="res://scenes/Enemies/apple/apple.tscn" id="res_apple"]
 [ext_resource type="PackedScene" uid="uid://bqnf4d3qj34lb" path="res://scenes/Enemies/carrot/carrot.tscn" id="res_carrot"]
 [ext_resource type="PackedScene" uid="uid://c6fjea7ksdf8a" path="res://scenes/Enemies/spawner/enemy_spawner_controller.tscn" id="spawner_lib"]
@@ -29432,14 +29433,6 @@ sources/6 = SubResource("TileSetAtlasSource_jlogg")
 sources/7 = SubResource("TileSetAtlasSource_xkwko")
 sources/8 = SubResource("TileSetAtlasSource_60kmq")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tulvs"]
-resource_local_to_scene = true
-size = Vector2(920, 645)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_syo8g"]
-resource_local_to_scene = true
-size = Vector2(920, 645)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8n2qy"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
@@ -29449,6 +29442,14 @@ resource_local_to_scene = true
 size = Vector2(920, 645)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k58a1"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fg2vt"]
+resource_local_to_scene = true
+size = Vector2(920, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50c4q"]
 resource_local_to_scene = true
 size = Vector2(920, 645)
 
@@ -29529,7 +29530,7 @@ enemy_scene = ExtResource("res_apple")
 override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController/DetectArea" parent_id_path=PackedInt32Array(2068803941, 1759932897) index="0" unique_id=325501346]
-shape = SubResource("RectangleShape2D_tulvs")
+shape = SubResource("RectangleShape2D_8n2qy")
 
 [node name="EnemySpawnerController2" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="1" unique_id=340326821 instance=ExtResource("spawner_lib")]
 position = Vector2(1527, 422)
@@ -29568,7 +29569,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController2/DetectArea" parent_id_path=PackedInt32Array(340326821, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-257, -3)
-shape = SubResource("RectangleShape2D_syo8g")
+shape = SubResource("RectangleShape2D_y6w52")
 
 [node name="EnemySpawnerController3" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="2" unique_id=1998670222 instance=ExtResource("spawner_lib")]
 position = Vector2(2449, 422)
@@ -29599,7 +29600,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController3/DetectArea" parent_id_path=PackedInt32Array(1998670222, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-588, -6)
-shape = SubResource("RectangleShape2D_8n2qy")
+shape = SubResource("RectangleShape2D_k58a1")
 
 [node name="EnemySpawnerController4" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="3" unique_id=1189195458 instance=ExtResource("spawner_lib")]
 position = Vector2(3036, 419)
@@ -29639,7 +29640,7 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController4/DetectArea" parent_id_path=PackedInt32Array(1189195458, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-419, 0)
-shape = SubResource("RectangleShape2D_y6w52")
+shape = SubResource("RectangleShape2D_fg2vt")
 
 [node name="EnemySpawnerController5" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="4" unique_id=342907830 instance=ExtResource("spawner_lib")]
 position = Vector2(4012, 423)
@@ -29678,7 +29679,9 @@ override_bullet_pass_terrain = false
 
 [node name="CollisionShape2D" parent="Entities/Enemies/EnemySpawnerController5/DetectArea" parent_id_path=PackedInt32Array(342907830, 1759932897) index="0" unique_id=325501346]
 position = Vector2(-314, -6)
-shape = SubResource("RectangleShape2D_k58a1")
+shape = SubResource("RectangleShape2D_50c4q")
+
+[node name="RocketSpawner" parent="Entities/Enemies" parent_id_path=PackedInt32Array(1165099368) index="5" unique_id=740805794 instance=ExtResource("13_syo8g")]
 
 [node name="LeftBoundary" parent="LevelBounds" parent_id_path=PackedInt32Array(1130732088) index="0"]
 position = Vector2(-9, 10)
