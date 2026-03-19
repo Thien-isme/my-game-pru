@@ -6,23 +6,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da54q"]
 size = Vector2(37, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_da54q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyu8v"]
 atlas = ExtResource("2_da54q")
-region = Rect2(1598, 0, 799, 896)
+region = Rect2(398, 0, 199, 224)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qy4v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m5dw"]
 atlas = ExtResource("2_da54q")
-region = Rect2(0, 0, 799, 896)
+region = Rect2(0, 0, 199, 224)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw0n5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgv5h"]
 atlas = ExtResource("2_da54q")
-region = Rect2(799, 0, 799, 896)
+region = Rect2(199, 0, 199, 224)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_da54q")
+"texture": SubResource("AtlasTexture_dyu8v")
 }],
 "loop": false,
 "name": &"explode",
@@ -30,10 +30,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2qy4v")
+"texture": SubResource("AtlasTexture_3m5dw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aw0n5")
+"texture": SubResource("AtlasTexture_dgv5h")
 }],
 "loop": false,
 "name": &"fly",
@@ -41,6 +41,7 @@ animations = [{
 }]
 
 [node name="apple_bullet" type="Area2D" unique_id=763050216]
+position = Vector2(9572.501, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687808004]
@@ -50,6 +51,6 @@ shape = SubResource("RectangleShape2D_da54q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217868503]
 scale = Vector2(0.08641906, 0.039773125)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"fly"
+animation = &"explode"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
