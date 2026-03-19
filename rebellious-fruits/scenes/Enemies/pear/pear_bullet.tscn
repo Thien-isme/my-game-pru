@@ -8,11 +8,11 @@ radius = 26.076809
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2ha6"]
 atlas = ExtResource("2_o2ha6")
-region = Rect2(0, 0, 25, 42)
+region = Rect2(0, 0, 7, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kd63"]
 atlas = ExtResource("2_o2ha6")
-region = Rect2(4, 15, 112, 59)
+region = Rect2(0, 0, 31, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
@@ -34,6 +34,7 @@ animations = [{
 }]
 
 [node name="pear_bullet" type="Area2D" unique_id=1521276623]
+position = Vector2(12350.001, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1965842280]
@@ -41,9 +42,10 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=489860772]
 position = Vector2(-1, -2.3841858e-07)
-scale = Vector2(0.45982146, 0.41101694)
+scale = Vector2(0.9, 0.804)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 autoplay = "fly"
+frame_progress = 0.5732621
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -346,8 +346,8 @@ position = Vector2(-6, 0)
 shape = SubResource("CapsuleShape2D_bittergourd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=21293532]
-position = Vector2(9, -12.999994)
-scale = Vector2(0.21688987, 0.26966292)
+position = Vector2(6.000001, -5.000001)
+scale = Vector2(0.77191657, 0.9200758)
 sprite_frames = SubResource("SpriteFrames_bittergourd")
 animation = &"shoot"
 autoplay = "idle"

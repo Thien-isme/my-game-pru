@@ -7,33 +7,33 @@
 custom_solver_bias = 1.0
 radius = 25.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j5dd0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8cod"]
 atlas = ExtResource("1_8aggf")
-region = Rect2(876, 490, 314, 700)
+region = Rect2(206, 0, 93, 437)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3j5sf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jvps"]
 atlas = ExtResource("1_8aggf")
-region = Rect2(1294, 490, 314, 700)
+region = Rect2(309, 0, 93, 437)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yxsxg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_14w5i"]
 atlas = ExtResource("1_8aggf")
-region = Rect2(1712, 490, 314, 700)
+region = Rect2(412, 0, 93, 437)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xku5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nwqt"]
 atlas = ExtResource("1_8aggf")
-region = Rect2(40, 490, 314, 700)
+region = Rect2(0, 0, 93, 437)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j5dd0")
+"texture": SubResource("AtlasTexture_k8cod")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3j5sf")
+"texture": SubResource("AtlasTexture_1jvps")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yxsxg")
+"texture": SubResource("AtlasTexture_14w5i")
 }],
 "loop": false,
 "name": &"explode",
@@ -41,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6xku5")
+"texture": SubResource("AtlasTexture_1nwqt")
 }],
 "loop": true,
 "name": &"fly",
@@ -49,6 +49,7 @@ animations = [{
 }]
 
 [node name="corn_bullet" type="Area2D" unique_id=977355361]
+position = Vector2(12942.501, 0)
 script = ExtResource("1_j5dd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -58,8 +59,9 @@ shape = SubResource("CircleShape2D_1nwqt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(59.000004, -65)
 rotation = 1.033235
-scale = Vector2(0.20520103, 0.14888848)
+scale = Vector2(0.4, 0.291)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
+frame_progress = 0.17193393
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

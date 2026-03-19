@@ -266,12 +266,12 @@ detect_radius = 600.0
 attack_radius = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=174945917]
-position = Vector2(11, -2)
+position = Vector2(2, -2)
 shape = SubResource("CapsuleShape2D_apple")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2038359568]
-position = Vector2(10, -8)
-scale = Vector2(0.14618869, 0.14638157)
+position = Vector2(6, -3)
+scale = Vector2(0.5215899, 0.5338481)
 sprite_frames = SubResource("SpriteFrames_apple")
 animation = &"shoot"
 autoplay = "idle"

@@ -2,31 +2,26 @@
 
 [ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bikvk68kxjg78" path="res://assets/sprites/enemies/watermelon/watermelon_bullet_explode1.png" id="2_hw0c6"]
-[ext_resource type="Texture2D" uid="uid://b878leea4ayab" path="res://assets/sprites/enemies/watermelon/watermelon_bullet_fly.png" id="3_v4fkm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mvb8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2267"]
 atlas = ExtResource("2_hw0c6")
-region = Rect2(1009, 821, 600, 753)
+region = Rect2(427, 416, 427, 416)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugtoe"]
-atlas = ExtResource("3_v4fkm")
-region = Rect2(147, 68, 600, 753)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5x1s"]
+atlas = ExtResource("2_hw0c6")
+region = Rect2(0, 0, 427, 416)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_arsyq"]
-atlas = ExtResource("3_v4fkm")
-region = Rect2(1009, 68, 600, 753)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jhsqg"]
-atlas = ExtResource("3_v4fkm")
-region = Rect2(1871, 68, 600, 753)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rvdp"]
+atlas = ExtResource("2_hw0c6")
+region = Rect2(427, 0, 427, 416)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3mvb8")
+"texture": SubResource("AtlasTexture_d2267")
 }],
 "loop": false,
 "name": &"explode",
@@ -34,13 +29,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ugtoe")
+"texture": SubResource("AtlasTexture_q5x1s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_arsyq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jhsqg")
+"texture": SubResource("AtlasTexture_0rvdp")
 }],
 "loop": true,
 "name": &"fly",
@@ -48,6 +40,7 @@ animations = [{
 }]
 
 [node name="watermelon_bullet" type="Area2D" unique_id=1340475206]
+position = Vector2(43887.504, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=304138902]
@@ -55,9 +48,10 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=749095469]
 position = Vector2(27, 0.99999994)
-scale = Vector2(0.11895835, 0.11362882)
+scale = Vector2(0.2, 0.192)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 autoplay = "fly"
+frame_progress = 0.4621672
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

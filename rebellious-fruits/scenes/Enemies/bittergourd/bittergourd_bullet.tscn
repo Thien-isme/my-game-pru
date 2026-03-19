@@ -5,19 +5,37 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8wvjy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fr1y"]
 atlas = ExtResource("2_ca2x8")
-region = Rect2(1454, 0, 727, 976)
+region = Rect2(0, 244, 181, 244)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca2x8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujk8w"]
 atlas = ExtResource("2_ca2x8")
-region = Rect2(0, 0, 727, 976)
+region = Rect2(181, 244, 181, 244)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ku8g"]
+atlas = ExtResource("2_ca2x8")
+region = Rect2(362, 0, 181, 244)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yrkg"]
+atlas = ExtResource("2_ca2x8")
+region = Rect2(0, 0, 181, 244)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43thg"]
+atlas = ExtResource("2_ca2x8")
+region = Rect2(181, 0, 181, 244)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wvjy")
+"texture": SubResource("AtlasTexture_5fr1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujk8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ku8g")
 }],
 "loop": false,
 "name": &"explode",
@@ -25,7 +43,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ca2x8")
+"texture": SubResource("AtlasTexture_4yrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43thg")
 }],
 "loop": false,
 "name": &"fly",
@@ -33,6 +54,7 @@ animations = [{
 }]
 
 [node name="bittergourd_bullet" type="Area2D" unique_id=1053153322]
+position = Vector2(11047.501, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428218249]
@@ -41,8 +63,10 @@ shape = SubResource("CircleShape2D_bullet")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1006761232]
 position = Vector2(32, 4)
 rotation = 2.0804324
-scale = Vector2(-0.058938105, 0.07865969)
+scale = Vector2(0.12, -0.161)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

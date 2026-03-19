@@ -175,8 +175,8 @@ attack_radius = 600.0
 shape = SubResource("CapsuleShape2D_chili")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=615425461]
-position = Vector2(-6.999998, -6.000003)
-scale = Vector2(0.1363273, 0.15218097)
+position = Vector2(10, -14)
+scale = Vector2(0.4229707, 0.5718994)
 sprite_frames = SubResource("SpriteFrames_chili")
 animation = &"shoot"
 autoplay = "idle"

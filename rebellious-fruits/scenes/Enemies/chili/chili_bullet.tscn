@@ -5,37 +5,37 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5abp1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgobh"]
 atlas = ExtResource("2_5abp1")
-region = Rect2(1846, 0, 923, 752)
+region = Rect2(460, 0, 230, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jckbl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l83xs"]
 atlas = ExtResource("2_5abp1")
-region = Rect2(0, 752, 923, 752)
+region = Rect2(0, 188, 230, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dg8h5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wn0g"]
 atlas = ExtResource("2_5abp1")
-region = Rect2(923, 752, 923, 752)
+region = Rect2(230, 188, 230, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_she86"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1py6c"]
 atlas = ExtResource("2_5abp1")
-region = Rect2(0, 0, 923, 752)
+region = Rect2(0, 0, 230, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfpc3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2mbj"]
 atlas = ExtResource("2_5abp1")
-region = Rect2(923, 0, 923, 752)
+region = Rect2(230, 0, 230, 188)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5abp1")
+"texture": SubResource("AtlasTexture_vgobh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jckbl")
+"texture": SubResource("AtlasTexture_l83xs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dg8h5")
+"texture": SubResource("AtlasTexture_1wn0g")
 }],
 "loop": false,
 "name": &"explode",
@@ -43,10 +43,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_she86")
+"texture": SubResource("AtlasTexture_1py6c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pfpc3")
+"texture": SubResource("AtlasTexture_f2mbj")
 }],
 "loop": false,
 "name": &"fly",
@@ -54,7 +54,7 @@ animations = [{
 }]
 
 [node name="chili_bullet" type="Area2D" unique_id=1141161269]
-position = Vector2(20130.002, 0)
+position = Vector2(44080.004, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=576379258]
@@ -62,7 +62,7 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146187083]
 position = Vector2(26.234264, 4)
-scale = Vector2(0.092666335, 0.07413564)
+scale = Vector2(0.2, 0.159)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 frame = 1

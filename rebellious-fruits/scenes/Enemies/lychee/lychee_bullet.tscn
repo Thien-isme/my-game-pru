@@ -6,34 +6,30 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2ee0"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2ee0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aqf3"]
 atlas = ExtResource("1_5j5lm")
-region = Rect2(947, 752, 947, 752)
+region = Rect2(236, 188, 236, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82p81"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uep18"]
 atlas = ExtResource("1_5j5lm")
-region = Rect2(1894, 752, 947, 752)
+region = Rect2(472, 188, 236, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhfdr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty77b"]
 atlas = ExtResource("1_5j5lm")
-region = Rect2(0, 0, 947, 752)
+region = Rect2(236, 0, 236, 188)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wo3e7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nsh6"]
 atlas = ExtResource("1_5j5lm")
-region = Rect2(947, 0, 947, 752)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7kajw"]
-atlas = ExtResource("1_5j5lm")
-region = Rect2(1894, 0, 947, 752)
+region = Rect2(472, 0, 236, 188)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c2ee0")
+"texture": SubResource("AtlasTexture_4aqf3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82p81")
+"texture": SubResource("AtlasTexture_uep18")
 }],
 "loop": false,
 "name": &"explode",
@@ -41,13 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yhfdr")
+"texture": SubResource("AtlasTexture_ty77b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wo3e7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7kajw")
+"texture": SubResource("AtlasTexture_7nsh6")
 }],
 "loop": false,
 "name": &"fly",
@@ -55,6 +48,7 @@ animations = [{
 }]
 
 [node name="lychee_bullet" type="Area2D" unique_id=1294912303]
+position = Vector2(19077.502, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -62,6 +56,8 @@ shape = SubResource("CircleShape2D_c2ee0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(10, -1)
-scale = Vector2(0.052895717, 0.051915135)
+scale = Vector2(0.1, 0.098)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
+frame = 1
+frame_progress = 1.0

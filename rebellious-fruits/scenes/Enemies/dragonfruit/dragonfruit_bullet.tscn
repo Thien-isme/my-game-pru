@@ -1,45 +1,42 @@
 [gd_scene format=3 uid="uid://dbeacbo4u13go"]
 
-[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/enemies/base_scripts/enemy_bullet.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://crd6rfh61tbxj" path="res://assets/sprites/enemies/dragonfruit/dragondruit_bullet.png" id="2_r1qt6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 radius = 7.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jhkv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wlha"]
 atlas = ExtResource("2_r1qt6")
-region = Rect2(958, 0, 958, 736)
+region = Rect2(478, 0, 239, 184)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3t1xc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkwq1"]
 atlas = ExtResource("2_r1qt6")
-region = Rect2(1916, 0, 958, 736)
+region = Rect2(0, 184, 239, 184)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_er7c5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7thfi"]
 atlas = ExtResource("2_r1qt6")
-region = Rect2(0, 736, 958, 736)
+region = Rect2(239, 184, 239, 184)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82fa5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4lo6"]
 atlas = ExtResource("2_r1qt6")
-region = Rect2(958, 736, 958, 736)
+region = Rect2(0, 0, 239, 184)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d6so7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wegw"]
 atlas = ExtResource("2_r1qt6")
-region = Rect2(0, 0, 958, 736)
+region = Rect2(239, 0, 239, 184)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3jhkv")
+"texture": SubResource("AtlasTexture_2wlha")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3t1xc")
+"texture": SubResource("AtlasTexture_kkwq1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_er7c5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82fa5")
+"texture": SubResource("AtlasTexture_7thfi")
 }],
 "loop": false,
 "name": &"explode",
@@ -47,7 +44,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d6so7")
+"texture": SubResource("AtlasTexture_e4lo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wegw")
 }],
 "loop": true,
 "name": &"fly",
@@ -55,18 +55,18 @@ animations = [{
 }]
 
 [node name="dragonfruit_bullet" type="Area2D" unique_id=991705743]
+position = Vector2(278410.03, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1824294841]
 shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1124268142]
-autoplay = "fly"
 position = Vector2(-1, -1)
-scale = Vector2(0.0341858, 0.031929348)
+scale = Vector2(0.07, 0.066)
 sprite_frames = SubResource("SpriteFrames_bullet")
-animation = &"explode"
-frame = 3
-frame_progress = 1.0
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.20104802
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

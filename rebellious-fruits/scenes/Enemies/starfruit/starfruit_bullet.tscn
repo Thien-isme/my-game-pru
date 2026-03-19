@@ -6,30 +6,30 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nbea0"]
 radius = 8.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dog6a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik1ui"]
 atlas = ExtResource("1_sl63t")
-region = Rect2(31, 753, 928, 753)
+region = Rect2(472, 376, 472, 376)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pluut"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jktof"]
 atlas = ExtResource("1_sl63t")
-region = Rect2(959, 753, 928, 753)
+region = Rect2(0, 376, 472, 376)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_im11j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5agkg"]
 atlas = ExtResource("1_sl63t")
-region = Rect2(31, 0, 928, 753)
+region = Rect2(0, 0, 472, 376)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfueq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0olj"]
 atlas = ExtResource("1_sl63t")
-region = Rect2(959, 0, 928, 753)
+region = Rect2(472, 0, 472, 376)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dog6a")
+"texture": SubResource("AtlasTexture_ik1ui")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pluut")
+"texture": SubResource("AtlasTexture_jktof")
 }],
 "loop": false,
 "name": &"explode",
@@ -37,10 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_im11j")
+"texture": SubResource("AtlasTexture_5agkg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lfueq")
+"texture": SubResource("AtlasTexture_s0olj")
 }],
 "loop": true,
 "name": &"fly",
@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="starfruit_bullet" type="Area2D" unique_id=154824458]
+position = Vector2(15225.001, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -55,7 +56,8 @@ shape = SubResource("CircleShape2D_nbea0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(-8, 2)
-scale = Vector2(0.048366755, 0.042902425)
+scale = Vector2(0.1, 0.09)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
 autoplay = "fly"
+frame_progress = 0.005589975

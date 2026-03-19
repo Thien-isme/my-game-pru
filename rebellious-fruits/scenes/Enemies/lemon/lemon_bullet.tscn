@@ -8,45 +8,38 @@
 radius = 26.98
 height = 70.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vw5gy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqlch"]
 atlas = ExtResource("2_mvq2n")
-region = Rect2(2316, 0, 1158, 592)
+region = Rect2(578, 0, 289, 148)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5mc8e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qclir"]
 atlas = ExtResource("2_mvq2n")
-region = Rect2(0, 592, 1158, 592)
+region = Rect2(0, 148, 289, 148)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tq54"]
-atlas = ExtResource("2_mvq2n")
-region = Rect2(1158, 592, 1158, 592)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvaoy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h0qe"]
 atlas = ExtResource("3_y4pwk")
-region = Rect2(2316, 592, 1158, 592)
+region = Rect2(578, 148, 289, 148)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_281af"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l615s"]
 atlas = ExtResource("3_y4pwk")
-region = Rect2(1158, 592, 1158, 592)
+region = Rect2(289, 148, 289, 148)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvac2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi1km"]
 atlas = ExtResource("3_y4pwk")
-region = Rect2(0, 592, 1158, 592)
+region = Rect2(0, 148, 289, 148)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fypjk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uqpd"]
 atlas = ExtResource("3_y4pwk")
-region = Rect2(2316, 0, 1158, 592)
+region = Rect2(578, 0, 289, 148)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vw5gy")
+"texture": SubResource("AtlasTexture_uqlch")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5mc8e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2tq54")
+"texture": SubResource("AtlasTexture_qclir")
 }],
 "loop": false,
 "name": &"explode",
@@ -54,16 +47,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kvaoy")
+"texture": SubResource("AtlasTexture_8h0qe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_281af")
+"texture": SubResource("AtlasTexture_l615s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uvac2")
+"texture": SubResource("AtlasTexture_hi1km")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fypjk")
+"texture": SubResource("AtlasTexture_6uqpd")
 }],
 "loop": false,
 "name": &"fly",
@@ -71,7 +64,7 @@ animations = [{
 }]
 
 [node name="lemon_bullet" type="Area2D" unique_id=389430230]
-position = Vector2(15760.001, 0)
+position = Vector2(40510.004, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -79,7 +72,7 @@ shape = SubResource("CapsuleShape2D_lvxji")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(-31.000977, 5)
-scale = Vector2(0.16866419, 0.15148407)
+scale = Vector2(0.34, 0.304)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
 frame = 3

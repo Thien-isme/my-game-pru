@@ -304,8 +304,8 @@ script = ExtResource("script_enemy")
 bullet_scene = ExtResource("2_7udfj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=578930678]
-position = Vector2(-17.229761, 19.531252)
-scale = Vector2(0.8223044, 0.780599)
+position = Vector2(-5, -8)
+scale = Vector2(1.0548304, 1.0152994)
 sprite_frames = SubResource("SpriteFrames_42hxg")
 animation = &"shoot"
 
@@ -314,6 +314,7 @@ animation = &"shoot"
 [node name="DetectZone" type="Area2D" parent="." unique_id=100000002]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone" unique_id=100000003]
+position = Vector2(-2, 3)
 shape = SubResource("CircleShape2D_detect")
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=100000004]

@@ -5,44 +5,34 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2jcgu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bkxw"]
 atlas = ExtResource("2_tveem")
-region = Rect2(842, 600, 421, 600)
+region = Rect2(319, 0, 104, 422)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2ity"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_idehl"]
 atlas = ExtResource("2_tveem")
-region = Rect2(1263, 600, 421, 600)
+region = Rect2(423, 0, 104, 422)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iofms"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1m51"]
 atlas = ExtResource("2_tveem")
-region = Rect2(1684, 600, 421, 600)
+region = Rect2(7, 0, 104, 422)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mnjj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5imd3"]
 atlas = ExtResource("2_tveem")
-region = Rect2(2105, 600, 421, 600)
+region = Rect2(111, 0, 104, 422)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_di18w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi1q5"]
 atlas = ExtResource("2_tveem")
-region = Rect2(0, 600, 421, 600)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p8idy"]
-atlas = ExtResource("2_tveem")
-region = Rect2(421, 600, 421, 600)
+region = Rect2(215, 0, 104, 422)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2jcgu")
+"texture": SubResource("AtlasTexture_4bkxw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g2ity")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iofms")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mnjj")
+"texture": SubResource("AtlasTexture_idehl")
 }],
 "loop": false,
 "name": &"explode",
@@ -50,10 +40,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_di18w")
+"texture": SubResource("AtlasTexture_q1m51")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p8idy")
+"texture": SubResource("AtlasTexture_5imd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi1q5")
 }],
 "loop": false,
 "name": &"fly",
@@ -61,16 +54,20 @@ animations = [{
 }]
 
 [node name="starapple_bullet" type="Area2D" unique_id=1867455979]
+position = Vector2(26997.502, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690303075]
+position = Vector2(-367.50006, -37)
 shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=51490658]
-position = Vector2(-10, 4.0000005)
+position = Vector2(0.9980469, 23)
 rotation = 0.95294976
-scale = Vector2(0.08671664, 0.084218845)
+scale = Vector2(0.16, 0.154)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
+frame = 2
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

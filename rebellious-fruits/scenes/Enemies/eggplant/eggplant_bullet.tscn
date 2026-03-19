@@ -1,32 +1,27 @@
 [gd_scene format=3 uid="uid://c3216g8wic43d"]
 
 [ext_resource type="Script" uid="uid://bp5yf1fhl75w" path="res://scenes/Enemies/base_scripts/enemy_bullet.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://ba62nb2eexqdb" path="res://assets/sprites/enemies/carrot/carrot_bullet.png" id="2_dmst5"]
 [ext_resource type="Texture2D" uid="uid://vj28hwkncutc" path="res://assets/sprites/enemies/eggplant/eggplant_bullet.png" id="2_huugk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_75kra"]
-atlas = ExtResource("2_dmst5")
-region = Rect2(0, 1128, 1264, 188)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dmst5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8dcq"]
 atlas = ExtResource("2_huugk")
-region = Rect2(22, 355, 1381, 308)
+region = Rect2(0, 282, 348, 94)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajkbe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o8wi"]
 atlas = ExtResource("2_huugk")
-region = Rect2(1403, 47, 1381, 308)
+region = Rect2(0, 0, 348, 94)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjykd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2cfu"]
 atlas = ExtResource("2_huugk")
-region = Rect2(22, 663, 1381, 308)
+region = Rect2(348, 0, 348, 94)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bullet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_75kra")
+"texture": SubResource("AtlasTexture_t8dcq")
 }],
 "loop": false,
 "name": &"explode",
@@ -34,13 +29,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dmst5")
+"texture": SubResource("AtlasTexture_0o8wi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajkbe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pjykd")
+"texture": SubResource("AtlasTexture_e2cfu")
 }],
 "loop": false,
 "name": &"fly",
@@ -48,7 +40,7 @@ animations = [{
 }]
 
 [node name="eggplant_bullet" type="Area2D" unique_id=1164128394]
-position = Vector2(7050.0005, 0)
+position = Vector2(24487.502, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=305786754]
@@ -57,10 +49,10 @@ shape = SubResource("CircleShape2D_bullet")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1090773523]
 position = Vector2(-12, 8.526513e-14)
 rotation = 3.1415927
-scale = Vector2(0.062, 0.05)
+scale = Vector2(0.12, 0.097)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
-frame = 2
+frame = 1
 frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

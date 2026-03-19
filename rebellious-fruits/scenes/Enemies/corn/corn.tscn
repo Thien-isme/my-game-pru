@@ -231,7 +231,7 @@ position = Vector2(23, -50)
 scale = Vector2(1.2902327, 1.5076414)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"shoot"
-frame_progress = 0.732786
+frame_progress = 0.78896254
 
 [node name="DetectZone" type="Area2D" parent="." unique_id=2107948562]
 
