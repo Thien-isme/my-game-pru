@@ -55,7 +55,6 @@ animations = [{
 }]
 
 [node name="dragonfruit_bullet" type="Area2D" unique_id=991705743]
-position = Vector2(278410.03, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1824294841]
@@ -63,7 +62,7 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1124268142]
 position = Vector2(-1, -1)
-scale = Vector2(0.07, 0.066)
+scale = Vector2(0.14, 0.132)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 autoplay = "fly"

@@ -48,7 +48,6 @@ animations = [{
 }]
 
 [node name="lychee_bullet" type="Area2D" unique_id=1294912303]
-position = Vector2(19077.502, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714955103]
@@ -56,7 +55,7 @@ shape = SubResource("CircleShape2D_c2ee0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1882483560]
 position = Vector2(10, -1)
-scale = Vector2(0.1, 0.098)
+scale = Vector2(0.2, 0.196)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"fly"
 frame = 1

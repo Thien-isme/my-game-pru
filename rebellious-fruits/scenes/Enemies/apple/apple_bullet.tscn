@@ -41,7 +41,6 @@ animations = [{
 }]
 
 [node name="apple_bullet" type="Area2D" unique_id=763050216]
-position = Vector2(24365.002, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687808004]
@@ -49,7 +48,7 @@ position = Vector2(6, 0)
 shape = SubResource("RectangleShape2D_da54q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217868503]
-scale = Vector2(0.16, 0.074)
+scale = Vector2(0.32, 0.148)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 frame = 1

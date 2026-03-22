@@ -55,7 +55,6 @@ animations = [{
 }]
 
 [node name="pumpkin_bullet" type="Area2D" unique_id=73090123]
-position = Vector2(8612.501, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=998997679]
@@ -63,7 +62,7 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1444512066]
 position = Vector2(-38, 5.9999995)
-scale = Vector2(0.38, 0.372)
+scale = Vector2(0.76, 0.744)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 autoplay = "fly"

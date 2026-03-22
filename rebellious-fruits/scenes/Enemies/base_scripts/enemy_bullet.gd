@@ -11,6 +11,8 @@ var is_exploding = false
 var shooter: Node2D = null # Lưu reference của quái bắn ra viên đạn này
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	if anim:
 		anim.play("fly")
 	
@@ -19,6 +21,8 @@ func _ready():
 		body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
+	if Engine.is_editor_hint():
+		return
 	if is_exploding:
 		return
 	

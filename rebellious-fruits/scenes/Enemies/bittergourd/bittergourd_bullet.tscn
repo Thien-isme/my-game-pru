@@ -54,7 +54,6 @@ animations = [{
 }]
 
 [node name="bittergourd_bullet" type="Area2D" unique_id=1053153322]
-position = Vector2(11047.501, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=428218249]
@@ -62,8 +61,8 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1006761232]
 position = Vector2(32, 4)
-rotation = 2.0804324
-scale = Vector2(0.12, -0.161)
+rotation = 1.7935061
+scale = Vector2(0.24, -0.322)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 frame = 1

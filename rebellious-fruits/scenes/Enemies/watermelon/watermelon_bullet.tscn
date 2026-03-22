@@ -40,7 +40,6 @@ animations = [{
 }]
 
 [node name="watermelon_bullet" type="Area2D" unique_id=1340475206]
-position = Vector2(43887.504, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=304138902]
@@ -48,7 +47,7 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=749095469]
 position = Vector2(27, 0.99999994)
-scale = Vector2(0.2, 0.192)
+scale = Vector2(0.4, 0.384)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 autoplay = "fly"

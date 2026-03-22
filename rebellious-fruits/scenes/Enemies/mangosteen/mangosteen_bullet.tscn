@@ -47,7 +47,6 @@ animations = [{
 }]
 
 [node name="MangosteenBullet" type="Area2D" unique_id=1238752377]
-position = Vector2(10720.001, 0)
 script = ExtResource("script_bullet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1384569646]
@@ -55,7 +54,7 @@ shape = SubResource("CircleShape2D_ebfe1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1007238034]
 position = Vector2(5.9604645e-08, -5.9604645e-08)
-scale = Vector2(0.076, 0.076)
+scale = Vector2(0.152, 0.152)
 sprite_frames = SubResource("SpriteFrames_lh272")
 animation = &"fly"
 autoplay = "fly"

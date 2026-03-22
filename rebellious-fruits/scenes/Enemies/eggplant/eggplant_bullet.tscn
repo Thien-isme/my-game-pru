@@ -40,7 +40,6 @@ animations = [{
 }]
 
 [node name="eggplant_bullet" type="Area2D" unique_id=1164128394]
-position = Vector2(24487.502, 0)
 script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=305786754]
@@ -49,7 +48,7 @@ shape = SubResource("CircleShape2D_bullet")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1090773523]
 position = Vector2(-12, 8.526513e-14)
 rotation = 3.1415927
-scale = Vector2(0.12, 0.097)
+scale = Vector2(0.24, 0.194)
 sprite_frames = SubResource("SpriteFrames_bullet")
 animation = &"fly"
 frame = 1

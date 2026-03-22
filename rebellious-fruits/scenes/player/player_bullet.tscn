@@ -77,7 +77,7 @@ hit_sfx = ExtResource("2_hit")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875637744]
 position = Vector2(-2, 0)
-scale = Vector2(0.06732818, 0.06222099)
+scale = Vector2(0.067, 0.062)
 sprite_frames = SubResource("SpriteFrames_mmhpf")
 animation = &"fly"
 
